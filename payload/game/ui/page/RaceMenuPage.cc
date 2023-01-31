@@ -7,6 +7,7 @@
 #include "game/ui/SettingsPage.hh"
 
 #include <sp/settings/ClientSettings.hh>
+#include <sp/cs/RoomManager.hh>
 
 extern "C" {
 #include <vendor/libhydrogen/hydrogen.h>
@@ -85,7 +86,13 @@ void RaceMenuPage::onNextButtonFront([[maybe_unused]] PushButton *button,
         menuScenario.gameMode = System::RaceConfig::GameMode::Awards;
     } else {
         menuScenario.cameraMode = 5;
-        if (menuScenario.isBattle()) {
+        if (SP::RoomManager::Instance()) {
+            if (SectionManager::Instance()->currentSection()->id() == SectionId::Online1PVS) {
+                sectionId = SectionId::OnlineSingle;
+            } else {
+                sectionId = SectionId::OnlineServer;
+            }
+        } else if (menuScenario.isBattle()) {
             sectionId = SectionId::SingleSelectBTCourse;
         } else {
             sectionId = SectionId::SingleSelectVSCourse;

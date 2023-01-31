@@ -16,6 +16,7 @@ enum class PageId {
 
     GhostReplayPauseMenu = 0x1F,
 
+    AfterGpMenu = 0x20,
     AfterTaMenu = 0x21,
     AfterVsMenu = 0x22,
     AfterBtMenu = 0x23,

@@ -60,4 +60,9 @@ void Page::calc() {
     }
 }
 
+void Page::startReplace(Anim anim, f32 delay) {
+    SP_LOG("startReplace: %d -> %d", m_id, getReplacement());
+    REPLACED(startReplace)(anim, delay);
+}
+
 } // namespace UI

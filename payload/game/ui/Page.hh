@@ -93,7 +93,8 @@ public:
 protected:
     void initChildren(u32 count);
     void insertChild(u32 index, UIControl *child, u32 drawPass);
-    void startReplace(Anim anim, f32 delay);
+    void REPLACED(startReplace)(Anim anim, f32 delay);
+    REPLACE void startReplace(Anim anim, f32 delay);
     void calcAnim();
     void playSound(Sound::SoundId soundId, s32 r5);
     void setAnimSfxIds(u32 nextId, u32 prevId);

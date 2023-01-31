@@ -200,24 +200,19 @@ void Section::addPage(PageId pageId) {
         { SectionId::Voting1PVS, (PageId)0x50 },
         { SectionId::Voting1PVS, (PageId)0x51 },
         { SectionId::Voting1PVS, (PageId)0x6f },
-        { SectionId::Voting1PVS, (PageId)0x88 },
+        { SectionId::Voting1PVS, PageId::OnlineTeamSelect },
         { SectionId::Voting1PVS, (PageId)0x91 },
 
         { SectionId::VotingServer, (PageId)0x4e },
         { SectionId::VotingServer, (PageId)0x51 },
         { SectionId::VotingServer, (PageId)0x6e },
         { SectionId::VotingServer, (PageId)0x6f },
-        { SectionId::VotingServer, (PageId)0x88 },
+        { SectionId::VotingServer, PageId::OnlineTeamSelect },
         { SectionId::VotingServer, (PageId)0x91 },
 
-        { SectionId::Online1PVS, (PageId)0x44 },
-        { SectionId::Online1PVS, (PageId)0x48 },
-        { SectionId::Online1PVS, (PageId)0x88 },
-
+        { SectionId::Online1PVS,     PageId::OnlineTeamSelect },
         { SectionId::OnlineServerVS, (PageId)0x32 },
-        { SectionId::OnlineServerVS, (PageId)0x44 },
-        { SectionId::OnlineServerVS, (PageId)0x48 },
-        { SectionId::OnlineServerVS, (PageId)0x88 },
+        { SectionId::OnlineServerVS, PageId::OnlineTeamSelect },
 
         // The channel section is repurposed into the Service Pack section. Remove some pages that
         // aren't needed anymore.
@@ -251,6 +246,7 @@ void Section::addPage(PageId pageId) {
     };
     for (const auto &deletion : deletions) {
         if (deletion.first == m_id && deletion.second == pageId) {
+            SP_LOG("addPage %u (skipped)", pageId);
             return;
         }
     }
@@ -267,27 +263,27 @@ void Section::addActivePage(PageId pageId) {
         { SectionId::SingleSelectBTCourse, (PageId)0x78 },
         { SectionId::SingleSelectBTCourse, (PageId)0x79 },
 
-        { SectionId::OnlineSingle, (PageId)0x88 },
+        { SectionId::OnlineSingle, PageId::OnlineTeamSelect },
         { SectionId::OnlineSingle, PageId::GhostManager },
         { SectionId::OnlineSingle, (PageId)0x7f },
         { SectionId::OnlineSingle, (PageId)0x84 },
 
-        { SectionId::OnlineMulti, (PageId)0x88 },
+        { SectionId::OnlineMulti, PageId::OnlineTeamSelect },
         { SectionId::OnlineMulti, PageId::GhostManager },
         { SectionId::OnlineMulti, (PageId)0x7f },
         { SectionId::OnlineMulti, (PageId)0x84 },
 
-        { SectionId::OnlineServer, (PageId)0x88 },
+        { SectionId::OnlineServer, PageId::OnlineTeamSelect },
         { SectionId::OnlineServer, PageId::GhostManager },
         { SectionId::OnlineServer, (PageId)0x7f },
         { SectionId::OnlineServer, (PageId)0x84 },
 
-        { SectionId::Voting1PVS, (PageId)0x88 },
+        { SectionId::Voting1PVS,     PageId::OnlineTeamSelect },
 
-        { SectionId::VotingServer, (PageId)0x88 },
+        { SectionId::VotingServer,   PageId::OnlineTeamSelect },
 
-        { SectionId::Online1PVS, (PageId)0x88 },
-        { SectionId::OnlineServerVS, (PageId)0x88 },
+        { SectionId::Online1PVS,     PageId::OnlineTeamSelect },
+        { SectionId::OnlineServerVS, PageId::OnlineTeamSelect },
     };
     for (const auto &deletion : deletions) {
         if (deletion.first == m_id && deletion.second == pageId) {
@@ -400,6 +396,13 @@ void Section::addPages(SectionId id) {
         { SectionId::OnlineMulti, PageId::MenuSettings },
         { SectionId::OnlineMulti, PageId::SettingsPopup },
 
+        { SectionId::Online1PVS,     PageId::AfterVsMenu },
+        { SectionId::Online1PVS,     (PageId)0x44 },
+        { SectionId::Online1PVS,     (PageId)0x48 },
+        { SectionId::Online1PVS,     PageId::ResultRaceTotal },
+        { SectionId::OnlineServerVS, PageId::AfterVsMenu },
+        { SectionId::OnlineServerVS, (PageId)0x44 },
+        { SectionId::OnlineServerVS, (PageId)0x48 },
         { SectionId::OnlineServerVS, PageId::ResultRaceTotal },
 
         // The channel section is repurposed into the Service Pack section. Add some additional

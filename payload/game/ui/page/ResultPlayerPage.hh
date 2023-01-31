@@ -9,6 +9,7 @@ public:
     ResultPlayerPage();
     ~ResultPlayerPage() override;
     void onInit() override;
+    REPLACE PageId getReplacement();
     TypeInfo *getTypeInfo() const override;
     bool isBusy() override;
     virtual void vf_6c();
