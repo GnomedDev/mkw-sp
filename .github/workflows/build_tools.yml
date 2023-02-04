@@ -12,18 +12,44 @@ on:
 name: Build Tools
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    outputs:
+      modified: ${{ steps.filter.outputs.changes }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        filters: |
+          shared: &shared
+            - tools/netprotocol/**
+          gameserver:
+            - *shared
+            - tools/gameserver/**
+          matchmaking:
+            - *shared
+            - tools/matchmaking/**
+          netstorageserver:
+            - tools/netstorageserver/**
+          portfinder:
+            - tools/portfinder/**
+          updateserver:
+            - tools/updateserver/**
+          sign:
+            - tools/sign/**
+
   build:
     name: Build
+    needs: changes
+    if: ${{ needs.changes.outputs.modified != '' && toJson(fromJson(needs.changes.outputs.modified)) != '[]' }}
     strategy:
       fail-fast: false
       matrix:
-        tool:
-          - gameserver
-          - matchmaking
-          - netstorageserver
-          - portfinder
-          - updateserver
-          - sign
+        tool: ${{ fromJSON(needs.changes.outputs.modified) }}
         os:
           - windows-latest
           - ubuntu-latest
@@ -47,16 +73,12 @@ jobs:
 
   format:
     name: Format
+    needs: changes
+    if: ${{ needs.changes.outputs.modified != '' && toJson(fromJson(needs.changes.outputs.modified)) != '[]' }}
     strategy:
       fail-fast: false
       matrix:
-        tool:
-          - gameserver
-          - matchmaking
-          - netstorageserver
-          - portfinder
-          - updateserver
-          - sign
+        tool: ${{ fromJSON(needs.changes.outputs.modified) }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
