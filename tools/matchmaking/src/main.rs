@@ -176,7 +176,7 @@ impl Server {
             };
 
             let Some(msg) = GTSMessageOpt::decode(&*msg.into_data())?.message else {
-                anyhow::bail!("Failed to decode message")
+                anyhow::bail!("Failed to decode message!")
             };
 
             match msg {
