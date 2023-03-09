@@ -77,6 +77,8 @@ message RoomRequest {
         required Properties properties = 2;
     }
 
+    message RaceClientPing {}
+
     message Race {
         required uint32      time       = 1;
         required uint32      serverTime = 2;
@@ -84,14 +86,15 @@ message RoomRequest {
     }
 
     oneof request {
-        Join       join       = 1;
-        Spectate   spectate   = 2;
-        Comment    comment    = 3;
-        Settings   settings   = 4;
-        Start      start      = 5;
-        TeamSelect teamSelect = 6;
-        Vote       vote       = 7;
-        Race       race       = 8;
+        Join           join       = 1;
+        Spectate       spectate   = 2;
+        Comment        comment    = 3;
+        Settings       settings   = 4;
+        Start          start      = 5;
+        TeamSelect     teamSelect = 6;
+        Vote           vote       = 7;
+        RaceClientPing racePing   = 8;
+        Race           race       = 9;
     }
 }
 
@@ -146,23 +149,22 @@ message RoomEvent {
         required uint32     selectedPlayer   = 2;
     }
 
-    oneof event {
-        Join        join        = 1;
-        Leave       leave       = 2;
-        Spectate    spectate    = 3;
-        Comment     comment     = 4;
-        Settings    settings    = 5;
-        Start       start       = 6;
-        TeamSelect  teamSelect  = 7;
-        SelectPulse selectPulse = 8;
-        SelectInfo  selectInfo  = 9;
+    message RaceServerFrame {
+        required uint32      time        = 1;
+        repeated uint32      playerTimes = 2;
+        repeated PlayerFrame players     = 3;
     }
-}
 
-message RaceClientPing {}
-
-message RaceServerFrame {
-    required uint32      time        = 1;
-    repeated uint32      playerTimes = 2;
-    repeated PlayerFrame players     = 3;
+    oneof event {
+        Join            join        = 1;
+        Leave           leave       = 2;
+        Spectate        spectate    = 3;
+        Comment         comment     = 4;
+        Settings        settings    = 5;
+        Start           start       = 6;
+        TeamSelect      teamSelect  = 7;
+        SelectPulse     selectPulse = 8;
+        SelectInfo      selectInfo  = 9;
+        RaceServerFrame serverFrame = 10;
+    }
 }

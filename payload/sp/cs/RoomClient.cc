@@ -29,6 +29,108 @@ bool RoomClient::isPlayerRemote([[maybe_unused]] u32 playerId) const {
     return playerId < m_playerCount && !isPlayerLocal(playerId);
 }
 
+bool RoomClient::isFrameValid(const RoomEvent_RaceServerFrame &frame) {
+    if (m_frame && frame.time <= m_frame->time) {
+        return false;
+    }
+
+    // TODO check player times
+    if (frame.playerTimes_count != m_roomClient.playerCount()) {
+        return false;
+    }
+    if (m_frame) {
+        for (u32 i = 0; i < frame.players_count; i++) {
+            if (frame.playerTimes[i] < m_frame->playerTimes[i]) {
+                return false;
+            }
+        }
+    }
+
+    if (frame.players_count != m_roomClient.playerCount()) {
+        return false;
+    }
+    for (u32 i = 0; i < frame.players_count; i++) {
+        if (!IsInputStateValid(frame.players[i].inputState)) {
+            return false;
+        }
+
+        if (frame.players[i].timeBeforeRespawn > 190) {
+            return false;
+        }
+
+        if (frame.players[i].timeInRespawn > 140) {
+            return false;
+        }
+
+        if (frame.players[i].timeBeforeRespawn && frame.players[i].timeInRespawn) {
+            return false;
+        }
+
+        if (frame.players[i].timesBeforeBoostEnd_count != 3) {
+            return false;
+        }
+        for (u32 j = 0; j < 3; j++) {
+            if (frame.players[i].timesBeforeBoostEnd[j] > 180) {
+                return false;
+            }
+        }
+
+        if (!IsVec3Valid(frame.players[i].pos)) {
+            return false;
+        }
+
+        if (!IsQuatValid(frame.players[i].mainRot)) {
+            return false;
+        }
+
+        if (!IsF32Valid(frame.players[i].internalSpeed)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+bool RoomClient::IsVec3Valid(const PlayerFrame_Vec3 &v) {
+    if (std::isnan(v.x) || v.x < -1e6f || v.x > 1e6f) {
+        return false;
+    }
+
+    if (std::isnan(v.y) || v.y < -1e6f || v.y > 1e6f) {
+        return false;
+    }
+
+    if (std::isnan(v.z) || v.z < -1e6f || v.z > 1e6f) {
+        return false;
+    }
+
+    return true;
+}
+
+bool RoomClient::IsQuatValid(const PlayerFrame_Quat &q) {
+    if (std::isnan(q.x) || q.x < -1.001f || q.x > 1.001f) {
+        return false;
+    }
+
+    if (std::isnan(q.y) || q.y < -1.001f || q.y > 1.001f) {
+        return false;
+    }
+
+    if (std::isnan(q.z) || q.z < -1.001f || q.z > 1.001f) {
+        return false;
+    }
+
+    if (std::isnan(q.w) || q.w < -1.001f || q.w > 1.001f) {
+        return false;
+    }
+
+    return true;
+}
+
+bool RoomClient::IsF32Valid(f32 s) {
+    return !std::isnan(s) && s >= -20.0f && s <= 120.0f;
+}
+
 bool RoomClient::canSelectTeam([[maybe_unused]] u32 playerId) const {
     return isPlayerLocal(playerId);
 }
@@ -176,7 +278,7 @@ std::optional<RoomClient::State> RoomClient::resolve(Handler &handler) {
     case State::Select:
         return calcSelect(handler);
     case State::Race:
-        break;
+        return calcRace(handler);
     }
 
     return m_state;

@@ -92,6 +92,8 @@ private:
     u16 m_port;
     std::optional<LoginInfo> m_loginInfo;
     std::optional<u32> m_errorCode;
+    u32 m_frameCount = 0;
+    std::optional<RoomEvent_RaceServerFrame> m_frame{};
     bool m_reportedError;
 
     static RoomClient *s_instance;

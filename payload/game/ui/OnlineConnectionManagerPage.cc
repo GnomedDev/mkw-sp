@@ -12,9 +12,9 @@
 
 namespace UI {
 
-constexpr u32 DOLPHIN_DEFAULT_DEVICE_ID = 0x0403AC68;
+constexpr u32 DOLPHIN_DEFAULT_DEVICE_ID = 0x0403AC69;
 
-OnlineConnectionManagerPage::OnlineConnectionManagerPage() : m_socket{0x7F000001, 21331, "match   "} {
+OnlineConnectionManagerPage::OnlineConnectionManagerPage() : m_socket{0x021b4bc7, 21331, "match   "} {
     m_state = State::Initial;
 };
 

@@ -11,7 +11,6 @@ pub mod room_protocol {
         room_request::Request as RoomRequest, RoomEvent as RoomEventOpt,
         RoomRequest as RoomRequestOpt,
     };
-    pub use super::inner::{RaceClientPing, RaceServerFrame};
 }
 
 pub mod matchmaking {

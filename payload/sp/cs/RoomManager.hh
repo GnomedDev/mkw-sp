@@ -103,13 +103,13 @@ public:
     virtual void destroyInstance() = 0;
     virtual bool calc(Handler &handler) = 0;
 
-    // Static instance management is handled in RoomServer and RoomClient
+    // Static instance management is handled in RoomClient
     static void OnCreateScene();
     static void OnDestroyScene();
     static RoomManager *Instance();
 
 protected:
-    // Used for RoomServer::Client::m_state and RoomClient::m_state
+    // Used for RoomClient::m_state
     enum class ClientState {
         Connect,
         Setup,
@@ -119,16 +119,7 @@ protected:
         Race,
     };
 
-    // Used for RoomServer::m_state
-    enum class ServerState {
-        Setup,
-        Main,
-        TeamSelect,
-        Select,
-        Race,
-    };
-
-    // The ctor and dtor is called in RoomServer/RoomClient's instance management
+    // The ctor and dtor is called in RoomClient's instance management
     RoomManager();
     // Prevent copy/move
     RoomManager(const RoomManager &) = delete;

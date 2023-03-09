@@ -1,15 +1,12 @@
 use anyhow::{Context, Result};
-use libhydrogen::secretbox;
 use rand::Rng;
 use slab::Slab;
-use tokio::net::UdpSocket;
 use tokio::sync::{broadcast, mpsc};
 use tokio::task::JoinHandle;
 
 use crate::matchmaking;
 use crate::room_protocol::room_event::Properties;
 use crate::room_protocol::*;
-use crate::unreliable_socket::{Connection, UnreliableSocket};
 use crate::RoomAsyncStream;
 
 #[derive(Debug)]
@@ -71,7 +68,7 @@ impl Room {
         client_key: usize,
         client_player_id: usize,
     ) -> Option<(usize, &Player)> {
-        self.client_players(client_key).skip(client_player_id).next()
+        self.client_players(client_key).nth(client_player_id)
     }
 
     fn start_lobby(&mut self, gamemode: u32) {
@@ -147,22 +144,16 @@ impl Room {
     }
 
     async fn handle_race(&mut self) -> Result<()> {
-        let socket = UdpSocket::bind("0.0.0.0:21330").await?;
-        let context = secretbox::Context::from(*b"race    ");
-        let connections = self
-            .clients
-            .iter()
-            .map(|(_, client)| Connection::new(client.read_key.clone(), client.write_key.clone()))
-            .collect();
-        let mut unreliable_socket = UnreliableSocket::new(socket, context, connections);
-
-        let mut pending_clients = (0..self.clients.len()).collect::<Vec<_>>();
-        while !pending_clients.is_empty() {
-            let (index, _) = unreliable_socket.read::<RaceClientPing>().await?;
-            pending_clients.retain(|i| *i != index);
+        let mut player_frames = vec![None; self.players.len()];
+        
+        let mut remaining_pings = self.clients.len();
+        while remaining_pings != 0 {
+            let Some((_, msg)) = self.read_rx.recv().await else {continue};
+            if let Some(RoomRequest::RacePing(_)) = msg.request {
+                remaining_pings -= 1;
+            }
         }
 
-        let mut player_frames = vec![None; self.players.len()];
         let mut player_frames = loop {
             let Some((client_key, request)) = self.read_rx.recv().await else {return Ok(())};
             let Some(request) = request.request else { continue }; // TODO handle
@@ -205,15 +196,15 @@ impl Room {
             let player_times = player_frames.iter().map(|(time, _)| *time).collect();
             let players =
                 player_frames.iter().map(|(_, player_frame)| player_frame.clone()).collect();
-            let server_frame = RaceServerFrame {
+            let server_frame = room_event::RaceServerFrame {
                 time,
                 player_times,
                 players,
             };
-            tracing::debug!("{:?}", server_frame);
-            for index in 0..self.clients.len() {
-                unreliable_socket.write(index, &server_frame).await?;
-            }
+
+            if self.write_tx.send(RoomEventOpt {event: Some(RoomEvent::ServerFrame(server_frame))}).is_err() {
+                anyhow::bail!("All clients disconnected!");
+            };
         }
 
         Ok(())
@@ -225,7 +216,7 @@ impl Room {
         join: room_request::Join,
     ) -> Result<Option<u32>> {
         anyhow::ensure!(
-            self.clients.len() + 1 <= Self::MAX_CLIENT_COUNT,
+            self.clients.len() < Self::MAX_CLIENT_COUNT,
             "Max client count reached!",
         );
         anyhow::ensure!(
@@ -295,8 +286,6 @@ impl Room {
             let _ = self.write_tx.send(event);
         }
 
-        let read_key = stream.read_key().clone();
-        let write_key = stream.write_key().clone();
         let client_entry = self.clients.vacant_entry();
         let client_key = client_entry.key();
         let disconnect_tx = self.disconnect_tx.clone();
@@ -340,8 +329,6 @@ impl Room {
         });
         let client = Client {
             is_host,
-            read_key,
-            write_key,
             player_count: join.miis.len(),
             task,
             client_id,
@@ -524,8 +511,6 @@ impl Room {
 #[derive(Debug)]
 struct Client {
     task: JoinHandle<()>,
-    read_key: secretbox::Key,
-    write_key: secretbox::Key,
     player_count: usize,
     is_host: bool,
     client_id: ClientIdOpt,

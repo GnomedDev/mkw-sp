@@ -20,7 +20,7 @@ u32 RaceClient::frameCount() const {
     return m_frameCount;
 }
 
-const std::optional<RaceServerFrame> &RaceClient::frame() const {
+const std::optional<RoomEvent_RaceServerFrame> &RaceClient::frame() const {
     return m_frame;
 }
 
@@ -42,10 +42,10 @@ void RaceClient::adjustDrift() {
 
 void RaceClient::calcWrite() {
     if (!m_frame) {
-        u8 buffer[RaceClientPing_size];
+        u8 buffer[RoomRequest_RaceClientPing_size];
         pb_ostream_t stream = pb_ostream_from_buffer(buffer, sizeof(buffer));
 
-        assert(pb_encode(&stream, RaceClientPing_fields, nullptr));
+        assert(pb_encode(&stream, RoomRequest_RaceClientPing_fields, nullptr));
 
         m_socket.write(buffer, stream.bytes_written, m_connection);
     }
@@ -94,10 +94,8 @@ void RaceClient::calcWrite() {
 }
 
 void RaceClient::calcRead() {
-    ConnectionGroup connectionGroup(*this);
-
     while (true) {
-        u8 buffer[RaceServerFrame_size];
+        u8 buffer[RoomEvent_RaceServerFrame_size];
         auto read = m_socket.read(buffer, sizeof(buffer), connectionGroup);
         if (!read) {
             break;
@@ -105,8 +103,8 @@ void RaceClient::calcRead() {
 
         pb_istream_t stream = pb_istream_from_buffer(buffer, read->size);
 
-        RaceServerFrame frame;
-        if (!pb_decode(&stream, RaceServerFrame_fields, &frame)) {
+        RoomEvent_RaceServerFrame frame;
+        if (!pb_decode(&stream, RoomEvent_RaceServerFrame_fields, &frame)) {
             continue;
         }
 
@@ -160,119 +158,6 @@ RaceClient::RaceClient(RoomClient &roomClient) : m_roomClient(roomClient), m_soc
 
 RaceClient::~RaceClient() {
     hydro_memzero(&m_connection, sizeof(m_connection));
-}
-
-bool RaceClient::isFrameValid(const RaceServerFrame &frame) {
-    if (m_frame && frame.time <= m_frame->time) {
-        return false;
-    }
-
-    // TODO check player times
-    if (frame.playerTimes_count != m_roomClient.playerCount()) {
-        return false;
-    }
-    if (m_frame) {
-        for (u32 i = 0; i < frame.players_count; i++) {
-            if (frame.playerTimes[i] < m_frame->playerTimes[i]) {
-                return false;
-            }
-        }
-    }
-
-    if (frame.players_count != m_roomClient.playerCount()) {
-        return false;
-    }
-    for (u32 i = 0; i < frame.players_count; i++) {
-        if (!IsInputStateValid(frame.players[i].inputState)) {
-            return false;
-        }
-
-        if (frame.players[i].timeBeforeRespawn > 190) {
-            return false;
-        }
-
-        if (frame.players[i].timeInRespawn > 140) {
-            return false;
-        }
-
-        if (frame.players[i].timeBeforeRespawn && frame.players[i].timeInRespawn) {
-            return false;
-        }
-
-        if (frame.players[i].timesBeforeBoostEnd_count != 3) {
-            return false;
-        }
-        for (u32 j = 0; j < 3; j++) {
-            if (frame.players[i].timesBeforeBoostEnd[j] > 180) {
-                return false;
-            }
-        }
-
-        if (!IsVec3Valid(frame.players[i].pos)) {
-            return false;
-        }
-
-        if (!IsQuatValid(frame.players[i].mainRot)) {
-            return false;
-        }
-
-        if (!IsF32Valid(frame.players[i].internalSpeed)) {
-            return false;
-        }
-    }
-
-    return true;
-}
-
-bool RaceClient::IsVec3Valid(const PlayerFrame_Vec3 &v) {
-    if (std::isnan(v.x) || v.x < -1e6f || v.x > 1e6f) {
-        return false;
-    }
-
-    if (std::isnan(v.y) || v.y < -1e6f || v.y > 1e6f) {
-        return false;
-    }
-
-    if (std::isnan(v.z) || v.z < -1e6f || v.z > 1e6f) {
-        return false;
-    }
-
-    return true;
-}
-
-bool RaceClient::IsQuatValid(const PlayerFrame_Quat &q) {
-    if (std::isnan(q.x) || q.x < -1.001f || q.x > 1.001f) {
-        return false;
-    }
-
-    if (std::isnan(q.y) || q.y < -1.001f || q.y > 1.001f) {
-        return false;
-    }
-
-    if (std::isnan(q.z) || q.z < -1.001f || q.z > 1.001f) {
-        return false;
-    }
-
-    if (std::isnan(q.w) || q.w < -1.001f || q.w > 1.001f) {
-        return false;
-    }
-
-    return true;
-}
-
-bool RaceClient::IsF32Valid(f32 s) {
-    return !std::isnan(s) && s >= -20.0f && s <= 120.0f;
-}
-
-RaceClient::ConnectionGroup::ConnectionGroup(RaceClient &client) : m_client(client) {}
-
-u32 RaceClient::ConnectionGroup::count() {
-    return 1;
-}
-
-Net::UnreliableSocket::Connection &RaceClient::ConnectionGroup::operator[](u32 index) {
-    assert(index == 0);
-    return m_client.m_connection;
 }
 
 

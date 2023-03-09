@@ -11,7 +11,7 @@ public:
     void destroyInstance() override;
 
     u32 frameCount() const;
-    const std::optional<RaceServerFrame> &frame() const;
+    const std::optional<RoomEvent_RaceServerFrame> &frame() const;
     /*s32 drift() const;
     void adjustDrift();*/
 
@@ -23,31 +23,18 @@ public:
     static RaceClient *Instance();
 
 private:
-    struct ConnectionGroup : public Net::UnreliableSocket::ConnectionGroup {
-    public:
-        ConnectionGroup(RaceClient &client);
-
-        u32 count() override;
-        Net::UnreliableSocket::Connection &operator[](u32 index) override;
-
-    private:
-        RaceClient &m_client;
-    };
-
     RaceClient(RoomClient &roomClient);
     ~RaceClient();
 
-    bool isFrameValid(const RaceServerFrame &frame);
+    bool isFrameValid(const RoomEvent_RaceServerFrame &frame);
 
     static bool IsVec3Valid(const PlayerFrame_Vec3 &v);
     static bool IsQuatValid(const PlayerFrame_Quat &q);
     static bool IsF32Valid(f32 s);
 
     RoomClient &m_roomClient;
-    Net::UnreliableSocket m_socket;
-    Net::UnreliableSocket::Connection m_connection;
-    u32 m_frameCount = 0;
-    std::optional<RaceServerFrame> m_frame{};
+    Net::AsyncSocket m_socket;
+
     /*CircularBuffer<s32, 60> m_drifts;
     s32 m_drift = 0;*/
 
