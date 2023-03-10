@@ -14,7 +14,7 @@
 #include "game/system/RaceManager.hh"
 #include "game/ui/SectionManager.hh"
 
-#include <sp/cs/RaceClient.hh>
+#include <sp/cs/RoomClient.hh>
 #include <sp/SaveStateManager.hh>
 
 namespace Scene {
@@ -31,10 +31,10 @@ extern bool unk_809c2f3c;
 void RaceScene::calcSubsystems() {
     s32 drift = 0;
 
-    if (auto *raceClient = SP::RaceClient::Instance()) {
-        raceClient->calcRead();
-        /*drift = raceClient->drift();
-        raceClient->adjustDrift();*/
+    if (auto *roomClient = SP::RoomClient::Instance()) {
+        roomClient->calcRaceRead();
+        /*drift = RoomClient->drift();
+        RoomClient->adjustDrift();*/
     }
 
     calcSubsystems(drift);
@@ -44,8 +44,8 @@ void RaceScene::calcSubsystems() {
 
     if (auto *cameraManager = Graphics::CameraManager::Instance(); cameraManager &&
             cameraManager->isReady()) {
-        if (auto *raceClient = SP::RaceClient::Instance()) {
-            raceClient->calcWrite();
+        if (auto *roomClient = SP::RoomClient::Instance()) {
+            roomClient->calcRaceWrite();
         }
     }
 }
@@ -71,7 +71,7 @@ void RaceScene::calcSubsystems(s32 drift) {
         if (drift <= 0) {
             raceManager->calc();
 
-            if (SP::RaceClient::Instance()) {
+            if (SP::RoomClient::Instance()) {
                 System::InputManager::Instance()->calcRollbacks();
             }
 

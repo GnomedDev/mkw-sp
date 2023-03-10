@@ -77,7 +77,7 @@ message RoomRequest {
         required Properties properties = 2;
     }
 
-    message RaceClientPing {}
+    message RoomClientPing {}
 
     message Race {
         required uint32      time       = 1;
@@ -93,7 +93,7 @@ message RoomRequest {
         Start          start      = 5;
         TeamSelect     teamSelect = 6;
         Vote           vote       = 7;
-        RaceClientPing racePing   = 8;
+        RoomClientPing racePing   = 8;
         Race           race       = 9;
     }
 }

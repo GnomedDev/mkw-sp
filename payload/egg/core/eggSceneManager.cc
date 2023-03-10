@@ -8,7 +8,6 @@ extern "C" {
 #include <game/system/ResourceManager.hh>
 #include <game/system/SaveManager.hh>
 #include <sp/IOSDolphin.hh>
-#include <sp/cs/RaceManager.hh>
 #include <sp/cs/RoomManager.hh>
 
 namespace EGG {
@@ -106,7 +105,6 @@ void SceneManager::createScene(s32 sceneId, Scene *parent) {
     }
     System::ResourceManager::OnCreateScene(static_cast<System::RKSceneID>(sceneId));
     SP::RoomManager::OnCreateScene();
-    SP::RaceManager::OnCreateScene();
     REPLACED(createScene)(sceneId, parent);
     if (InitDolphinSpeed()) {
         PopDolphinSpeed();
@@ -118,7 +116,6 @@ void SceneManager::destroyScene(Scene *scene) {
         PushDolphinSpeed(800);
     }
     REPLACED(destroyScene)(scene);
-    SP::RaceManager::OnDestroyScene();
     SP::RoomManager::OnDestroyScene();
     if (InitDolphinSpeed()) {
         PopDolphinSpeed();

@@ -23,9 +23,12 @@ public:
     void destroyInstance() override;
     // Main RoomClient update, called in networking pages (typically afterCalc())
     bool calc(Handler &handler) override;
+    void calcRaceWrite();
+    void calcRaceRead();
 
     u32 ip() const;
     u16 port() const;
+    std::optional<RoomEvent_RaceServerFrame> frame() const;
     hydro_kx_session_keypair keypair() const;
     Net::AsyncSocket &socket();
 
@@ -82,6 +85,12 @@ private:
     void writeTeamSelect(u32 playerId, u32 teamId);
     void writeVote(u32 course, std::optional<Player::Properties> properties);
     void write(RoomRequest request);
+
+    bool isFrameValid(const RoomEvent_RaceServerFrame &frame);
+    static bool IsInputStateValid(const InputState &inputState);
+    static bool IsVec3Valid(const PlayerFrame_Vec3 &v);
+    static bool IsQuatValid(const PlayerFrame_Quat &q);
+    static bool IsF32Valid(f32 s);
 
     u32 m_localPlayerCount;
     u32 m_localPlayerIds[2];

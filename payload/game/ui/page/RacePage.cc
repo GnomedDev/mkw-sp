@@ -11,7 +11,7 @@
 #include "game/ui/ctrl/CtrlRaceSpeed.hh"
 #include "game/ui/ctrl/CtrlRaceWaitSymbol.hh"
 
-#include <sp/cs/RaceManager.hh>
+#include <sp/cs/RoomClient.hh>
 
 namespace UI {
 
@@ -101,7 +101,7 @@ u8 RacePage::getControlCount(u32 controls) const {
     }
 
     // Extend vanilla online logic to SP
-    if (SP::RaceManager::Instance()) {
+    if (SP::RoomClient::Instance()) {
         count += (localPlayerCount * 2) + 1;
     }
 
@@ -165,7 +165,7 @@ void RacePage::initControls(u32 controls) {
         }
     }
 
-    if (SP::RaceManager::Instance()) {
+    if (SP::RoomClient::Instance()) {
         for (u32 i = 0; i < localPlayerCount; i++) {
             auto *control = new CtrlRaceWifiStartMessage;
             insertChild(index--, control, 0);

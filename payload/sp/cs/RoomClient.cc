@@ -3,15 +3,20 @@
 #include "sp/settings/RegionLineColor.hh"
 
 #include <egg/core/eggHeap.hh>
+#include <game/kart/KartObjectManager.hh>
+#include <game/ui/GlobalContext.hh>
+#include <game/ui/SectionId.hh>
+#include <game/ui/SectionManager.hh>
+#include <game/system/RaceConfig.hh>
+#include <game/system/RaceManager.hh>
 extern "C" {
 #include <game/system/RootScene.h>
 }
 #include <game/system/SaveManager.hh>
-#include <game/ui/GlobalContext.hh>
-#include <game/ui/SectionId.hh>
-#include <game/ui/SectionManager.hh>
 #include <vendor/nanopb/pb_decode.h>
 #include <vendor/nanopb/pb_encode.h>
+
+#include <cmath>
 
 namespace SP {
 
@@ -29,13 +34,29 @@ bool RoomClient::isPlayerRemote([[maybe_unused]] u32 playerId) const {
     return playerId < m_playerCount && !isPlayerLocal(playerId);
 }
 
+bool RoomClient::IsInputStateValid(const InputState &inputState) {
+    if (inputState.stickX > 14) {
+        return false;
+    }
+
+    if (inputState.stickY > 14) {
+        return false;
+    }
+
+    if (inputState.trick > 4) {
+        return false;
+    }
+
+    return true;
+}
+
 bool RoomClient::isFrameValid(const RoomEvent_RaceServerFrame &frame) {
     if (m_frame && frame.time <= m_frame->time) {
         return false;
     }
 
     // TODO check player times
-    if (frame.playerTimes_count != m_roomClient.playerCount()) {
+    if (frame.playerTimes_count != playerCount()) {
         return false;
     }
     if (m_frame) {
@@ -46,7 +67,7 @@ bool RoomClient::isFrameValid(const RoomEvent_RaceServerFrame &frame) {
         }
     }
 
-    if (frame.players_count != m_roomClient.playerCount()) {
+    if (frame.players_count != playerCount()) {
         return false;
     }
     for (u32 i = 0; i < frame.players_count; i++) {
@@ -193,6 +214,10 @@ Net::AsyncSocket &RoomClient::socket() {
     return m_socket;
 }
 
+std::optional<RoomEvent_RaceServerFrame> RoomClient::frame() const {
+    return m_frame;
+}
+
 void RoomClient::sendComment(u32 commentId) {
     return writeComment(commentId);
 }
@@ -278,7 +303,7 @@ std::optional<RoomClient::State> RoomClient::resolve(Handler &handler) {
     case State::Select:
         return calcSelect(handler);
     case State::Race:
-        return calcRace(handler);
+        break;
     }
 
     return m_state;
@@ -449,6 +474,99 @@ std::optional<RoomClient::State> RoomClient::calcMain(Handler &handler) {
     default:
         return State::Main;
     }
+}
+
+void RoomClient::calcRaceWrite() {
+    if (!m_frame) {
+        u8 buffer[RoomRequest_RoomClientPing_size];
+        pb_ostream_t stream = pb_ostream_from_buffer(buffer, sizeof(buffer));
+
+        assert(pb_encode(&stream, RoomRequest_RoomClientPing_fields, nullptr));
+
+        m_socket.write(buffer, stream.bytes_written);
+    }
+
+    auto &raceScenario = System::RaceConfig::Instance()->raceScenario();
+    RoomRequest request;
+    request.which_request = RoomRequest_race_tag;
+    request.request.race.time = System::RaceManager::Instance()->time();
+    request.request.race.serverTime = m_frame ? m_frame->time : 0;
+    request.request.race.players_count = raceScenario.localPlayerCount;
+    for (u8 i = 0; i < raceScenario.localPlayerCount; i++) {
+        u8 playerId = raceScenario.screenPlayerIds[i];
+        auto *player = System::RaceManager::Instance()->player(playerId);
+        auto &inputState = player->padProxy()->currentRaceInputState();
+        request.request.race.players[i].inputState.accelerate = inputState.accelerate;
+        request.request.race.players[i].inputState.brake = inputState.brake;
+        request.request.race.players[i].inputState.item = inputState.item;
+        request.request.race.players[i].inputState.drift = inputState.drift;
+        request.request.race.players[i].inputState.brakeDrift = inputState.brakeDrift;
+        request.request.race.players[i].inputState.stickX = inputState.rawStick.x;
+        request.request.race.players[i].inputState.stickY = inputState.rawStick.y;
+        request.request.race.players[i].inputState.trick = inputState.rawTrick;
+        auto *object = Kart::KartObjectManager::Instance()->object(playerId);
+        request.request.race.players[i].timeBeforeRespawn = object->getTimeBeforeRespawn();
+        request.request.race.players[i].timeInRespawn = object->getTimeInRespawn();
+        request.request.race.players[i].timesBeforeBoostEnd_count = 3;
+        for (u32 j = 0; j < 3; j++) {
+            request.request.race.players[i].timesBeforeBoostEnd[j] =
+                    object->getTimeBeforeBoostEnd(j * 2);
+        }
+        request.request.race.players[i].pos = *object->getPos();
+        request.request.race.players[i].mainRot = *object->getMainRot();
+        request.request.race.players[i].internalSpeed = object->getInternalSpeed();
+    }
+
+    u8 buffer[RoomRequest_size];
+    pb_ostream_t stream = pb_ostream_from_buffer(buffer, sizeof(buffer));
+
+    assert(pb_encode(&stream, RoomRequest_fields, &request));
+
+    // TODO proper error handling
+    m_socket.write(buffer, stream.bytes_written);
+    if (!m_socket.poll()) {
+        handleError(30001);
+    };
+}
+
+void RoomClient::calcRaceRead() {
+    while (true) {
+        u8 buffer[RoomEvent_RaceServerFrame_size];
+        auto size = m_socket.read(buffer, sizeof(buffer));
+        if (!size) {
+            break;
+        }
+
+        pb_istream_t stream = pb_istream_from_buffer(buffer, *size);
+
+        RoomEvent_RaceServerFrame frame;
+        if (!pb_decode(&stream, RoomEvent_RaceServerFrame_fields, &frame)) {
+            continue;
+        }
+
+        if (isFrameValid(frame)) {
+            m_frameCount++;
+            m_frame = frame;
+        }
+    }
+
+    if (!m_frame) {
+        return;
+    }
+
+    System::RaceManager::Instance()->m_canStartCountdown = true;
+
+    /*if (m_drifts.full()) {
+        m_drifts.pop_front();
+    }
+    s32 drift = static_cast<s32>(m_frame->clientTime) - static_cast<s32>(m_frame->time);
+    m_drifts.push_back(std::move(drift));
+
+    m_drift = 0;
+    for (size_t i = 0; i < m_drifts.count(); i++) {
+        m_drift += *m_drifts[i];
+    }
+    m_drift /= static_cast<s32>(m_drifts.count());*/
 }
 
 std::optional<RoomClient::State> RoomClient::calcTeamSelect(Handler &handler) {

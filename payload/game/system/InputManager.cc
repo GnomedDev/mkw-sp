@@ -8,7 +8,7 @@ extern "C" {
 #include <revolution/kpad.h>
 }
 #include <sp/SaveStateManager.hh>
-#include <sp/cs/RaceClient.hh>
+#include <sp/cs/RoomClient.hh>
 
 #include <cmath>
 
@@ -106,8 +106,8 @@ void GhostPadProxy::init() {
 PadRollback::PadRollback() = default;
 
 void PadRollback::calc(u32 playerId) {
-    auto *raceClient = SP::RaceClient::Instance();
-    if (!raceClient->roomManager().isPlayerRemote(playerId)) {
+    auto *roomClient = SP::RoomClient::Instance();
+    if (!roomClient->isPlayerRemote(playerId)) {
         return;
     }
 
@@ -137,7 +137,7 @@ void PadRollback::calc(u32 playerId) {
 }
 
 std::optional<PadRollback::Frame> PadRollback::serverFrame(u32 playerId) const {
-    auto serverFrame = SP::RaceClient::Instance()->frame();
+    auto serverFrame = SP::RoomClient::Instance()->frame();
     if (!serverFrame) {
         return {};
     }

@@ -6,7 +6,7 @@
 #include "game/system/RaceManager.hh"
 #include "game/system/SaveManager.hh"
 
-#include <sp/cs/RaceClient.hh>
+#include <sp/cs/RoomClient.hh>
 
 namespace UI {
 
@@ -56,10 +56,10 @@ void WStringWriter::writePlayer(u32 playerId) {
 
 void WStringWriter::writeOnline(u32 playerId) {
     u32 time = System::RaceManager::Instance()->time();
-    /*if (auto *raceClient = SP::RaceClient::Instance()) {
-        s32 drift = raceClient->drift();
-        u32 serverFrameCount = raceClient->frameCount();
-        auto frame = raceClient->frame();
+    /*if (auto *RoomClient = SP::RoomClient::Instance()) {
+        s32 drift = RoomClient->drift();
+        u32 serverFrameCount = RoomClient->frameCount();
+        auto frame = RoomClient->frame();
         if (frame) {
             write(L"T/D/ST/CT/SFC %u %d %u %u %u\n", time, drift, frame->time, frame->clientTime,
                     serverFrameCount);

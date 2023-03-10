@@ -6,7 +6,7 @@
 #include "game/ui/SectionManager.hh"
 
 #include <sp/ThumbnailManager.hh>
-#include <sp/cs/RaceManager.hh>
+#include <sp/cs/RoomManager.hh>
 
 namespace System {
 
@@ -123,7 +123,7 @@ RaceManager *RaceManager::CreateInstance() {
     }
 
     s_instance->m_spectatorMode = false;
-    if (SP::RaceManager::Instance()) {
+    if (SP::RoomManager::Instance()) {
         s_instance->m_canStartCountdown = false;
     }
 

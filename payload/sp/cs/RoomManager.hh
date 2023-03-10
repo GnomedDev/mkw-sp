@@ -61,6 +61,10 @@ public:
         Properties m_properties;
         u32 m_teamId;
     };
+    struct RacePlayer {
+        u32 clientId;
+    };
+
 
     // TODO remove
     inline Player *getPlayer(u8 i) {
@@ -128,6 +132,7 @@ protected:
 
     u32 m_playerCount = 0;
     std::array<Player, 12> m_players;
+    std::array<RacePlayer, 12> m_racePlayers{};
     std::array<u32, RoomSettings::count> m_settings;
     u32 m_gamemode = 0;
     std::array<s8, 12> m_votePlayerOrder;

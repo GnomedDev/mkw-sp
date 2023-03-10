@@ -6,7 +6,7 @@
 #include "game/kart/VehiclePhysics.hh"
 #include "game/system/RaceManager.hh"
 
-#include <sp/cs/RaceClient.hh>
+#include <sp/cs/RoomClient.hh>
 
 #include <algorithm>
 
@@ -28,8 +28,8 @@ f32 KartRollback::internalSpeedDelta() const {
 
 void KartRollback::calcEarly() {
     u32 playerId = getPlayerId();
-    auto *raceClient = SP::RaceClient::Instance();
-    if (!raceClient->roomManager().isPlayerRemote(playerId)) {
+    auto *roomClient = SP::RoomClient::Instance();
+    if (!roomClient->isPlayerRemote(playerId)) {
         return;
     }
 
@@ -60,8 +60,8 @@ void KartRollback::calcEarly() {
 
 void KartRollback::calcLate() {
     u32 playerId = getPlayerId();
-    auto *raceClient = SP::RaceClient::Instance();
-    if (!raceClient->roomManager().isPlayerRemote(playerId)) {
+    auto *roomClient = SP::RoomClient::Instance();
+    if (!roomClient->isPlayerRemote(playerId)) {
         return;
     }
 
@@ -86,7 +86,7 @@ void KartRollback::calcLate() {
 }
 
 std::optional<KartRollback::Frame> KartRollback::serverFrame(u32 playerId) const {
-    auto serverFrame = SP::RaceClient::Instance()->frame();
+    auto serverFrame = SP::RoomClient::Instance()->frame();
     if (!serverFrame) {
         return {};
     }

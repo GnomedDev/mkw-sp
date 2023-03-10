@@ -16,12 +16,12 @@ message GTSMessage {
     }
 
     message RaceFinish {
-        message RaceClient {
+        message RoomClient {
             required ClientId client_id  = 1;
             required int32    raceRating = 2;
         }
 
-        repeated RaceClient clients = 1;
+        repeated RoomClient clients = 1;
     }
 
     message TokenResponse {
