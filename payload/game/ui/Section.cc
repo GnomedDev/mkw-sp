@@ -86,15 +86,6 @@ bool Section::HasRoomClient(SectionId sectionId) {
     }
 }
 
-bool Section::HasRaceClient(SectionId sectionId) {
-    switch (sectionId) {
-    case SectionId::OnlineFriend1PVS:
-        return true;
-    default:
-        return false;
-    }
-}
-
 void Section::addPage(PageId pageId) {
     std::pair<SectionId, PageId> deletions[] = {
         { SectionId::Battle1P, PageId::ResultBattleUpdate },

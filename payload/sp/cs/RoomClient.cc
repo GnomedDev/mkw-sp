@@ -291,6 +291,8 @@ RoomClient::RoomClient(u32 localPlayerCount, u32 ip, u16 port, LoginInfo loginIn
 RoomClient::~RoomClient() = default;
 
 std::optional<RoomClient::State> RoomClient::resolve(Handler &handler) {
+    SP_LOG("RoomClient::resolve: %d", static_cast<u32>(m_state));
+
     switch (m_state) {
     case State::Connect:
         return calcConnect();
@@ -478,12 +480,16 @@ std::optional<RoomClient::State> RoomClient::calcMain(Handler &handler) {
 
 void RoomClient::calcRaceWrite() {
     if (!m_frame) {
-        u8 buffer[RoomRequest_RoomClientPing_size];
+        u8 buffer[RoomRequest_size];
         pb_ostream_t stream = pb_ostream_from_buffer(buffer, sizeof(buffer));
 
-        assert(pb_encode(&stream, RoomRequest_RoomClientPing_fields, nullptr));
+        RoomRequest ping;
+        ping.which_request = RoomRequest_racePing_tag;
+        assert(pb_encode(&stream, RoomRequest_fields, &ping));
 
         m_socket.write(buffer, stream.bytes_written);
+    } else {
+        SP_LOG("Not pinging");
     }
 
     auto &raceScenario = System::RaceConfig::Instance()->raceScenario();
@@ -533,7 +539,7 @@ void RoomClient::calcRaceRead() {
     while (true) {
         u8 buffer[RoomEvent_RaceServerFrame_size];
         auto size = m_socket.read(buffer, sizeof(buffer));
-        if (!size) {
+        if (!size || *size == 0) {
             break;
         }
 

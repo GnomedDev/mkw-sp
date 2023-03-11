@@ -76,6 +76,7 @@ void SceneManager::PopDolphinSpeed() {
 }
 
 void SceneManager::reinitCurrentScene() {
+    SP_LOG("SceneManager::reinitCurrentScene");
     if (InitDolphinSpeed()) {
         PushDolphinSpeed(800);
     }
@@ -100,6 +101,7 @@ void SceneManager::reinitCurrentScene() {
 }
 
 void SceneManager::createScene(s32 sceneId, Scene *parent) {
+    SP_LOG("SceneManager::createScene(%d)", sceneId);
     if (InitDolphinSpeed()) {
         PushDolphinSpeed(800);
     }
@@ -109,9 +111,11 @@ void SceneManager::createScene(s32 sceneId, Scene *parent) {
     if (InitDolphinSpeed()) {
         PopDolphinSpeed();
     }
+    SP_LOG("SceneManager::createScene(%d) done", sceneId);
 }
 
 void SceneManager::destroyScene(Scene *scene) {
+    SP_LOG("SceneManager::destroyScene");
     if (InitDolphinSpeed()) {
         PushDolphinSpeed(800);
     }

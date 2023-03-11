@@ -65,7 +65,6 @@ public:
     static REPLACE const char *GetResourceName(SectionId id);
     static Sound::SoundId GetSoundId(SectionId id);
     static bool HasRoomClient(SectionId sectionId);
-    static bool HasRaceClient(SectionId sectionId);
 
 private:
     void REPLACED(addPage)(PageId pageId);

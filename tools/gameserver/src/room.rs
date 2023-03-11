@@ -144,16 +144,22 @@ impl Room {
     }
 
     async fn handle_race(&mut self) -> Result<()> {
+        tracing::info!("Starting race handler...");
         let mut player_frames = vec![None; self.players.len()];
         
         let mut remaining_pings = self.clients.len();
         while remaining_pings != 0 {
             let Some((_, msg)) = self.read_rx.recv().await else {continue};
-            if let Some(RoomRequest::RacePing(_)) = msg.request {
-                remaining_pings -= 1;
+            match msg.request {
+                Some(RoomRequest::RacePing(_)) => {
+                    tracing::debug!("Recieved ping from client");
+                    remaining_pings -= 1;
+                },
+                unknown_request => tracing::debug!("Recieved from client: {unknown_request:?}"),
             }
-        }
+        };
 
+        tracing::info!("All clients ready, starting race!"); 
         let mut player_frames = loop {
             let Some((client_key, request)) = self.read_rx.recv().await else {return Ok(())};
             let Some(request) = request.request else { continue }; // TODO handle
@@ -164,10 +170,10 @@ impl Room {
             if race.players.len() != self.clients[client_key].player_count {
                 continue; // TODO handle
             }
-            tracing::debug!("{:?} {:?}", client_key, race);
-            for ((player_id, _), player_frame) in
-                self.client_players(client_key).zip(race.players.into_iter())
-            {
+
+            // tracing::debug!("{:?} {:?}", client_key, race);
+
+            for ((player_id, _), player_frame) in self.client_players(client_key).zip(race.players.into_iter()) {
                 player_frames[player_id] = Some((race.time, player_frame));
             }
 
@@ -184,10 +190,13 @@ impl Room {
                 RoomRequest::Race(race) => race,
                 _ => continue, // TODO handle
             };
+
             if race.players.len() != self.clients[client_key].player_count {
                 continue; // TODO handle
             }
-            tracing::debug!("{:?} {:?}", client_key, race);
+
+            //tracing::debug!("{:?} {:?}", client_key, race);
+
             for ((player_id, _), player_frame) in
                 self.client_players(client_key).zip(race.players.into_iter())
             {

@@ -23,6 +23,7 @@ u32 RoomManager::gamemode() const {
 }
 
 void RoomManager::OnCreateScene() {
+    SP_LOG("RoomManager::OnCreateScene");
     auto *sectionManager = UI::SectionManager::Instance();
     if (!sectionManager) {
         return;
@@ -30,13 +31,14 @@ void RoomManager::OnCreateScene() {
 
     size_t size;
     if (UI::Section::HasRoomClient(sectionManager->nextSectionId())) {
-        // Client
         if (UI::Section::HasRoomClient(sectionManager->lastSectionId())) {
+            SP_LOG("RoomManager::OnCreateScene: Already initialized RoomClient");
             return;
         }
 
         size = sizeof(RoomClient);
     } else {
+        SP_LOG("RoomManager::OnCreateScene: Section ID %x does not contain RoomClient", sectionManager->nextSectionId());
         return;
     }
 
