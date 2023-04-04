@@ -68,25 +68,36 @@ void ServicePackToolsPage::onStorageBenchmarkButtonFront(PushButton *button,
 }
 
 void ServicePackToolsPage::onThumbnailsButtonFront(PushButton *button, u32 /* localPlayerId */) {
-    auto &menuScenario = System::RaceConfig::Instance()->menuScenario();
+    if (SP::ThumbnailManager::Start()) {
+        auto &menuScenario = System::RaceConfig::Instance()->menuScenario();
 
-    menuScenario.players[0].vehicleId = 1;
-    menuScenario.players[0].characterId = 0;
-    menuScenario.players[0].type = System::RaceConfig::Player::Type::Local;
-    for (size_t i = 1; i < std::size(menuScenario.players); i++) {
-        menuScenario.players[i].type = System::RaceConfig::Player::Type::None;
+        menuScenario.players[0].vehicleId = 1;
+        menuScenario.players[0].characterId = 0;
+        menuScenario.players[0].type = System::RaceConfig::Player::Type::Local;
+        for (size_t i = 1; i < std::size(menuScenario.players); i++) {
+            menuScenario.players[i].type = System::RaceConfig::Player::Type::None;
+        }
+        menuScenario.engineClass = System::RaceConfig::EngineClass::CC150;
+        menuScenario.gameMode = System::RaceConfig::GameMode::TimeAttack;
+        menuScenario.cameraMode = 0;
+        menuScenario.mirror = false;
+        menuScenario.teams = false;
+        menuScenario.spMaxTeamSize = 1;
+        menuScenario.mirrorRng = false;
+
+        m_replacement = PageId::PackSelect;
+        startReplace(Anim::Next, button->getDelay());
+    } else {
+        Section *section = SectionManager::Instance()->currentSection();
+        auto *messagePage = section->page<PageId::MenuMessage>();
+        messagePage->reset();
+        messagePage->setTitleMessage(10313);
+        messagePage->setWindowMessage(10314);
+        messagePage->m_handler = &m_onMessageReturnTools;
+        m_replacement = PageId::MenuMessage;
+        f32 delay = button->getDelay();
+        startReplace(Anim::Next, delay);
     }
-    menuScenario.engineClass = System::RaceConfig::EngineClass::CC150;
-    menuScenario.gameMode = System::RaceConfig::GameMode::TimeAttack;
-    menuScenario.cameraMode = 0;
-    menuScenario.mirror = false;
-    menuScenario.teams = false;
-    menuScenario.spMaxTeamSize = 1;
-    menuScenario.mirrorRng = false;
-
-    SP::ThumbnailManager::Start();
-    m_replacement = PageId::PackSelect;
-    startReplace(Anim::Next, button->getDelay());
 }
 
 void ServicePackToolsPage::onServerModeButtonFront(PushButton *button, u32 /* localPlayerId */) {
@@ -95,7 +106,7 @@ void ServicePackToolsPage::onServerModeButtonFront(PushButton *button, u32 /* lo
     messagePage->reset();
     messagePage->setTitleMessage(20007);
     messagePage->setWindowMessage(20010);
-    messagePage->m_handler = &m_onThumbnailsNoCoursePop;
+    messagePage->m_handler = &m_onMessageReturnTools;
 
     m_replacement = PageId::MenuMessage;
     f32 delay = button->getDelay();
@@ -108,7 +119,7 @@ void ServicePackToolsPage::onBackButtonFront(PushButton *button, u32 /* localPla
     startReplace(Anim::Prev, delay);
 }
 
-void ServicePackToolsPage::onThumbnailsNoCoursePop(MessagePage *messagePage) {
+void ServicePackToolsPage::onMessageReturnTools(MessagePage *messagePage) {
     reinterpret_cast<MenuMessagePage *>(messagePage)->m_replacement = PageId::ServicePackTools;
 }
 

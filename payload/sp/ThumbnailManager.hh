@@ -11,7 +11,7 @@ public:
     ThumbnailManager() = default;
     ~ThumbnailManager() = default;
 
-    static void Start();
+    static bool Start();
     static bool Continue();
     static bool IsActive();
     static bool Next();

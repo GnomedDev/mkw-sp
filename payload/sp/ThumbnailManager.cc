@@ -13,8 +13,19 @@ extern "C" {
 
 namespace SP {
 
-void ThumbnailManager::Start() {
-    s_instance.emplace();
+bool ThumbnailManager::Start() {
+    auto *xfb = EGG::TSystem::Instance()->xfbManager()->headXfb();
+    u32 size = EGG::Xfb::CalcXfbSize(xfb->width(), xfb->height());
+
+    u16 *buffer = static_cast<u16 *>(xfb->buffer());
+    for (u32 i = 0; i < size / 2; i += 1) {
+        if (buffer[i] != 0x01FE) {
+            s_instance.emplace();
+            return true;
+        }
+    }
+
+    return false;
 }
 
 bool ThumbnailManager::Continue() {

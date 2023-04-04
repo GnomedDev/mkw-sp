@@ -855,7 +855,7 @@
         string: "Thumbnails",
     },
     "10314": {
-        string: "No track was found in the\n/mkw-sp/thumbnails folder.",
+        string: "\"Store XFB Copies to Texture Only\"\nmust be disabled in Dolphin Graphics settings\nfor thumbnails to generate correctly!",
     },
     "10315": {
         string: "Debug Overlay",

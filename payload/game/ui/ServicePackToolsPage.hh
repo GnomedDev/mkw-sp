@@ -24,7 +24,7 @@ private:
     void onThumbnailsButtonFront(PushButton *button, u32 localPlayerId);
     void onServerModeButtonFront(PushButton *button, u32 localPlayerId);
     void onBackButtonFront(PushButton *button, u32 localPlayerId);
-    void onThumbnailsNoCoursePop(MessagePage *messagePage);
+    void onMessageReturnTools(MessagePage *messagePage);
 
     template <typename T>
     using H = typename T::Handler<ServicePackToolsPage>;
@@ -41,7 +41,7 @@ private:
     H<PushButton> m_onServerModeButtonFront{this, &ServicePackToolsPage::onServerModeButtonFront};
     H<PushButton> m_onThumbnailsButtonFront{this, &ServicePackToolsPage::onThumbnailsButtonFront};
     H<PushButton> m_onBackButtonFront{this, &ServicePackToolsPage::onBackButtonFront};
-    H<MessagePage> m_onThumbnailsNoCoursePop{this, &ServicePackToolsPage::onThumbnailsNoCoursePop};
+    H<MessagePage> m_onMessageReturnTools{this, &ServicePackToolsPage::onMessageReturnTools};
     PageId m_replacement;
 };
 
