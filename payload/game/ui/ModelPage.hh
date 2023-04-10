@@ -13,6 +13,6 @@ private:
     u8 _044[0x1c8 - 0x044];
     BackGroundModelControl m_modelControl;
 };
-static_assert(sizeof(ModelPage) == 0x348);
+static_assert_32bit(sizeof(ModelPage) == 0x348);
 
 } // namespace UI

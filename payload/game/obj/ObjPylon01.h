@@ -8,6 +8,6 @@ typedef struct {
     u32 playerId;
     u8 _10c[0x118 - 0x10c];
 } ObjPylon01;
-static_assert(sizeof(ObjPylon01) == 0x118);
+static_assert_32bit(sizeof(ObjPylon01) == 0x118);
 
 u32 ObjPylon01_vf_b0(const ObjPylon01 *this);

@@ -12,6 +12,6 @@ private:
     bool m_licensesDirty;
     u8 _017[0x128 - 0x017];
 };
-static_assert(sizeof(SaveManagerProxy) == 0x128);
+static_assert_32bit(sizeof(SaveManagerProxy) == 0x128);
 
 } // namespace UI

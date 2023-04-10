@@ -30,7 +30,7 @@ private:
     u32 m_launchType;
     u8 _0074[0x1100 - 0x0074];
 };
-static_assert(sizeof(SystemManager) == 0x1100);
+static_assert_32bit(sizeof(SystemManager) == 0x1100);
 
 class RichPresenceManager {
 public:

@@ -14,7 +14,7 @@ public:
     private:
         u8 _000[0x268 - 0x000];
     };
-    static_assert(sizeof(List) == 0x268);
+    static_assert_32bit(sizeof(List) == 0x268);
 
     class SPList {
     public:

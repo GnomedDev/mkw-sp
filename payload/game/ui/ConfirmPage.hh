@@ -54,6 +54,6 @@ private:
 public:
     PageId m_replacement;
 };
-static_assert(sizeof(ConfirmPage) == 0xa58);
+static_assert_32bit(sizeof(ConfirmPage) == 0xa58);
 
 } // namespace UI

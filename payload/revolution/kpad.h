@@ -35,7 +35,7 @@ typedef struct KPADStatus {
     u32 buttons;
     u8 _04[0x84 - 0x04];
 } KPADStatus;
-static_assert(sizeof(KPADStatus) == 0x84);
+static_assert_32bit(sizeof(KPADStatus) == 0x84);
 
 s32 KPADRead(s32, KPADStatus *status, u32);
 // TODO: proper union

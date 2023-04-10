@@ -27,8 +27,8 @@ static std::array<ContentFile, 2> contentFiles;
 static Status status = Status::None;
 static bool isLoaded = false;
 
-static_assert(contentPaths.size() + 1 == CHANNEL_CONTENT_COUNT);
-static_assert(contentFiles.size() + 1 == CHANNEL_CONTENT_COUNT);
+static_assert_32bit(contentPaths.size() + 1 == CHANNEL_CONTENT_COUNT);
+static_assert_32bit(contentFiles.size() + 1 == CHANNEL_CONTENT_COUNT);
 
 static void Check() {
     ESP_InitLib();

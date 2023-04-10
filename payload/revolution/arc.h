@@ -8,7 +8,7 @@ typedef struct {
     int fileStart;
     u8 _10[0x20 - 0x10];
 } ARCHeader;
-static_assert(sizeof(ARCHeader) == 0x20);
+static_assert_32bit(sizeof(ARCHeader) == 0x20);
 
 typedef struct {
     u8 _00[0x04 - 0x00];
@@ -17,14 +17,14 @@ typedef struct {
     u32 entryNum;
     u8 _10[0x1c - 0x10];
 } ARCHandle;
-static_assert(sizeof(ARCHandle) == 0x1c);
+static_assert_32bit(sizeof(ARCHandle) == 0x1c);
 
 typedef struct {
     ARCHandle *handle;
     u32 startOffset;
     u32 length;
 } ARCFileInfo;
-static_assert(sizeof(ARCFileInfo) == 0xc);
+static_assert_32bit(sizeof(ARCFileInfo) == 0xc);
 
 typedef struct {
     ARCHandle *handle;
@@ -32,7 +32,7 @@ typedef struct {
     u32 location;
     u32 next;
 } ARCDir;
-static_assert(sizeof(ARCDir) == 0x10);
+static_assert_32bit(sizeof(ARCDir) == 0x10);
 
 typedef struct {
     u8 _00[0x04 - 0x00];
@@ -40,7 +40,7 @@ typedef struct {
     BOOL isDir;
     char *name;
 } ARCDirEntry;
-static_assert(sizeof(ARCDirEntry) == 0x10);
+static_assert_32bit(sizeof(ARCDirEntry) == 0x10);
 
 BOOL ARCInitHandle(void *arcStart, ARCHandle *handle);
 

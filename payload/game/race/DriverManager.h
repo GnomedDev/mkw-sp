@@ -7,7 +7,7 @@ typedef struct {
     u8 liveViewWatchedPlayerId;
     u8 _1ed[0x1f0 - 0x1ed];
 } DriverManager;
-static_assert(sizeof(DriverManager) == 0x1f0);
+static_assert_32bit(sizeof(DriverManager) == 0x1f0);
 
 extern DriverManager *s_driverManager;
 

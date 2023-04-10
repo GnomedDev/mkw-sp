@@ -15,6 +15,6 @@ private:
     bool m_visible;
     u8 _13[0x14 - 0x13];
 };
-static_assert(sizeof(KartBlink) == 0x14);
+static_assert_32bit(sizeof(KartBlink) == 0x14);
 
 } // namespace Kart

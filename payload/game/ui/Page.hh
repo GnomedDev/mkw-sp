@@ -113,6 +113,6 @@ private:
     MenuInputManager *m_inputManager;
     u8 _3c[0x44 - 0x3c];
 };
-static_assert(sizeof(Page) == 0x44);
+static_assert_32bit(sizeof(Page) == 0x44);
 
 } // namespace UI

@@ -23,6 +23,6 @@ private:
 
     u32 m_score;
 };
-static_assert(sizeof(CtrlRaceBattlePoint) == 0x19c);
+static_assert_32bit(sizeof(CtrlRaceBattlePoint) == 0x19c);
 
 } // namespace UI

@@ -36,6 +36,6 @@ private:
     u32 m_sceneID;
     u8 _2c[0x30 - 0x2c];
 };
-static_assert(sizeof(Scene) == 0x30);
+static_assert_32bit(sizeof(Scene) == 0x30);
 
 } // namespace EGG

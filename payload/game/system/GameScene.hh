@@ -54,6 +54,6 @@ protected:
 private:
     u8 _2541[0x254c - 0x2541];
 };
-static_assert(sizeof(GameScene) == 0x254c);
+static_assert_32bit(sizeof(GameScene) == 0x254c);
 
 } // namespace System

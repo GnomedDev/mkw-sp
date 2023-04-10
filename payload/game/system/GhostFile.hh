@@ -16,7 +16,7 @@ struct __attribute__((packed)) RawTime {
     u8 seconds : 7;
     u16 milliseconds : 10;
 };
-static_assert(sizeof(RawTime) == 0x3);
+static_assert_32bit(sizeof(RawTime) == 0x3);
 
 struct RawGhostHeader {
     const RawTime *flap() const;
@@ -51,13 +51,13 @@ struct RawGhostHeader {
     u8 _38[0x3c - 0x35];
     RawMii mii;
 };
-static_assert(sizeof(RawGhostHeader) == 0x88);
+static_assert_32bit(sizeof(RawGhostHeader) == 0x88);
 
 struct FooterFooter {
     u32 size;
     u32 magic;
 };
-static_assert(sizeof(FooterFooter) == 0x8);
+static_assert_32bit(sizeof(FooterFooter) == 0x8);
 
 struct CTGPFooter {
     u8 _00[0x48 - 0x00];
@@ -73,7 +73,7 @@ struct CTGPFooter {
 
     static constexpr u32 MAGIC = 0x434b4744; // CKGD
 };
-static_assert(sizeof(CTGPFooter) == 0xd0);
+static_assert_32bit(sizeof(CTGPFooter) == 0xd0);
 
 struct SPFooter {
     bool checkSize(u32 size) const;
@@ -105,7 +105,7 @@ struct SPFooter {
     static SPFooter s_instance;
     static u32 s_usedShrooms;
 };
-static_assert(sizeof(SPFooter) == 0x48);
+static_assert_32bit(sizeof(SPFooter) == 0x48);
 
 class GhostFooter {
 public:
@@ -138,7 +138,7 @@ struct Time {
     u16 milliseconds;
     u8 _a[0xc - 0xa];
 };
-static_assert(sizeof(Time) == 0xc);
+static_assert_32bit(sizeof(Time) == 0xc);
 
 class GhostFile {
 public:
@@ -167,11 +167,11 @@ private:
     u32 m_inputsSize;
     u8 *m_inputs;
 };
-static_assert(sizeof(GhostFile) == 0xd8);
+static_assert_32bit(sizeof(GhostFile) == 0xd8);
 
 class GhostGroup {
     u8 _00[0x14 - 0x00];
 };
-static_assert(sizeof(GhostGroup) == 0x14);
+static_assert_32bit(sizeof(GhostGroup) == 0x14);
 
 } // namespace System

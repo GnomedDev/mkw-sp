@@ -60,6 +60,6 @@ public:
 private:
     u8 _8b8[0xba0 - 0x8b8];
 };
-static_assert(sizeof(YesNoPagePopup) == 0xba0);
+static_assert_32bit(sizeof(YesNoPagePopup) == 0xba0);
 
 } // namespace UI

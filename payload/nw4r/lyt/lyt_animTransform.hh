@@ -11,6 +11,6 @@ public:
 private:
     u8 _00[0x14 - 0x00];
 };
-static_assert(sizeof(AnimTransform) == 0x14);
+static_assert_32bit(sizeof(AnimTransform) == 0x14);
 
 } // namespace nw4r::lyt

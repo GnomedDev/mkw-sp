@@ -45,6 +45,6 @@ private:
     static OSThreadQueue s_queue;
     static std::optional<SP::Storage::NodeId> s_fId;
 };
-static_assert(sizeof(FileStream) <= 0x100);
+static_assert_32bit(sizeof(FileStream) <= 0x100);
 
 } // namespace nw4r::snd

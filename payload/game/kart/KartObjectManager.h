@@ -9,7 +9,7 @@ typedef struct {
     u8 count;
     u8 _25[0x38 - 0x25];
 } KartObjectManager;
-static_assert(sizeof(KartObjectManager) == 0x38);
+static_assert_32bit(sizeof(KartObjectManager) == 0x38);
 
 extern KartObjectManager *s_kartObjectManager;
 

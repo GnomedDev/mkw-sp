@@ -10,7 +10,7 @@ typedef struct {
     /* For now, just disable multitasking */
     u32 msr_save;
 } sp_guard;
-static_assert(sizeof(sp_guard) == 8); /* As specified by ABI */
+static_assert_32bit(sizeof(sp_guard) == 8); /* As specified by ABI */
 
 int __cxa_guard_acquire(sp_guard *guard) {
     guard->msr_save = OSDisableInterrupts();

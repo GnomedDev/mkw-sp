@@ -170,7 +170,7 @@ struct InputsHeader {
     u16 counts[3];
     u8 _6[0x8 - 0x6];
 };
-static_assert(sizeof(InputsHeader) == 0x8);
+static_assert_32bit(sizeof(InputsHeader) == 0x8);
 
 static const u32 HEADER_MAGIC = 0x524b4744; // RKGD
 

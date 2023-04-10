@@ -18,6 +18,6 @@ private:
     bool m_isGhost;
     u8 _de[0xfc - 0xe2];
 };
-static_assert(sizeof(KartSound) == 0xfc);
+static_assert_32bit(sizeof(KartSound) == 0xfc);
 
 } // namespace Sound

@@ -17,6 +17,6 @@ public:
     void show(u32 messageId, MessageInfo *info = nullptr);
     void hide();
 };
-static_assert(sizeof(MatchingMessageWindow) == 0x174);
+static_assert_32bit(sizeof(MatchingMessageWindow) == 0x174);
 
 } // namespace UI

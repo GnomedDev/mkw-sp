@@ -20,6 +20,6 @@ private:
 
     static EnemyManager *s_instance;
 };
-static_assert(sizeof(EnemyManager) == 0x9c);
+static_assert_32bit(sizeof(EnemyManager) == 0x9c);
 
 } // namespace Enemy

@@ -12,6 +12,6 @@ struct DrawInfo {
     bool locationAdjust : 1;
     u8 _50_4 : 5;
 };
-static_assert(sizeof(DrawInfo) == 0x54);
+static_assert_32bit(sizeof(DrawInfo) == 0x54);
 
 } // namespace nw4r::lyt

@@ -72,8 +72,8 @@ private:
 
     static constexpr u32 MaxThumbnailWidth = 256;
     static constexpr u32 MaxThumbnailHeight = 144;
-    static_assert(MaxThumbnailWidth % 8 == 0);
-    static_assert(MaxThumbnailHeight % 4 == 0);
+    static_assert_32bit(MaxThumbnailWidth % 8 == 0);
+    static_assert_32bit(MaxThumbnailHeight % 4 == 0);
 
     MultiControlInputManager m_inputManager;
     CtrlMenuPageTitleText m_pageTitleText;

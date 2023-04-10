@@ -30,19 +30,19 @@ typedef enum {
     GX_CTF_Z16L = 0x3C,
     GX_TF_A8 = 0x27,
 } GXTexFmt;
-static_assert(sizeof(GXTexFmt) == 0x4);
+static_assert_32bit(sizeof(GXTexFmt) == 0x4);
 
 typedef enum { GX_ZT_DISABLE, GX_ZT_ADD, GX_ZT_REPLACE, GX_MAX_ZTEXOP } GXZTexOp;
-static_assert(sizeof(GXZTexOp) == 4);
+static_assert_32bit(sizeof(GXZTexOp) == 4);
 
 typedef enum { GX_CULL_NONE, GX_CULL_FRONT, GX_CULL_BACK, GX_CULL_ALL } GXCullMode;
-static_assert(sizeof(GXCullMode) == 4);
+static_assert_32bit(sizeof(GXCullMode) == 4);
 
 typedef enum {
     GX_CLIP_ENABLE,
     GX_CLIP_DISABLE,
 } GXClipMode;
-static_assert(sizeof(GXClipMode) == 4);
+static_assert_32bit(sizeof(GXClipMode) == 4);
 
 typedef enum {
     GX_TEVSTAGE0,
@@ -63,7 +63,7 @@ typedef enum {
     GX_TEVSTAGE15,
     GX_MAX_TEVSTAGE,
 } GXTevStageID;
-static_assert(sizeof(GXTevStageID) == 4);
+static_assert_32bit(sizeof(GXTevStageID) == 4);
 
 typedef enum {
     GX_TEVPREV,
@@ -72,7 +72,7 @@ typedef enum {
     GX_TEVREG2,
     GX_MAX_TEVREG,
 } GXTevRegID;
-static_assert(sizeof(GXTevRegID) == 4);
+static_assert_32bit(sizeof(GXTevRegID) == 4);
 
 typedef enum {
     GX_TEV_ADD = 0,
@@ -88,7 +88,7 @@ typedef enum {
     GX_TEV_COMP_A8_GT = GX_TEV_COMP_RGB8_GT,
     GX_TEV_COMP_A8_EQ = GX_TEV_COMP_RGB8_EQ,
 } GXTevOp;
-static_assert(sizeof(GXTevOp) == 4);
+static_assert_32bit(sizeof(GXTevOp) == 4);
 
 typedef enum {
     GX_CC_CPREV,
@@ -108,7 +108,7 @@ typedef enum {
     GX_CC_KONST,
     GX_CC_ZERO,
 } GXTevColorArg;
-static_assert(sizeof(GXTevColorArg) == 4);
+static_assert_32bit(sizeof(GXTevColorArg) == 4);
 
 typedef enum {
     GX_CA_APREV,
@@ -120,7 +120,7 @@ typedef enum {
     GX_CA_KONST,
     GX_CA_ZERO,
 } GXTevAlphaArg;
-static_assert(sizeof(GXTevAlphaArg) == 4);
+static_assert_32bit(sizeof(GXTevAlphaArg) == 4);
 
 typedef enum {
     GX_TB_ZERO,
@@ -128,7 +128,7 @@ typedef enum {
     GX_TB_SUBHALF,
     GX_MAX_TEVBIAS,
 } GXTevBias;
-static_assert(sizeof(GXTevBias) == 4);
+static_assert_32bit(sizeof(GXTevBias) == 4);
 
 typedef enum {
     GX_TEV_KCSEL_8_8 = 0x00,
@@ -164,7 +164,7 @@ typedef enum {
     GX_TEV_KCSEL_K2_A = 0x1E,
     GX_TEV_KCSEL_K3_A = 0x1F,
 } GXTevKColorSel;
-static_assert(sizeof(GXTevKColorSel) == 4);
+static_assert_32bit(sizeof(GXTevKColorSel) == 4);
 
 typedef enum {
     GX_TEV_KASEL_8_8 = 0x00,
@@ -196,7 +196,7 @@ typedef enum {
     GX_TEV_KASEL_K2_A = 0x1E,
     GX_TEV_KASEL_K3_A = 0x1F,
 } GXTevKAlphaSel;
-static_assert(sizeof(GXTevKAlphaSel) == 4);
+static_assert_32bit(sizeof(GXTevKAlphaSel) == 4);
 
 typedef enum {
     GX_CS_SCALE_1,
@@ -205,7 +205,7 @@ typedef enum {
     GX_CS_DIVIDE_2,
     GX_MAX_TEVSCALE,
 } GXTevScale;
-static_assert(sizeof(GXTevScale) == 4);
+static_assert_32bit(sizeof(GXTevScale) == 4);
 
 typedef enum {
     GX_NEVER,
@@ -217,7 +217,7 @@ typedef enum {
     GX_GEQUAL,
     GX_ALWAYS,
 } GXCompare;
-static_assert(sizeof(GXCompare) == 4);
+static_assert_32bit(sizeof(GXCompare) == 4);
 
 typedef enum {
     GX_FOG_NONE = 0x00,
@@ -234,16 +234,16 @@ typedef enum {
     GX_FOG_ORTHO_REVEXP = 0x0E,
     GX_FOG_ORTHO_REVEXP2 = 0x0F,
 } GXFogType;
-static_assert(sizeof(GXFogType) == 4);
+static_assert_32bit(sizeof(GXFogType) == 4);
 
 typedef enum { GX_PERSPECTIVE, GX_ORTHOGRAPHIC } GXProjectionType;
-static_assert(sizeof(GXProjectionType) == 4);
+static_assert_32bit(sizeof(GXProjectionType) == 4);
 
 typedef enum {
     GX_FALSE,
     GX_TRUE,
 } GXBool;
-static_assert(sizeof(GXBool) == 4);
+static_assert_32bit(sizeof(GXBool) == 4);
 
 typedef enum {
     GX_POINTS = 0xb8,
@@ -254,7 +254,7 @@ typedef enum {
     GX_TRIANGLEFAN = 0xa0,
     GX_QUADS = 0x80,
 } GXPrimitive;
-static_assert(sizeof(GXPrimitive) == 4);
+static_assert_32bit(sizeof(GXPrimitive) == 4);
 
 typedef enum {
     GX_VA_PNMTXIDX = 0,
@@ -286,7 +286,7 @@ typedef enum {
     GX_VA_MAX_ATTR,
     GX_VA_NULL = 0xff,
 } GXAttr;
-static_assert(sizeof(GXAttr) == 4);
+static_assert_32bit(sizeof(GXAttr) == 4);
 
 typedef enum {
     GX_VTXFMT0,
@@ -299,7 +299,7 @@ typedef enum {
     GX_VTXFMT7,
     GX_MAX_VTXFMT,
 } GXVtxFmt;
-static_assert(sizeof(GXVtxFmt) == 4);
+static_assert_32bit(sizeof(GXVtxFmt) == 4);
 
 typedef enum {
     GX_TEXCOORD0,
@@ -313,7 +313,7 @@ typedef enum {
     GX_MAX_TEXCOORD,
     GX_TEXCOORD_NULL = 0xff,
 } GXTexCoordID;
-static_assert(sizeof(GXTexCoordID) == 4);
+static_assert_32bit(sizeof(GXTexCoordID) == 4);
 
 typedef enum {
     GX_TG_MTX3x4,
@@ -328,7 +328,7 @@ typedef enum {
     GX_TG_BUMP7,
     GX_TG_SRTG,
 } GXTexGenType;
-static_assert(sizeof(GXTexGenType) == 4);
+static_assert_32bit(sizeof(GXTexGenType) == 4);
 
 typedef enum {
     GX_TG_POS,
@@ -353,7 +353,7 @@ typedef enum {
     GX_TG_COLOR0,
     GX_TG_COLOR1
 } GXTexGenSrc;
-static_assert(sizeof(GXTexGenSrc) == 4);
+static_assert_32bit(sizeof(GXTexGenSrc) == 4);
 
 typedef enum {
     GX_TEXMTX0 = 30,
@@ -368,7 +368,7 @@ typedef enum {
     GX_TEXMTX9 = 57,
     GX_IDENTITY = 60,
 } GXTexMtx;
-static_assert(sizeof(GXTexMtx) == 4);
+static_assert_32bit(sizeof(GXTexMtx) == 4);
 
 typedef enum {
     GX_PTTEXMTX0 = 64,
@@ -393,7 +393,7 @@ typedef enum {
     GX_PTTEXMTX19 = 121,
     GX_PTIDENTITY = 125,
 } GXPTTexMtx;
-static_assert(sizeof(GXPTTexMtx) == 4);
+static_assert_32bit(sizeof(GXPTTexMtx) == 4);
 
 typedef enum {
     GX_POS_XY = 0,
@@ -406,7 +406,7 @@ typedef enum {
     GX_TEX_S = 0,
     GX_TEX_ST = 1,
 } GXCompCnt;
-static_assert(sizeof(GXCompCnt) == 4);
+static_assert_32bit(sizeof(GXCompCnt) == 4);
 
 typedef enum {
     GX_U8 = 0,
@@ -421,7 +421,7 @@ typedef enum {
     GX_RGBA6 = 4,
     GX_RGBA8 = 5,
 } GXCompType;
-static_assert(sizeof(GXCompType) == 4);
+static_assert_32bit(sizeof(GXCompType) == 4);
 
 typedef enum {
     GX_COLOR0,
@@ -435,27 +435,27 @@ typedef enum {
     GX_ALPHA_BUMPN,
     GX_COLOR_NULL = 0xff,
 } GXChannelID;
-static_assert(sizeof(GXChannelID) == 4);
+static_assert_32bit(sizeof(GXChannelID) == 4);
 
 typedef enum {
     GX_SRC_REG,
     GX_SRC_VTX,
 } GXColorSrc;
-static_assert(sizeof(GXColorSrc) == 4);
+static_assert_32bit(sizeof(GXColorSrc) == 4);
 
 typedef enum {
     GX_DF_NONE,
     GX_DF_SIGN,
     GX_DF_CLAMP,
 } GXDiffuseFn;
-static_assert(sizeof(GXDiffuseFn) == 4);
+static_assert_32bit(sizeof(GXDiffuseFn) == 4);
 
 typedef enum {
     GX_AF_SPEC,
     GX_AF_SPOT,
     GX_AF_NONE,
 } GXAttnFn;
-static_assert(sizeof(GXAttnFn) == 4);
+static_assert_32bit(sizeof(GXAttnFn) == 4);
 
 typedef enum {
     GX_CLAMP,
@@ -463,7 +463,7 @@ typedef enum {
     GX_MIRROR,
     GX_MAX_TEXWRAPMODE,
 } GXTexWrapMode;
-static_assert(sizeof(GXTexWrapMode) == 4);
+static_assert_32bit(sizeof(GXTexWrapMode) == 4);
 
 typedef enum {
     GX_TEXMAP0,
@@ -478,7 +478,7 @@ typedef enum {
     GX_TEXMAP_NULL = 0xff,
     GX_TEX_DISABLE = 0x100,
 } GXTexMapID;
-static_assert(sizeof(GXTexMapID) == 4);
+static_assert_32bit(sizeof(GXTexMapID) == 4);
 
 typedef enum {
     GX_AOP_AND,
@@ -487,7 +487,7 @@ typedef enum {
     GX_AOP_XNOR,
     GX_MAX_ALPHAOP,
 } GXAlphaOp;
-static_assert(sizeof(GXAlphaOp) == 4);
+static_assert_32bit(sizeof(GXAlphaOp) == 4);
 
 typedef enum {
     GX_BM_NONE,
@@ -496,7 +496,7 @@ typedef enum {
     GX_BM_SUBTRACT,
     GX_MAX_BLENDMODE,
 } GXBlendMode;
-static_assert(sizeof(GXBlendMode) == 4);
+static_assert_32bit(sizeof(GXBlendMode) == 4);
 
 typedef enum {
     GX_BL_ZERO,
@@ -510,7 +510,7 @@ typedef enum {
     GX_BL_DSTCLR = GX_BL_SRCCLR,
     GX_BL_INVDSTCLR = GX_BL_INVSRCCLR,
 } GXBlendFactor;
-static_assert(sizeof(GXBlendFactor) == 4);
+static_assert_32bit(sizeof(GXBlendFactor) == 4);
 
 typedef enum {
     GX_LO_CLEAR,
@@ -530,7 +530,7 @@ typedef enum {
     GX_LO_NAND,
     GX_LO_SET,
 } GXLogicOp;
-static_assert(sizeof(GXLogicOp) == 4);
+static_assert_32bit(sizeof(GXLogicOp) == 4);
 
 typedef enum {
     GX_MODULATE,
@@ -539,7 +539,7 @@ typedef enum {
     GX_REPLACE,
     GX_PASSCLR,
 } GXTevMode;
-static_assert(sizeof(GXTevMode) == 4);
+static_assert_32bit(sizeof(GXTevMode) == 4);
 
 typedef enum {
     GX_NONE,
@@ -547,4 +547,4 @@ typedef enum {
     GX_INDEX8,
     GX_INDEX16,
 } GXAttrType;
-static_assert(sizeof(GXAttrType) == 4);
+static_assert_32bit(sizeof(GXAttrType) == 4);

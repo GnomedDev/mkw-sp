@@ -17,6 +17,6 @@ private:
 
     static HBMManager *s_instance;
 };
-static_assert(sizeof(HBMManager) == 0x2b4);
+static_assert_32bit(sizeof(HBMManager) == 0x2b4);
 
 } // namespace System

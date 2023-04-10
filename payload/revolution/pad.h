@@ -23,7 +23,7 @@ typedef struct PADStatus {
     s8 stickY;
     u8 _04[0xc - 0x4];
 } PADStatus;
-static_assert(sizeof(PADStatus) == 0xc);
+static_assert_32bit(sizeof(PADStatus) == 0xc);
 
 void PADRead(PADStatus *);
 void PADClampCircle(PADStatus *);

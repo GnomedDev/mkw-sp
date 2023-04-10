@@ -27,6 +27,6 @@ private:
     SoundArchiveFileReader m_fileReader;
     std::optional<SP::Storage::FileHandle> m_file{}; // Modified
 };
-static_assert(sizeof(DVDSoundArchive) <= 0x18c);
+static_assert_32bit(sizeof(DVDSoundArchive) <= 0x18c);
 
 } // namespace nw4r::snd

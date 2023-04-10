@@ -96,7 +96,7 @@ private:
     Vec2<f32> m_scaleFor;
     u8 _400[0x408 - 0x400];
 };
-static_assert(sizeof(Section) == 0x408);
+static_assert_32bit(sizeof(Section) == 0x408);
 
 template <>
 struct Section::PageIdHelper<PageId::RaceConfirm> {

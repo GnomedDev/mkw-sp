@@ -20,6 +20,6 @@ public:
 private:
     u8 _28[0x88 - 0x28];
 };
-static_assert(sizeof(AsyncDisplay) == 0x88);
+static_assert_32bit(sizeof(AsyncDisplay) == 0x88);
 
 } // namespace EGG

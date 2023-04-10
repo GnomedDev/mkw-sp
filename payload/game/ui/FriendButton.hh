@@ -13,6 +13,6 @@ private:
     u8 _254[0x25c - 0x254];
 };
 
-static_assert(sizeof(FriendButton) == 0x25c);
+static_assert_32bit(sizeof(FriendButton) == 0x25c);
 
 } // namespace UI

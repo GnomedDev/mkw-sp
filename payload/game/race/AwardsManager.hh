@@ -20,6 +20,6 @@ private:
     bool m_isBikerModel[0x2a];
     u8 _49e[0x540 - 0x49e];
 };
-static_assert(sizeof(AwardsManager) == 0x540);
+static_assert_32bit(sizeof(AwardsManager) == 0x540);
 
 } // namespace Race

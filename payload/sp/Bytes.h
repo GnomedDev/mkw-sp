@@ -42,7 +42,7 @@ static inline u16 swap16(u16 v) {
     ({ \
         __typeof__(x) _x = x; \
         u32 _u; \
-        static_assert(sizeof(_x) == sizeof(_u)); \
+        static_assert_32bit(sizeof(_x) == sizeof(_u)); \
         memcpy(&_u, &_x, sizeof(_x)); \
         _u = swap32(_u); \
         memcpy(&_x, &_u, sizeof(_x)); \
@@ -52,7 +52,7 @@ static inline u16 swap16(u16 v) {
     ({ \
         __typeof__(x) _x = x; \
         u16 _u; \
-        static_assert(sizeof(_x) == sizeof(_u)); \
+        static_assert_32bit(sizeof(_x) == sizeof(_u)); \
         memcpy(&_u, &_x, sizeof(_x)); \
         _u = swap16(_u); \
         memcpy(&_x, &_u, sizeof(_x)); \

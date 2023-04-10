@@ -99,7 +99,7 @@ static void setupCamera(lyt_DrawInfo *drawInfo, lyt_Layout *lyt) {
 
     float viewMtx[3][4];
     PSMTXIdentity(viewMtx);
-    static_assert(sizeof(drawInfo->viewMtx) == sizeof(viewMtx));
+    static_assert_32bit(sizeof(drawInfo->viewMtx) == sizeof(viewMtx));
     memcpy(drawInfo->viewMtx, viewMtx, sizeof(drawInfo->viewMtx));
     drawInfo->viewRect = frame;
 }

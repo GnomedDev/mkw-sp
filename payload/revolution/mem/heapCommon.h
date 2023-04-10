@@ -14,7 +14,7 @@ typedef struct {
     MEMList childList;
     u8 _04[0x3c - 0x18];
 } MEMiHeapHead;
-static_assert(sizeof(MEMiHeapHead) == 0x3c);
+static_assert_32bit(sizeof(MEMiHeapHead) == 0x3c);
 
 typedef MEMiHeapHead *MEMHeapHandle;
 

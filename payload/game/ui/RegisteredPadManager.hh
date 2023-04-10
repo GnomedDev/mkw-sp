@@ -12,6 +12,6 @@ public:
 private:
     u8 _00[0x5c - 0x00];
 };
-static_assert(sizeof(RegisteredPadManager) == 0x5c);
+static_assert_32bit(sizeof(RegisteredPadManager) == 0x5c);
 
 } // namespace UI

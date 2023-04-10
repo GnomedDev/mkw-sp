@@ -20,6 +20,6 @@ private:
 
     static KartObjectManager *s_instance;
 };
-static_assert(sizeof(KartObjectManager) == 0x38);
+static_assert_32bit(sizeof(KartObjectManager) == 0x38);
 
 } // namespace Kart

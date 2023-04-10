@@ -29,6 +29,6 @@ private:
     u8 _90;
     u8 _91[0x1a14 - 0x91];
 };
-static_assert(sizeof(ModelRenderPage) == 0x1a14);
+static_assert_32bit(sizeof(ModelRenderPage) == 0x1a14);
 
 } // namespace UI

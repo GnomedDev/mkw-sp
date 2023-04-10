@@ -30,6 +30,6 @@ private:
     static u32 s_dolphinSpeedStack[8];
     static s32 s_dolphinSpeedStackSize;
 };
-static_assert(sizeof(SceneManager) == 0x2c);
+static_assert_32bit(sizeof(SceneManager) == 0x2c);
 
 } // namespace EGG

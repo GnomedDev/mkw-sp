@@ -7,4 +7,4 @@ typedef struct {
     bool isGhost;
     u8 _12c[0xae8 - 0x12c];
 } KartEffect;
-static_assert(sizeof(KartEffect) == 0xae8);
+static_assert_32bit(sizeof(KartEffect) == 0xae8);

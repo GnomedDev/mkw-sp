@@ -9,8 +9,8 @@ typedef struct {
     u16 _1c;
     u8 _1e[0x38 - 0x1e];
 } EGG_Heap;
-static_assert(offsetof(EGG_Heap, _1c) == 0x1c);
-static_assert(sizeof(EGG_Heap) == 0x38);
+static_assert_32bit(offsetof(EGG_Heap, _1c) == 0x1c);
+static_assert_32bit(sizeof(EGG_Heap) == 0x38);
 
 void *EGG_Heap_alloc(u32 size, s32 align, EGG_Heap *heap);
 

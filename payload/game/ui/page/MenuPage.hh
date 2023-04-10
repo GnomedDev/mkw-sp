@@ -48,6 +48,6 @@ public:
 private:
     u8 _3f0[0x430 - 0x3f0];
 };
-static_assert(sizeof(MenuPage) == 0x430);
+static_assert_32bit(sizeof(MenuPage) == 0x430);
 
 } // namespace UI

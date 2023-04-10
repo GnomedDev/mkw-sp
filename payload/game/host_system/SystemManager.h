@@ -10,7 +10,7 @@ typedef struct {
     u32 matchingArea;
     u8 _0088[0x1100 - 0x0088];
 } SystemManager;
-static_assert(sizeof(SystemManager) == 0x1100);
+static_assert_32bit(sizeof(SystemManager) == 0x1100);
 
 extern SystemManager *s_systemManager;
 

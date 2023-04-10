@@ -15,7 +15,7 @@ public:
     u8 _00c[0xc0c - 0x00c];
 };
 
-static_assert(sizeof(HeapCollection) == 0xc0c);
+static_assert_32bit(sizeof(HeapCollection) == 0xc0c);
 
 class Scene : public EGG::Scene {
 public:
@@ -28,7 +28,7 @@ private:
     u8 _c3c[0xc70 - 0xc3c];
 };
 
-static_assert(sizeof(Scene) == 0xc70);
+static_assert_32bit(sizeof(Scene) == 0xc70);
 
 enum class RKSceneID {
     // --- <SceneCreatorREL>

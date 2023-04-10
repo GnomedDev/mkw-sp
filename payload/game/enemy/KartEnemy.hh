@@ -12,6 +12,6 @@ public:
 private:
     u8 _0c[0x24 - 0x0c];
 };
-static_assert(sizeof(KartEnemy) == 0x24);
+static_assert_32bit(sizeof(KartEnemy) == 0x24);
 
 } // namespace Enemy

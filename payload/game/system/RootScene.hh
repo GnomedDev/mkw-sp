@@ -16,6 +16,6 @@ private:
     static RootScene *s_instance;
 };
 
-static_assert(sizeof(RootScene) == 0xcb8);
+static_assert_32bit(sizeof(RootScene) == 0xcb8);
 
 } // namespace System

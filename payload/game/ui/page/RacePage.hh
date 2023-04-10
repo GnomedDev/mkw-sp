@@ -49,7 +49,7 @@ private:
 
     static RacePage *s_instance;
 };
-static_assert(sizeof(RacePage) == 0x1dc);
+static_assert_32bit(sizeof(RacePage) == 0x1dc);
 
 class TARacePage : public RacePage {
 public:

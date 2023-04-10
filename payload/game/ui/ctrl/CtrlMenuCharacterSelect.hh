@@ -19,7 +19,7 @@ private:
     private:
         u8 _254[0x260 - 0x254];
     };
-    static_assert(sizeof(ButtonDriver) == 0x260);
+    static_assert_32bit(sizeof(ButtonDriver) == 0x260);
 };
 
 } // namespace UI

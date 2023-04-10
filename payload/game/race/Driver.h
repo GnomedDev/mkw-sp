@@ -7,4 +7,4 @@ typedef struct {
     DriverSound *sound;
     u8 _010[0x6e4 - 0x010];
 } Driver;
-static_assert(sizeof(Driver) == 0x6e4);
+static_assert_32bit(sizeof(Driver) == 0x6e4);

@@ -17,6 +17,6 @@ public:
 private:
     u8 _044[0x4c8 - 0x044];
 };
-static_assert(sizeof(GlobePage) == 0x4c8);
+static_assert_32bit(sizeof(GlobePage) == 0x4c8);
 
 } // namespace UI

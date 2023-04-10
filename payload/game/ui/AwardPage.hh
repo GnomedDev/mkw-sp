@@ -44,6 +44,6 @@ private:
     u8 m_playerCount;
     LayoutUIControl m_teams[6]; // Added
 };
-static_assert(sizeof(AwardPage) == 0x1770 + sizeof(LayoutUIControl) * 6);
+static_assert_32bit(sizeof(AwardPage) == 0x1770 + sizeof(LayoutUIControl) * 6);
 
 } // namespace UI

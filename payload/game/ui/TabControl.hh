@@ -28,7 +28,7 @@ public:
         u32 m_index;
         u8 _238[0x240 - 0x238];
     };
-    static_assert(sizeof(OptionButton) == 0x240);
+    static_assert_32bit(sizeof(OptionButton) == 0x240);
 };
 
 } // namespace UI

@@ -8,7 +8,7 @@ typedef struct {
     u32 sectionInfoOffset;
     u8 _14[0x20 - 0x14];
 } OSModuleInfo;
-static_assert(sizeof(OSModuleInfo) == 0x20);
+static_assert_32bit(sizeof(OSModuleInfo) == 0x20);
 
 typedef struct {
     OSModuleInfo info;
@@ -22,19 +22,19 @@ typedef struct {
     u8 _38[0x48 - 0x38];
     u32 fixSize;
 } OSModuleHeader;
-static_assert(sizeof(OSModuleHeader) == 0x4c);
+static_assert_32bit(sizeof(OSModuleHeader) == 0x4c);
 
 typedef struct {
     u32 offset;
     u32 size;
 } OSSectionInfo;
-static_assert(sizeof(OSSectionInfo) == 0x8);
+static_assert_32bit(sizeof(OSSectionInfo) == 0x8);
 
 typedef struct {
     u8 _0[0x4 - 0x0];
     u32 offset;
 } OSImportInfo;
-static_assert(sizeof(OSImportInfo) == 0x8);
+static_assert_32bit(sizeof(OSImportInfo) == 0x8);
 
 s32 OSLink(OSModuleHeader *newModule, void *bss);
 // Not actually exposed in the API

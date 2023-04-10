@@ -22,6 +22,6 @@ private:
     u32 m_scoreDiffCount;
     u32 m_frame;
 };
-static_assert(sizeof(CtrlRaceBattleAddPoint) == 0x208);
+static_assert_32bit(sizeof(CtrlRaceBattleAddPoint) == 0x208);
 
 } // namespace UI

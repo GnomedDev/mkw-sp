@@ -15,7 +15,7 @@ private:
     KartSusPhysics *m_physics;
 };
 
-static_assert(sizeof(KartSusPhysics) == 0x48);
-static_assert(sizeof(KartSus) == 0x94);
+static_assert_32bit(sizeof(KartSusPhysics) == 0x48);
+static_assert_32bit(sizeof(KartSus) == 0x94);
 
 } // namespace Kart

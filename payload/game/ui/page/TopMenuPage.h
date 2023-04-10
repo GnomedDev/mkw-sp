@@ -12,6 +12,6 @@ typedef struct {
     u8 _6bc[0xcb4 - 0x6bc];
     PushButton *fileAdminButton;
 } TopMenuPage;
-static_assert(sizeof(TopMenuPage) == 0xcb8);
+static_assert_32bit(sizeof(TopMenuPage) == 0xcb8);
 
 TopMenuPage *TopMenuPage_ct(TopMenuPage *this);

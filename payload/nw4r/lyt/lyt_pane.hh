@@ -67,6 +67,6 @@ public:
 private:
     u8 _bc[0xd8 - 0xbc];
 };
-static_assert(sizeof(Pane) == 0xd8);
+static_assert_32bit(sizeof(Pane) == 0xd8);
 
 } // namespace nw4r::lyt

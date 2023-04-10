@@ -82,7 +82,7 @@ public:
 private:
     u8 _4[0xf - 0x4];
 };
-static_assert(sizeof(MenuInputManager) == 0x10);
+static_assert_32bit(sizeof(MenuInputManager) == 0x10);
 
 class PageInputManager : public MenuInputManager {
 public:
@@ -102,7 +102,7 @@ public:
 private:
     u8 _00f[0x144 - 0x00f];
 };
-static_assert(sizeof(PageInputManager) == 0x144);
+static_assert_32bit(sizeof(PageInputManager) == 0x144);
 
 class MultiControlInputManager;
 
@@ -149,7 +149,7 @@ public:
         IHandler *deselectHandler;
         u8 _1c[0x28 - 0x20];
     };
-    static_assert(sizeof(ControlInputManagerPane) == 0x28);
+    static_assert_32bit(sizeof(ControlInputManagerPane) == 0x28);
 
 private:
     u8 _00[0x0c - 0x00];
@@ -178,7 +178,7 @@ public:
 private:
     u8 _76[0x84 - 0x76];
 };
-static_assert(sizeof(ControlInputManager) == 0x84);
+static_assert_32bit(sizeof(ControlInputManager) == 0x84);
 
 class MultiControlInputManager : public MenuInputManager {
 public:
@@ -235,12 +235,12 @@ private:
         Vec2<f32> m_pointerPos;
         u8 _50[0x5c - 0x50];
     };
-    static_assert(sizeof(Player) == 0x5c);
+    static_assert_32bit(sizeof(Player) == 0x5c);
 
     u8 _00f[0x054 - 0x00f];
     Player m_players[5];
     u8 _220[0x224 - 0x220];
 };
-static_assert(sizeof(MultiControlInputManager) == 0x224);
+static_assert_32bit(sizeof(MultiControlInputManager) == 0x224);
 
 } // namespace UI

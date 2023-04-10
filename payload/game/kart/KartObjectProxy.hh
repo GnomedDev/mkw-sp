@@ -38,7 +38,7 @@ struct KartAccessor {
     u8 _44[0x64 - 0x60];
 };
 
-static_assert(sizeof(KartAccessor) == 0x64);
+static_assert_32bit(sizeof(KartAccessor) == 0x64);
 
 class KartObjectProxy {
 public:
@@ -67,6 +67,6 @@ protected:
 private:
     u8 _0[0xc - 0x4];
 };
-static_assert(sizeof(KartObjectProxy) == 0xc);
+static_assert_32bit(sizeof(KartObjectProxy) == 0xc);
 
 } // namespace Kart

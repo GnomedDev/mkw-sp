@@ -33,7 +33,7 @@ public:
 private:
     void *_4 = nullptr;
 };
-static_assert(sizeof(UpDownAnimator) == 0x8);
+static_assert_32bit(sizeof(UpDownAnimator) == 0x8);
 
 class UpDownControl : public LayoutUIControl {
 public:
@@ -49,7 +49,7 @@ public:
     private:
         u8 _174[0x188 - 0x174];
     };
-    static_assert(sizeof(UpDownButton) == 0x188);
+    static_assert_32bit(sizeof(UpDownButton) == 0x188);
 
     class IChangeHandler {
     private:
@@ -177,7 +177,7 @@ private:
     UpDownButton m_buttons[2];
     u32 _5c4 = 19;
 };
-static_assert(sizeof(UpDownControl) == 0x5c8);
+static_assert_32bit(sizeof(UpDownControl) == 0x5c8);
 
 class TextUpDownValueControl : public LayoutUIControl {
 public:
@@ -189,7 +189,7 @@ public:
         void vf_28() override;
         void vf_2c() override;
     };
-    static_assert(sizeof(TextControl) == 0x174);
+    static_assert_32bit(sizeof(TextControl) == 0x174);
 
     class IChangeHandler {
     private:
@@ -239,6 +239,6 @@ private:
     TextControl *m_hiddenText;
     u8 _46c[0x474 - 0x46c];
 };
-static_assert(sizeof(TextUpDownValueControl) == 0x474);
+static_assert_32bit(sizeof(TextUpDownValueControl) == 0x474);
 
 } // namespace UI

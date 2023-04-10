@@ -43,6 +43,6 @@ private:
     EGG::Heap *m_fileHeap;
     State m_state;
 };
-static_assert(sizeof(DvdArchive) == 0x24);
+static_assert_32bit(sizeof(DvdArchive) == 0x24);
 
 } // namespace System

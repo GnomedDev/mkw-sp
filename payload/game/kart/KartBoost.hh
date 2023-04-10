@@ -14,6 +14,6 @@ private:
     u16 m_types;
     u8 _12[0x24 - 0x12];
 };
-static_assert(sizeof(KartBoost) == 0x24);
+static_assert_32bit(sizeof(KartBoost) == 0x24);
 
 } // namespace Kart

@@ -53,12 +53,12 @@ struct RaceInputState {
     u8 rawTrick;
     bool isValid : 1;
 };
-static_assert(sizeof(RaceInputState) == 0x18);
+static_assert_32bit(sizeof(RaceInputState) == 0x18);
 
 struct UIInputState {
     u8 _00[0x34 - 0x00];
 };
-static_assert(sizeof(UIInputState) == 0x34);
+static_assert_32bit(sizeof(UIInputState) == 0x34);
 
 class Pad {
 public:
@@ -96,7 +96,7 @@ private:
     UIInputState m_currentUIInputState;
     u8 _50[0x90 - 0x50];
 };
-static_assert(sizeof(Pad) == 0x90);
+static_assert_32bit(sizeof(Pad) == 0x90);
 
 class DummyPad : public Pad {
 public:
@@ -116,7 +116,7 @@ public:
 
     RaceInputState m_userInputState;
 };
-static_assert(sizeof(UserPad) == 0xa8);
+static_assert_32bit(sizeof(UserPad) == 0xa8);
 
 class WiiPad : public Pad {
 public:
@@ -132,7 +132,7 @@ protected:
 private:
     u8 _920[0x920 - 0x90];
 };
-static_assert(sizeof(WiiPad) == 0x920);
+static_assert_32bit(sizeof(WiiPad) == 0x920);
 
 class GCPad : public Pad {
 public:
@@ -146,7 +146,7 @@ protected:
 private:
     u8 _90[0xb0 - 0x90];
 };
-static_assert(sizeof(GCPad) == 0xb0);
+static_assert_32bit(sizeof(GCPad) == 0xb0);
 
 class GhostPad : public Pad {
 public:
@@ -160,7 +160,7 @@ protected:
 private:
     u8 _90[0xa8 - 0x90];
 };
-static_assert(sizeof(GhostPad) == 0xa8);
+static_assert_32bit(sizeof(GhostPad) == 0xa8);
 
 class PadProxy {
 public:
@@ -185,7 +185,7 @@ private:
     RaceInputState m_lastRaceInputState;
     u8 _58[0xd8 - 0x58];
 };
-static_assert(sizeof(PadProxy) == 0xd8);
+static_assert_32bit(sizeof(PadProxy) == 0xd8);
 
 class GhostPadProxy : public PadProxy {
 public:
@@ -218,7 +218,7 @@ public:
 private:
     UserPad m_userPad;
 };
-static_assert(sizeof(UserPadProxy) == 0x180);
+static_assert_32bit(sizeof(UserPadProxy) == 0x180);
 
 class PadRollback {
 public:
@@ -289,6 +289,6 @@ private:
 
     static InputManager *s_instance;
 };
-static_assert(sizeof(InputManager) == 0x415c + sizeof(void *) * 3);
+static_assert_32bit(sizeof(InputManager) == 0x415c + sizeof(void *) * 3);
 
 } // namespace System

@@ -24,6 +24,6 @@ private:
 
     static DriverManager *s_instance;
 };
-static_assert(sizeof(DriverManager) == 0x1f0);
+static_assert_32bit(sizeof(DriverManager) == 0x1f0);
 
 } // namespace Race

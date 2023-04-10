@@ -18,7 +18,7 @@ public:
         u8 contentAccessMask[512 / 8];
         u8 _262[0x2a4 - 0x262];
     };
-    static_assert(sizeof(Ticket) == 0x2a4);
+    static_assert_32bit(sizeof(Ticket) == 0x2a4);
 
     struct Content {
         u32 id;
@@ -27,7 +27,7 @@ public:
         u64 size;
         u8 sha1[0x14];
     };
-    static_assert(sizeof(Content) == 0x24);
+    static_assert_32bit(sizeof(Content) == 0x24);
 
     struct Tmd {
         u32 signatureType;
@@ -45,19 +45,19 @@ public:
         u16 bootIndex;
         Content contents[512];
     };
-    static_assert(sizeof(Tmd) == 0x49e4);
+    static_assert_32bit(sizeof(Tmd) == 0x49e4);
 
     struct TicketView {
         u8 _00[0xd8 - 0x00];
     };
-    static_assert(sizeof(TicketView) == 0xd8);
+    static_assert_32bit(sizeof(TicketView) == 0xd8);
 
     struct TmdView {
         u8 _0000[0x0058 - 0x0000];
         u16 titleVersion;
         u8 _005a[0x205c - 0x005a];
     };
-    static_assert(sizeof(TmdView) == 0x205c);
+    static_assert_32bit(sizeof(TmdView) == 0x205c);
     PRAGMA("pack(pop)")
 
     ES();

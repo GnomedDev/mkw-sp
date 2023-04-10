@@ -11,7 +11,7 @@ struct MapdataKartPoint {
         s16 id;
         u8 _1a[0x1c - 0x1a];
     };
-    static_assert(sizeof(SData) == 0x1c);
+    static_assert_32bit(sizeof(SData) == 0x1c);
 
     void getTransform(Vec3 *pos, Vec3 *rot, u32 rank, u32 playerCount);
 
@@ -143,6 +143,6 @@ public:
 private:
     static CourseMap *s_instance;
 };
-static_assert(sizeof(CourseMap) == 0x54);
+static_assert_32bit(sizeof(CourseMap) == 0x54);
 
 } // namespace System

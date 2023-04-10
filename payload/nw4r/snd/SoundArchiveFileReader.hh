@@ -25,7 +25,7 @@ private:
         u32 infoSize;
         u8 _20[0x28 - 0x20];
     };
-    static_assert(sizeof(Header) == 0x28);
+    static_assert_32bit(sizeof(Header) == 0x28);
 
     struct Table {
         u32 count;
@@ -37,12 +37,12 @@ private:
         u32 soundTableOffset;
         u8 _08[0x30 - 0x08];
     };
-    static_assert(sizeof(Info) == 0x30);
+    static_assert_32bit(sizeof(Info) == 0x30);
 
     Header m_header;
     Info *m_info;
     u8 _2c[0x44 - 0x2c];
 };
-static_assert(sizeof(SoundArchiveFileReader) == 0x44);
+static_assert_32bit(sizeof(SoundArchiveFileReader) == 0x44);
 
 } // namespace nw4r::snd

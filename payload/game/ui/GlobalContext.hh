@@ -61,6 +61,6 @@ public:
     u32 m_timeAttackGhostCount;       // Added
     u32 m_timeAttackGhostIndices[11]; // Added
 };
-static_assert(sizeof(GlobalContext) == 0x510 + sizeof(u32) * (1 + 11));
+static_assert_32bit(sizeof(GlobalContext) == 0x510 + sizeof(u32) * (1 + 11));
 
 } // namespace UI

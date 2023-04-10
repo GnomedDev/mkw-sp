@@ -10,6 +10,6 @@ class ArgumentParser {
 public:
     REPLACE SectionId parse();
 };
-static_assert(sizeof(ArgumentParser) == 0x1);
+static_assert_32bit(sizeof(ArgumentParser) == 0x1);
 
 } // namespace UI

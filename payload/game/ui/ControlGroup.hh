@@ -16,6 +16,6 @@ public:
     Page *m_page;
     u8 _10[0x14 - 0x10];
 };
-static_assert(sizeof(ControlGroup) == 0x14);
+static_assert_32bit(sizeof(ControlGroup) == 0x14);
 
 } // namespace UI

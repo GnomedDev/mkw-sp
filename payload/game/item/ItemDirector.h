@@ -18,8 +18,8 @@ typedef struct {
     u8 _48[0x430 - 0x18];
 } ItemDirector;
 
-static_assert(sizeof(KartItem) == 0x248);
-static_assert(sizeof(ItemDirector) == 0x430);
+static_assert_32bit(sizeof(KartItem) == 0x248);
+static_assert_32bit(sizeof(ItemDirector) == 0x430);
 // extern ItemDirector *s_itemDirector;
 
 // Tentative name

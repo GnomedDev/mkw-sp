@@ -37,6 +37,6 @@ private:
     u16 m_timeInRespawn;
     u8 _236[0x294 - 0x236];
 };
-static_assert(sizeof(KartMove) == 0x294);
+static_assert_32bit(sizeof(KartMove) == 0x294);
 
 } // namespace Kart

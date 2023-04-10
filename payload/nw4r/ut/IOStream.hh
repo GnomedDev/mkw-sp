@@ -26,6 +26,6 @@ protected:
     bool m_available;
     u8 _05[0x14 - 0x05];
 };
-static_assert(sizeof(IOStream) == 0x14);
+static_assert_32bit(sizeof(IOStream) == 0x14);
 
 } // namespace nw4r::ut

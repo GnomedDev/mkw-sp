@@ -21,6 +21,6 @@ public:
 private:
     u8 _198[0x1a0 - 0x198];
 };
-static_assert(sizeof(CtrlRaceWifiFinishMessage) == 0x1a0);
+static_assert_32bit(sizeof(CtrlRaceWifiFinishMessage) == 0x1a0);
 
 } // namespace UI

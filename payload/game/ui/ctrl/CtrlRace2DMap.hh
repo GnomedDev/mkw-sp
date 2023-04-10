@@ -16,7 +16,7 @@ public:
 private:
     u8 _198[0x1a4 - 0x198];
 };
-static_assert(sizeof(CtrlRace2DMap) == 0x1a4);
+static_assert_32bit(sizeof(CtrlRace2DMap) == 0x1a4);
 
 class CtrlRace2DMapObject : public CtrlRaceBase {
 public:
@@ -31,7 +31,7 @@ public:
 private:
     u8 _198[0x1b4 - 0x198];
 };
-static_assert(sizeof(CtrlRace2DMapObject) == 0x1b4);
+static_assert_32bit(sizeof(CtrlRace2DMapObject) == 0x1b4);
 
 class CtrlRace2DMapCharacter : public CtrlRace2DMapObject {
 public:
@@ -51,6 +51,6 @@ private:
     nw4r::lyt::Pane *m_lightPane;
     Kart::KartObject *m_object;
 };
-static_assert(sizeof(CtrlRace2DMapCharacter) == 0x1cc);
+static_assert_32bit(sizeof(CtrlRace2DMapCharacter) == 0x1cc);
 
 } // namespace UI

@@ -22,6 +22,6 @@ private:
     u16 m_offset;
 };
 
-static_assert(sizeof(List) == 0xc);
+static_assert_32bit(sizeof(List) == 0xc);
 
 } // namespace nw4r::ut

@@ -19,6 +19,6 @@ private:
     u16 _16;
     u32 _18;
 };
-static_assert(sizeof(TexMap) == 0x1c);
+static_assert_32bit(sizeof(TexMap) == 0x1c);
 
 } // namespace nw4r::lyt

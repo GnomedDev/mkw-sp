@@ -8,6 +8,6 @@ typedef struct {
     struct Page *page;
     s32 capacity;
 } ControlGroup;
-static_assert(sizeof(ControlGroup) == 0x14);
+static_assert_32bit(sizeof(ControlGroup) == 0x14);
 
 void ControlGroup_calc(ControlGroup *group);

@@ -14,7 +14,7 @@ typedef struct {
     MiiTexture *textures[7];
     u8 _08[0x98 - 0x24];
 } MiiGroup;
-static_assert(sizeof(MiiGroup) == 0x98);
+static_assert_32bit(sizeof(MiiGroup) == 0x98);
 
 MiiGroup *MiiGroup_ct(MiiGroup *this);
 

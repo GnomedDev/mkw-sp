@@ -22,6 +22,6 @@ private:
 public:
     KartAccessor m_accessor;
 };
-static_assert(sizeof(KartObject) == 0x80);
+static_assert_32bit(sizeof(KartObject) == 0x80);
 
 } // namespace Kart

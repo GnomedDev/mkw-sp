@@ -8,4 +8,4 @@ typedef struct {
     bool isGhost;
     u8 _e2[0xfc - 0xe2];
 } KartSound;
-static_assert(sizeof(KartSound) == 0xfc);
+static_assert_32bit(sizeof(KartSound) == 0xfc);

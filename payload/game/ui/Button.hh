@@ -84,6 +84,6 @@ private:
     u8 _244[0x250 - 0x248];
     u32 _250 = 8;
 };
-static_assert(sizeof(PushButton) == 0x254);
+static_assert_32bit(sizeof(PushButton) == 0x254);
 
 } // namespace UI

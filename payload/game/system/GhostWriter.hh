@@ -12,6 +12,6 @@ public:
 private:
     u8 _00[0x1c - 0x00];
 };
-static_assert(sizeof(GhostWriter) == 0x1c);
+static_assert_32bit(sizeof(GhostWriter) == 0x1c);
 
 } // namespace System

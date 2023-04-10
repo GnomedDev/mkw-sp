@@ -27,6 +27,6 @@ private:
     bool m_isCpu : 1;
     u8 _18[0xc0 - 0x18];
 };
-static_assert(sizeof(KartState) == 0xc0);
+static_assert_32bit(sizeof(KartState) == 0xc0);
 
 } // namespace Kart

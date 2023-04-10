@@ -17,6 +17,6 @@ private:
     KartState *m_state;
     u8 _20[0x9c - 0x20];
 };
-static_assert(sizeof(KartSub) == 0x9c);
+static_assert_32bit(sizeof(KartSub) == 0x9c);
 
 } // namespace Kart

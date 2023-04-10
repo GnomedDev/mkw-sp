@@ -112,7 +112,7 @@ struct WiimmKclMetadata {
     std::array<char, 8> identifier = WiimmSZSIdentifier;
     f32 version = 0.0f;
 };
-static_assert(sizeof(WiimmKclMetadata) == sizeof(Vec3));
+static_assert_32bit(sizeof(WiimmKclMetadata) == sizeof(Vec3));
 
 KclVersion InspectKclFile(std::span<const u8> kcl_file) {
     auto *header = reinterpret_buffer<const KCollisionV1Header>(kcl_file);
@@ -128,7 +128,7 @@ KclVersion InspectKclFile(std::span<const u8> kcl_file) {
         return UnknownKclVersion{};
     }
 
-    static_assert(sizeof(WiimmKclMetadata) == sizeof(Vec3));
+    static_assert_32bit(sizeof(WiimmKclMetadata) == sizeof(Vec3));
     auto *wiimm_metadata =
             reinterpret_buffer<const WiimmKclMetadata>(kcl_file, header->pos_data_offset);
 

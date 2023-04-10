@@ -12,7 +12,7 @@ typedef struct {
     u32 colorId;
     u8 _0c[0x10 - 0x0c];
 } GlyphRenderer;
-static_assert(sizeof(GlyphRenderer) == 0x10);
+static_assert_32bit(sizeof(GlyphRenderer) == 0x10);
 
 void GlyphRenderer_setMaterial(GlyphRenderer *self);
 
@@ -43,7 +43,7 @@ typedef struct {
     GXTexObj *sheetTexObjs;
     u32 colorMode; // IA4, RGB5A3, I4
 } Font;
-static_assert(sizeof(Font) == 0x24);
+static_assert_32bit(sizeof(Font) == 0x24);
 
 Font *Font_ct(Font *self);
 void Font_dt(Font *self);
@@ -60,4 +60,4 @@ typedef struct {
     const wchar_t *strings[9];
     u8 _c0[0xc4 - 0xc0];
 } MessageInfo;
-static_assert(sizeof(MessageInfo) == 0xc4);
+static_assert_32bit(sizeof(MessageInfo) == 0xc4);

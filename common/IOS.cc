@@ -374,7 +374,7 @@ struct Request {
     };
     u8 user[0x40 - 0x20];
 };
-static_assert(sizeof(Request) == 0x40);
+static_assert_32bit(sizeof(Request) == 0x40);
 
 alignas(0x20) static Request request;
 

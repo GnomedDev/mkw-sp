@@ -64,13 +64,13 @@ private:
         ControlInputManager m_inputManager;
         u8 _1f8[0x248 - 0x1f8];
     };
-    static_assert(sizeof(SheetSelectButton) == 0x248);
+    static_assert_32bit(sizeof(SheetSelectButton) == 0x248);
 
     u8 _098[0x0a8 - 0x098];
     SheetSelectButton m_rightButton;
     SheetSelectButton m_leftButton;
 };
-static_assert(sizeof(SheetSelectControl) == 0x538);
+static_assert_32bit(sizeof(SheetSelectControl) == 0x538);
 
 class SheetSelectControlScaleFade : public SheetSelectControl {
 public:

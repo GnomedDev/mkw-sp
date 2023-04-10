@@ -5,7 +5,7 @@ typedef struct {
     ObjGroup *group;
     u8 _05c[0x160 - 0x05c];
 } ObjManager;
-static_assert(sizeof(ObjManager) == 0x160);
+static_assert_32bit(sizeof(ObjManager) == 0x160);
 
 void ObjManager_groupInsert(ObjManager *this, Obj *obj);
 

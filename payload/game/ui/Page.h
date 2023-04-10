@@ -35,7 +35,7 @@ typedef struct Page {
     const struct Page_vt *vt;
     BASE(PageBase);
 } Page;
-static_assert(sizeof(Page) == 0x44);
+static_assert_32bit(sizeof(Page) == 0x44);
 
 typedef struct Page_vt {
     u8 _00[0x08 - 0x00];
@@ -63,7 +63,7 @@ typedef struct Page_vt {
     void *vf_5c;
     TypeInfo *(*getTypeInfo)(Page *this);
 } Page_vt;
-static_assert(sizeof(Page_vt) == 0x64);
+static_assert_32bit(sizeof(Page_vt) == 0x64);
 
 Page *Page_ct(Page *this);
 

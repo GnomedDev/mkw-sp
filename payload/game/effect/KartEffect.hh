@@ -16,6 +16,6 @@ public:
 private:
     u8 _12c[0xae8 - 0x12c];
 };
-static_assert(sizeof(KartEffect) == 0xae8);
+static_assert_32bit(sizeof(KartEffect) == 0xae8);
 
 } // namespace Effect

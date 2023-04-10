@@ -16,7 +16,7 @@ struct FSTEntry {
         } file;
     };
 };
-static_assert(sizeof(FSTEntry) == 0xc);
+static_assert_32bit(sizeof(FSTEntry) == 0xc);
 
 Archive::Archive(const u8 *data, u32 size) : m_data(data), m_size(size) {
     m_ok = false;

@@ -8,6 +8,6 @@ class TextBox : public Pane {
 private:
     u8 _0d8[0x104 - 0x0d8];
 };
-static_assert(sizeof(TextBox) == 0x104);
+static_assert_32bit(sizeof(TextBox) == 0x104);
 
 } // namespace nw4r::lyt

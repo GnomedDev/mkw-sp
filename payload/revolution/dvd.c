@@ -16,7 +16,7 @@ typedef struct {
         } file;
     };
 } FstEntry;
-static_assert(sizeof(FstEntry) == 0xc);
+static_assert_32bit(sizeof(FstEntry) == 0xc);
 
 extern u32 MaxEntryNum;
 extern char *FstStringStart;

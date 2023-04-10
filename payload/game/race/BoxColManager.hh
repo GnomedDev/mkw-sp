@@ -15,6 +15,6 @@ private:
 
     static BoxColManager *s_instance;
 };
-static_assert(sizeof(BoxColManager) == 0x454);
+static_assert_32bit(sizeof(BoxColManager) == 0x454);
 
 } // namespace Race

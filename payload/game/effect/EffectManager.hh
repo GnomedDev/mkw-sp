@@ -19,6 +19,6 @@ private:
 
     static EffectManager *s_instance;
 };
-static_assert(sizeof(EffectManager) == 0x9f4);
+static_assert_32bit(sizeof(EffectManager) == 0x9f4);
 
 } // namespace Effect

@@ -8,7 +8,7 @@ typedef struct {
     u8 b;
     u8 a;
 } GXColor;
-static_assert(sizeof(GXColor) == 0x4);
+static_assert_32bit(sizeof(GXColor) == 0x4);
 
 #define GXCOLOR_RED \
     (GXColor) { 0xFF, 0x00, 0x00, 0xFF }
@@ -29,7 +29,7 @@ typedef struct {
     s16 b;
     s16 a;
 } GXColorS10;
-static_assert(sizeof(GXColorS10) == 0x8);
+static_assert_32bit(sizeof(GXColorS10) == 0x8);
 
 typedef struct GXRenderModeObj {
     int tv_mode;
@@ -46,7 +46,7 @@ typedef struct GXRenderModeObj {
     u8 sample[12][2];
     u8 vert_filter[7];
 } GXRenderModeObj;
-static_assert(sizeof(GXRenderModeObj) == 0x3c);
+static_assert_32bit(sizeof(GXRenderModeObj) == 0x3c);
 
 typedef struct {
     u8 _00[0x20 - 0x00];

@@ -25,6 +25,6 @@ public:
 private:
     u8 _055[0x348 - 0x055];
 };
-static_assert(sizeof(MenuAwaitPage) == 0x348);
+static_assert_32bit(sizeof(MenuAwaitPage) == 0x348);
 
 } // namespace UI

@@ -14,7 +14,7 @@ typedef struct {
         } file;
     };
 } FstEntry;
-static_assert(sizeof(FstEntry) == 0xc);
+static_assert_32bit(sizeof(FstEntry) == 0xc);
 
 BOOL ARCFastOpenDir(ARCHandle *handle, s32 entrynum, ARCDir *dir) {
     if (entrynum < 0) {

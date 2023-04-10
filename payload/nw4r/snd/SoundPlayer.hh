@@ -12,6 +12,6 @@ public:
 private:
     u8 _3c[0x5c - 0x3c];
 };
-static_assert(sizeof(SoundPlayer) == 0x5c);
+static_assert_32bit(sizeof(SoundPlayer) == 0x5c);
 
 } // namespace nw4r::snd

@@ -15,7 +15,7 @@ private:
     u8 _044[0xa30 - 0x044];
     u32 m_choice;
 };
-static_assert(sizeof(OptionExplanationPage) == 0xa34);
+static_assert_32bit(sizeof(OptionExplanationPage) == 0xa34);
 
 class OptionSelectPage : public Page {
 public:
@@ -31,6 +31,6 @@ private:
     s32 m_choice;
     u8 _eec[0xef0 - 0xeec];
 };
-static_assert(sizeof(OptionSelectPage) == 0xef0);
+static_assert_32bit(sizeof(OptionSelectPage) == 0xef0);
 
 } // namespace UI

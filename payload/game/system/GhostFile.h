@@ -16,7 +16,7 @@ typedef struct __attribute__((packed)) {
     u8 seconds : 7;
     u16 milliseconds : 10;
 } RawTime;
-static_assert(sizeof(RawTime) == 0x3);
+static_assert_32bit(sizeof(RawTime) == 0x3);
 
 typedef struct {
     u32 magic;
@@ -49,7 +49,7 @@ typedef struct {
     u8 _38[0x3c - 0x35];
     RawMii mii;
 } RawGhostHeader;
-static_assert(sizeof(RawGhostHeader) == 0x88);
+static_assert_32bit(sizeof(RawGhostHeader) == 0x88);
 
 void SPFooter_OnRaceStart(bool speedModIsEnabled, bool isVanilla, bool setInMirror);
 
@@ -68,6 +68,6 @@ bool RawGhostFile_IsValid(const u8 *raw);
 typedef struct {
     u8 _00[0x14 - 0x00];
 } GhostGroup;
-static_assert(sizeof(GhostGroup) == 0x14);
+static_assert_32bit(sizeof(GhostGroup) == 0x14);
 
 GhostGroup *GhostGroup_ct(GhostGroup *self, EGG_Heap *heap, u32 type);

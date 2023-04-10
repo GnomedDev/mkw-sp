@@ -18,6 +18,6 @@ public:
     void load(bool isOptions);
     void setMessage(s32 messageId, MessageInfo *info = nullptr);
 };
-static_assert(sizeof(CtrlMenuPageTitleText) == 0x174);
+static_assert_32bit(sizeof(CtrlMenuPageTitleText) == 0x174);
 
 } // namespace UI

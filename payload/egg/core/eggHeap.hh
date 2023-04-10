@@ -35,7 +35,7 @@ private:
     nw4r::ut::List m_disposers;
     u8 _34[0x38 - 0x34];
 };
-static_assert(sizeof(Heap) == 0x38);
+static_assert_32bit(sizeof(Heap) == 0x38);
 
 } // namespace EGG
 

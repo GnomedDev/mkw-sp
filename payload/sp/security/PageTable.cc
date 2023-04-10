@@ -19,7 +19,7 @@ namespace SP::PageTable {
 #define VIRTUAL_TO_PHYSICAL(ptr) ((uintptr_t)(ptr)&0x7fffffff)
 
 #define PAGE_TABLE_MEMORY_POWER_OF_2 16 // 64 Kibibytes
-static_assert(PAGE_TABLE_MEMORY_POWER_OF_2 > 15 && PAGE_TABLE_MEMORY_POWER_OF_2 < 26);
+static_assert_32bit(PAGE_TABLE_MEMORY_POWER_OF_2 > 15 && PAGE_TABLE_MEMORY_POWER_OF_2 < 26);
 #define PAGE_TABLE_SIZE (1 << PAGE_TABLE_MEMORY_POWER_OF_2)
 #define PAGE_SIZE (1 << 12)
 

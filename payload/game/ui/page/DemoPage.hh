@@ -15,6 +15,6 @@ private:
     MenuInputManager m_inputManager;
 };
 
-static_assert(sizeof(DemoPage) == 0x33c);
+static_assert_32bit(sizeof(DemoPage) == 0x33c);
 
 } // namespace UI

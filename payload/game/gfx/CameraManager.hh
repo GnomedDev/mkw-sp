@@ -15,6 +15,6 @@ private:
 
     static CameraManager *s_instance;
 };
-static_assert(sizeof(CameraManager) == 0x38);
+static_assert_32bit(sizeof(CameraManager) == 0x38);
 
 } // namespace Graphics

@@ -14,6 +14,6 @@ private:
     s16 m_timeBeforeRespawn;
     u8 _4a[0x74 - 0x4a];
 };
-static_assert(sizeof(KartCollide) == 0x74);
+static_assert_32bit(sizeof(KartCollide) == 0x74);
 
 } // namespace Kart

@@ -37,6 +37,6 @@ private:
 
     static ItemMusicManager *s_instance;
 };
-static_assert(sizeof(ItemMusicManager) == 0x2c);
+static_assert_32bit(sizeof(ItemMusicManager) == 0x2c);
 
 } // namespace Sound

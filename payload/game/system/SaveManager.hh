@@ -26,7 +26,7 @@ private:
         u16 driftMode;
         u8 _00ec[0x8cc0 - 0x00ec];
     };
-    static_assert(sizeof(RawLicense) == 0x8cc0);
+    static_assert_32bit(sizeof(RawLicense) == 0x8cc0);
 
     struct RawSave {
         u8 _00000[0x2330c - 0x00000];
@@ -35,14 +35,14 @@ private:
         bool m_rumble : 1;
         u8 _23310[0x28000 - 0x23310];
     };
-    static_assert(sizeof(RawSave) == 0x28000);
+    static_assert_32bit(sizeof(RawSave) == 0x28000);
 
     class License {
         wchar_t m_miiName[11];
         MiiId m_miiId;
         u8 _001e[0x93f0 - 0x001e];
     };
-    static_assert(sizeof(License) == 0x93f0);
+    static_assert_32bit(sizeof(License) == 0x93f0);
 
 public:
     SaveManager();

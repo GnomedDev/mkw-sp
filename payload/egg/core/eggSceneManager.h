@@ -10,7 +10,7 @@ typedef struct EGG_SceneManager {
     EGG_ColorFader *fader;
     u32 _28;
 } EGG_SceneManager;
-static_assert(sizeof(EGG_SceneManager) == 0x2c);
+static_assert_32bit(sizeof(EGG_SceneManager) == 0x2c);
 
 extern void EGG_SceneManager_changeSiblingScene;
 

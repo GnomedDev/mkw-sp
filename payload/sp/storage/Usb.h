@@ -65,7 +65,7 @@ typedef struct {
     u8 numConfigurations;
     u8 _12[0x14 - 0x12];
 } UsbDeviceDescriptor;
-static_assert(sizeof(UsbDeviceDescriptor) == 0x14);
+static_assert_32bit(sizeof(UsbDeviceDescriptor) == 0x14);
 
 typedef struct {
     u8 length;
@@ -78,7 +78,7 @@ typedef struct {
     u8 maxPower;
     u8 _9[0xc - 0x9];
 } UsbConfigDescriptor;
-static_assert(sizeof(UsbConfigDescriptor) == 0xc);
+static_assert_32bit(sizeof(UsbConfigDescriptor) == 0xc);
 
 typedef struct {
     u8 length;
@@ -92,7 +92,7 @@ typedef struct {
     u8 interfaceIndex;
     u8 _9[0xc - 0x9];
 } UsbInterfaceDescriptor;
-static_assert(sizeof(UsbInterfaceDescriptor) == 0xc);
+static_assert_32bit(sizeof(UsbInterfaceDescriptor) == 0xc);
 
 typedef struct {
     u8 length;
@@ -103,7 +103,7 @@ typedef struct {
     u8 interval;
     u8 _7[0x8 - 0x7];
 } UsbEndpointDescriptor;
-static_assert(sizeof(UsbEndpointDescriptor) == 0x8);
+static_assert_32bit(sizeof(UsbEndpointDescriptor) == 0x8);
 
 typedef struct {
     u32 id;
@@ -113,7 +113,7 @@ typedef struct {
     UsbInterfaceDescriptor interfaceDescriptor;
     UsbEndpointDescriptor endpointDescriptors[16];
 } UsbDeviceInfo;
-static_assert(sizeof(UsbDeviceInfo) == 0xc0);
+static_assert_32bit(sizeof(UsbDeviceInfo) == 0xc0);
 
 typedef bool (*Usb_onDeviceAddFunc)(const UsbDeviceInfo *info);
 typedef void (*Usb_onDeviceRemoveFunc)(u32 id);

@@ -13,7 +13,7 @@ typedef enum SectionChangeState {
     CHANGE_READY = 0x4,
     OVERRIDE_READY = 0x5,
 } SectionChangeState;
-static_assert(sizeof(SectionChangeState) == 0x4);
+static_assert_32bit(sizeof(SectionChangeState) == 0x4);
 
 typedef struct {
     Section *currentSection;
@@ -30,7 +30,7 @@ typedef struct {
     u8 _94[0x98 - 0x94];
     GlobalContext *globalContext;
 } SectionManager;
-static_assert(sizeof(SectionManager) == 0x9c);
+static_assert_32bit(sizeof(SectionManager) == 0x9c);
 
 extern SectionManager *s_sectionManager;
 

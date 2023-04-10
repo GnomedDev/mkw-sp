@@ -7,7 +7,7 @@ typedef struct {
     u32 _20;
     u8 _24[0x40 - 0x24];
 } EXIControl;
-static_assert(sizeof(EXIControl) == 0x40);
+static_assert_32bit(sizeof(EXIControl) == 0x40);
 
 extern EXIControl Ecb[];
 

@@ -9,4 +9,4 @@ typedef struct {
     bool isGhost;
     u8 _6fd[0x708 - 0x6fd];
 } DriverSound;
-static_assert(sizeof(DriverSound) == 0x708);
+static_assert_32bit(sizeof(DriverSound) == 0x708);

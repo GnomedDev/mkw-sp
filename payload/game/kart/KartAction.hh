@@ -9,6 +9,6 @@ private:
     u8 _0c[0x100 - 0x0c];
 };
 
-static_assert(sizeof(KartAction) == 0x100);
+static_assert_32bit(sizeof(KartAction) == 0x100);
 
 } // namespace Kart

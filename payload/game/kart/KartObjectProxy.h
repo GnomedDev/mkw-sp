@@ -15,10 +15,10 @@ typedef struct {
     KartSound *sound;
     u8 _20[0x64 - 0x20];
 } KartAccessor;
-static_assert(sizeof(KartAccessor) == 0x64);
+static_assert_32bit(sizeof(KartAccessor) == 0x64);
 
 typedef struct {
     KartAccessor *accessor;
     u8 _0[0xc - 0x4];
 } KartObjectProxy;
-static_assert(sizeof(KartObjectProxy) == 0xc);
+static_assert_32bit(sizeof(KartObjectProxy) == 0xc);

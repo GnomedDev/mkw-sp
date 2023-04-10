@@ -13,7 +13,7 @@ public:
 private:
     u8 _174[0x180 - 0x174];
 };
-static_assert(sizeof(BackGroundModelControl) == 0x180);
+static_assert_32bit(sizeof(BackGroundModelControl) == 0x180);
 
 class DriverModelControl : public LayoutUIControl {
 public:
@@ -31,7 +31,7 @@ public:
 private:
     u8 _174[0x188 - 0x174];
 };
-static_assert(sizeof(DriverModelControl) == 0x188);
+static_assert_32bit(sizeof(DriverModelControl) == 0x188);
 
 class NoteModelControl : public LayoutUIControl {
 public:
@@ -41,6 +41,6 @@ private:
     u8 _174[0x17c - 0x174];
     bool m_hasPageAnim;
 };
-static_assert(sizeof(NoteModelControl) == 0x180);
+static_assert_32bit(sizeof(NoteModelControl) == 0x180);
 
 } // namespace UI

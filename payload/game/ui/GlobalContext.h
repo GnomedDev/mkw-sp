@@ -22,7 +22,7 @@ typedef struct {
     u32 timeAttackGhostCount;       // Added
     u32 timeAttackGhostIndices[11]; // Added
 } GlobalContext;
-static_assert(offsetof(GlobalContext, timeAttackGhostCount) == 0x510);
+static_assert_32bit(offsetof(GlobalContext, timeAttackGhostCount) == 0x510);
 
 void GlobalContext_copyPlayerMiis(GlobalContext *this);
 

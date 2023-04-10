@@ -22,12 +22,12 @@ private:
     struct Texture {
         u8 _00[0x24 - 0x00];
     };
-    static_assert(sizeof(Texture) == 0x24);
+    static_assert_32bit(sizeof(Texture) == 0x24);
 
     System::Mii **m_miis;
     Texture *m_textures[7];
     u8 _08[0x98 - 0x24];
 };
-static_assert(sizeof(MiiGroup) == 0x98);
+static_assert_32bit(sizeof(MiiGroup) == 0x98);
 
 } // namespace UI

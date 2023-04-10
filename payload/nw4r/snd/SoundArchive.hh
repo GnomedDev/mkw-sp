@@ -21,24 +21,24 @@ public:
         u32 playerId;
         u8 _08[0x20 - 0x08];
     };
-    static_assert(sizeof(SoundInfo) == 0x20);
+    static_assert_32bit(sizeof(SoundInfo) == 0x20);
 
     struct SeqSoundInfo {
         u8 _00[0x14 - 0x00];
     };
-    static_assert(sizeof(SeqSoundInfo) == 0x14);
+    static_assert_32bit(sizeof(SeqSoundInfo) == 0x14);
 
     struct StrmSoundInfo {
         u32 startPosition;
         u16 allocChannelCount;
         u16 allocTrackFlags;
     };
-    static_assert(sizeof(StrmSoundInfo) == 0x8);
+    static_assert_32bit(sizeof(StrmSoundInfo) == 0x8);
 
     struct WaveSoundInfo {
         u8 _0[0xc - 0x0];
     };
-    static_assert(sizeof(WaveSoundInfo) == 0xc);
+    static_assert_32bit(sizeof(WaveSoundInfo) == 0xc);
 
     struct GroupInfo {
         u32 itemCount;
@@ -48,7 +48,7 @@ public:
         u32 waveDataOffset;
         u8 _14[0x18 - 0x14];
     };
-    static_assert(sizeof(GroupInfo) == 0x18);
+    static_assert_32bit(sizeof(GroupInfo) == 0x18);
 
     struct GroupItemInfo {
         u32 fileId;
@@ -57,7 +57,7 @@ public:
         u32 waveDataOffset;
         u8 _10[0x14 - 0x10];
     };
-    static_assert(sizeof(GroupItemInfo) == 0x14);
+    static_assert_32bit(sizeof(GroupItemInfo) == 0x14);
 
     struct FileInfo {
         u32 fileSize;
@@ -65,13 +65,13 @@ public:
         const char *extFilePath;
         u32 filePosCount;
     };
-    static_assert(sizeof(FileInfo) == 0x10);
+    static_assert_32bit(sizeof(FileInfo) == 0x10);
 
     struct FilePos {
         u32 groupId;
         u32 index;
     };
-    static_assert(sizeof(FilePos) == 0x8);
+    static_assert_32bit(sizeof(FilePos) == 0x8);
 
     SoundArchive();
     virtual ~SoundArchive();
@@ -110,6 +110,6 @@ protected:
     SoundArchiveFileReader *m_fileReader;
     char m_extFileRoot[256];
 };
-static_assert(sizeof(SoundArchive) == 0x108);
+static_assert_32bit(sizeof(SoundArchive) == 0x108);
 
 } // namespace nw4r::snd

@@ -20,6 +20,6 @@ private:
     u32 m_alternativeBackground;
 };
 
-static_assert(sizeof(TitlePage) == 0x350);
+static_assert_32bit(sizeof(TitlePage) == 0x350);
 
 } // namespace UI

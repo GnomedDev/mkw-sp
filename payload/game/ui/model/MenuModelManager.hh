@@ -13,13 +13,13 @@ public:
 private:
     u8 _00[0x28 - 0x00];
 };
-static_assert(sizeof(DriverModel) == 0x28);
+static_assert_32bit(sizeof(DriverModel) == 0x28);
 
 struct DriverModelHandle {
     u8 _0[0x8 - 0x0];
     DriverModel *model;
 };
-static_assert(sizeof(DriverModelHandle) == 0xc);
+static_assert_32bit(sizeof(DriverModelHandle) == 0xc);
 
 class DriverModelManager {
 public:
@@ -32,7 +32,7 @@ private:
     DriverModelHandle m_handles[4];
     u8 _40[0x54 - 0x40];
 };
-static_assert(sizeof(DriverModelManager) == 0x54);
+static_assert_32bit(sizeof(DriverModelManager) == 0x54);
 
 class MenuModelManager {
 public:
@@ -49,6 +49,6 @@ private:
 
     static MenuModelManager *s_instance;
 };
-static_assert(sizeof(MenuModelManager) == 0x40);
+static_assert_32bit(sizeof(MenuModelManager) == 0x40);
 
 } // namespace UI

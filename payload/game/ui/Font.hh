@@ -17,7 +17,7 @@ private:
     u32 m_colorId;
     u8 _0c[0x10 - 0x0c];
 };
-static_assert(sizeof(GlyphRenderer) == 0x10);
+static_assert_32bit(sizeof(GlyphRenderer) == 0x10);
 
 struct MessageInfo {
     s32 intVals[9];
@@ -28,6 +28,6 @@ struct MessageInfo {
     const wchar_t *strings[9];
     u8 _c0[0xc4 - 0xc0];
 };
-static_assert(sizeof(MessageInfo) == 0xc4);
+static_assert_32bit(sizeof(MessageInfo) == 0xc4);
 
 } // namespace UI

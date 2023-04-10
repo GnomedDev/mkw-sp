@@ -27,6 +27,6 @@ private:
     f32 m_fadeoutOpacity = 0.0f;
     u8 _260[0x264 - 0x260];
 };
-static_assert(sizeof(CtrlMenuBackButton) == 0x264);
+static_assert_32bit(sizeof(CtrlMenuBackButton) == 0x264);
 
 } // namespace UI

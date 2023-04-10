@@ -9,7 +9,7 @@ public:
     struct Callback {
         u8 _00[0x14 - 0x00];
     };
-    static_assert(sizeof(Callback) == 0x14);
+    static_assert_32bit(sizeof(Callback) == 0x14);
 
     FriendMatchingPlayer();
     ~FriendMatchingPlayer() override;
@@ -28,6 +28,6 @@ private:
     Callback m_callback;
     u8 _188[0x1a0 - 0x188];
 };
-static_assert(sizeof(FriendMatchingPlayer) == 0x1a0);
+static_assert_32bit(sizeof(FriendMatchingPlayer) == 0x1a0);
 
 } // namespace UI

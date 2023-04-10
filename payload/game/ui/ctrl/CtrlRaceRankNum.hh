@@ -21,6 +21,6 @@ private:
     u32 m_playerId;
     nw4r::lyt::Pane *_1a0;
 };
-static_assert(sizeof(CtrlRaceRankNum) == 0x1a4);
+static_assert_32bit(sizeof(CtrlRaceRankNum) == 0x1a4);
 
 } // namespace UI

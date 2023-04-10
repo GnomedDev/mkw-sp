@@ -8,7 +8,7 @@ typedef struct MEMiExpHeapMBlockHead {
     struct MEMiExpHeapMBlockHead *mbHeadPrev;
     struct MEMiExpHeapMBlockHead *mbHeadNext;
 } MEMiExpHeapMBlockHead;
-static_assert(sizeof(MEMiExpHeapMBlockHead) == 0x10);
+static_assert_32bit(sizeof(MEMiExpHeapMBlockHead) == 0x10);
 
 typedef struct {
     MEMiExpHeapMBlockHead *head;
@@ -20,7 +20,7 @@ typedef struct {
     MEMiExpMBlockList mbUsedList;
     u8 _10[0x14 - 0x10];
 } MEMiExpHeapHead;
-static_assert(sizeof(MEMiExpHeapHead) == 0x14);
+static_assert_32bit(sizeof(MEMiExpHeapHead) == 0x14);
 
 typedef void (*MEMHeapVisitor)(void *memBlock, MEMHeapHandle heap, u32 userParam);
 

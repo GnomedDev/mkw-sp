@@ -54,7 +54,7 @@ public:
 private:
     u8 _1a5[0x604 - 0x1a5];
 };
-static_assert(sizeof(MessagePagePopup) == 0x604);
+static_assert_32bit(sizeof(MessagePagePopup) == 0x604);
 
 class MenuMessagePage : public MessagePage {
 public:
@@ -69,6 +69,6 @@ private:
 public:
     PageId m_replacement;
 };
-static_assert(sizeof(MenuMessagePage) == 0x608);
+static_assert_32bit(sizeof(MenuMessagePage) == 0x608);
 
 } // namespace UI

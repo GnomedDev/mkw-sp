@@ -10,4 +10,4 @@ typedef struct {
     u8 _050[0x370 - 0x04d];
     LayoutUIControl ghostMessage;
 } TimeAttackSplitsPage;
-static_assert(sizeof(TimeAttackSplitsPage) == 0x4e4);
+static_assert_32bit(sizeof(TimeAttackSplitsPage) == 0x4e4);

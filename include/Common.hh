@@ -66,13 +66,13 @@ inline const Mtx34 &Decay(const std::array<float, 12> &arr) {
 #define TRY(...)                                                               \
   ({                                                                           \
     auto&& y = (__VA_ARGS__);                                                  \
-    static_assert(!std::is_lvalue_reference_v<decltype(std::move(*y))>);       \
+    static_assert_32bit(!std::is_lvalue_reference_v<decltype(std::move(*y))>);       \
     if (!y) [[unlikely]] {                                                     \
       return std::unexpected(y.error());                                       \
     }                                                                          \
     std::move(*y);                                                             \
   })
 #else
-#define TRY(...) static_assert(false, "Compiler does not support TRY macro")
+#define TRY(...) static_assert_32bit(false, "Compiler does not support TRY macro")
 #endif
 // clang-format on

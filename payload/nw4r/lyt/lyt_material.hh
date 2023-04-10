@@ -15,7 +15,7 @@ struct TexSRT {
     f32 rotate;
     Vec2<f32> scale;
 };
-static_assert(sizeof(TexSRT) == 0x14);
+static_assert_32bit(sizeof(TexSRT) == 0x14);
 
 class Material {
 public:
@@ -35,6 +35,6 @@ private:
     u32 _3c;
     u8 _40[0x5c - 0x40];
 };
-static_assert(sizeof(Material) == 0x5c);
+static_assert_32bit(sizeof(Material) == 0x5c);
 
 } // namespace nw4r::lyt

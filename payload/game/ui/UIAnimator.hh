@@ -12,7 +12,7 @@ private:
     nw4r::lyt::AnimTransform *m_animTransform;
     u8 _04[0x10 - 0x04];
 };
-static_assert(sizeof(Animation) == 0x10);
+static_assert_32bit(sizeof(Animation) == 0x10);
 
 class Group {
 public:
@@ -35,7 +35,7 @@ private:
 public:
     f32 m_speed;
 };
-static_assert(sizeof(Group) == 0x44);
+static_assert_32bit(sizeof(Group) == 0x44);
 
 class UIAnimator {
 public:
@@ -55,6 +55,6 @@ public:
 private:
     u8 _00[0x10 - 0x00];
 };
-static_assert(sizeof(UIAnimator) == 0x10);
+static_assert_32bit(sizeof(UIAnimator) == 0x10);
 
 } // namespace UI

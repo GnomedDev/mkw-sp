@@ -33,7 +33,7 @@ public:
         u8 rank;
         u8 _e1[0xf0 - 0xe1];
     };
-    static_assert(sizeof(Player) == 0xf0);
+    static_assert_32bit(sizeof(Player) == 0xf0);
 
     enum class EngineClass {
         CC50 = 0,
@@ -103,7 +103,7 @@ public:
         u8 _b74[0xbec - 0xb74];
         u8 (*ghostBuffer)[11][0x2800]; // Modified
     };
-    static_assert(sizeof(Scenario) == 0xbf0);
+    static_assert_32bit(sizeof(Scenario) == 0xbf0);
 
     Scenario &raceScenario();
     Scenario &menuScenario();

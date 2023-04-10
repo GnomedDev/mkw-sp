@@ -16,7 +16,7 @@ private:
     u8 _9c[0xd0 - 0x9c];
 };
 
-static_assert(sizeof(WheelPhysics) == 0x84);
-static_assert(sizeof(KartTire) == 0xd0);
+static_assert_32bit(sizeof(WheelPhysics) == 0x84);
+static_assert_32bit(sizeof(KartTire) == 0xd0);
 
 } // namespace Kart

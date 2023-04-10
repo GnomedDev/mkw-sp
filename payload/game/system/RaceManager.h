@@ -5,7 +5,7 @@
 typedef struct {
     u8 _0[0x8 - 0x0];
 } TimeAttackGameMode;
-static_assert(sizeof(TimeAttackGameMode) == 0x8);
+static_assert_32bit(sizeof(TimeAttackGameMode) == 0x8);
 
 bool TimeAttackGameMode_canEndRace(TimeAttackGameMode *this);
 
@@ -22,7 +22,7 @@ typedef struct {
     u32 _pad1 : 1;
     u8 _3c[0x54 - 0x3c];
 } RaceManagerPlayer;
-static_assert(sizeof(RaceManagerPlayer) == 0x54);
+static_assert_32bit(sizeof(RaceManagerPlayer) == 0x54);
 
 RaceManagerPlayer *RaceManagerPlayer_ct(RaceManagerPlayer *this, u8 id, u8 lapCount);
 
@@ -31,6 +31,6 @@ typedef struct {
     RaceManagerPlayer **players;
     u8 _10[0x50 - 0x10];
 } RaceManager;
-static_assert(sizeof(RaceManager) == 0x50);
+static_assert_32bit(sizeof(RaceManager) == 0x50);
 
 extern RaceManager *s_raceManager;

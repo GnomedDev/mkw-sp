@@ -85,9 +85,9 @@ public:
     // TODO remove get prefix
     template <SP::ClientSettings::Setting S>
     SP::ClientSettings::Helper<S>::type getSetting() const {
-        static_assert(static_cast<u32>(S) >= RoomSettings::offset);
+        static_assert_32bit(static_cast<u32>(S) >= RoomSettings::offset);
         constexpr u32 setting = static_cast<u32>(S) - RoomSettings::offset;
-        static_assert(setting < RoomSettings::count);
+        static_assert_32bit(setting < RoomSettings::count);
         return static_cast<SP::ClientSettings::Helper<S>::type>(m_settings[setting]);
     }
 

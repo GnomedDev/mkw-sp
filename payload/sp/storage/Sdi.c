@@ -80,7 +80,7 @@ typedef struct {
     u32 isDma;
     u32 _20;
 } Request;
-static_assert(sizeof(Request) == 0x24);
+static_assert_32bit(sizeof(Request) == 0x24);
 
 enum {
     SECTOR_SIZE = 512,

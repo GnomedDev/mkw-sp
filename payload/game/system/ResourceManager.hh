@@ -31,7 +31,7 @@ public:
         State m_state;
         MultiDvdArchive *m_archive;
     };
-    static_assert(sizeof(CourseCache) == 0x24);
+    static_assert_32bit(sizeof(CourseCache) == 0x24);
 
     ResourceManager();
 
@@ -71,6 +71,6 @@ private:
 
     static ResourceManager *s_instance;
 };
-static_assert(sizeof(ResourceManager) > 0x61c);
+static_assert_32bit(sizeof(ResourceManager) > 0x61c);
 
 } // namespace System

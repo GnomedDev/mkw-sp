@@ -7,6 +7,6 @@ private:
     u8 _0c[0x6e4 - 0x00c];
 };
 
-static_assert(sizeof(PlayerModel) == 0x6e4);
+static_assert_32bit(sizeof(PlayerModel) == 0x6e4);
 
 } // namespace Kart

@@ -71,6 +71,6 @@ private:
 
     u8 _044[0x344 - 0x044];
 };
-static_assert(sizeof(RaceMenuPage) == 0x344);
+static_assert_32bit(sizeof(RaceMenuPage) == 0x344);
 
 } // namespace UI

@@ -26,7 +26,7 @@ private:
         void *address;
         void *waveDataAddress;
     };
-    static_assert(sizeof(FileAddress) == 0x8);
+    static_assert_32bit(sizeof(FileAddress) == 0x8);
 
     struct FileTable {
         u32 count;
@@ -52,6 +52,6 @@ private:
     void *m_buffer;
     u32 m_bufferSize;
 };
-static_assert(sizeof(SoundArchivePlayer) == 0xe0);
+static_assert_32bit(sizeof(SoundArchivePlayer) == 0xe0);
 
 } // namespace nw4r::snd

@@ -5,14 +5,14 @@
 typedef struct {
     u8 _00[0xd8 - 0x00];
 } TicketView;
-static_assert(sizeof(TicketView) == 0xd8);
+static_assert_32bit(sizeof(TicketView) == 0xd8);
 
 typedef struct {
     u8 _0000[0x0058 - 0x0000];
     u16 titleVersion;
     u8 _005a[0x205c - 0x005a];
 } TmdView;
-static_assert(sizeof(TmdView) == 0x205c);
+static_assert_32bit(sizeof(TmdView) == 0x205c);
 
 s32 ESP_InitLib();
 s32 ESP_GetDeviceId(u32 *deviceId);

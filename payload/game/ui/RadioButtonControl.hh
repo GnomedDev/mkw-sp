@@ -21,7 +21,7 @@ public:
     private:
         u8 _174[0x17c - 0x174];
     };
-    static_assert(sizeof(OptionButton) == 0x17c);
+    static_assert_32bit(sizeof(OptionButton) == 0x17c);
 
     RadioButtonControl();
     ~RadioButtonControl() override;
@@ -37,6 +37,6 @@ private:
     ControlInputManager m_inputManager;
     std::unique_ptr<OptionButton[]> m_buttons;
 };
-static_assert(sizeof(RadioButtonControl) == 0x298);
+static_assert_32bit(sizeof(RadioButtonControl) == 0x298);
 
 } // namespace UI

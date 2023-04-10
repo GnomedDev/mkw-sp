@@ -15,6 +15,6 @@ private:
 
     static CoinManager *s_instance;
 };
-static_assert(sizeof(CoinManager) == 0x43b4);
+static_assert_32bit(sizeof(CoinManager) == 0x43b4);
 
 } // namespace Battle

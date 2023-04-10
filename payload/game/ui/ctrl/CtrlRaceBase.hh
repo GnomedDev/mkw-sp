@@ -36,6 +36,6 @@ protected:
 private:
     u8 _191[0x198 - 0x191];
 };
-static_assert(sizeof(CtrlRaceBase) == 0x198);
+static_assert_32bit(sizeof(CtrlRaceBase) == 0x198);
 
 } // namespace UI

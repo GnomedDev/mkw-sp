@@ -15,7 +15,7 @@ struct ConsoleHead {
     bool m_visible;
     u8 _23[0x2c - 0x23];
 };
-static_assert(sizeof(ConsoleHead) == 0x2c);
+static_assert_32bit(sizeof(ConsoleHead) == 0x2c);
 
 } // namespace detail
 

@@ -29,6 +29,6 @@ private:
     Vec3 m_internalVel;
     u8 _158[0x1b4 - 0x158];
 };
-static_assert(sizeof(VehiclePhysics) == 0x1b4);
+static_assert_32bit(sizeof(VehiclePhysics) == 0x1b4);
 
 } // namespace Kart

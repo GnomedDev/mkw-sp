@@ -43,7 +43,7 @@ protected:
     u8 _14[0x18 - 0x14];
     Format *m_formats;
 };
-static_assert(sizeof(MultiDvdArchive) == 0x1c);
+static_assert_32bit(sizeof(MultiDvdArchive) == 0x1c);
 
 class RaceMultiDvdArchive : public MultiDvdArchive {
 public:

@@ -35,7 +35,7 @@ public:
         PadProxy *m_padProxy;
         u8 _4c[0x54 - 0x4c];
     };
-    static_assert(sizeof(Player) == 0x54);
+    static_assert_32bit(sizeof(Player) == 0x54);
 
     enum class Stage {
         Sync,
@@ -80,6 +80,6 @@ private:
 
     static RaceManager *s_instance;
 };
-static_assert(sizeof(RaceManager) == 0x4c);
+static_assert_32bit(sizeof(RaceManager) == 0x4c);
 
 } // namespace System

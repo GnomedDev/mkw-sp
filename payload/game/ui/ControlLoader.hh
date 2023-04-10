@@ -19,6 +19,6 @@ private:
     u8 _04[0x28 - 0x04];
 };
 
-static_assert(sizeof(ControlLoader) == 0x28);
+static_assert_32bit(sizeof(ControlLoader) == 0x28);
 
 } // namespace UI

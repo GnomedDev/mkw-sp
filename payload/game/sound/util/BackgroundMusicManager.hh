@@ -17,6 +17,6 @@ private:
 
     static BackgroundMusicManager *s_instance;
 };
-static_assert(sizeof(BackgroundMusicManager) == 0x3c);
+static_assert_32bit(sizeof(BackgroundMusicManager) == 0x3c);
 
 } // namespace Sound

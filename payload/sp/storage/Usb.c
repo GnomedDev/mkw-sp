@@ -56,7 +56,7 @@ typedef struct {
     u8 _14[0x20 - 0x14];
     IOVector vec[4];
 } Transfer;
-static_assert(sizeof(Transfer) == 0x40);
+static_assert_32bit(sizeof(Transfer) == 0x40);
 
 typedef struct {
     u32 id;
@@ -78,7 +78,7 @@ typedef struct {
     u8 interfaceNumber;
     u8 alternateSettingCount;
 } DeviceEntry;
-static_assert(sizeof(DeviceEntry) == 0xc);
+static_assert_32bit(sizeof(DeviceEntry) == 0xc);
 
 static OSMutex mutex;
 static OSMessage message;

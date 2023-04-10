@@ -18,6 +18,6 @@ private:
     void *m_buffer;
     u8 _08[0x10 - 0x08];
 } Xfb;
-static_assert(sizeof(Xfb) == 0x10);
+static_assert_32bit(sizeof(Xfb) == 0x10);
 
 } // namespace EGG

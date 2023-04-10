@@ -15,6 +15,6 @@ private:
 
     static DriverSoundManager *s_instance;
 };
-static_assert(sizeof(DriverSoundManager) == 0x4758);
+static_assert_32bit(sizeof(DriverSoundManager) == 0x4758);
 
 } // namespace Sound

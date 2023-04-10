@@ -15,7 +15,7 @@ typedef struct {
     u32 *stackTop;
     u8 _30c[0x318 - 0x30c];
 } OSThread;
-static_assert(sizeof(OSThread) == 0x318);
+static_assert_32bit(sizeof(OSThread) == 0x318);
 
 typedef void (*OSSwitchThreadCallback)(OSThread *from, OSThread *to);
 

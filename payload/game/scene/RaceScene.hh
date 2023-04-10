@@ -29,6 +29,6 @@ private:
 
     u8 _254c[0x256c - 0x254c];
 };
-static_assert(sizeof(RaceScene) == 0x256c);
+static_assert_32bit(sizeof(RaceScene) == 0x256c);
 
 } // namespace Scene

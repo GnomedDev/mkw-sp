@@ -16,7 +16,7 @@ struct PartitionGroup {
     u32 count;
     u32 shiftedOffset;
 };
-static_assert(sizeof(PartitionGroup) == 0x8);
+static_assert_32bit(sizeof(PartitionGroup) == 0x8);
 
 namespace PartitionType {
 enum {
@@ -28,7 +28,7 @@ struct Partition {
     u32 shiftedOffset;
     u32 type;
 };
-static_assert(sizeof(Partition) == 0x8);
+static_assert_32bit(sizeof(Partition) == 0x8);
 
 typedef void (*ApploaderReportFunc)(const char *format, ...);
 
@@ -46,7 +46,7 @@ struct ApploaderHeader {
     u32 trailer;
     u8 _1c[0x20 - 0x1c];
 };
-static_assert(sizeof(ApploaderHeader) == 0x20);
+static_assert_32bit(sizeof(ApploaderHeader) == 0x20);
 
 static std::optional<Partition> FindGamePartition(IOS::DI &di) {
     alignas(0x20) PartitionGroup groups[4];

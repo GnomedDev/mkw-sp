@@ -16,7 +16,7 @@ typedef struct {
     bool isHidden;
     u8 _81[0x98 - 0x81];
 } UIControl;
-static_assert(sizeof(UIControl) == 0x98);
+static_assert_32bit(sizeof(UIControl) == 0x98);
 
 typedef struct UIControl_vt {
     u8 _00[0x08 - 0x00];
@@ -33,7 +33,7 @@ typedef struct UIControl_vt {
     void *vf_30;
     void *vf_34;
 } UIControl_vt;
-static_assert(sizeof(UIControl_vt) == 0x38);
+static_assert_32bit(sizeof(UIControl_vt) == 0x38);
 
 void UIControl_initSelf(UIControl *this);
 
@@ -58,13 +58,13 @@ typedef struct {
     MainLayout mainLayout;
     u8 _144[0x174 - 0x144];
 } LayoutUIControl;
-static_assert(sizeof(LayoutUIControl) == 0x174);
+static_assert_32bit(sizeof(LayoutUIControl) == 0x174);
 
 typedef struct {
     BASE(UIControl_vt);
     void *vf_38;
 } LayoutUIControl_vt;
-static_assert(sizeof(LayoutUIControl_vt) == 0x3c);
+static_assert_32bit(sizeof(LayoutUIControl_vt) == 0x3c);
 
 LayoutUIControl *LayoutUIControl_ct(LayoutUIControl *this);
 

@@ -21,7 +21,7 @@ private:
     u8 _17c[0x184 - 0x17c];
     nw4r::lyt::Pane *m_linePane;
 };
-static_assert(sizeof(CtrlRaceNameBalloon) == 0x188);
+static_assert_32bit(sizeof(CtrlRaceNameBalloon) == 0x188);
 
 class BalloonManager {
 public:
@@ -44,6 +44,6 @@ private:
     std::unique_ptr<Vec3[]> m_namePositions; // Modified
     u8 _54[0xc4 - 0x54];
 };
-static_assert(sizeof(BalloonManager) == 0xc4);
+static_assert_32bit(sizeof(BalloonManager) == 0xc4);
 
 } // namespace UI

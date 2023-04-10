@@ -23,6 +23,6 @@ public:
 private:
     u8 _05f[0x218 - 0x05f];
 };
-static_assert(sizeof(Jugem) == 0x218);
+static_assert_32bit(sizeof(Jugem) == 0x218);
 
 } // namespace Race

@@ -11,6 +11,6 @@ public:
 
     void load(const char *dir, const char *file, const char *variant);
 };
-static_assert(sizeof(BlackBackControl) == 0x174);
+static_assert_32bit(sizeof(BlackBackControl) == 0x174);
 
 } // namespace UI

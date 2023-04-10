@@ -15,6 +15,6 @@ private:
 
     static ItemManager *s_instance;
 };
-static_assert(sizeof(ItemManager) == 0x430);
+static_assert_32bit(sizeof(ItemManager) == 0x430);
 
 } // namespace Item

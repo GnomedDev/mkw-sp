@@ -13,6 +13,6 @@ struct KartSettings {
     u8 playerId;
     u8 _11[0x3c - 0x11];
 };
-static_assert(sizeof(KartSettings) == 0x3c);
+static_assert_32bit(sizeof(KartSettings) == 0x3c);
 
 } // namespace Kart

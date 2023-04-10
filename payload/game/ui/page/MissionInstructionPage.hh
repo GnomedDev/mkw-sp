@@ -13,6 +13,6 @@ private:
     u32 m_levelId;
     u8 _840[0xd60 - 0x840];
 };
-static_assert(sizeof(MissionInstructionPage) == 0xd60);
+static_assert_32bit(sizeof(MissionInstructionPage) == 0xd60);
 
 } // namespace UI

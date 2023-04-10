@@ -22,6 +22,6 @@ private:
     u8 _430[0x6c8 - 0x430];
     SectionId m_replacementSection;
 };
-static_assert(sizeof(DriftSelectPage) == 0x6cc);
+static_assert_32bit(sizeof(DriftSelectPage) == 0x6cc);
 
 } // namespace UI

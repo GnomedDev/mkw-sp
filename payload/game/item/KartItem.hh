@@ -15,6 +15,6 @@ private:
     u8 m_playerId;
     u8 _019[0x248 - 0x019];
 };
-static_assert(sizeof(KartItem) == 0x248);
+static_assert_32bit(sizeof(KartItem) == 0x248);
 
 } // namespace Item

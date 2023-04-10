@@ -40,6 +40,6 @@ private:
 
     static SectionManager *s_instance;
 };
-static_assert(sizeof(SectionManager) == 0x9c);
+static_assert_32bit(sizeof(SectionManager) == 0x9c);
 
 } // namespace UI

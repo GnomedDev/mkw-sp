@@ -208,7 +208,7 @@ std::optional<NodeInfo> FATStorage::stat(const wchar_t *path) {
     }
     info.tick = ConvertTimeToTicks(fInfo.fdate, fInfo.ftime);
     info.size = fInfo.fsize;
-    static_assert(sizeof(fInfo.fname) <= sizeof(info.name));
+    static_assert_32bit(sizeof(fInfo.fname) <= sizeof(info.name));
     memcpy(info.name, fInfo.fname, sizeof(fInfo.fname));
     return info;
 }
@@ -369,7 +369,7 @@ std::optional<NodeInfo> FATStorage::Dir::read() {
     }
     info.tick = ConvertTimeToTicks(fInfo.fdate, fInfo.ftime);
     info.size = fInfo.fsize;
-    static_assert(sizeof(fInfo.fname) <= sizeof(info.name));
+    static_assert_32bit(sizeof(fInfo.fname) <= sizeof(info.name));
     memcpy(info.name, fInfo.fname, sizeof(fInfo.fname));
     return info;
 }

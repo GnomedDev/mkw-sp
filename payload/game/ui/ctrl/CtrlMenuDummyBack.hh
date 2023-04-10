@@ -20,6 +20,6 @@ public:
 private:
     u8 _174[0x178 - 0x174];
 };
-static_assert(sizeof(CtrlMenuDummyBack) == 0x178);
+static_assert_32bit(sizeof(CtrlMenuDummyBack) == 0x178);
 
 } // namespace UI

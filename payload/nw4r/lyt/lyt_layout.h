@@ -17,7 +17,7 @@ typedef struct {
     float width;
     float height;
 } lyt_Layout;
-static_assert(sizeof(lyt_Layout) == 0x20);
+static_assert_32bit(sizeof(lyt_Layout) == 0x20);
 
 lyt_Layout *lyt_Layout_CT(lyt_Layout *layout);
 void lyt_Layout_DT(lyt_Layout *layout, int type);
@@ -39,7 +39,7 @@ typedef struct {
     float alpha;
     u32 flags;
 } lyt_DrawInfo;
-static_assert(sizeof(lyt_DrawInfo) == 0x54);
+static_assert_32bit(sizeof(lyt_DrawInfo) == 0x54);
 
 lyt_DrawInfo *lyt_DrawInfo_CT(lyt_DrawInfo *drawInfo);
 void lyt_DrawInfo_DT(lyt_DrawInfo *drawInfo, int type);
@@ -55,7 +55,7 @@ typedef struct {
     void *vt;
     char _04[0x1c - 0x04];
 } lyt_MultiArcResourceAccessor;
-static_assert(sizeof(lyt_MultiArcResourceAccessor) == 0x1c);
+static_assert_32bit(sizeof(lyt_MultiArcResourceAccessor) == 0x1c);
 
 lyt_MultiArcResourceAccessor *lyt_MultiArcResourceAccessor_CT(lyt_MultiArcResourceAccessor *ac);
 void lyt_MultiArcResourceAccessor_DT(lyt_MultiArcResourceAccessor *ac, int type);

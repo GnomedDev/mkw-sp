@@ -7,6 +7,6 @@ typedef struct {
     KartEffect **karts;
     u8 _06c[0x9f4 - 0x06c];
 } EffectManager;
-static_assert(sizeof(EffectManager) == 0x9f4);
+static_assert_32bit(sizeof(EffectManager) == 0x9f4);
 
 extern EffectManager *s_effectManager;

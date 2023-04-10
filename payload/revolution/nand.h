@@ -40,7 +40,7 @@ enum {
 typedef struct {
     u8 _00[0x8c - 0x00];
 } NANDFileInfo;
-static_assert(sizeof(NANDFileInfo) == 0x8c);
+static_assert_32bit(sizeof(NANDFileInfo) == 0x8c);
 
 s32 NANDPrivateCreate(const char *path, u8 perm, u8 attr);
 

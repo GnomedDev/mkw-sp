@@ -52,7 +52,7 @@ private:
     bool m_isHidden;
     u8 _81[0x98 - 0x81];
 };
-static_assert(sizeof(UIControl) == 0x98);
+static_assert_32bit(sizeof(UIControl) == 0x98);
 
 class LayoutUIControl : public UIControl {
 public:
@@ -90,7 +90,7 @@ private:
     void *_16c = nullptr;
     void *_170 = nullptr;
 };
-static_assert(sizeof(LayoutUIControl) == 0x174);
+static_assert_32bit(sizeof(LayoutUIControl) == 0x174);
 
 class LayoutUIControlScaleFade : public LayoutUIControl {
 public:
@@ -100,6 +100,6 @@ public:
     void vf_28() override;
     void vf_2c() override;
 };
-static_assert(sizeof(LayoutUIControlScaleFade) == 0x174);
+static_assert_32bit(sizeof(LayoutUIControlScaleFade) == 0x174);
 
 } // namespace UI

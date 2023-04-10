@@ -11,13 +11,13 @@ public:
 
     void load(const char *dir, const char *file, const char *variant);
 };
-static_assert(sizeof(MessageWindowControl) == 0x174);
+static_assert_32bit(sizeof(MessageWindowControl) == 0x174);
 
 class MessageWindowControlScaleFade : public MessageWindowControl {
 public:
     MessageWindowControlScaleFade();
     ~MessageWindowControlScaleFade() override;
 };
-static_assert(sizeof(MessageWindowControlScaleFade) == 0x174);
+static_assert_32bit(sizeof(MessageWindowControlScaleFade) == 0x174);
 
 } // namespace UI
