@@ -8,6 +8,13 @@ namespace System {
 
 static const u32 MAX_GHOST_COUNT = 4096;
 
+enum class GhostType {
+    None = 0x0,
+    Saved = 0x1,
+    FastStaff = 0x26,
+    Max = 0x26,
+};
+
 struct __attribute__((packed)) RawTime {
     bool isValid() const;
     u32 toMilliseconds() const;
@@ -37,7 +44,7 @@ struct RawGhostHeader {
     u8 _pad1 : 4;
     bool isCompressed : 1;
     u8 _pad2 : 2;
-    u32 type : 7;
+    GhostType type : 7;
     bool driftIsAuto : 1;
     u8 _pad3 : 1;
 

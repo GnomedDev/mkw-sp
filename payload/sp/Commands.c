@@ -2,7 +2,6 @@
 
 #include "sp/StringView.h"
 
-#include <game/ui/SectionManager.h>
 #include <revolution.h>
 
 #include <stdio.h>

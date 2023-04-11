@@ -1,9 +1,5 @@
 #include "GhostFile.hh"
 
-extern "C" {
-#include "GhostFile.h"
-}
-
 #include <common/Bytes.hh>
 extern "C" {
 #include <revolution.h>
@@ -438,7 +434,7 @@ std::optional<u32> GhostFile::write(u8 *raw) {
 
     auto *header = reinterpret_cast<RawGhostHeader *>(raw);
     writeHeader(header);
-    header->type = GHOST_TYPE_FAST_STAFF;
+    header->type = GhostType::FastStaff;
     header->inputsSize = m_inputsSize;
     header->isCompressed = true;
     u8 *dst = raw + sizeof(RawGhostHeader) + sizeof(u32);
@@ -488,9 +484,5 @@ void SPFooter_OnWallride(void) {
 
 void SPFooter_OnShroom(u32 lap) {
     System::SPFooter::OnShroom(lap);
-}
-
-bool RawGhostFile_IsValid(const u8 *raw) {
-    return System::RawGhostFile::IsValid(raw);
 }
 }

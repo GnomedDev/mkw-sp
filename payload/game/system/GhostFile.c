@@ -1,4 +1,6 @@
-#include "GhostFile.h"
+#include <Common.h>
+
+void *GhostGroup_ct(void *self, void *heap, u32 type);
 
 // Do not allocate memory for ghosts
 PATCH_S16(GhostGroup_ct, 0x56, 0); // Saved

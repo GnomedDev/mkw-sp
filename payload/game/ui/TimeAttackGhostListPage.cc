@@ -1,8 +1,6 @@
 #include "TimeAttackGhostListPage.hh"
 
-extern "C" {
-#include "game/system/GhostFile.h"
-}
+#include "game/system/GhostFile.hh"
 #include "game/system/RaceConfig.hh"
 #include "game/system/SaveManager.hh"
 #include "game/ui/RaceConfirmPage.hh"
@@ -150,7 +148,7 @@ void TimeAttackGhostListPage::onRefocus() {
     }
 
     GlobalContext *context = SectionManager::Instance()->globalContext();
-    context->m_timeAttackGhostType = GHOST_TYPE_SAVED;
+    context->m_timeAttackGhostType = System::GhostType::Saved;
     context->m_timeAttackCourseId = menuScenario.courseId;
     context->m_timeAttackLicenseId = -1;
 
