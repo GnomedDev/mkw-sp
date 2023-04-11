@@ -662,10 +662,6 @@ void SaveManager_CreateSPLicense(const MiiId *miiId) {
             reinterpret_cast<const System::MiiId *>(miiId));
 }
 
-s32 SaveManager_SPCurrentLicense(void) {
-    return System::SaveManager::Instance()->spCurrentLicense().value_or(-1);
-}
-
 u32 SaveManager_GetVanillaMode(void) {
     auto *saveManager = System::SaveManager::Instance();
     auto value = saveManager->getSetting<SP::ClientSettings::Setting::VanillaMode>();
@@ -694,5 +690,4 @@ void SaveManager_SetMiiId(const MiiId *miiId) {
     auto *saveManager = System::SaveManager::Instance();
     saveManager->setMiiId(*std::bit_cast<System::MiiId *>(miiId));
 }
-
 }
