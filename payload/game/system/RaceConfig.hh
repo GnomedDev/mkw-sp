@@ -6,6 +6,10 @@ namespace System {
 
 class RaceConfig {
 public:
+    RaceConfig();
+    virtual ~RaceConfig();
+    virtual void dt(s32 type);
+
     struct Player {
         enum class Type {
             Local = 0,
@@ -115,12 +119,13 @@ public:
     void REPLACED(initRace)();
     REPLACE void initRace();
 
+    REPLACE static void CreateInstance();
     static RaceConfig *Instance();
 
 private:
     REPLACE static void ConfigurePlayers(Scenario &scenario, u32 screenCount);
 
-    u8 _0000[0x0020 - 0x0000];
+    u8 _0004[0x0020 - 0x0004];
     Scenario m_raceScenario;
     Scenario m_menuScenario;
     Scenario m_awardsScenario;
@@ -128,5 +133,9 @@ private:
 
     static RaceConfig *s_instance;
 };
+
+// We control the size of RaceConfig now, but need to keep everything
+// before our additions at the right offset to avoid breaking the game.
+// static_assert(offsetof(RaceConfig, m_ghostBuffers[0][2]) == 0x73f0);
 
 } // namespace System

@@ -2,12 +2,11 @@
 
 #include "game/system/InputManager.hh"
 #include "game/system/SaveManager.hh"
-
 extern "C" {
 #include <vendor/libhydrogen/hydrogen.h>
 }
 
-#include <sp/settings/ClientSettings.hh>
+#include <cstring>
 
 namespace System {
 
@@ -56,6 +55,18 @@ void RaceConfig::applyEngineClass() {
     case SP::ClientSettings::EngineClass::Mirror:
         m_menuScenario.mirror = true;
     }
+}
+
+void RaceConfig::CreateInstance() {
+    if (s_instance != nullptr) {
+        return;
+    }
+
+    s_instance = new RaceConfig;
+    s_instance->m_raceScenario.ghostBuffer = s_instance->m_ghostBuffers + 0;
+    s_instance->m_menuScenario.ghostBuffer = s_instance->m_ghostBuffers + 1;
+
+    memset(s_instance->m_ghostBuffers, 0, sizeof(s_instance->m_ghostBuffers));
 }
 
 RaceConfig *RaceConfig::Instance() {
@@ -142,5 +153,11 @@ bool RaceConfig_IsSameTeam(u32 p0, u32 p1) {
     }
 
     return raceScenario.players[p0].spTeam == raceScenario.players[p1].spTeam;
+};
+
+void RaceConfigScenario_resetGhostPlayerTypes(System::RaceConfig::Scenario *self) {
+    for (u32 i = 1; i < 12; i++) {
+        self->players[i].type = System::RaceConfig::Player::Type::None;
+    }
 }
 }
