@@ -653,10 +653,6 @@ void SaveManager_EraseLicense(u32 licenseId) {
     return System::SaveManager::Instance()->eraseLicense(licenseId);
 }
 
-u32 SaveManager_SPLicenseCount(void) {
-    return System::SaveManager::Instance()->spLicenseCount();
-}
-
 void SaveManager_EraseSPLicense(void) {
     System::SaveManager::Instance()->eraseSPLicense();
 }
@@ -699,8 +695,4 @@ void SaveManager_SetMiiId(const MiiId *miiId) {
     saveManager->setMiiId(*std::bit_cast<System::MiiId *>(miiId));
 }
 
-MiiId SaveManager_GetSPLicenseMiiId(u32 licenseId) {
-    auto *saveManager = System::SaveManager::Instance();
-    return std::bit_cast<MiiId>(saveManager->getMiiId(licenseId));
-}
 }
