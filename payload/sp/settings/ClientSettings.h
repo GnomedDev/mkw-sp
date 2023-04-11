@@ -54,21 +54,3 @@ enum {
     kTaRuleGhostTagVisibility_MAX,
     kTaRuleGhostTagVisibility_Default = kTaRuleGhostTagVisibility_All,
 };
-
-enum {
-    kTaRuleSolidGhosts_None,
-    kTaRuleSolidGhosts_Watched,
-    kTaRuleSolidGhosts_All,
-
-    kTaRuleSolidGhosts_MAX,
-    kTaRuleSolidGhosts_Default = kTaRuleSolidGhosts_None,
-};
-
-enum {
-    kTaRuleGhostSound_None,
-    kTaRuleGhostSound_Watched,
-    kTaRuleGhostSound_All,
-
-    kTaRuleGhostSound_MAX,
-    kTaRuleGhostSound_Default = kTaRuleGhostSound_Watched,
-};
