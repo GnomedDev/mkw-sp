@@ -109,7 +109,11 @@ void CourseSelectPage::afterCalc() {
     for (size_t i = 0; i < m_buttons.size(); i++) {
         if (m_thumbnailChanged[i]) {
             for (u8 c = 0; c < m_texObjs[i].size(); c++) {
-                m_buttons[i].refresh(c, m_texObjs[i][c]);
+                if (m_buttons[i].m_isRandom) {
+                    m_buttons[i].refresh(c, GXTexObj());
+                } else {
+                    m_buttons[i].refresh(c, m_texObjs[i][c]);
+                }
             }
             m_thumbnailChanged[i] = false;
             m_buttons[i].setPaneVisible("picture_base", true);
@@ -188,10 +192,22 @@ void CourseSelectPage::onBack(u32 /* localPlayerId */) {
 }
 
 void CourseSelectPage::onButtonFront(PushButton *button, u32 /* localPlayerId */) {
-    u32 courseIndex = m_sheetIndex * m_buttons.size() + button->m_index;
     auto &courseDatabase = SP::CourseDatabase::Instance();
+
+    u32 courseIndex;
+    if (m_buttons[button->m_index].m_isRandom) {
+        auto courseCount = courseDatabase.count(m_filter);
+
+        courseIndex = hydro_random_uniform(courseCount);
+        courseDatabase.saveSelection(courseCount);
+
+        SP_LOG("Selected random course 0x%x", courseIndex);
+    } else {
+        courseIndex = m_sheetIndex * m_buttons.size() + button->m_index;
+        courseDatabase.saveSelection(courseIndex);
+    }
+
     auto &entry = courseDatabase.entry(m_filter, courseIndex);
-    courseDatabase.saveSelection(courseIndex);
 
     auto *sectionManager = SectionManager::Instance();
     auto *section = sectionManager->currentSection();
@@ -337,10 +353,18 @@ void CourseSelectPage::refresh() {
                 m_databaseIds[j] = std::numeric_limits<u32>::max();
             }
         }
+        bool foundRandomButton = false;
         for (size_t i = 0; i < m_buttons.size(); i++) {
             if (m_databaseIds[i] != std::numeric_limits<u32>::max() &&
                     m_sheetIndex * m_buttons.size() + i < static_cast<size_t>(count)) {
                 m_buttons[i].setVisible(true);
+                m_buttons[i].m_isRandom = false;
+                m_buttons[i].setPlayerFlags(1 << 0);
+            } else if (!foundRandomButton) {
+                foundRandomButton = true;
+
+                m_buttons[i].setVisible(true);
+                m_buttons[i].m_isRandom = true;
                 m_buttons[i].setPlayerFlags(1 << 0);
             } else {
                 m_buttons[i].setVisible(false);
@@ -360,6 +384,9 @@ void CourseSelectPage::refresh() {
             auto &entry = SP::CourseDatabase::Instance().entry(m_filter, courseIndex);
             u32 courseId = menuScenario.isBattle() ? entry.courseId - 32 : entry.courseId;
             m_buttons[i].refresh(messageOffset + courseId);
+        } else if (m_buttons[i].m_isRandom) {
+            m_buttons[i].refresh(3442);
+            break;
         }
     }
 
