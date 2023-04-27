@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Common.h>
+#include <string.h>
 #include <wchar.h>
 
 static inline void Util_toUtf16(wchar_t *dst, u32 dst_max, const char *src, u32 src_max) {
