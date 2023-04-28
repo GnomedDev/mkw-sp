@@ -19,13 +19,16 @@ static_assert(sizeof(TexSRT) == 0x14);
 
 class Material {
 public:
+    Material();
+    virtual ~Material();
+
     u8 getTextureNum() const;
     u8 getTexSRTNum() const;
     TexMap *getTexMapAry();
     TexSRT *getTexSRTAry();
 
 private:
-    u8 _00[0x10 - 0x00];
+    u8 _04[0x10 - 0x04];
 
 public:
     GXColorS10 tevColors[3];

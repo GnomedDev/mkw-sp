@@ -3,6 +3,7 @@
 #include "egg/core/eggScene.hh"
 
 namespace EGG {
+class ColorFader;
 
 class SceneManager {
 public:
@@ -23,8 +24,18 @@ private:
     static void PopDolphinSpeed();
 
     u8 _00[0x0c - 0x00];
+
+public:
     Scene *m_currScene;
-    u8 _10[0x2c - 0x10];
+
+private:
+    u8 _10[0x24 - 0x10];
+
+public:
+    ColorFader *fader;
+
+private:
+    u8 _28[0x2c - 0x28];
 
     static bool s_dolphinIsUnavailable;
     static u32 s_dolphinSpeedStack[8];

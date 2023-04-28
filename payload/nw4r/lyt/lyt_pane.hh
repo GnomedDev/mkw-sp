@@ -22,7 +22,7 @@ public:
     virtual void vf_30();
     virtual void vf_34();
     virtual void vf_38();
-    virtual void vf_3c();
+    virtual Pane *findPaneByName(const char *name, bool recursive);
     virtual void vf_40();
     virtual void vf_44();
     virtual void vf_48();

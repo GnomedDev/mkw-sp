@@ -1,9 +1,5 @@
 #pragma once
 
-extern "C" {
-#include "DecompLoader.h"
-}
-
 #include "sp/storage/Storage.hh"
 
 #include <egg/core/eggHeap.hh>

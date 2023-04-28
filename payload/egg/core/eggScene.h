@@ -1,7 +1,6 @@
 #pragma once
 
 #include <Common.h>
-#include <egg/core/eggColorFader.h>
 #include <egg/core/eggHeap.h>
 
 struct EGGScene_Vtable;

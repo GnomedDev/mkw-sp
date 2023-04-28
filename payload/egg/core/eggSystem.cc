@@ -18,10 +18,6 @@ void *TSystem::mem2ArenaHi() const {
     return m_mem2ArenaHi;
 }
 
-XfbManager *TSystem::xfbManager() {
-    return m_xfbManager;
-}
-
 TSystem *TSystem::Instance() {
     return &s_instance;
 }

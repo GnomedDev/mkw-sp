@@ -1,10 +1,12 @@
 #pragma once
 
-#include <Common.hh>
+#include "egg/core/eggDisposer.hh"
 
 namespace EGG {
+class Heap;
+class SceneManager;
 
-class Scene {
+class Scene : public Disposer {
 public:
     Scene();
     virtual ~Scene();
@@ -29,12 +31,17 @@ public:
         return m_sceneID;
     }
 
-private:
-    u8 _04[0x20 - 0x04];
+public:
+    Heap *m_heapParent;
+    Heap *m_heapMem1;
+    Heap *m_heapMem2;
+    Heap *m_heapDebug;
+
+protected:
     Scene *m_parent;
     Scene *m_child;
     u32 m_sceneID;
-    u8 _2c[0x30 - 0x2c];
+    SceneManager *m_sceneManager;
 };
 static_assert(sizeof(Scene) == 0x30);
 

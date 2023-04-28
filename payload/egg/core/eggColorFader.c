@@ -1,7 +1,8 @@
-#include "eggColorFader.h"
-
 #include <revolution.h>
 #include <sp/Host.h>
+
+bool EGG_ColorFader_fadeIn(void *colorFader);
+bool EGG_ColorFader_fadeOut(void *colorFader);
 
 static bool post_fadeIn(bool changed) {
     if (HostPlatform_IsDolphin(Host_GetPlatform()) && changed) {

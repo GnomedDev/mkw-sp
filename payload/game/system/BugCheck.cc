@@ -1,7 +1,6 @@
-extern "C" {
-#include "game/system/FatalScene.h"
+#include "game/system/FatalScene.hh"
 
-#include <revolution.h>
+extern "C" {
 #include <sp/StackTrace.h>
 #include <sp/WideUtil.h>
 }
@@ -10,10 +9,13 @@ extern "C" {
 #include <cstdarg>
 #include <cstdio>
 #include <cstring>
+#include <optional>
 #include <span>
 
 // Referenced by SceneCreatorDyanmic.S
 bool sBugCheckSet = false;
+
+namespace System {
 
 static void SpFormatBugCheck(std::span<wchar_t> out, const char *file, const char *description) {
     char tmp[512];
@@ -48,17 +50,19 @@ void SpBugCheck(const char *file, const char *description) {
     std::array<wchar_t, 512> formattedBugCheck;
     SpFormatBugCheck(formattedBugCheck, file, description);
 
-    static FatalScene fScene;
-    FatalScene_CT(&fScene);
+    static std::optional<FatalScene> fScene;
+    SP_LOG("constructing fatalscene");
+    fScene.emplace();
 
     // We can't safely unload the current scene, so just use its memory.
-    FatalScene_LeechCurrentScene(&fScene);
-
-    fScene.inherit.vt->enter(&fScene.inherit);
-
-    FatalScene_SetBody(&fScene, formattedBugCheck.data());
-
-    FatalScene_MainLoop(&fScene);
+    SP_LOG("leeching scene");
+    fScene->leechCurrentScene();
+    SP_LOG("entering scene");
+    fScene->enter();
+    SP_LOG("setting body");
+    fScene->setBody(formattedBugCheck.data());
+    SP_LOG("entering main loop");
+    fScene->mainLoop();
 
     __builtin_unreachable();
 }
@@ -162,3 +166,5 @@ void TooManyEffectsFail(int current_count, int capacity, const char *path) {
     SpBugCheck(path, desc);
 }
 }
+
+} // namespace System

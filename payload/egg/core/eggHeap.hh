@@ -1,7 +1,10 @@
 #pragma once
 
-#include <Common.hh>
 #include <nw4r/ut/ut_list.hh>
+
+extern "C" {
+#include <revolution.h>
+}
 
 namespace EGG {
 
@@ -31,7 +34,19 @@ public:
     }
 
 private:
-    u8 _04[0x28 - 0x04];
+    u8 _04[0x10 - 0x04];
+
+public:
+    MEMiHeapHead *heapHandle;
+
+private:
+    u8 _14[0x1c - 0x14];
+
+public:
+    u16 _1c;
+
+private:
+    u8 _1e[0x28 - 0x1e];
     nw4r::ut::List m_disposers;
     u8 _34[0x38 - 0x34];
 };
