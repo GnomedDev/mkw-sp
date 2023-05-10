@@ -34,5 +34,3 @@ typedef struct {
 } EGGTSystem;
 
 extern EGGTSystem sRKSystem;
-
-void EGG_ProcessMeter_draw(void *);
