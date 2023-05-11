@@ -8,6 +8,7 @@
 
 #include <sp/SaveStateManager.hh>
 #include <sp/settings/ClientSettings.hh>
+#include <sp/CourseDatabase.hh>
 
 extern "C" {
 #include <vendor/libhydrogen/hydrogen.h>
@@ -89,12 +90,45 @@ void RaceMenuPage::onNextButtonFront(PushButton *button, u32 /* localPlayerId */
         menuScenario.courseId = isWin ? 0x37 : 0x38;
         menuScenario.gameMode = System::RaceConfig::GameMode::Awards;
     } else {
+        auto *saveManager = System::SaveManager::Instance();
+        auto &courseDatabase = SP::CourseDatabase::Instance();
+
         menuScenario.cameraMode = 5;
+
+        SP::ClientSettings::CourseSelection setting;
+        SP::CourseDatabase::Filter filter;
+        SectionId nextRaceSection;
         if (menuScenario.isBattle()) {
+            setting = saveManager->getSetting<SP::ClientSettings::Setting::BTCourseSelection>();
             sectionId = SectionId::SingleSelectBTCourse;
+            nextRaceSection = SectionId::BTDemo;
+            filter.battle = true;
         } else {
+            setting = saveManager->getSetting<SP::ClientSettings::Setting::VSCourseSelection>();
             sectionId = SectionId::SingleSelectVSCourse;
+            nextRaceSection = SectionId::VSDemo;
+            filter.race = true;
         };
+
+        SP_LOG("%d", setting);
+        auto courseCount = courseDatabase.count(filter);
+        if (setting == SP::ClientSettings::CourseSelection::InOrder) {
+            auto firstCourse = courseDatabase.entry(filter, 0).courseId;
+            auto currentCourseIndex = menuScenario.courseId - firstCourse;
+            SP_LOG("%d %d %d", courseCount, firstCourse, currentCourseIndex);
+            if ((currentCourseIndex + 1) == courseCount) {
+                menuScenario.courseId += firstCourse;
+            } else {
+                menuScenario.courseId = courseDatabase.entry(filter, currentCourseIndex + 1).courseId;
+            }
+
+            sectionId = nextRaceSection;
+        } else if (setting == SP::ClientSettings::CourseSelection::Random) {
+            auto courseIdx = hydro_random_uniform(courseCount) - 1;
+            menuScenario.courseId = courseDatabase.entry(filter, courseIdx).courseId;
+
+            sectionId = nextRaceSection;
+        }
     }
 
     f32 delay = button->getDelay();
