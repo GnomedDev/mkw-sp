@@ -1,13 +1,14 @@
 #include "Checkpoints.hh"
-#include <Common.hh>
 
+#include <egg/math/eggMath.hh>
+#include <game/render/DrawList.hh>
 #include <game/system/CourseMap.hh>
+#include <game/system/SaveManager.hh>
 extern "C" {
 #include <revolution.h>
 #include <revolution/gx.h>
 }
 
-#include <egg/math/eggMath.hh>
 #include <numbers>
 #include <span>
 
@@ -234,8 +235,16 @@ public:
 
 } // namespace
 
-void DrawCheckpoints(const float viewMtx[3][4]) {
-    GXLoadPosMtxImm(viewMtx, 0);
+void DrawCheckpoints() {
+    auto *saveManager = System::SaveManager::Instance();
+    auto setting = saveManager->getSetting<SP::ClientSettings::Setting::DebugCheckpoints>();
+    if (setting != SP::ClientSettings::DebugCheckpoints::Enable) {
+        return;
+    }
+
+    const std::array<float, 12> viewMtx = Render::DrawList::spInstance->getViewMatrix();
+
+    GXLoadPosMtxImm(Decay(viewMtx), 0);
     GXSetCurrentMtx(0);
     Checkpoints::onDraw();
 }

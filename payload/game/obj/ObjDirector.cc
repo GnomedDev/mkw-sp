@@ -1,11 +1,11 @@
 #include "ObjDirector.hh"
 
-#include <sp/3d/DrawDebug.hh>
+#include <sp/3d/Checkpoints.hh>
 
 namespace Geo {
 
 void ObjDirector::drawDebug() {
-    SP::DrawDebug(false);
+    SP::DrawCheckpoints();
     REPLACED(drawDebug)();
 }
 

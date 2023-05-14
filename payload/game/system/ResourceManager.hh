@@ -40,12 +40,14 @@ public:
     void initGlobeHeap();
     void deinitGlobeHeap();
 
+    void *getFile(size_t idx, const char *filename, size_t *size);
     DvdArchive *getMenuArchive(size_t idx);
     REPLACE u16 getMenuArchiveCount() const;
     REPLACE MultiDvdArchive *loadCourse(u32 courseId, EGG::Heap *heap, bool splitScreen);
     REPLACE MultiDvdArchive *loadMission(u32 courseId, u32 missionId, EGG::Heap *heap,
             bool splitScreen);
 
+    static u32 ResourceExists(size_t idx, const char *name);
     static void OnCreateScene(RKSceneID sceneId);
     static REPLACE ResourceManager *CreateInstance();
     static ResourceManager *Instance();

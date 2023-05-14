@@ -2,6 +2,6 @@
 
 namespace SP {
 
-void DrawDebug(bool opa);
+void DrawDebug();
 
 } // namespace SP

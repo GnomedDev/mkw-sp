@@ -2,6 +2,6 @@
 
 namespace SP {
 
-void DrawCheckpoints(const float viewMtx[3][4]);
+void DrawCheckpoints();
 
-}
+} // namespace SP

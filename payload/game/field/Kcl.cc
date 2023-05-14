@@ -1,18 +1,18 @@
 #include "Kcl.hh"
 
+#include <egg/core/eggHeap.hh>
+#include <egg/math/eggMath.hh>
+#include <sp/YAZDecoder.hh>
 extern "C" {
 #include <revolution.h>
 #include <revolution/gx.h>
 #include <revolution/tpl.h>
 }
 
-#include "sp/YAZDecoder.hh"
 #include <algorithm>
 #include <cstring>
-#include <egg/core/eggHeap.hh>
-#include <egg/math/eggMath.hh>
 
-namespace SP {
+namespace Field {
 
 // Sizes, in bytes
 struct SectionSizes {
@@ -83,18 +83,18 @@ static inline std::span<T> span_cast(byte_view_t data, unsigned offset = 0) {
             reinterpret_cast<T *>(data.data() + buffer_len)};
 }
 
-static FixedString<32> FormatVersion(const WiimmKclVersion &ver) {
+static SP::FixedString<32> FormatVersion(const WiimmKclVersion &ver) {
     char buf[32];
     snprintf(buf, sizeof(buf), "WiimmSZS v%d.%d", ver.major_version, ver.minor_version);
     return buf;
 }
-static FixedString<32> FormatVersion(const UnknownKclVersion &) {
+static SP::FixedString<32> FormatVersion(const UnknownKclVersion &) {
     return "<Unknown KCL Encoder>";
 }
-static FixedString<32> FormatVersion(const InvalidKclVersion &) {
+static SP::FixedString<32> FormatVersion(const InvalidKclVersion &) {
     return "<Invalid KCL File>";
 }
-FixedString<32> FormatVersion(KclVersion metadata) {
+SP::FixedString<32> FormatVersion(KclVersion metadata) {
     if (auto *as_wiimm = std::get_if<WiimmKclVersion>(&metadata)) {
         return FormatVersion(*as_wiimm);
     } else if (auto *as_unknown = std::get_if<UnknownKclVersion>(&metadata)) {
@@ -293,7 +293,7 @@ void KclVis::prepare() {
 
     if (!trussBound) {
         trussBound = true;
-        YAZDecoder::Decode(TRUSS_SZS, sizeof(TRUSS_SZS), TRUSS_TPL, sizeof(TRUSS_TPL));
+        SP::YAZDecoder::Decode(TRUSS_SZS, sizeof(TRUSS_SZS), TRUSS_TPL, sizeof(TRUSS_TPL));
         TPLBind(TRUSS_TPL);
         TPLGetGXTexObjFromPalette(TRUSS_TPL, &TRUSS_OBJ, 0);
     }
@@ -389,4 +389,4 @@ void KclVis::render(const float mtx[3][4], bool /* overlay */) {
     GXSetAlphaUpdate(GX_TRUE);
 }
 
-} // namespace SP
+} // namespace Field

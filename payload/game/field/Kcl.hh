@@ -1,16 +1,14 @@
 #pragma once
 
-#define _HAS_CXX20
-
-#include "Common.hh"
-#include <array>
+#include <Common.hh>
 #include <common/TVec3.hh>
-#include <memory>
 #include <sp/FixedString.hh>
+
+#include <memory>
 #include <span>
 #include <variant>
 
-namespace SP {
+namespace Field {
 
 struct KCollisionV1Header {
     u32 pos_data_offset;
@@ -49,7 +47,7 @@ struct InvalidKclVersion {};
 using KclVersion = std::variant<WiimmKclVersion, UnknownKclVersion, InvalidKclVersion>;
 
 KclVersion InspectKclFile(std::span<const u8> kcl_file);
-FixedString<32> GetKCLVersion(KclVersion metadata);
+SP::FixedString<32> GetKCLVersion(KclVersion metadata);
 
 struct KclFile {
     KclFile(std::span<const u8> bytes);
@@ -87,4 +85,4 @@ private:
     u32 m_DLSize;
 };
 
-} // namespace SP
+} // namespace Field
