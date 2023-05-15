@@ -16,6 +16,7 @@
 
 #include <features/save_states/SaveStates.hh>
 #include <sp/SaveStateManager.hh>
+#include <sp/SimpleStopwatch.hh>
 #include <sp/cs/RaceClient.hh>
 
 namespace Scene {
@@ -70,32 +71,57 @@ void RaceScene::calcSubsystems(s32 drift) {
         auto *raceManager = System::RaceManager::Instance();
 
         if (drift <= 0) {
-            raceManager->calc();
+            {
+                SP::StopWatch("RaceManager");
+                raceManager->calc();
+            }
 
             if (SP::RaceClient::Instance()) {
+                SP::StopWatch("InputManager->calcRollBacks");
                 System::InputManager::Instance()->calcRollbacks();
             }
 
             if (!SP::RoomManager::Instance() ||
                     raceManager->hasReachedStage(System::RaceManager::Stage::Countdown)) {
-                Race::BoxColManager::Instance()->calc();
-                Geo::ObjDirector::Instance()->calc();
+                {
+                    SP::StopWatch("BoxColManager");
+                    Race::BoxColManager::Instance()->calc();
+                }
+
+                {
+                    SP::StopWatch("ObjDirector");
+                    Geo::ObjDirector::Instance()->calc();
+                }
+            }
+            {
+                SP::StopWatch("EnemyManager");
+                Enemy::EnemyManager::Instance()->calc();
+            }
+            {
+                SP::StopWatch("DriverManager");
+                Race::DriverManager::Instance()->calc();
+            }
+            {
+                SP::StopWatch("KartObjectManager");
+                Kart::KartObjectManager::Instance()->calc();
+            }
+            {
+                SP::StopWatch("JugemManager");
+                Race::JugemManager::Instance()->calc();
             }
 
-            Enemy::EnemyManager::Instance()->calc();
-            Race::DriverManager::Instance()->calc();
-            Kart::KartObjectManager::Instance()->calc();
-            Race::JugemManager::Instance()->calc();
-
             if (raceManager->hasReachedStage(System::RaceManager::Stage::Countdown)) {
+                SP::StopWatch("ItemManager");
                 Item::ItemManager::Instance()->calc();
             }
 
             if (!SP::RoomManager::Instance() ||
                     raceManager->hasReachedStage(System::RaceManager::Stage::Countdown)) {
+                SP::StopWatch("ObjDirector->calcBT");
                 Geo::ObjDirector::Instance()->calcBT();
             }
 
+            SP::StopWatch("EffectManager");
             Effect::EffectManager::Instance()->calc();
         }
 
@@ -104,8 +130,13 @@ void RaceScene::calcSubsystems(s32 drift) {
 
     if (!System::HBMManager::Instance()->isActive()) {
         if (drift >= 0) {
-            UI::SectionManager::Instance()->calc();
+            {
+                SP::StopWatch("SectionManager");
+                UI::SectionManager::Instance()->calc();
+            }
+
             if (auto *coinManager = Battle::CoinManager::Instance()) {
+                SP::StopWatch("CoinManager");
                 coinManager->calcScreens();
             }
         }
