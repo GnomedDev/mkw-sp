@@ -35,3 +35,7 @@ pub mod matchmaking {
         stc_message::Message as STCMessage,
     };
 }
+
+pub mod ghost {
+    pub use super::inner::{Ghost, GhostResponse, GhostRequest};
+}

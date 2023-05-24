@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+message Ghost {
+    required uint32 minutes = 1;
+    required uint32 seconds = 2;
+    required uint32 millis = 3;
+}
+
+message GhostResponse {
+    repeated Ghost ghosts = 1;
+}
+
+message GhostRequest {
+    required string region = 1;
+    required uint32 track = 2;
+}
