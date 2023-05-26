@@ -4,7 +4,6 @@
 #include "game/system/RaceConfig.hh"
 #include "game/system/SaveManager.hh"
 #include "game/ui/SectionManager.hh"
-#include "game/ui/SettingsPage.hh"
 
 #include <sp/CourseDatabase.hh>
 #include <sp/SaveStateManager.hh>
@@ -43,9 +42,6 @@ void RaceMenuPage::onButtonFront(PushButton *button, u32 localPlayerId) {
             REPLACED(onButtonFront)(button, localPlayerId);
             return;
         }
-    case ButtonId::Settings:
-        onSettingsButtonFront(button, localPlayerId);
-        break;
     case ButtonId::ChangeGhostData:
         onChangeGhostDataButtonFront(button, localPlayerId);
         break;
@@ -156,15 +152,6 @@ void RaceMenuPage::onNextButtonFront(PushButton *button, u32 /* localPlayerId */
     Sound::BackgroundMusicManager::Instance()->prepare(Section::GetSoundId(sectionId), true);
 }
 
-void RaceMenuPage::onSettingsButtonFront(PushButton *button, u32 /* localPlayerId */) {
-    auto *section = SectionManager::Instance()->currentSection();
-    auto *menuSettingsPage = section->page<PageId::MenuSettings>();
-    menuSettingsPage->configure(nullptr, id());
-    setReplacement(PageId::MenuSettings);
-    f32 delay = button->getDelay();
-    startReplace(Anim::Next, delay);
-}
-
 void RaceMenuPage::onChangeGhostDataButtonFront(PushButton *button, u32 /* localPlayerId */) {
     playSound(Sound::SoundId::SE_RC_PAUSE_EXIT_GAME, -1);
 
@@ -234,7 +221,6 @@ const char *sButtonStrings[] = {
         "ButtonYes",               // ButtonId::Yes2
         "ButtonNo",                // ButtonId::No2
 
-        "ButtonSettings",        // ButtonId::LicenseSettings
         "ButtonChangeGhostData", // ButtonId::ChangeGhostData
         "ButtonSaveState",       // ButtonId::SaveState
         "ButtonLoadState",       // ButtonId::LoadState

@@ -14,7 +14,6 @@ static const RaceMenuPage::ButtonId timeAttackPauseButtons[] = {
         RaceMenuPage::ButtonId::ChangeGhostData,
         RaceMenuPage::ButtonId::ChangeCourse,
         RaceMenuPage::ButtonId::ChangeCharacter,
-        RaceMenuPage::ButtonId::Settings,
         RaceMenuPage::ButtonId::Quit1,
 };
 

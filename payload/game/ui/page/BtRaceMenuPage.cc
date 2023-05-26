@@ -5,7 +5,6 @@ namespace UI {
 static const RaceMenuPage::ButtonId battlePauseButtons[] = {
         RaceMenuPage::ButtonId::Continue1,
         RaceMenuPage::ButtonId::Restart1,
-        RaceMenuPage::ButtonId::Settings,
         RaceMenuPage::ButtonId::Quit1,
 };
 

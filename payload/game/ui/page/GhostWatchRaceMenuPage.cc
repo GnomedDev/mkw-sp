@@ -9,7 +9,6 @@ static const RaceMenuPage::ButtonId ghostWatchPauseButtons[] = {
         RaceMenuPage::ButtonId::ChangeGhostData,
         RaceMenuPage::ButtonId::ChangeCourse,
         RaceMenuPage::ButtonId::ChangeCharacter,
-        RaceMenuPage::ButtonId::Settings,
         RaceMenuPage::ButtonId::Quit1,
 };
 

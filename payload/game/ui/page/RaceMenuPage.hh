@@ -45,7 +45,6 @@ public:
         Quit4 = 0x22,
         Yes2 = 0x23,
         No2 = 0x24,
-        Settings = 0x25,        // Added
         ChangeGhostData = 0x26, // Added
         SaveState = 0x27,       // Added
         LoadState = 0x28,       // Added

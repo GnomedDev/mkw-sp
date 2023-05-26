@@ -5,7 +5,6 @@ namespace UI {
 static const RaceMenuPage::ButtonId replayTAPauseButtons[] = {
         RaceMenuPage::ButtonId::ContinueReplay,
         RaceMenuPage::ButtonId::RestartReplay,
-        RaceMenuPage::ButtonId::Settings,
         RaceMenuPage::ButtonId::QuitReplay,
 };
 
