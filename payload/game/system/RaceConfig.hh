@@ -10,6 +10,9 @@
 
 namespace System {
 
+/// Configuration for the current race.
+///
+/// For configuration over a set of VS/BT races, see GlobalContext.
 class RaceConfig {
 public:
     RaceConfig();
@@ -139,7 +142,6 @@ public:
     void applyEngineClass();
     void applyItemFreq();
     void applyCPUMode();
-    bool selectRandomCourse();
     void endRace();
 
     REPLACE void initRace();

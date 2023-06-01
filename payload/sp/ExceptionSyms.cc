@@ -15,3 +15,7 @@ void __cxa_pure_virtual() {
 }
 
 } // namespace std
+
+extern "C" void abort() {
+    panic("abort");
+}
