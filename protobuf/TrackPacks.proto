@@ -1,0 +1,35 @@
+syntax = "proto2";
+
+message ProtoSha1 {
+    required bytes data = 1;
+}
+
+message ProtoTrack {
+    required ProtoSha1 sha1 = 1;
+    required string name = 2;
+    required uint32 slotId = 3;
+    required uint32 type = 4;
+    optional uint32 musicId = 5;
+    optional uint32 wiimmId = 6;
+}
+
+message Pack {
+    required string name = 1;
+    required string authorNames = 2;
+    optional string description = 3 [default = "No description"];
+
+    repeated ProtoSha1 raceTracks = 4;
+    repeated ProtoSha1 coinTracks = 5;
+    repeated ProtoSha1 balloonTracks = 6;
+    repeated ProtoTrack unreleasedTracks = 7;
+}
+
+message TrackDB {
+    message AliasValue {
+        required ProtoSha1 aliased = 1;
+        required ProtoSha1 real = 2;
+    }
+
+    repeated ProtoTrack tracks = 1;
+    repeated AliasValue aliases = 2;
+}

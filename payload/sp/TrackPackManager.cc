@@ -11,6 +11,10 @@
 #include <game/util/Registry.hh>
 #include <vendor/magic_enum/magic_enum.hpp>
 
+#include <protobuf/TrackPacks.pb.h>
+#include <vendor/nanopb/pb_decode.h>
+#include <vendor/nanopb/pb_encode.h>
+
 #include <charconv>
 #include <cstring>
 
@@ -20,6 +24,37 @@
 using namespace magic_enum::bitwise_operators;
 
 namespace SP {
+
+bool decodeSha1Callback(pb_istream_t *stream, const pb_field_t * /* field */, void **arg) {
+    auto &out = *reinterpret_cast<std::vector<Sha1> *>(*arg);
+
+    ProtoSha1 sha1;
+    if (!pb_decode(stream, ProtoSha1_fields, &sha1)) {
+        panic("Failed to decode Sha1");
+    }
+
+    assert(sha1.data.size == 0x14);
+
+    out.push_back(std::to_array(sha1.data.bytes));
+    return true;
+}
+
+bool decodeTrackCallback(pb_istream_t *stream, const pb_field_t * /* field */, void **arg) {
+    auto &out = *reinterpret_cast<std::vector<Track> *>(*arg);
+
+    ProtoTrack protoTrack;
+    if (!pb_decode(stream, ProtoTrack_fields, &protoTrack)) {
+        panic("Failed to decode track");
+    }
+
+    assert(protoTrack.sha1.data.size == 0x14);
+    Sha1 sha1 = std::to_array(protoTrack.sha1.data.bytes);
+
+    out.emplace_back(sha1, protoTrack.slotId, protoTrack.isArena, (const char *)&protoTrack.name);
+    if (protoTrack.has_musicId) {
+        out.back().m_musicId = protoTrack.musicId;
+    }
+}
 
 // clang-format off
 u32 Track::getRaceCourseId() const {
@@ -77,18 +112,13 @@ u32 Track::getBattleCourseId() const {
 }
 // clang-format on
 
-std::expected<u32, const char *> u32FromSv(std::string_view sv) {
-    u32 out = 0;
+Track::Track(Sha1 sha1, u8 slotId, bool isArena, const char *name) {
+    m_sha1 = sha1;
+    m_slotId = slotId;
+    m_isArena = isArena;
 
-    auto first = sv.data();
-    auto last = sv.data() + sv.size();
-    auto [ptr, err] = std::from_chars(first, last, out);
-
-    if (ptr == last) {
-        return out;
-    } else {
-        return std::unexpected("Failed to parse integer!");
-    }
+    auto nameSize = strnlen(name, 0x48);
+    m_name.setUTF8(std::string_view(name, nameSize));
 }
 
 u32 Track::getCourseId() const {
@@ -99,99 +129,34 @@ u32 Track::getCourseId() const {
     }
 }
 
-std::expected<void, const char *> Track::parse(std::string_view key, std::string_view value) {
-    if (key == "trackname") {
-        m_name.setUTF8(value);
-    } else if (key == "slot") {
-        m_slotId = TRY(u32FromSv(value));
-    } else if (key == "mslot") {
-        m_musicId = TRY(u32FromSv(value));
-    } else if (key == "type") {
-        if (value == "1") {
-            m_isArena = false;
-        } else if (value == "2") {
-            m_isArena = true;
-        }
-    }
-
-    return {};
-}
-
-std::expected<std::vector<Sha1>, const char *> parseTracks(std::string_view tracks) {
-    std::vector<Sha1> parsedTrackIds;
-    size_t startPos = 0;
-    size_t startOffset = 0;
-
-    for (char c : tracks) {
-        if (c == ',' || (startPos + startOffset) == tracks.size()) {
-            auto track = tracks.substr(startPos, startOffset);
-            startPos = startPos + startOffset + 1;
-            startOffset = 0;
-
-            parsedTrackIds.push_back(TRY(sha1FromHex(track)));
-        } else if (c != ' ') {
-            startOffset++;
-        }
-    }
-
-    if (startOffset != 0) {
-        auto track = tracks.substr(startPos, startOffset);
-        parsedTrackIds.push_back(TRY(sha1FromHex(track)));
-    }
-
-    return parsedTrackIds;
-}
-
-std::expected<TrackPack, const char *> TrackPack::New(std::string_view manifestView) {
+std::expected<TrackPack, const char *> TrackPack::New(const std::vector<u8> &manifestRaw) {
     TrackPack self;
-    self.parseNew(manifestView);
+    self.parseNew(manifestRaw);
     return self;
 }
 
-std::expected<void, const char *> TrackPack::parseNew(std::string_view manifestView) {
-    IniReader iniReader(manifestView);
+std::expected<void, const char *> TrackPack::parseNew(const std::vector<u8> &manifestRaw) {
+    pb_istream_t stream = pb_istream_from_buffer(manifestRaw.data(), manifestRaw.size());
 
-    bool prettyNameFound = false;
-    bool descriptionFound = false;
-    bool authorNamesFound = false;
-    while (auto property = iniReader.next()) {
-        auto [section, key, value] = *property;
+    Pack manifest = Pack_init_zero;
+    manifest.raceTracks.arg = &m_raceTracks;
+    manifest.raceTracks.funcs.decode = &decodeSha1Callback;
+    manifest.coinTracks.arg = &m_coinTracks;
+    manifest.coinTracks.funcs.decode = &decodeSha1Callback;
+    manifest.balloonTracks.arg = &m_balloonTracks;
+    manifest.balloonTracks.funcs.decode = &decodeSha1Callback;
+    manifest.unreleasedTracks.arg = &m_unreleasedTracks;
+    manifest.unreleasedTracks.funcs.decode = &decodeTrackCallback;
 
-        if (section == "Pack Info") {
-            if (key == "name") {
-                m_prettyName.setUTF8(value);
-                prettyNameFound = true;
-            } else if (key == "description") {
-                m_description = value;
-                descriptionFound = true;
-            } else if (key == "author") {
-                m_authorNames = value;
-                authorNamesFound = true;
-            } else if (key == "race") {
-                m_raceTracks = TRY(parseTracks(value));
-            } else if (key == "balloon") {
-                m_balloonTracks = TRY(parseTracks(value));
-            } else if (key == "coin") {
-                m_coinTracks = TRY(parseTracks(value));
-            } else {
-                return std::unexpected("Unknown key in track pack manifest");
-            }
-        } else {
-            auto sha1 = TRY(sha1FromHex(section));
-            if (m_unreleasedTracks.empty() || m_unreleasedTracks.back().m_sha1 != sha1) {
-                m_unreleasedTracks.emplace_back(sha1);
-            }
-
-            auto &track = m_unreleasedTracks.back();
-            track.parse(key, value);
-        }
+    if (!pb_decode(&stream, Pack_fields, &manifest)) {
+        return std::unexpected("Cannot parse protobuf file");
     }
 
-    if (!prettyNameFound || !descriptionFound || !authorNamesFound) {
-        return std::unexpected("Missing required key in track pack manifest");
-    } else if (m_raceTracks.empty() && m_balloonTracks.empty() && m_coinTracks.empty()) {
-        return std::unexpected("No tracks found in track pack manifest");
-    }
+    auto nameSize = strnlen(manifest.name, sizeof(manifest.name));
+    m_prettyName.setUTF8(std::string_view(manifest.name, nameSize));
+
+    m_authorNames = FixedString<64>((const char *)&manifest.authorNames);
+    m_description = FixedString<128>((const char *)&manifest.description);
 
     return {};
 }
@@ -279,7 +244,7 @@ std::expected<void, const char *> TrackPackManager::loadTrackPacks() {
         return {};
     }
 
-    std::vector<char> manifestBuf;
+    std::vector<u8> manifestBuf;
     while (auto nodeInfo = dir->read()) {
         if (nodeInfo->type != Storage::NodeType::File) {
             continue;
@@ -296,7 +261,7 @@ std::expected<void, const char *> TrackPackManager::loadTrackPacks() {
 
         manifestBuf.resize(*len);
 
-        auto res = TrackPack::New(std::string_view(manifestBuf.data(), manifestBuf.size()));
+        auto res = TrackPack::New(manifestBuf);
         if (!res.has_value()) {
             SP_LOG("Failed to read track pack manifest: %s", res.error());
             continue;
@@ -320,7 +285,7 @@ void TrackPackManager::loadTrackDb() {
         return;
     }
 
-    std::string trackDbBuf;
+    std::vector<u8> trackDbBuf;
     trackDbBuf.resize(nodeInfo->size);
 
     auto len = Storage::FastReadFile(nodeInfo->id, trackDbBuf.data(), nodeInfo->size);
@@ -330,45 +295,13 @@ void TrackPackManager::loadTrackDb() {
 
     trackDbBuf.resize(*len);
 
-    Sha1 currentlyParsing;
-    bool isSkipping = false;
-    IniReader trackDbIni(trackDbBuf);
-    while (auto property = trackDbIni.next()) {
-        auto [section, key, value] = *property;
+    pb_istream_t stream = pb_istream_from_buffer(trackDbBuf.data(), trackDbBuf.size());
 
-        if (section == "aliases") {
-            auto aliasedSha1 = sha1FromHex(key);
-            auto sha1 = sha1FromHex(value);
-
-            if (aliasedSha1.has_value() && sha1.has_value()) {
-                parseAlias(*aliasedSha1, *sha1);
-            } else {
-                SP_LOG("Could not parse alias!");
-            }
-
-            continue;
-        }
-
-        auto sha1 = sha1FromHex(section);
-        if (!sha1) {
-            SP_LOG("Could not parse sha1!");
-            continue;
-        }
-
-        if (m_trackDb.empty() || currentlyParsing != *sha1) {
-            currentlyParsing = *sha1;
-            isSkipping = !anyPackContains(*sha1);
-            if (!isSkipping) {
-                m_trackDb.emplace_back(*sha1);
-            }
-        }
-
-        if (isSkipping) {
-            continue;
-        }
-
-        auto &track = m_trackDb.back();
-        track.parse(key, value);
+    TrackDB trackDb;
+    trackDb.tracks.funcs.decode = &decodeTrackCallback;
+    trackDb.tracks.arg = &m_trackDb;
+    if (!pb_decode(&stream, TrackDB_fields, nullptr)) {
+        panic("Failed to parse track DB!");
     }
 
     SP_LOG("Finished loading track DB with %d tracks and %d aliases", m_trackDb.size(),

@@ -1163,6 +1163,7 @@ n.newline()
 protobuf_proto_files = [
     os.path.join('protobuf', 'Login.proto'),
     os.path.join('protobuf', 'Matchmaking.proto'),
+    os.path.join('protobuf', 'TrackPacks.proto'),
     os.path.join('protobuf', 'NetStorage.proto'),
     os.path.join('protobuf', 'Room.proto'),
     os.path.join('protobuf', 'Update.proto'),

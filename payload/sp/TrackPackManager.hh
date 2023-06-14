@@ -26,15 +26,14 @@ enum class TrackGameMode {
 
 class Track {
 public:
-    Track(Sha1 sha1) : m_sha1(sha1) {}
+    Track(Sha1 sha1, u8 slotId, bool isArena, const char *name);
 
-    std::expected<void, const char *> parse(std::string_view key, std::string_view value);
     u32 getCourseId() const;
 
-    u16 m_musicId = std::numeric_limits<u16>::max();
-    bool m_isArena = false;
-    u8 m_slotId = 0;
     Sha1 m_sha1;
+    u8 m_slotId = 0;
+    bool m_isArena = false;
+    u16 m_musicId = std::numeric_limits<u16>::max();
     WFixedString<48> m_name = {};
 
 private:
@@ -46,7 +45,7 @@ static_assert(sizeof(Track) == 0x7c);
 
 class TrackPack {
 public:
-    static std::expected<TrackPack, const char *> New(std::string_view manifest);
+    static std::expected<TrackPack, const char *> New(const std::vector<u8> &manifest);
 
     bool contains(const Sha1 &id) const;
     TrackGameMode getSupportedModes() const;
@@ -58,7 +57,7 @@ public:
 
 private:
     TrackPack() = default;
-    std::expected<void, const char *> parseNew(std::string_view manifest);
+    std::expected<void, const char *> parseNew(const std::vector<u8> &manifest);
 
     const std::vector<Sha1> &getTrackList(TrackGameMode mode) const;
 
