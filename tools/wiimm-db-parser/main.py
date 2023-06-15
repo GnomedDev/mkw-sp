@@ -4,7 +4,6 @@ from typing import Generator
 from TrackPacks_pb2 import ProtoSha1, TrackDB, ProtoTrack as Track
 AliasValue = TrackDB.AliasValue
 
-@staticmethod
 def track_from_csv(line: list[str]) -> Track:
     sha1, wiimmId, _, _, ctype, slot, music_slot, _, _, prefix, name, _, _, _, _, _ = line
 
@@ -13,7 +12,7 @@ def track_from_csv(line: list[str]) -> Track:
 
     return Track(
         sha1=ProtoSha1(data=bytes.fromhex(sha1)),
-        name=name,
+        name=name[:40],
         slotId=int(slot),
         type=int(ctype),
         musicId=int(music_slot),
@@ -66,7 +65,7 @@ def main():
         print("Warning: You can download it from http://archive.tock.eu/wbz/public-ref.list\n")
 
     trackDB = TrackDB(
-        tracks=[t for t in tracks if t != 0],
+        tracks=[t for t in tracks if t.slotId != 0],
         aliases=read_aliases_csv(tracks)
     )
 

@@ -30,7 +30,7 @@ bool decodeSha1Callback(pb_istream_t *stream, const pb_field_t * /* field */, vo
 
     ProtoSha1 sha1;
     if (!pb_decode(stream, ProtoSha1_fields, &sha1)) {
-        panic("Failed to decode Sha1");
+        panic("Failed to decode Sha1: %s", PB_GET_ERROR(stream));
     }
 
     assert(sha1.data.size == 0x14);
@@ -44,13 +44,14 @@ bool decodeTrackCallback(pb_istream_t *stream, const pb_field_t * /* field */, v
 
     ProtoTrack protoTrack;
     if (!pb_decode(stream, ProtoTrack_fields, &protoTrack)) {
-        panic("Failed to decode track");
+        panic("Failed to decode track: %s", PB_GET_ERROR(stream));
     }
 
     assert(protoTrack.sha1.data.size == 0x14);
     Sha1 sha1 = std::to_array(protoTrack.sha1.data.bytes);
 
-    out.emplace_back(sha1, protoTrack.slotId, protoTrack.type == 1, (const char *)&protoTrack.name);
+    out.emplace_back(sha1, protoTrack.slotId, protoTrack.type == 2, (const char *)&protoTrack.name);
+
     if (protoTrack.has_musicId) {
         out.back().m_musicId = protoTrack.musicId;
     }
@@ -58,12 +59,15 @@ bool decodeTrackCallback(pb_istream_t *stream, const pb_field_t * /* field */, v
     return true;
 }
 
-bool decodeAliasCallback(pb_istream_t *stream, const pb_field_t * /* field */, void **arg) {
-    auto &out = *reinterpret_cast<std::vector<std::pair<Sha1, Sha1>> *>(*arg);
+bool TrackPackManager::DecodeAliasCallback(pb_istream_t *stream, const pb_field_t * /* field */, void **arg) {
+    auto *self = reinterpret_cast<TrackPackManager* >(*arg);
+    return self->decodeAliasCallback(stream);
+}
 
+bool TrackPackManager::decodeAliasCallback(pb_istream_t *stream) {
     TrackDB_AliasValue protoAlias;
     if (!pb_decode(stream, TrackDB_AliasValue_fields, &protoAlias)) {
-        panic("Failed to decode track");
+        panic("Failed to decode alias: %s", PB_GET_ERROR(stream));
     }
 
     assert(protoAlias.aliased.data.size == 0x14);
@@ -72,7 +76,7 @@ bool decodeAliasCallback(pb_istream_t *stream, const pb_field_t * /* field */, v
     assert(protoAlias.real.data.size == 0x14);
     Sha1 real = std::to_array(protoAlias.real.data.bytes);
 
-    out.push_back(std::move(std::make_pair(aliased, real)));
+    m_aliases.emplace_back(aliased, real);
     return true;
 }
 
@@ -151,7 +155,7 @@ u32 Track::getCourseId() const {
 
 std::expected<TrackPack, const char *> TrackPack::New(std::span<const u8> manifestRaw) {
     TrackPack self;
-    self.parseNew(manifestRaw);
+    TRY(self.parseNew(manifestRaw));
     return self;
 }
 
@@ -169,7 +173,7 @@ std::expected<void, const char *> TrackPack::parseNew(std::span<const u8> manife
     manifest.unreleasedTracks.funcs.decode = &decodeTrackCallback;
 
     if (!pb_decode(&stream, Pack_fields, &manifest)) {
-        return std::unexpected("Cannot parse protobuf file");
+        return std::unexpected("Failed to parse TrackPack");
     }
 
     auto nameSize = strnlen(manifest.name, sizeof(manifest.name));
@@ -329,35 +333,14 @@ void TrackPackManager::loadTrackDb() {
     TrackDB trackDb = TrackDB_init_zero;
     trackDb.tracks.funcs.decode = &decodeTrackCallback;
     trackDb.tracks.arg = &m_trackDb;
-    trackDb.tracks.funcs.decode = &decodeAliasCallback;
-    trackDb.tracks.arg = &m_aliases;
-    if (!pb_decode(&stream, TrackDB_fields, nullptr)) {
+    trackDb.aliases.funcs.decode = &DecodeAliasCallback;
+    trackDb.aliases.arg = this;
+    if (!pb_decode(&stream, TrackDB_fields, &trackDb)) {
         panic("Failed to parse track DB!");
     }
 
     SP_LOG("Finished loading track DB with %d tracks and %d aliases", m_trackDb.size(),
             m_aliases.size());
-}
-
-void TrackPackManager::parseAlias(Sha1 aliasedSha1, Sha1 sha1) {
-    bool foundTrack = false;
-    for (auto &track : m_trackDb) {
-        if (track.m_sha1 == sha1) {
-            foundTrack = true;
-            break;
-        }
-    }
-
-    if (!foundTrack) {
-        for (auto &pack : m_packs) {
-            if (pack.getUnreleasedTrack(sha1) != nullptr) {
-                foundTrack = true;
-                return;
-            }
-        }
-    }
-
-    m_aliases.emplace_back(aliasedSha1, sha1);
 }
 
 bool TrackPackManager::anyPackContains(const Sha1 &sha1) {
@@ -378,16 +361,28 @@ const TrackPack &TrackPackManager::getSelectedTrackPack() const {
     return m_packs[raceConfig->m_selectedTrackPack];
 }
 
-const Track &TrackPackManager::getTrack(Sha1 sha1) const {
+const Track *TrackPackManager::getTrackUnaliased(Sha1 sha1) const {
     for (auto &track : m_trackDb) {
         if (track.m_sha1 == sha1) {
-            return track;
+            return &track;
         }
     }
 
-    auto *track = getSelectedTrackPack().getUnreleasedTrack(sha1);
-    if (track != nullptr) {
-        return *track;
+    return getSelectedTrackPack().getUnreleasedTrack(sha1);
+}
+
+const Track &TrackPackManager::getTrack(Sha1 sha1) const {
+    auto unaliasedTrack = getTrackUnaliased(sha1);
+    if (unaliasedTrack != nullptr) {
+        return *unaliasedTrack;
+    }
+
+    auto normalisedSha1 = getNormalisedSha1(sha1);
+    if (normalisedSha1.has_value()) {
+        auto aliasedTrack = getTrackUnaliased(*normalisedSha1);
+        if (aliasedTrack != nullptr) {
+            return *aliasedTrack;
+        }
     }
 
     auto hex = sha1ToHex(sha1);

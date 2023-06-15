@@ -1,11 +1,12 @@
 #pragma once
 
-#include <Common.hh>
-
 #include "sp/CircularBuffer.hh"
 #include "sp/FixedString.hh"
 #include "sp/ShaUtil.hh"
 #include "sp/storage/Storage.hh"
+
+#include <Common.hh>
+#include <vendor/nanopb/pb.h>
 
 #include <limits>
 #include <optional>
@@ -78,6 +79,7 @@ public:
 
     size_t getPackCount() const;
     const Track &getTrack(Sha1 id) const;
+    const Track *getTrackUnaliased(Sha1 id) const;
     std::optional<Sha1> getNormalisedSha1(Sha1 aliasedSha1) const;
 
     const TrackPack &getNthPack(u32 n) const;
@@ -92,6 +94,9 @@ private:
     void loadTrackDb();
     bool anyPackContains(const Sha1 &sha1);
     void parseAlias(Sha1 aliasedSha1, Sha1 sha1);
+
+    bool decodeAliasCallback(pb_istream_t *stream);
+    static bool DecodeAliasCallback(pb_istream_t *stream, const pb_field_t * /* field */, void **arg);
 
     std::vector<Track> m_trackDb;
     std::vector<TrackPack> m_packs;
