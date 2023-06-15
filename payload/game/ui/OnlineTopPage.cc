@@ -1,12 +1,12 @@
 #include "OnlineTopPage.hh"
 
 #include "game/ui/MessagePage.hh"
-#include "game/ui/OnlineConnectionManagerPage.hh"
 #include "game/ui/SectionManager.hh"
 #include "game/ui/SettingsPage.hh"
 #include "game/ui/YesNoPage.hh"
 
 #include <game/system/RaceConfig.hh>
+#include <sp/trackPacks/TrackPackManager.hh>
 
 namespace UI {
 

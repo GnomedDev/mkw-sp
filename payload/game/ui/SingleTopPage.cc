@@ -9,8 +9,8 @@
 #include "game/ui/page/BattleModeSelectPage.hh"
 #include "game/ui/page/MenuPage.hh"
 
-#include <sp/TrackPackManager.hh>
 #include <sp/settings/ClientSettings.hh>
+#include <sp/trackPacks/TrackPackManager.hh>
 extern "C" {
 #include <vendor/libhydrogen/hydrogen.h>
 }
@@ -107,9 +107,9 @@ void SingleTopPage::onActivate() {
     auto &trackPack = SP::TrackPackManager::Instance().getSelectedTrackPack();
     auto packModes = trackPack.getSupportedModes();
 
-    auto raceEnabled = (packModes & SP::TrackGameMode::Race) == SP::TrackGameMode::Race;
-    auto coinEnabled = (packModes & SP::TrackGameMode::Coin) == SP::TrackGameMode::Coin;
-    auto balloonEnabled = (packModes & SP::TrackGameMode::Balloon) == SP::TrackGameMode::Balloon;
+    auto raceEnabled = (packModes & SP::Track::Mode::Race) == SP::Track::Mode::Race;
+    auto coinEnabled = (packModes & SP::Track::Mode::Coin) == SP::Track::Mode::Coin;
+    auto balloonEnabled = (packModes & SP::Track::Mode::Balloon) == SP::Track::Mode::Balloon;
 
     m_taButton.setVisible(raceEnabled);
     m_vsButton.setVisible(raceEnabled);

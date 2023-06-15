@@ -3,6 +3,7 @@
 #include "game/ui/SectionManager.hh"
 
 #include <game/system/RaceConfig.hh>
+#include <sp/trackPacks/TrackPackManager.hh>
 
 #include <cstdio>
 

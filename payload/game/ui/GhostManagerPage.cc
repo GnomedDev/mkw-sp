@@ -4,6 +4,8 @@
 #include "game/system/SaveManager.hh"
 #include "game/ui/SectionManager.hh"
 
+#include <sp/trackPacks/TrackPackManager.hh>
+
 #include <algorithm>
 #include <cstring>
 

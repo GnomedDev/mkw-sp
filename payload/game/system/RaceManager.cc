@@ -6,6 +6,7 @@
 
 #include <sp/ThumbnailManager.hh>
 #include <sp/cs/RaceManager.hh>
+#include <sp/trackPacks/TrackPackManager.hh>
 
 namespace System {
 

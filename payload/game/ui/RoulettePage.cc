@@ -6,6 +6,7 @@
 #include "game/ui/VotingBackPage.hh"
 
 #include <sp/cs/RoomClient.hh>
+#include <sp/trackPacks/TrackPackManager.hh>
 
 namespace UI {
 
@@ -175,7 +176,7 @@ void RoulettePage::initSelectingStage(u32 selectedPlayer) {
     auto *raceConfig = System::RaceConfig::Instance();
     auto &packInfo = raceConfig->getPackInfo();
 
-    auto courseId = trackPack.getNthTrack(courseIndex, SP::TrackGameMode::Race);
+    auto courseId = trackPack.getNthTrack(courseIndex, SP::Track::Mode::Race);
     packInfo.selectCourse(courseId.value());
 
     auto &menuScenario = System::RaceConfig::Instance()->menuScenario();

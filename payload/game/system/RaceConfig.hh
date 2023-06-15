@@ -2,7 +2,8 @@
 
 #include "game/system/SaveManager.hh"
 
-#include <sp/TrackPackManager.hh>
+#include <sp/CircularBuffer.hh>
+#include <sp/trackPacks/TrackPackInfo.hh>
 
 namespace System {
 
@@ -118,7 +119,7 @@ public:
     bool isVanillaTracks() const;
     SP::TrackPackInfo &getPackInfo();
     SP::TrackPackInfo &emplacePackInfo();
-    SP::TrackGameMode getTrackGameMode() const;
+    SP::Track::Mode getTrackGameMode() const;
 
     bool generateRandomCourses();
     bool generateOrderedCourses(u16 currentIdx);

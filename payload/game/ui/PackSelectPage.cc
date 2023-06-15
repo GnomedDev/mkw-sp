@@ -5,6 +5,7 @@
 
 #include <game/system/RaceConfig.hh>
 #include <sp/ThumbnailManager.hh>
+#include <sp/trackPacks/TrackPackManager.hh>
 
 #include <cstdio>
 

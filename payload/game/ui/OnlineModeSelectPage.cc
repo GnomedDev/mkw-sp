@@ -3,6 +3,7 @@
 #include "game/ui/OnlineConnectionManagerPage.hh"
 #include "game/ui/SectionManager.hh"
 
+#include <sp/trackPacks/TrackPackManager.hh>
 #include <game/system/RaceConfig.hh>
 
 namespace UI {

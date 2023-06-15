@@ -6,6 +6,7 @@
 #include "game/ui/VotingBackPage.hh"
 
 #include <sp/ScopeLock.hh>
+#include <sp/trackPacks/TrackPackManager.hh>
 
 #include <algorithm>
 

@@ -1,6 +1,6 @@
 #include "ThumbnailManager.hh"
 
-#include "sp/TrackPackManager.hh"
+#include "sp/trackPacks/TrackPackManager.hh"
 
 #include <egg/core/eggSystem.hh>
 #include <game/system/RaceConfig.hh>
@@ -32,7 +32,7 @@ bool ThumbnailManager::next() {
 
     auto &trackPackManager = TrackPackManager::Instance();
     auto &trackPack = trackPackManager.getSelectedTrackPack();
-    auto trackId = trackPack.getNthTrack(raceConfig->getCourseIndex(), TrackGameMode::Race);
+    auto trackId = trackPack.getNthTrack(raceConfig->getCourseIndex(), Track::Mode::Race);
 
     if (trackId.has_value()) {
         raceConfig->emplacePackInfo().selectCourse(*trackId);

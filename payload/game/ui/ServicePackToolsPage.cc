@@ -4,6 +4,7 @@
 #include "game/ui/SectionManager.hh"
 
 #include <sp/ThumbnailManager.hh>
+#include <sp/trackPacks/TrackPackManager.hh>
 
 namespace UI {
 

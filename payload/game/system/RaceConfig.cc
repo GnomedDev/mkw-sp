@@ -4,10 +4,12 @@
 #include "game/system/SaveManager.hh"
 #include "game/ui/SectionManager.hh"
 
-#include <tuple>
+#include <sp/trackPacks/TrackPackManager.hh>
 extern "C" {
 #include <vendor/libhydrogen/hydrogen.h>
 }
+
+#include <tuple>
 
 namespace System {
 
@@ -45,15 +47,15 @@ SP::TrackPackInfo &RaceConfig::emplacePackInfo() {
     return *m_courseOrder[m_currentCourse];
 }
 
-SP::TrackGameMode RaceConfig::getTrackGameMode() const {
+SP::Track::Mode RaceConfig::getTrackGameMode() const {
     if (m_menuScenario.gameMode == GameMode::OfflineVS ||
             m_menuScenario.gameMode == GameMode::TimeAttack) {
-        return SP::TrackGameMode::Race;
+        return SP::Track::Mode::Race;
     } else if (m_menuScenario.gameMode == GameMode::OfflineBT) {
         if (m_menuScenario.battleType == 0) {
-            return SP::TrackGameMode::Balloon;
+            return SP::Track::Mode::Balloon;
         } else {
-            return SP::TrackGameMode::Coin;
+            return SP::Track::Mode::Coin;
         }
     } else {
         panic("Unknown gamemode!");
