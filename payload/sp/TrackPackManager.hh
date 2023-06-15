@@ -45,7 +45,7 @@ static_assert(sizeof(Track) == 0x7c);
 
 class TrackPack {
 public:
-    static std::expected<TrackPack, const char *> New(const std::vector<u8> &manifest);
+    static std::expected<TrackPack, const char *> New(std::span<const u8> manifest);
 
     bool contains(const Sha1 &id) const;
     TrackGameMode getSupportedModes() const;
@@ -57,7 +57,7 @@ public:
 
 private:
     TrackPack() = default;
-    std::expected<void, const char *> parseNew(const std::vector<u8> &manifest);
+    std::expected<void, const char *> parseNew(std::span<const u8> manifest);
 
     const std::vector<Sha1> &getTrackList(TrackGameMode mode) const;
 

@@ -12,7 +12,7 @@ def track_from_csv(line: list[str]) -> Track:
         name = f"{prefix} {name}"
 
     return Track(
-        sha1=ProtoSha1(data=sha1.encode()),
+        sha1=ProtoSha1(data=bytes.fromhex(sha1)),
         name=name,
         slotId=int(slot),
         type=int(ctype),
@@ -32,7 +32,7 @@ def read_aliases_csv(tracks: list[Track]) -> list[AliasValue]:
     tracks_sha1 = {t.wiimmId: (t.sha1, t.slotId) for t in tracks}
 
     with open("sha1-reference.txt") as alias_csv:
-        for _ in range(9):
+        for _ in range(10):
             alias_csv.readline()
 
         reader = csv.reader(alias_csv, delimiter="|")
@@ -44,11 +44,11 @@ def read_aliases_csv(tracks: list[Track]) -> list[AliasValue]:
             wiimmId = int(wiimmId)
             if (
                 all(map(lambda f: f not in cflags, "ZPd"))
-                and tracks_sha1[wiimmId][0].data != alias_sha1.encode()
+                and tracks_sha1[wiimmId][0].data != bytes.fromhex(alias_sha1)
                 and tracks_sha1[wiimmId][1] != 0
             ):
                 alias_value = AliasValue(
-                    aliased=ProtoSha1(data=alias_sha1.encode()),
+                    aliased=ProtoSha1(data=bytes.fromhex(alias_sha1)),
                     real=tracks_sha1[wiimmId][0]
                 )
 

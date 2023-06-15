@@ -162,6 +162,8 @@ asset_in_files = {
         os.path.join('RKRace_SP.breft'),
         # Online mode
         os.path.join('ItemSlotOnline.bin'),
+        # Stores vanilla track manifest
+        os.path.join('vanillaTracks.pb.bin'),
     ],
     os.path.join('Scene', 'UI', 'ChannelSP.arc.lzma'): [
         # Explanation text with 2 lines

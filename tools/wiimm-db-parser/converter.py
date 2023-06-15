@@ -6,7 +6,7 @@ original.read("vanilla.ini")
 pack_info = original["Pack Info"]
 
 def parse_tracks(tracks: str) -> list[ProtoSha1]:
-    return [ProtoSha1(data=sha.encode()) for sha in tracks.split(",")[:-1]]
+    return [ProtoSha1(data=bytes.fromhex(sha)) for sha in tracks.split(",")[:-1]]
 
 pack = Pack(
     name=pack_info["name"],
@@ -17,7 +17,7 @@ pack = Pack(
     balloonTracks=parse_tracks(pack_info["balloon"]),
     unreleasedTracks=[
         ProtoTrack (
-            sha1=ProtoSha1(data=name.encode()),
+            sha1=ProtoSha1(data=bytes.fromhex(name)),
             name="", # Filled in in game
             slotId=int(section["slot"]),
             type=int(section["type"]),

@@ -3,9 +3,9 @@
 #include "sp/ThumbnailManager.hh"
 #include "sp/settings/IniReader.hh"
 #include "sp/storage/Storage.hh"
-#include "sp/vanillaTracks.hh"
 
 #include <game/system/RaceConfig.hh>
+#include <game/system/ResourceManager.hh>
 #include <game/system/SaveManager.hh>
 #include <game/ui/UIControl.hh>
 #include <game/util/Registry.hh>
@@ -19,7 +19,7 @@
 #include <cstring>
 
 #define TRACK_PACK_DIRECTORY L"Track Packs"
-#define TRACK_DB L"TrackDB.ini"
+#define TRACK_DB L"TrackDB.pb.bin"
 
 using namespace magic_enum::bitwise_operators;
 
@@ -50,10 +50,30 @@ bool decodeTrackCallback(pb_istream_t *stream, const pb_field_t * /* field */, v
     assert(protoTrack.sha1.data.size == 0x14);
     Sha1 sha1 = std::to_array(protoTrack.sha1.data.bytes);
 
-    out.emplace_back(sha1, protoTrack.slotId, protoTrack.isArena, (const char *)&protoTrack.name);
+    out.emplace_back(sha1, protoTrack.slotId, protoTrack.type == 1, (const char *)&protoTrack.name);
     if (protoTrack.has_musicId) {
         out.back().m_musicId = protoTrack.musicId;
     }
+
+    return true;
+}
+
+bool decodeAliasCallback(pb_istream_t *stream, const pb_field_t * /* field */, void **arg) {
+    auto &out = *reinterpret_cast<std::vector<std::pair<Sha1, Sha1>> *>(*arg);
+
+    TrackDB_AliasValue protoAlias;
+    if (!pb_decode(stream, TrackDB_AliasValue_fields, &protoAlias)) {
+        panic("Failed to decode track");
+    }
+
+    assert(protoAlias.aliased.data.size == 0x14);
+    Sha1 aliased = std::to_array(protoAlias.aliased.data.bytes);
+
+    assert(protoAlias.real.data.size == 0x14);
+    Sha1 real = std::to_array(protoAlias.real.data.bytes);
+
+    out.push_back(std::move(std::make_pair(aliased, real)));
+    return true;
 }
 
 // clang-format off
@@ -129,13 +149,13 @@ u32 Track::getCourseId() const {
     }
 }
 
-std::expected<TrackPack, const char *> TrackPack::New(const std::vector<u8> &manifestRaw) {
+std::expected<TrackPack, const char *> TrackPack::New(std::span<const u8> manifestRaw) {
     TrackPack self;
     self.parseNew(manifestRaw);
     return self;
 }
 
-std::expected<void, const char *> TrackPack::parseNew(const std::vector<u8> &manifestRaw) {
+std::expected<void, const char *> TrackPack::parseNew(std::span<const u8> manifestRaw) {
     pb_istream_t stream = pb_istream_from_buffer(manifestRaw.data(), manifestRaw.size());
 
     Pack manifest = Pack_init_zero;
@@ -236,7 +256,15 @@ TrackPackManager::TrackPackManager() {
 std::expected<void, const char *> TrackPackManager::loadTrackPacks() {
     SP_LOG("Loading track packs");
 
+    auto *resourceManager = System::ResourceManager::Instance();
+
+    size_t size = 0;
+    auto *vanillaManifestRaw = reinterpret_cast<const u8 *>(resourceManager->getFile(0, "vanillaTracks.pb.bin", &size));
+    assert(size != 0);
+
+    std::span vanillaManifest(vanillaManifestRaw, size);
     m_packs.push_back(std::move(TRY(TrackPack::New(vanillaManifest))));
+
     auto dir = Storage::OpenDir(TRACK_PACK_DIRECTORY);
     if (!dir) {
         SP_LOG("Creating track pack directory");
@@ -297,9 +325,11 @@ void TrackPackManager::loadTrackDb() {
 
     pb_istream_t stream = pb_istream_from_buffer(trackDbBuf.data(), trackDbBuf.size());
 
-    TrackDB trackDb;
+    TrackDB trackDb = TrackDB_init_zero;
     trackDb.tracks.funcs.decode = &decodeTrackCallback;
     trackDb.tracks.arg = &m_trackDb;
+    trackDb.tracks.funcs.decode = &decodeAliasCallback;
+    trackDb.tracks.arg = &m_aliases;
     if (!pb_decode(&stream, TrackDB_fields, nullptr)) {
         panic("Failed to parse track DB!");
     }
