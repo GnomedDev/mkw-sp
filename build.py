@@ -162,8 +162,6 @@ asset_in_files = {
         os.path.join('RKRace_SP.breft'),
         # Online mode
         os.path.join('ItemSlotOnline.bin'),
-        # Stores vanilla track manifest
-        os.path.join('vanillaTracks.pb.bin'),
     ],
     os.path.join('Scene', 'UI', 'ChannelSP.arc.lzma'): [
         # Explanation text with 2 lines
@@ -611,6 +609,8 @@ asset_in_files = {
         # Pack Select
         os.path.join('button', 'blyt', 'pack_select_button.brlyt.json5'),
         os.path.join('button', 'ctrl', 'PackSelectButton.brctr.json5'),
+        # Stores vanilla track manifest
+        os.path.join('vanillaTracks.pb.bin'),
         # Flags
         os.path.join('control', 'blyt', 'chara_flag_machine_picture_common.brlyt.json5'),
         *[os.path.normpath(i) for i in sorted(glob.glob("control/timg/[0-9][0-9][0-9].tpl", root_dir="assets", recursive=True))],
