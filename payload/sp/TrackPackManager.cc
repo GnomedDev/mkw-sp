@@ -259,7 +259,8 @@ std::expected<void, const char *> TrackPackManager::loadTrackPacks() {
     auto *resourceManager = System::ResourceManager::Instance();
 
     size_t size = 0;
-    auto *vanillaManifestRaw = reinterpret_cast<const u8 *>(resourceManager->getFile(0, "vanillaTracks.pb.bin", &size));
+    auto *vanillaManifestRaw = reinterpret_cast<const u8 *>(
+            resourceManager->getFile(System::ResChannelId::Menu, "vanillaTracks.pb.bin", &size));
     assert(size != 0);
 
     std::span vanillaManifest(vanillaManifestRaw, size);
