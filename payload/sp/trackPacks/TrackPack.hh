@@ -5,6 +5,7 @@
 #include <expected>
 #include <span>
 #include <vector>
+#include <optional>
 
 namespace SP {
 

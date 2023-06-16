@@ -111,31 +111,19 @@ size_t TrackPackManager::getPackCount() const {
 }
 
 const Track &TrackPackManager::getTrack(Sha1 sha1) const {
-    auto unaliasedTrack = getTrackUnaliased(sha1);
-    if (unaliasedTrack != nullptr) {
-        return *unaliasedTrack;
+    for (auto &track : m_trackDb) {
+        if (track.m_sha1 == sha1) {
+            return track;
+        }
     }
 
-    auto normalisedSha1 = getNormalisedSha1(sha1);
-    if (normalisedSha1.has_value()) {
-        auto aliasedTrack = getTrackUnaliased(*normalisedSha1);
-        if (aliasedTrack != nullptr) {
-            return *aliasedTrack;
-        }
+    auto track = getSelectedTrackPack().getUnreleasedTrack(sha1);
+    if (track != nullptr) {
+        return *track;
     }
 
     auto hex = sha1ToHex(sha1);
     panic("Unknown sha1 id: %s", hex.data());
-}
-
-const Track *TrackPackManager::getTrackUnaliased(Sha1 sha1) const {
-    for (auto &track : m_trackDb) {
-        if (track.m_sha1 == sha1) {
-            return &track;
-        }
-    }
-
-    return getSelectedTrackPack().getUnreleasedTrack(sha1);
 }
 
 std::optional<Sha1> TrackPackManager::getNormalisedSha1(Sha1 aliasedSha1) const {

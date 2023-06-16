@@ -16,7 +16,6 @@ private:
 public:
     size_t getPackCount() const;
     const Track &getTrack(Sha1 id) const;
-    const Track *getTrackUnaliased(Sha1 id) const;
     std::optional<Sha1> getNormalisedSha1(Sha1 aliasedSha1) const;
 
     const TrackPack &getNthPack(u32 n) const;

@@ -59,7 +59,7 @@ def main():
     tracks = list(read_wiimm_csv("extended-tracks.csv"))
 
     try:
-        tracks.extend(read_wiimm_csv("public-ref.list"))
+        tracks.extend([t for t in read_wiimm_csv("public-ref.list") if t not in tracks])
     except FileNotFoundError:
         print("Warning: Could not find public-ref.list, output will only include out-of-db tracks!")
         print("Warning: You can download it from http://archive.tock.eu/wbz/public-ref.list\n")
