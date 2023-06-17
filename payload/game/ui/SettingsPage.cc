@@ -16,16 +16,17 @@ void SettingsPage::onInit() {
     setInputManager(&m_inputManager);
     m_inputManager.setWrappingMode(MultiControlInputManager::WrappingMode::Y);
 
-    initChildren(4 + std::size(m_settingControls) + !!blackBack());
+    initChildren(5 + std::size(m_settingControls) + !!blackBack());
     insertChild(0, &m_pageTitleText, 0);
     insertChild(1, &m_categoryControl, 0);
     insertChild(2, instructionText(), 0);
-    insertChild(3, &m_backButton, 0);
+    insertChild(3, &m_sheetLabel, 0);
+    insertChild(4, &m_backButton, 0);
     for (u32 i = 0; i < std::size(m_settingControls); i++) {
-        insertChild(4 + i, &m_settingControls[i], 0);
+        insertChild(5 + i, &m_settingControls[i], 0);
     }
     if (blackBack()) {
-        insertChild(4 + std::size(m_settingControls), blackBack(), 0);
+        insertChild(5 + std::size(m_settingControls), blackBack(), 0);
     }
 
     m_pageTitleText.load(false);
@@ -42,6 +43,8 @@ void SettingsPage::onInit() {
         m_settingValues[i].load("ranking", "SettingUpDownValue", "Value", "SettingUpDownText",
                 "Text");
     }
+    m_sheetLabel.load("control", "TimeAttackGhostListPageNum", "TimeAttackGhostListPageNum",
+            nullptr);
     auto sectionId = SectionManager::Instance()->currentSection()->id();
     if (blackBack()) {
         instructionText()->load("bg", "ObiInstructionTextPopup", "ObiInstructionTextPopup",
@@ -74,8 +77,9 @@ void SettingsPage::onInit() {
 }
 
 void SettingsPage::onActivate() {
-    instructionText()->setMessageAll(0);
+    updateSheetLabel(0);
 
+    instructionText()->setMessageAll(0);
     m_categoryControl.selectDefault(0);
 }
 
@@ -100,17 +104,10 @@ void SettingsPage::onCategoryControlSelect(UpDownControl * /* control */, u32 /*
 }
 
 void SettingsPage::onCategoryValueChange(TextUpDownValueControl::TextControl *text, u32 index) {
-    auto categoryInfo = getCategoryInfo(index);
+    updateSheetLabel(index + 1);
 
-    if (categoryInfo.categorySheetCount >= 2) {
-        MessageInfo info{};
-        info.messageIds[0] = SP::ClientSettings::categoryMessageIds[categoryInfo.categoryIndex];
-        info.intVals[0] = categoryInfo.categorySheetIndex + 1;
-        info.intVals[1] = categoryInfo.categorySheetCount;
-        text->setMessageAll(10182, &info);
-    } else {
-        text->setMessageAll(SP::ClientSettings::categoryMessageIds[categoryInfo.categoryIndex]);
-    }
+    auto categoryInfo = getCategoryInfo(index);
+    text->setMessageAll(SP::ClientSettings::categoryMessageIds[categoryInfo.categoryIndex]);
 
     auto category = static_cast<SP::ClientSettings::Category>(categoryInfo.categoryIndex);
     u32 i = 0;
@@ -202,6 +199,14 @@ void SettingsPage::onBackButtonFront(PushButton *button, u32 /* localPlayerId */
 
     f32 delay = button->getDelay();
     startReplace(Anim::Prev, delay);
+}
+
+void SettingsPage::updateSheetLabel(u32 currentSheet) {
+    MessageInfo info;
+
+    info.intVals[0] = currentSheet;
+    info.intVals[1] = getSheetCount();
+    m_sheetLabel.setMessageAll(2009, &info);
 }
 
 u32 SettingsPage::getSheetCount() const {

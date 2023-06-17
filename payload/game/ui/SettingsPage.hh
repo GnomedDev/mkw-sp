@@ -67,6 +67,7 @@ private:
     void onSettingControlFront(UpDownControl *control, u32 localPlayerId);
     void onSettingControlSelect(UpDownControl *control, u32 localPlayerId);
     void onBackButtonFront(PushButton *button, u32 localPlayerId);
+    void updateSheetLabel(u32 currentSheet);
     u32 getSheetCount() const;
     CategoryInfo getCategoryInfo(u32 sheetIndex) const;
 
@@ -82,6 +83,7 @@ private:
     TextUpDownValueControl m_categoryValue;
     UpDownControl m_settingControls[6];
     TextUpDownValueControl m_settingValues[6];
+    LayoutUIControl m_sheetLabel;
     CtrlMenuBackButton m_backButton;
     H<MultiControlInputManager> m_onBack{this, &SettingsPage::onBack};
     H<UpDownControl> m_onCategoryControlFront{this, &SettingsPage::onCategoryControlFront};
