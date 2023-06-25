@@ -5,8 +5,8 @@
 #include "game/ui/OnlineConnectionManagerPage.hh"
 #include "game/ui/SectionManager.hh"
 
-#include <sp/trackPacks/TrackPackManager.hh>
 #include <sp/cs/RoomClient.hh>
+#include <sp/trackPacks/TrackPackManager.hh>
 
 namespace UI {
 

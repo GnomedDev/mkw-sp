@@ -23,7 +23,7 @@ std::span<u8> readVanillaTrack(std::array<char, 0x28 + 1> sha1Hex) {
         panic("Failed to load vanilla track metadata for %s", sha1Hex.data());
     }
 
-    return std::span(reinterpret_cast<u8*>(manifest), size);
+    return std::span(reinterpret_cast<u8 *>(manifest), size);
 }
 
 std::span<u8> readSDTrack(std::vector<u8> &manifestBuf, std::array<char, 0x28 + 1> sha1Hex) {
@@ -110,9 +110,9 @@ void TrackPackManager::loadTrackMetadata() {
     bool foundVanilla = false;
     std::span<u8> manifestView;
     std::vector<u8> manifestBuf;
-    for (auto &pack: m_packs) {
+    for (auto &pack : m_packs) {
         SP_LOG("Loading track metadata for pack: %ls", pack.getPrettyName());
-        for (auto mode: s_trackModes) {
+        for (auto mode : s_trackModes) {
             std::optional<Sha1> trackSha;
             for (u16 i = 0; (trackSha = pack.getNthTrack(i, mode)); i += 1) {
                 auto trackShaHex = sha1ToHex(trackSha.value());
@@ -137,7 +137,8 @@ void TrackPackManager::loadTrack(std::span<u8> manifestBuf, Sha1 sha1) {
         panic("Failed to decode track: %s", PB_GET_ERROR(&stream));
     }
 
-    m_trackDb.emplace_back(sha1, protoTrack.slotId, protoTrack.type == 2, (const char *)&protoTrack.name);
+    m_trackDb.emplace_back(sha1, protoTrack.slotId, protoTrack.type == 2,
+            (const char *)&protoTrack.name);
 
     if (protoTrack.has_musicId) {
         m_trackDb.back().m_musicId = protoTrack.musicId;
