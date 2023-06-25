@@ -15,19 +15,21 @@ pack = Pack(
     raceTracks=parse_tracks(pack_info["race"]),
     coinTracks=parse_tracks(pack_info["coin"]),
     balloonTracks=parse_tracks(pack_info["balloon"]),
-    unreleasedTracks=[
-        ProtoTrack (
-            sha1=ProtoSha1(data=bytes.fromhex(name)),
-            name="", # Filled in in game
-            slotId=int(section["slot"]),
-            type=int(section["type"]),
-            musicId=None
-        )
-
-        for name, section in list(original.items())[1:]
-        if name != "Pack Info"
-    ]
 )
+
+for name, section in list(original.items())[1:]:
+    if name == "Pack Info":
+        continue
+
+    track = ProtoTrack (
+        name="", # Filled in in game
+        slotId=int(section["slot"]),
+        type=int(section["type"]),
+        musicId=None
+    )
+
+    with open(f"vanillaTracks/{name}.pb.bin", "wb") as track_file:
+        track_file.write(track.SerializeToString())
 
 with open("vanilla.pb.bin", "wb") as file:
     file.write(pack.SerializeToString())

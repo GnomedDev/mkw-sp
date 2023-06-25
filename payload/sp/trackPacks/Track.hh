@@ -32,7 +32,7 @@ private:
 
 static_assert(sizeof(Track) == 0x7c);
 
-constexpr Track::Mode modes[] = {
+constexpr Track::Mode s_trackModes[] = {
         Track::Mode::Race,
         Track::Mode::Coin,
         Track::Mode::Balloon,

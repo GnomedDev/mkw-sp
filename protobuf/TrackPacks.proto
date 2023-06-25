@@ -5,12 +5,14 @@ message ProtoSha1 {
 }
 
 message ProtoTrack {
-    required ProtoSha1 sha1 = 1;
-    required string name = 2;
-    required uint32 slotId = 3;
-    required uint32 type = 4;
-    optional uint32 musicId = 5;
-    optional uint32 wiimmId = 6;
+    required string name = 1;
+    required uint32 slotId = 2;
+    required uint32 type = 3;
+    optional uint32 musicId = 4;
+
+    // Only included for other tools, should
+    // not be sent to the game or used in SP.
+    optional uint32 wiimmId = 5;
 }
 
 message Pack {
@@ -21,15 +23,13 @@ message Pack {
     repeated ProtoSha1 raceTracks = 4;
     repeated ProtoSha1 coinTracks = 5;
     repeated ProtoSha1 balloonTracks = 6;
-    repeated ProtoTrack unreleasedTracks = 7;
 }
 
-message TrackDB {
+message AliasDB {
     message AliasValue {
         required ProtoSha1 aliased = 1;
         required ProtoSha1 real = 2;
     }
 
-    repeated ProtoTrack tracks = 1;
-    repeated AliasValue aliases = 2;
+    repeated AliasValue aliases = 1;
 }

@@ -11,12 +11,12 @@ public:
 
 private:
     std::expected<void, const char *> loadTrackPacks();
-    void loadTrackDb();
+    void loadTrackMetadata();
+    void loadTrack(std::span<u8> manifestBuf, Sha1 sha1);
 
 public:
     size_t getPackCount() const;
     const Track &getTrack(Sha1 id) const;
-    std::optional<Sha1> getNormalisedSha1(Sha1 aliasedSha1) const;
 
     const TrackPack &getNthPack(u32 n) const;
     const TrackPack &getSelectedTrackPack() const;
@@ -30,7 +30,6 @@ private:
 
     std::vector<Track> m_trackDb;
     std::vector<TrackPack> m_packs;
-    std::vector<std::pair<Sha1, Sha1>> m_aliases;
 
     static TrackPackManager *s_instance;
 };

@@ -9,7 +9,39 @@
 namespace SP {
 
 #define TRACK_PACK_DIRECTORY L"Track Packs"
-#define TRACK_DB L"TrackDB.pb.bin"
+#define TRACK_DIRECTORY L"Tracks"
+
+std::span<u8> readVanillaTrack(std::array<char, 0x28 + 1> sha1Hex) {
+    auto *resourceManager = System::ResourceManager::Instance();
+
+    char pathBuf[sizeof("vanillaTracks/") + sizeof(sha1Hex) + sizeof(".pb.bin")];
+    snprintf(pathBuf, std::size(pathBuf), "vanillaTracks/%s.pb.bin", sha1Hex.data());
+
+    size_t size = 0;
+    void *manifest = resourceManager->getFile(System::ResChannelId::Menu, pathBuf, &size);
+    if (size == 0) {
+        panic("Failed to load vanilla track metadata for %s", sha1Hex.data());
+    }
+
+    return std::span(reinterpret_cast<u8*>(manifest), size);
+}
+
+std::span<u8> readSDTrack(std::vector<u8> &manifestBuf, std::array<char, 0x28 + 1> sha1Hex) {
+    char pathBuf[sizeof("mkw-sp/Tracks/") + sizeof(sha1Hex) + sizeof(".pb.bin")];
+    snprintf(pathBuf, std::size(pathBuf), "mkw-sp/Tracks/%s.pb.bin", sha1Hex.data());
+
+    auto trackHandle = Storage::OpenRO(pathBuf);
+    if (!trackHandle.has_value()) {
+        panic("Could not find track metadata for %s", sha1Hex.data());
+    }
+
+    manifestBuf.resize(trackHandle->size());
+    if (!trackHandle->read(manifestBuf.data(), manifestBuf.size(), 0)) {
+        panic("Could not read track metadata for %s", sha1Hex.data());
+    }
+
+    return std::span(manifestBuf.data(), manifestBuf.size());
+}
 
 TrackPackManager::TrackPackManager() {
     auto res = loadTrackPacks();
@@ -17,7 +49,7 @@ TrackPackManager::TrackPackManager() {
         panic("Fatal error parsing track packs: %s", res.error());
     }
 
-    loadTrackDb();
+    loadTrackMetadata();
 }
 
 std::expected<void, const char *> TrackPackManager::loadTrackPacks() {
@@ -69,41 +101,47 @@ std::expected<void, const char *> TrackPackManager::loadTrackPacks() {
     return {};
 }
 
-void TrackPackManager::loadTrackDb() {
-    SP_LOG("Loading track DB");
+void TrackPackManager::loadTrackMetadata() {
+    SP_LOG("Loading track metadata");
 
-    // Load up the wiimm db, which is pretty large, so we cannot
-    // just put it on the stack, so we get the size from stat and
-    // allocate a buffer that fits this exact size.
-    auto nodeInfo = Storage::Stat(TRACK_DB);
-    if (!nodeInfo.has_value()) {
-        SP_LOG("No track DB found!");
-        return;
+    auto dir = Storage::OpenDir(TRACK_DIRECTORY);
+    assert(dir.has_value()); // Was created in loadTrackPacks
+
+    bool foundVanilla = false;
+    std::span<u8> manifestView;
+    std::vector<u8> manifestBuf;
+    for (auto &pack: m_packs) {
+        SP_LOG("Loading track metadata for pack: %ls", pack.getPrettyName());
+        for (auto mode: s_trackModes) {
+            std::optional<Sha1> trackSha;
+            for (u16 i = 0; (trackSha = pack.getNthTrack(i, mode)); i += 1) {
+                auto trackShaHex = sha1ToHex(trackSha.value());
+                if (foundVanilla) {
+                    manifestView = readSDTrack(manifestBuf, trackShaHex);
+                } else {
+                    manifestView = readVanillaTrack(trackShaHex);
+                }
+
+                loadTrack(manifestView, *trackSha);
+            }
+        }
+
+        foundVanilla = true;
+    }
+}
+
+void TrackPackManager::loadTrack(std::span<u8> manifestBuf, Sha1 sha1) {
+    ProtoTrack protoTrack;
+    pb_istream_t stream = pb_istream_from_buffer(manifestBuf.data(), manifestBuf.size());
+    if (!pb_decode(&stream, ProtoTrack_fields, &protoTrack)) {
+        panic("Failed to decode track: %s", PB_GET_ERROR(&stream));
     }
 
-    std::vector<u8> trackDbBuf;
-    trackDbBuf.resize(nodeInfo->size);
+    m_trackDb.emplace_back(sha1, protoTrack.slotId, protoTrack.type == 2, (const char *)&protoTrack.name);
 
-    auto len = Storage::FastReadFile(nodeInfo->id, trackDbBuf.data(), nodeInfo->size);
-    if (!len.has_value() || *len == 0) {
-        panic("Failed to read track DB!");
+    if (protoTrack.has_musicId) {
+        m_trackDb.back().m_musicId = protoTrack.musicId;
     }
-
-    trackDbBuf.resize(*len);
-
-    pb_istream_t stream = pb_istream_from_buffer(trackDbBuf.data(), trackDbBuf.size());
-
-    TrackDB trackDb = TrackDB_init_zero;
-    trackDb.tracks.funcs.decode = &decodeTrackCallback;
-    trackDb.tracks.arg = &m_trackDb;
-    trackDb.aliases.funcs.decode = &decodeAliasCallback;
-    trackDb.aliases.arg = this;
-    if (!pb_decode(&stream, TrackDB_fields, &trackDb)) {
-        panic("Failed to parse track DB!");
-    }
-
-    SP_LOG("Finished loading track DB with %d tracks and %d aliases", m_trackDb.size(),
-            m_aliases.size());
 }
 
 size_t TrackPackManager::getPackCount() const {
@@ -124,17 +162,6 @@ const Track &TrackPackManager::getTrack(Sha1 sha1) const {
 
     auto hex = sha1ToHex(sha1);
     panic("Unknown sha1 id: %s", hex.data());
-}
-
-std::optional<Sha1> TrackPackManager::getNormalisedSha1(Sha1 aliasedSha1) const {
-    auto predicate = [&](std::pair<Sha1, Sha1> pair) { return pair.first == aliasedSha1; };
-    auto aliasIt = std::find_if(m_aliases.begin(), m_aliases.end(), predicate);
-
-    if (aliasIt == m_aliases.end()) {
-        return std::nullopt;
-    } else {
-        return aliasIt->second;
-    }
 }
 
 const TrackPack &TrackPackManager::getNthPack(u32 n) const {

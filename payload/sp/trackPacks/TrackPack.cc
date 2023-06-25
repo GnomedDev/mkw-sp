@@ -23,8 +23,6 @@ std::expected<void, const char *> TrackPack::parseNew(std::span<const u8> manife
     manifest.coinTracks.funcs.decode = &decodeSha1Callback;
     manifest.balloonTracks.arg = &m_balloonTracks;
     manifest.balloonTracks.funcs.decode = &decodeSha1Callback;
-    manifest.unreleasedTracks.arg = &m_unreleasedTracks;
-    manifest.unreleasedTracks.funcs.decode = &decodeTrackCallback;
 
     if (!pb_decode(&stream, Pack_fields, &manifest)) {
         return std::unexpected("Failed to parse TrackPack");
@@ -40,7 +38,7 @@ std::expected<void, const char *> TrackPack::parseNew(std::span<const u8> manife
 }
 
 bool TrackPack::contains(const Sha1 &sha1) const {
-    for (auto mode : modes) {
+    for (auto mode : s_trackModes) {
         auto &trackList = getTrackList(mode);
         if (std::find(trackList.begin(), trackList.end(), sha1) != trackList.end()) {
             return true;
@@ -56,7 +54,7 @@ u16 TrackPack::getTrackCount(Track::Mode mode) const {
 
 Track::Mode TrackPack::getSupportedModes() const {
     auto supportedModes = static_cast<Track::Mode>(0);
-    for (auto mode : modes) {
+    for (auto mode : s_trackModes) {
         if (!getTrackList(mode).empty()) {
             supportedModes |= mode;
         }
