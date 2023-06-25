@@ -1,10 +1,11 @@
 #include "TrackPackManager.hh"
-#include "Parse.hh"
 
 #include "sp/storage/Storage.hh"
 
 #include <game/system/RaceConfig.hh>
 #include <game/system/ResourceManager.hh>
+#include <protobuf/TrackPacks.pb.h>
+#include <vendor/nanopb/pb_decode.h>
 
 namespace SP {
 

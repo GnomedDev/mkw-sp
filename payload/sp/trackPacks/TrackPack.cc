@@ -1,11 +1,26 @@
 #include "TrackPack.hh"
-#include "Parse.hh"
 
+#include <protobuf/TrackPacks.pb.h>
 #include <vendor/magic_enum/magic_enum.hpp>
+#include <vendor/nanopb/pb_decode.h>
 
 using namespace magic_enum::bitwise_operators;
 
 namespace SP {
+
+bool decodeSha1Callback(pb_istream_t *stream, const pb_field_t * /* field */, void **arg) {
+    auto &out = *reinterpret_cast<std::vector<Sha1> *>(*arg);
+
+    ProtoSha1 sha1;
+    if (!pb_decode(stream, ProtoSha1_fields, &sha1)) {
+        panic("Failed to decode Sha1: %s", PB_GET_ERROR(stream));
+    }
+
+    assert(sha1.data.size == 0x14);
+
+    out.push_back(std::to_array(sha1.data.bytes));
+    return true;
+}
 
 std::expected<TrackPack, const char *> TrackPack::New(std::span<const u8> manifestRaw) {
     TrackPack self;
