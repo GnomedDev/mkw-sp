@@ -1,5 +1,6 @@
 #include "ResourceManager.hh"
 
+#include "game/system/RaceConfig.hh"
 #include "game/system/RootScene.hh"
 
 #include <sp/storage/DecompLoader.hh>
@@ -147,15 +148,21 @@ MultiDvdArchive *ResourceManager::loadCourse(Registry::Course courseId, EGG::Hea
     assert(static_cast<u32>(courseId) < std::size(CourseFilenames));
     auto *courseFilename = CourseFilenames[static_cast<u32>(courseId)];
 
-    if (splitScreen) {
-        snprintf(filePath, filePathSize, "Race/Course/%s_d", courseFilename);
-        if (!archive->exists(filePath)) {
-            splitScreen = false;
+    auto &spScenario = System::RaceConfig::Instance()->m_spRace;
+    if (spScenario.pathReplacement.m_len == 0) {
+        // No path replacement, use vanilla tracks
+        if (splitScreen) {
+            snprintf(filePath, filePathSize, "Race/Course/%s_d", courseFilename);
+            if (!archive->exists(filePath)) {
+                splitScreen = false;
+            }
         }
-    }
 
-    if (!splitScreen) {
-        snprintf(filePath, filePathSize, "Race/Course/%s", courseFilename);
+        if (!splitScreen) {
+            snprintf(filePath, filePathSize, "Race/Course/%s", courseFilename);
+        }
+    } else {
+        strncpy(filePath, spScenario.pathReplacement.c_str(), filePathSize);
     }
 
     m_taskThread->request(DoLoadTask, (void *)2, 0);
