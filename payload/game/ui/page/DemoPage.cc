@@ -9,10 +9,11 @@ void DemoPage::onInit() {
     m_inputManager.init(0, 0);
     setInputManager(&m_inputManager);
 
-    auto sectionManager = SectionManager::Instance();
+    auto *raceConfig = System::RaceConfig::Instance();
+    auto *sectionManager = SectionManager::Instance();
     auto globalContext = sectionManager->globalContext();
 
-    auto &raceScenario = System::RaceConfig::Instance()->raceScenario();
+    auto &raceScenario = raceConfig->raceScenario();
     auto currentSectionId = sectionManager->currentSection()->id();
 
     initChildren(2);
@@ -22,11 +23,8 @@ void DemoPage::onInit() {
     m_courseDisplay.load("demo", "course_name", "course_name", 0);
     m_cupDisplay.load("demo", "cup_name", "cup_name", 0);
 
-    auto courseId = raceScenario.courseId;
-    auto cupId = Registry::GetCourseCupId(courseId);
-
     if (raceConfig->m_spRace.nameReplacement.m_len == 0) {
-        m_courseDisplay.setMessageAll(Registry::GetCourseName(courseId), nullptr);
+        m_courseDisplay.setMessageAll(Registry::GetCourseName(raceScenario.courseId), nullptr);
     } else {
         MessageInfo info;
         info.strings[0] = raceConfig->m_spRace.nameReplacement.c_str();
@@ -48,6 +46,8 @@ void DemoPage::onInit() {
     }
 
     if (currentSectionId == SectionId::GPDemo) {
+        auto cupId = Registry::GetCourseCupId(raceScenario.courseId);
+
         cupInfo.messageIds[1] = Registry::GetCupMessageId(cupId);
         cupMsgId = 1410 + raceScenario.raceNumber;
         cupIcon = Registry::GetCupIconName(cupId);

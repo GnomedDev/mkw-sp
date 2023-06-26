@@ -116,7 +116,7 @@ void PackSelectPage::onButtonFront(PushButton *button, u32 /* localPlayerId */) 
     } else {
         auto buttonIndex = m_sheetIndex * m_buttons.size() + button->m_index;
         if (!s_lastPackFront.has_value() || *s_lastPackFront != buttonIndex) {
-            SP::CourseDatabase::Instance().resetSelection();
+            UI::CourseSelectPage::s_lastSelected.reset();
         }
 
         s_lastPackFront = buttonIndex;
