@@ -587,6 +587,9 @@ asset_in_files = {
         os.path.join('button', 'ctrl', 'CharacterSelect4_3_Multi.brctr.json5'),
         os.path.join('button', 'blyt', 'common_w117_mii_suit.brlyt.json5'),
         *pack_select_assets,
+        # Vanilla track manifests
+        os.path.join('vanillaTracks.pb.bin'),
+        *[os.path.normpath(i) for i in sorted(glob.glob("vanillaTracks/*.pb.bin", root_dir="assets", recursive=True))],
         # Flags
         os.path.join('control', 'blyt', 'chara_flag_machine_picture_common.brlyt.json5'),
         *[os.path.normpath(i) for i in sorted(glob.glob("control/timg/[0-9][0-9][0-9].tpl", root_dir="assets", recursive=True))],
@@ -1007,7 +1010,7 @@ target_cflags = {
 }
 profile_cflags = {
     'DEBUG': [
-        '-O0',
+        '-O1',
         '-g',
         '-DSP_DEBUG'
     ],
@@ -1141,6 +1144,7 @@ n.newline()
 protobuf_proto_files = [
     os.path.join('protobuf', 'Login.proto'),
     os.path.join('protobuf', 'Matchmaking.proto'),
+    os.path.join('protobuf', 'TrackPacks.proto'),
     os.path.join('protobuf', 'NetStorage.proto'),
     os.path.join('protobuf', 'Room.proto'),
     os.path.join('protobuf', 'Update.proto'),
