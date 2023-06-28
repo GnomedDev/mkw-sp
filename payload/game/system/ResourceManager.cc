@@ -165,6 +165,7 @@ MultiDvdArchive *ResourceManager::loadCourse(Registry::Course courseId, EGG::Hea
         strncpy(filePath, spScenario.pathReplacement.c_str(), filePathSize);
     }
 
+    SP_LOG("path replacement %s", filePath);
     m_taskThread->request(DoLoadTask, (void *)2, 0);
     process();
 

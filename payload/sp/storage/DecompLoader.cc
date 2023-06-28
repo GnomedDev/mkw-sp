@@ -29,23 +29,14 @@ static OSThread thread;
 alignas(0x20) static u8 srcs[2][0x20000 /* 128 KiB */];
 
 static std::optional<FileHandle> Open(const char *path, std::optional<StorageType> storageType) {
-    if (ThumbnailManager::IsActive()) {
-        char coursePath[128];
-        snprintf(coursePath, std::size(coursePath), "ro:/Race/Course/%s.szs",
-                System::ResourceManager::GetCourseFilename(ThumbnailManager::CourseId()));
-        if (!strcmp(path, coursePath)) {
-            auto thumbnailPath = ThumbnailManager::Path();
-            return Storage::Open(thumbnailPath.data(), "r");
-        }
-    }
-
+    SP_LOG("load %s", path);
     size_t length = strlen(path);
     if (!strncmp(path, "ro:/", strlen("ro:/")) && length >= strlen(".szs") &&
             !strcmp(path + length - strlen(".szs"), ".szs")) {
         wchar_t lzmaPath[128];
         swprintf(lzmaPath, std::size(lzmaPath), L"%.*s.arc.lzma", length - strlen(".szs"), path);
-        auto file = storageType ? Storage::GetStorage(*storageType)->open(lzmaPath, "r") :
-                                  Storage::Open(lzmaPath, "r");
+        SP_LOG("lzma path %ls", lzmaPath);
+        auto file = Storage::Open(lzmaPath, "r");
         if (file) {
             return file;
         }

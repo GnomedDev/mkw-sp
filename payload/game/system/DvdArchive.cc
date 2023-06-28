@@ -17,6 +17,7 @@ namespace System {
 
 void DvdArchive::load(const char *path, EGG::Heap *archiveHeap, bool isCompressed, s8 align,
         EGG::Heap *fileHeap, u32) {
+    SP_LOG("DVDArchive::load(path: %s, compressed: %d)", path, (s32)isCompressed);
     if (m_state != State::Cleared) {
         return;
     }
