@@ -83,13 +83,20 @@ void PackSelectPage::onInit() {
     refresh();
 }
 
+void PackSelectPage::onDeinit() {
+    SP::TrackPackManager::DestroyInstance();
+}
+
 void PackSelectPage::onActivate() {
     m_replacement = PageId::None;
     m_scrollBar.reconfigure(m_sheetCount, m_sheetIndex, m_sheetCount >= 2 ? 0x1 : 0x0);
 
-    Section *section = SectionManager::Instance()->currentSection();
-    auto *modelPage = section->page<PageId::Model>();
-    modelPage->modelControl().setModel(-1);
+    auto *section = SectionManager::Instance()->currentSection();
+    auto *connManager = section->page<PageId::OnlineConnectionManager>();
+    if (connManager == nullptr) {
+        auto *modelPage = section->page<PageId::Model>();
+        modelPage->modelControl().setModel(-1);
+    }
 }
 
 void PackSelectPage::onBack(u32 /* localPlayerId */) {
@@ -108,23 +115,23 @@ void PackSelectPage::onBack(u32 /* localPlayerId */) {
 
 void PackSelectPage::onButtonFront(PushButton *button, u32 /* localPlayerId */) {
     auto *sectionManager = SectionManager::Instance();
-    auto *section = sectionManager->currentSection();
-
     auto *globalContext = sectionManager->globalContext();
-    auto *connManager = section->page<PageId::OnlineConnectionManager>();
+    auto sectionId = sectionManager->currentSection()->id();
 
-    if (connManager != nullptr) {
-        connManager->setTrackpack(button->m_index * m_sheetIndex);
+    bool isOnline = Section::HasOnlineManager(sectionId);
+
+    auto buttonIndex = m_sheetIndex * m_buttons.size() + button->m_index + isOnline;
+    globalContext->m_currentPack = buttonIndex;
+
+    if (isOnline) {
         m_replacement = PageId::OnlineModeSelect;
     } else {
-        auto buttonIndex = m_sheetIndex * m_buttons.size() + button->m_index;
         if (!s_lastPackFront.has_value() || *s_lastPackFront != buttonIndex) {
             UI::CourseSelectPage::s_lastSelected.reset();
         }
 
         s_lastPackFront = buttonIndex;
-        globalContext->m_currentPack = buttonIndex;
-        if (section->id() == SectionId::Multi) {
+        if (sectionId == SectionId::Multi) {
             m_replacement = PageId::MultiTop;
         } else {
             m_replacement = PageId::SingleTop;
@@ -190,16 +197,15 @@ void PackSelectPage::refresh() {
     bool isOnline = Section::HasOnlineManager(sectionId);
 
     auto &trackPackManager = SP::TrackPackManager::Instance();
-    u32 packCount = trackPackManager.getPackCount() - isOnline;
-
-    for (size_t i = isOnline; i < m_buttons.size(); i++) {
-        u32 packIndex = m_sheetIndex * m_buttons.size() + i;
+    u32 packCount = trackPackManager.getPackCount();
+    for (size_t i = 0; i < m_buttons.size(); i++) {
+        u32 packIndex = m_sheetIndex * m_buttons.size() + i + isOnline;
         if (packIndex < packCount) {
             m_buttons[i].setVisible(true);
             m_buttons[i].setPlayerFlags(1 << 0);
 
             MessageInfo info{};
-            info.strings[0] = trackPackManager.getNthPack(i).getPrettyName();
+            info.strings[0] = trackPackManager.getNthPack(packIndex).getPrettyName();
             m_buttons[i].setMessageAll(6602, &info);
         } else {
             m_buttons[i].setVisible(false);

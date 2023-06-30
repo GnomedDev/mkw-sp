@@ -93,9 +93,8 @@ void OnlineTopPage::onButtonSelect(PushButton *button, u32 /* localPlayerId */) 
 }
 
 void OnlineTopPage::onWorldwideButtonFront(PushButton *button, u32 /* localPlayerId */) {
-    auto section = SectionManager::Instance()->currentSection();
-    auto connectionManager = section->page<PageId::OnlineConnectionManager>();
-    connectionManager->setTrackpack(0);
+    auto globalContext = SectionManager::Instance()->globalContext();
+    globalContext->m_currentPack = 0;
 
     m_replacement = PageId::OnlineModeSelect;
     startReplace(Anim::Next, button->getDelay());
