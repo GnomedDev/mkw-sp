@@ -493,6 +493,7 @@ asset_in_files = {
         os.path.join('ranking', 'timg', 'tt_pattern_chek_bokashi_32x32.tpl'),
     ],
     os.path.join('Scene', 'UI', 'MenuSingleSP.arc.lzma'): [
+        os.path.join('test.bz2'),
         os.path.join('button', 'ctrl', 'SettingsButton.brctr.json5'),
         # Explanation text with 2 lines
         os.path.join('bg', 'blyt', 'obi_bottom.brlyt.json5'),
@@ -826,6 +827,7 @@ for target in asset_in_files:
             '.brlyt': '.brlyt',
             '.brres': '.brres',
             '.json5': '',
+            '.bz2': '.bz2',
             '.tpl': '.tpl',
         }[ext]
         out_file = os.path.join('$builddir', 'Shared.arc.lzma.d', base + outext)
@@ -857,6 +859,7 @@ for target in asset_in_files:
                 '.brlyt': 'cp',
                 '.brres': 'cp',
                 '.json5': 'wuj5',
+                '.bz2': 'cp',
                 '.tpl': 'cp',
             }[ext]
             n.build(
@@ -1194,6 +1197,7 @@ code_in_files = {
         os.path.join('vendor', 'nanopb', 'pb_decode.c'),
         os.path.join('vendor', 'nanopb', 'pb_encode.c'),
         os.path.join('vendor', 'tjpgd', 'tjpgd.c'),
+        *sorted(glob.glob("vendor/bzip2/*.c")),
         *sorted(glob.glob("payload/**/*.cc", recursive=True)),
         *sorted(glob.glob("payload/**/*.c", recursive=True)),
         *sorted(glob.glob("payload/**/*.S", recursive=True)),

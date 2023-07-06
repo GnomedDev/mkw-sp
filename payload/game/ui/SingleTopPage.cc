@@ -1,6 +1,7 @@
 #include "SingleTopPage.hh"
 
 #include "game/system/RaceConfig.hh"
+#include "game/system/ResourceManager.hh"
 #include "game/system/SaveManager.hh"
 #include "game/ui/CourseSelectPage.hh"
 #include "game/ui/ModelPage.hh"
@@ -11,6 +12,7 @@
 
 #include <sp/settings/ClientSettings.hh>
 extern "C" {
+#include <vendor/bzip2/bzlib.h>
 #include <vendor/libhydrogen/hydrogen.h>
 }
 
@@ -85,6 +87,36 @@ void SingleTopPage::onInit() {
 
     m_taButton.selectDefault(0);
     m_instructionText.setMessage(3051);
+
+    bz_stream stream;
+    memset(&stream, 0, sizeof(bz_stream));
+
+    auto errCode = BZ2_bzDecompressInit(&stream, 0, true);
+    if (errCode != BZ_OK) {
+        panic("decompInit err: %d", errCode);
+    }
+
+    auto *resourceManager = System::ResourceManager::Instance();
+
+    size_t size = 0;
+    auto inBuf = resourceManager->getFile(System::ResourceType::Menu, "test.bz2", &size);
+    assert(size != 0);
+
+    char outBuf[1024];
+    memset(outBuf, 0, std::size(outBuf));
+
+    stream.next_in = reinterpret_cast<char *>(inBuf);
+    stream.next_out = outBuf;
+    stream.avail_in = size;
+    stream.avail_out = std::size(outBuf);
+
+    auto ret = BZ2_bzDecompress(&stream);
+    if (ret != BZ_STREAM_END) {
+        panic("decomp err: %d", ret);
+    }
+
+    BZ2_bzDecompressEnd(&stream);
+    SP_LOG("Decomp success: %s", outBuf);
 }
 
 void SingleTopPage::onActivate() {
