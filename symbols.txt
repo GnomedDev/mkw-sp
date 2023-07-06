@@ -459,9 +459,8 @@
 0x80226a1c _ZN3EGG7ExpHeap6CreateEPvjt
 0x80226dc0 EGG_ExpHeap_InitAlloc
 0x802289DC g3dutil_SearchSamplers
-0x80229814 EGG_Heap_alloc
 0x80229ADC _ZN3EGG4Heap15findContainHeapEPKv
-0x80229b84 EGG_Heap_free
+0x80229b84 _ZN3EGG4Heap4freeEPvPS0_
 0x80229dcc new
 0x80229dcc _Znwj
 0x80229de0 _ZnwjPN3EGG4HeapEi

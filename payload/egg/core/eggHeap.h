@@ -12,16 +12,6 @@ typedef struct {
 static_assert(offsetof(EGG_Heap, _1c) == 0x1c);
 static_assert(sizeof(EGG_Heap) == 0x38);
 
-void *EGG_Heap_alloc(u32 size, s32 align, EGG_Heap *heap);
-
-void EGG_Heap_free(void *memBlock, EGG_Heap *heap);
-
-void *spAlloc(size_t size, s32 align, EGG_Heap *heap);
-
-void *spAllocArray(size_t count, size_t size, s32 align, EGG_Heap *heap);
-
-void spFree(void *memBlock);
-
 typedef struct {
     EGG_Heap base;
     // ...
