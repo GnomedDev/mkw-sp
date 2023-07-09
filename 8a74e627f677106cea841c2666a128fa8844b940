@@ -33,3 +33,5 @@
 {"timestamp":"1683140552","author":"MikeIsAStar","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/sp/ExceptionSyms.cc","range":{"startLine":13}},"description":"`substr`"}
 
 {"timestamp":"1683142349","author":"vabold","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/sp/MapFile.cc","range":{"startLine":55}},"description":"Because he's Star. I'm pretty sure he would use `uint32_t` if given the chance."}
+
+{"timestamp":"1683143155","author":"vabold","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/egg/core/eggSystem.cc","range":{"startLine":40}},"description":"This function already exists in-game and as such should use a replacement."}
