@@ -13,3 +13,5 @@
 {"timestamp":"1675619653","author":"GnomedDev","location":{"commit":"187d72759e040be59cc3f7e6c4afa8fe9b44ea35","path":"tools/netprotocol/src/async_stream.rs","range":{"startLine":219}},"description":"This check could be made mandatory by using an `Option\u003cNonZeroUsize\u003e`"}
 
 {"timestamp":"1675632406","author":"stblr","location":{"commit":"187d72759e040be59cc3f7e6c4afa8fe9b44ea35","path":"tools/gameserver/Cargo.toml","range":{"startLine":9}},"description":"This was used for iteration in one of the prototypes but it looks like this is not needed anymore. Will swap it back because there is no convenient way to get the key before constructing the value."}
+
+{"timestamp":"1675632697","author":"stblr","location":{"commit":"187d72759e040be59cc3f7e6c4afa8fe9b44ea35","path":"tools/netprotocol/src/async_stream.rs","range":{"startLine":219}},"description":"I will see if there is a way to implement the checks at compile time (have `start_write` return a struct with a mutable reference)."}
