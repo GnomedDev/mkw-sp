@@ -1,0 +1,1 @@
+{"timestamp":"1649443738","reviewRef":"refs/pull/263/head","targetRef":"refs/heads/main","requester":"riidefi","description":"Add /i command\n\n`/i [item] [qty|0=STICKY]`\r\n\r\n`/i`: Clear the player's item\r\n`/i 6`: Give the player 1 bob-omb\r\n`/i 5 2`: Give the player 2 mushrooms\r\n`/i 5 -2`: Give the player permanent 2 mushrooms"}
