@@ -1,0 +1,1 @@
+{"timestamp":"1678129281","author":"stblr","location":{"commit":"149982a478aab7a78e53e035cdf15ad38946508d","path":"configure.py","range":{"startLine":24}},"description":"Either all 3 messages should end with a period, or none of them."}
