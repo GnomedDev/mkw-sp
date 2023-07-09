@@ -7,3 +7,5 @@
 {"timestamp":"1683137282","author":"stblr","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/nw4r/db/dbException.cc","range":{"startLine":28}},"description":"```suggestion\r\n};\r\n```"}
 
 {"timestamp":"1683137458","author":"stblr","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/nw4r/db/dbException.cc","range":{"startLine":152}},"description":"\"MAIN\"?"}
+
+{"timestamp":"1683137497","author":"stblr","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/platform/isdigit.c","range":{"startLine":6}},"description":"Are you sure this hack is needed?"}
