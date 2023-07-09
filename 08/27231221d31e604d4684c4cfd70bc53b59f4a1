@@ -1,3 +1,5 @@
 {"timestamp":"1643996915","author":"stblr","location":{"commit":"8402f53a7f7d7b38efc30d03e09be92cab5353c7","path":"payload/game/ui/LicenseSettingsPage.c","range":{"startLine":217}},"description":"We have these as `beforeCalc` and `afterCalc`."}
 
 {"timestamp":"1643996986","author":"stblr","location":{"commit":"8402f53a7f7d7b38efc30d03e09be92cab5353c7","path":"payload/game/ui/Page.h","range":{"startLine":45}},"description":"Can you keep the same format as the rest with the size written as offset of next element minus offset of self?"}
+
+{"timestamp":"1643997558","author":"riidefi","location":{"commit":"8402f53a7f7d7b38efc30d03e09be92cab5353c7","path":"payload/game/ui/LicenseSettingsPage.c","range":{"startLine":217}},"description":"I've renamed all existing references to beforeCalc/afterCalc too."}
