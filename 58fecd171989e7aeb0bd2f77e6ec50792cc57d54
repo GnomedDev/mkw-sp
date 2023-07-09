@@ -83,3 +83,5 @@
 {"timestamp":"1680915113","author":"GnomedDev","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.hh","range":{"startLine":36}},"description":"Hmm? That seems like a micro optimization and even then, how would that be better for cache reasons?"}
 
 {"timestamp":"1681091923","author":"riidefi","location":{"commit":"d187fe7d7fa1747ccc2a2cf90f64d27c2a611290","path":"payload/sp/FixedString.hh","range":{"startLine":12}},"description":"Unused include. Maybe cherry-pick this file into its own PR?"}
+
+{"timestamp":"1681091966","author":"riidefi","location":{"commit":"d187fe7d7fa1747ccc2a2cf90f64d27c2a611290","path":"payload/sp/FixedString.hh","range":{"startLine":48}},"description":"Actually, for both `FixedString\u003cN\u003e` classes, does it make sense to have `N-1` usable characters?"}
