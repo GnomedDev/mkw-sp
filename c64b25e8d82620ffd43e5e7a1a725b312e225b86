@@ -37,3 +37,5 @@
 {"timestamp":"1675290257","author":"stblr","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/src/main.rs","range":{"startLine":83}},"description":"Is the idea for battle rooms to randomly switch between modes (I don't play battle)?"}
 
 {"timestamp":"1675290834","author":"stblr","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/src/main.rs","range":{"startLine":156}},"description":"This allows the client to crash the whole process, right?"}
+
+{"timestamp":"1675290865","author":"stblr","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/src/main.rs","range":{"startLine":231}},"description":"How were the port numbers chosen?"}
