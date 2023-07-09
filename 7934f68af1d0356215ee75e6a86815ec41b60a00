@@ -5,3 +5,5 @@
 {"timestamp":"1679429885","author":"stblr","description":"For this we still need to think about track identification."}
 
 {"timestamp":"1679429955","author":"GnomedDev","description":"What do you mean by that?"}
+
+{"timestamp":"1679430145","author":"stblr","description":"With the course cache we could easily get a hash of the track to filter ghosts (CTGP and MKW-SP store that in the ghost file). The simplest way to work around that would be to hash everything on startup but that's way too slow and doesn't handle NetStorage."}
