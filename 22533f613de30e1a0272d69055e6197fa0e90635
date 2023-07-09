@@ -21,3 +21,5 @@
 {"timestamp":"1685134444","author":"stblr","location":{"commit":"2f22e80d914ff8e7a8e55f9a31edf80bdc450cd9","path":"payload/game/ui/page/TopMenuPage.S","range":{"startLine":21}},"description":"Looks like this can be easily converted to C++."}
 
 {"timestamp":"1685134795","author":"vabold","location":{"commit":"2f22e80d914ff8e7a8e55f9a31edf80bdc450cd9","path":"payload/game/ui/RankingPage.hh","range":{"startLine":23}},"description":"This function is unused."}
+
+{"timestamp":"1685134802","author":"vabold","location":{"commit":"2f22e80d914ff8e7a8e55f9a31edf80bdc450cd9","path":"payload/game/ui/RankingPage.cc","range":{"startLine":37}},"description":"Ordering."}
