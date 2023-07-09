@@ -51,3 +51,5 @@
 {"timestamp":"1674256969","author":"GnomedDev","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"payload/game/system/RaceConfig.cc","range":{"startLine":79}},"description":"That assert fired on starting split screen matches, and removing it didn't break anything (tested all screen counts and vs single)"}
 
 {"timestamp":"1674257089","author":"GnomedDev","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"assets/message/Menu_E.bmg.json5","range":{"startLine":1089}},"description":"Would need a rewrite of BattleModeSelectPage::onInit, or onActivate, not sure. I don't see what's wrong with just replacing the old text as this would also change if that ID was reused."}
+
+{"timestamp":"1674306507","author":"stblr","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"assets/message/Menu_E.bmg.json5","range":{"startLine":1089}},"description":"The issue is that for other languages, you get an incorrect text which is worse than an untranslated one. I _think_ that using the existing id and putting it in MenuSP_U would work but that would need to be tested."}
