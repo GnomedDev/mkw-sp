@@ -19,3 +19,5 @@
 {"timestamp":"1675123943","author":"vabold","location":{"commit":"400ac23ee830eb41e812ab01e42f4d2682c4d1bb","path":"payload/sp/cs/RoomClient.cc","range":{"startLine":131}},"description":"Remove debug log."}
 
 {"timestamp":"1675196536","author":"stblr","location":{"commit":"5ce910639fd1c63c05178360f1b1678582ebc1f8","path":"configure.py","range":{"startLine":1111}},"description":"What does this do?"}
+
+{"timestamp":"1675196547","author":"stblr","location":{"commit":"5ce910639fd1c63c05178360f1b1678582ebc1f8","path":"configure.py","range":{"startLine":1575}},"description":"Alphasort"}
