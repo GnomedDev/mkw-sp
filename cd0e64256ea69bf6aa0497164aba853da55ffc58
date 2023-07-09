@@ -1,1 +1,3 @@
 {"timestamp":"1686871546","author":"riidefi","description":"I think this is fine, but the annoying thing with C++ is that a std::array reference isn't like a Rust arrayref, so this code sort of requires that everyone is locked into the Sha1 struct. Perhaps we could provide two aliases? i.e.\r\n```cpp\r\nusing Sha1 = std::array\u003cu8, 0x14\u003e;\r\nusing Sha1Ref = std::span\u003cconst u8, 0x14\u003e;\r\n```"}
+
+{"timestamp":"1686871593","author":"GnomedDev","description":"Being locked into the `Sha1` struct is mostly the point, for type safety."}
