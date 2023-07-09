@@ -3,3 +3,5 @@
 {"timestamp":"1677412677","author":"stblr","location":{"commit":"6b8f3ea2b71a4d3fe72716cff59af0c1d3048301","path":"tools/bmg-cleaner/bmg-cleaner.py","range":{"startLine":23}},"description":"What about `quote_keys`?"}
 
 {"timestamp":"1677412751","author":"GnomedDev","location":{"commit":"6b8f3ea2b71a4d3fe72716cff59af0c1d3048301","path":"tools/bmg-cleaner/bmg-cleaner.py","range":{"startLine":23}},"description":"What about it? If we are using json5, shouldn't we be taking advantage of it's features?"}
+
+{"timestamp":"1677416933","author":"stblr","location":{"commit":"6b8f3ea2b71a4d3fe72716cff59af0c1d3048301","path":"tools/bmg-cleaner/bmg-cleaner.py","range":{"startLine":23}},"description":"Yeah why not."}
