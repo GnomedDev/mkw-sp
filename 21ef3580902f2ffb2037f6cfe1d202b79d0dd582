@@ -29,3 +29,5 @@
 {"timestamp":"1681935943","author":"GnomedDev","location":{"commit":"92dd378a4976e179bb0782c3677caad4bc9b72eb","path":"payload/game/system/RaceConfig.hh","range":{"startLine":129}},"description":"The first 0x4 bytes is the vtable, which although it doesn't get called, I didn't want to randomly overwrite it. Putting it in `m_menuScenario` would work but then it looks like it's duplicated throughout the different Scenarios, which isn't true as it is only touched in the one (eg: perfect for just being part of `RaceConfig`)"}
 
 {"timestamp":"1681936211","author":"stblr","location":{"commit":"92dd378a4976e179bb0782c3677caad4bc9b72eb","path":"payload/game/system/RaceConfig.hh","range":{"startLine":129}},"description":"It's more for consistency than anything."}
+
+{"timestamp":"1681936292","author":"GnomedDev","location":{"commit":"92dd378a4976e179bb0782c3677caad4bc9b72eb","path":"payload/game/system/RaceConfig.hh","range":{"startLine":129}},"description":"Consistency shouldn't be pursued over readability."}
