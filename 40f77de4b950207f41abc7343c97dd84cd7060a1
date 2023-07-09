@@ -1,0 +1,1 @@
+{"timestamp":"1688516181","reviewRef":"refs/pull/851/head","targetRef":"refs/heads/main","requester":"GnomedDev","description":"Remove total category page display from SettingsPage\n\nCloses #409","baseCommit":"9b756e06ff4343b87a81e751cbf1d1a47f7337ee"}
