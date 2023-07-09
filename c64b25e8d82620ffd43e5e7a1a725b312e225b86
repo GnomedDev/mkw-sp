@@ -47,3 +47,5 @@
 {"timestamp":"1675293755","author":"GnomedDev","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/src/main.rs","range":{"startLine":231}},"description":"20036 was randomly chosen, and I picked the number after aswell. They don't seem to be used anywhere."}
 
 {"timestamp":"1675293948","author":"GnomedDev","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/src/main.rs","range":{"startLine":58}},"description":"Yes, I use it in multiple projects and serenity-rs (async discord bot library) uses it significantly. I could make a wrapper that returned always non-send refs if you want?"}
+
+{"timestamp":"1675294105","author":"GnomedDev","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/docker-compose.yml","range":{"startLine":9}},"description":"I did, I chose against it because:\r\n- Performance, postgres is faster\r\n- Scalability, database can run on different hardware if it becomes a scaling concern\r\n- Type safety, sqlite stores everything as strings and will implicitly cast in bad ways\r\n- I have only ever used postgres for a serious project"}
