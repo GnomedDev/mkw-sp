@@ -25,3 +25,5 @@
 {"timestamp":"1685134802","author":"vabold","location":{"commit":"2f22e80d914ff8e7a8e55f9a31edf80bdc450cd9","path":"payload/game/ui/RankingPage.cc","range":{"startLine":37}},"description":"Ordering."}
 
 {"timestamp":"1685134805","author":"stblr","location":{"commit":"2f22e80d914ff8e7a8e55f9a31edf80bdc450cd9","path":"payload/game/ui/CourseSelectPage.cc","range":{"startLine":22}},"description":"This is not initialized to `nullptr` if `ranking` is false. I would suggest using `unique_ptr`."}
+
+{"timestamp":"1685134840","author":"stblr","location":{"commit":"2f22e80d914ff8e7a8e55f9a31edf80bdc450cd9","path":"payload/game/ui/CourseSelectPage.cc","range":{"startLine":11}},"description":"```suggestion\r\n#include \"game/util/Registry.hh\"\r\n\r\n```"}
