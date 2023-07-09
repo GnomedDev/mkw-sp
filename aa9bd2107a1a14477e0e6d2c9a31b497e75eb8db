@@ -3,3 +3,5 @@
 {"timestamp":"1664830098","author":"stblr","location":{"commit":"aa9bd2107a1a14477e0e6d2c9a31b497e75eb8db","path":"payload/game/ui/ctrl/CtrlRaceNameBalloon.cc","range":{"startLine":70}},"description":"Maybe make a temporary because that auto-formatting is ugly."}
 
 {"timestamp":"1664895903","author":"MikeIsAStar","location":{"commit":"aa9bd2107a1a14477e0e6d2c9a31b497e75eb8db","path":"payload/game/ui/ctrl/CtrlRaceNameBalloon.cc","range":{"startLine":8}},"description":"Resolved in commit [8a01170](https://github.com/stblr/mkw-sp/pull/420/commits/8a01170d08cdcf172924fe29faa67a9d936bb200)."}
+
+{"timestamp":"1664895914","author":"MikeIsAStar","location":{"commit":"aa9bd2107a1a14477e0e6d2c9a31b497e75eb8db","path":"payload/game/ui/ctrl/CtrlRaceNameBalloon.cc","range":{"startLine":70}},"description":"Resolved in commit [08a4e81](https://github.com/stblr/mkw-sp/pull/420/commits/08a4e81afbc9ea009a9be8a4048ce9ea3c9b8d6d)."}
