@@ -11,3 +11,5 @@
 {"timestamp":"1674313938","author":"stblr","location":{"commit":"e74d1a6933029fea5be9cf369ddcb4ef54cac7a7","path":"tools/gameserver/src/client.rs","range":{"startLine":28}},"description":"receive"}
 
 {"timestamp":"1674313989","author":"stblr","location":{"commit":"e74d1a6933029fea5be9cf369ddcb4ef54cac7a7","path":"tools/gameserver/Cargo.toml","range":{"startLine":8}},"description":"What's the best practice here, since libhydrogen re-exports it?"}
+
+{"timestamp":"1674315407","author":"GnomedDev","location":{"commit":"e74d1a6933029fea5be9cf369ddcb4ef54cac7a7","path":"tools/gameserver/Cargo.toml","range":{"startLine":8}},"description":"Adding the dependency to our project will just means that as long as anyhow doesn't go above 1.x, it just allows our crate access to the full anyhow crate instead of just the macro that libhydrogen re-exports. It also means that libhydrogen can have a breaking upgrade which removes anyhow usage without breaking our crate while upgrading the dependency."}
