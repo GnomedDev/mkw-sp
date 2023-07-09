@@ -3,3 +3,5 @@
 {"timestamp":"1675719119","author":"stblr","location":{"commit":"3f49923fd531bceb56174d0578e260df9a80a3ed","path":"payload/game/ui/RandomMatchingPage.cc","range":{"startLine":87}},"description":"How will multiple devices using the same certificate be handled?"}
 
 {"timestamp":"1675719391","author":"GnomedDev","location":{"commit":"3f49923fd531bceb56174d0578e260df9a80a3ed","path":"payload/game/ui/RandomMatchingPage.cc","range":{"startLine":87}},"description":"How would multiple devices have the same certificate?"}
+
+{"timestamp":"1675719542","author":"stblr","location":{"commit":"3f49923fd531bceb56174d0578e260df9a80a3ed","path":"payload/game/ui/RandomMatchingPage.cc","range":{"startLine":87}},"description":"For instance if you import your Wii NAND in Dolphin and connect with both at the same time."}
