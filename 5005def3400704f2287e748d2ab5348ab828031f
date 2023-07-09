@@ -41,3 +41,5 @@
 {"timestamp":"1674243890","author":"stblr","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"payload/game/ui/Section.cc","range":{"startLine":310}},"description":"Actually, isn't it more like 3 MiB (in 80529ac4)?"}
 
 {"timestamp":"1674245316","author":"GnomedDev","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"payload/game/ui/Section.cc","range":{"startLine":310}},"description":"oh huh, but it should be loaded for most sections anyway, what do you suggest I do?"}
+
+{"timestamp":"1674245611","author":"stblr","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"payload/game/ui/Section.cc","range":{"startLine":310}},"description":"The sections with the globe background (which uses tons of memory), race sections as well as other sections like license settings don't use them. I would suggest to just use `REPLACE`/`REPLACED` on the `onInit` function of offending pages."}
