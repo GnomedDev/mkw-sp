@@ -1,3 +1,5 @@
 {"timestamp":"1643643580","author":"riidefi","description":"Thanks 😃 I've pushed a fix to everything you've brought up."}
 
 {"timestamp":"1643643672","author":"stblr","description":"Can you rebase (and optionally squash)?"}
+
+{"timestamp":"1643642753","author":"stblr","location":{"commit":"f5b42bd0a51bbafcbbebfda23c2ca1bb7b599f8f","path":"assets/message/Menu_F.bmg.json5","range":{"startLine":5627}},"description":"Can you make this 0x3036, 0x302f is already used in Race.bmg and I'd like to keep message ids unique."}
