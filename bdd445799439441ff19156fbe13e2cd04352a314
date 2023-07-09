@@ -1,3 +1,5 @@
 {"timestamp":"1686839282","author":"vabold","description":"Relevant comment: https://github.com/stblr/mkw-sp/issues/829#issuecomment-1581391156"}
 
 {"timestamp":"1686839380","author":"GnomedDev","description":"Sure, but the C++ VScode extension seems to be bundling clang-format 16, and the option doesn't change how formatting on SP is done now. (see: I haven't had to touch CI and it's passing)."}
+
+{"timestamp":"1687033178","author":"riidefi","description":"If no `BasedOnStyle` is selected, clang-format defaults to the LLVM style. The LLVM style has `AlignTrailingComments` as \"true\"; therefore, we can simply delete this line and avoid all of this headache."}
