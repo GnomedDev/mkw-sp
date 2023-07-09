@@ -9,3 +9,5 @@
 {"timestamp":"1687102315","author":"GnomedDev","description":"Actually, looking at it, I'd have to duplicate the description 12 times to name the player count, or implement new logic in the settings system which I am very adverse to doing."}
 
 {"timestamp":"1687102461","author":"vabold","description":"\u003e Actually, looking at it, I'd have to duplicate the description 12 times to name the player count, or implement new logic in the settings system which I am very adverse to doing.\r\n\r\nI think there's a way to format the string with a numerical value."}
+
+{"timestamp":"1687102536","author":"GnomedDev","description":"Sure, but as I said, I'd then have to mess with the settings system for one setting."}
