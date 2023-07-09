@@ -9,3 +9,5 @@
 {"timestamp":"1681931283","author":"stblr","location":{"commit":"bbfc728872a32c6f91b683de1385e6cc93b8ef7e","path":"payload/game/kart/KartObjectManager.cc","range":{"startLine":120}},"description":"That's not consistent with the other engine classes."}
 
 {"timestamp":"1681931413","author":"GnomedDev","location":{"commit":"bbfc728872a32c6f91b683de1385e6cc93b8ef7e","path":"payload/game/kart/KartObjectManager.cc","range":{"startLine":120}},"description":"Those other classes are just bugged due to #662, this is moving towards the right behavior (even if it is inconsistent in the mean time)"}
+
+{"timestamp":"1681931467","author":"stblr","location":{"commit":"bbfc728872a32c6f91b683de1385e6cc93b8ef7e","path":"payload/game/kart/KartObjectManager.cc","range":{"startLine":120}},"description":"No, they are working as intended."}
