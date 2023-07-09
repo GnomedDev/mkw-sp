@@ -11,3 +11,5 @@
 {"timestamp":"1681258027","author":"riidefi","description":"What, with like a neural network trained to attempt to recover useful semantic information from nondeterministically malformed source data? "}
 
 {"timestamp":"1681258055","author":"riidefi","description":"Does GPT4 perform well on hexdumps?"}
+
+{"timestamp":"1681258144","author":"GnomedDev","description":"Knock it off with the attitude. I mean to avoid the invalid data causing any issues (substitute default values, act like a valid input was given, etc)."}
