@@ -39,3 +39,5 @@
 {"timestamp":"1682034814","author":"vabold","location":{"commit":"494b1a5cfb307c5f4a93f439ee636e6a934c7077","path":"vendor/sha1/sha1.c","range":{"startLine":35}},"description":"\u003e Cope\r\n\r\nKnock it off with the attitude."}
 
 {"timestamp":"1682324393","author":"riidefi","location":{"commit":"92dd378a4976e179bb0782c3677caad4bc9b72eb","path":"payload/game/system/RaceConfig.hh","range":{"startLine":129}},"description":"Probably more readable to have the flags in one place? Jury may still be out on the proper place for them, but that seems beyond the scope of this PR."}
+
+{"timestamp":"1682363031","author":"GnomedDev","location":{"commit":"92dd378a4976e179bb0782c3677caad4bc9b72eb","path":"payload/game/system/RaceConfig.hh","range":{"startLine":129}},"description":"What do you mean \"the flags\"?"}
