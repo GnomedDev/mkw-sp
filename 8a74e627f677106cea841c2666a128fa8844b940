@@ -27,3 +27,5 @@
 {"timestamp":"1683138122","author":"stblr","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/sp/MapFile.cc","range":{"startLine":36}},"description":"```suggestion\r\nstatic std::optional\u003cstd::string_view\u003e s_mapFile = {};\r\n```"}
 
 {"timestamp":"1683138256","author":"stblr","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/sp/MapFile.cc","range":{"startLine":113}},"description":"```suggestion\r\n    std::string_view line = sMapFile-\u003esubstr(mapFilePos);\r\n```"}
+
+{"timestamp":"1683140402","author":"MikeIsAStar","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/game/host_system/RkSystem.cc","range":{"startLine":11}},"description":"The previous function is responsible for initialising the heap that is used."}
