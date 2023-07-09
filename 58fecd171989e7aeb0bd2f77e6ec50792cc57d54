@@ -99,3 +99,5 @@
 {"timestamp":"1681128592","author":"GnomedDev","location":{"commit":"d187fe7d7fa1747ccc2a2cf90f64d27c2a611290","path":"payload/sp/FixedString.hh","range":{"startLine":48}},"description":"Not in scope for this PR"}
 
 {"timestamp":"1681128656","author":"GnomedDev","location":{"commit":"d187fe7d7fa1747ccc2a2cf90f64d27c2a611290","path":"payload/sp/vanillaTracks.hh","range":{"startLine":2}},"description":"I thought you said constexpr allows it be included multiple times?"}
+
+{"timestamp":"1681128715","author":"GnomedDev","location":{"commit":"d187fe7d7fa1747ccc2a2cf90f64d27c2a611290","path":"payload/game/system/MultiDvdArchive.hh","range":{"startLine":27}},"description":"It isn't a bugfix to upstream, as it isn't used in upstream. Just seems like mindless busywork."}
