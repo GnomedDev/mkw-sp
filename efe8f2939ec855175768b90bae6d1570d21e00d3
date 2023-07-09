@@ -1,0 +1,1 @@
+{"timestamp":"1684790699","author":"MikeIsAStar","location":{"commit":"a6efa898463aaa7d4c16e0df6434592daeda91f9","path":"payload/sp/MapFile.cc","range":{"startLine":154}},"description":"Symbols from MKW-SP are also included in the symbol map file."}
