@@ -41,3 +41,5 @@
 {"timestamp":"1683150567","author":"riidefi","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/sp/MapFile.cc","range":{"startLine":134}},"description":"`line.starts_with(' ')`"}
 
 {"timestamp":"1683150802","author":"riidefi","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/sp/MapFile.cc","range":{"startLine":115}},"description":"Can we assume carriage-returns always precede new-lines?"}
+
+{"timestamp":"1683158522","author":"MikeIsAStar","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/sp/MapFile.cc","range":{"startLine":115}},"description":"The file `symbols.txt` does not use a `carriage return` character to denote a new line."}
