@@ -39,3 +39,5 @@
 {"timestamp":"1685198341","author":"MikeIsAStar","location":{"commit":"2f22e80d914ff8e7a8e55f9a31edf80bdc450cd9","path":"payload/game/ui/page/TopMenuPage.S","range":{"startLine":21}},"description":"Resolved in commit [3cffc6e](https://github.com/stblr/mkw-sp/pull/745/commits/3cffc6e63bb930dd0f92e51a65df0e4b8aa96fc5)."}
 
 {"timestamp":"1685198351","author":"MikeIsAStar","location":{"commit":"2f22e80d914ff8e7a8e55f9a31edf80bdc450cd9","path":"payload/game/ui/CourseSelectPage.cc","range":{"startLine":22}},"description":"Resolved in commit [3cffc6e](https://github.com/stblr/mkw-sp/pull/745/commits/3cffc6e63bb930dd0f92e51a65df0e4b8aa96fc5)."}
+
+{"timestamp":"1685198361","author":"MikeIsAStar","location":{"commit":"2f22e80d914ff8e7a8e55f9a31edf80bdc450cd9","path":"payload/game/ui/CourseSelectPage.cc","range":{"startLine":11}},"description":"Resolved in commit [3cffc6e](https://github.com/stblr/mkw-sp/pull/745/commits/3cffc6e63bb930dd0f92e51a65df0e4b8aa96fc5)."}
