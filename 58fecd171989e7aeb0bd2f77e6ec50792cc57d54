@@ -47,3 +47,5 @@
 {"timestamp":"1680657171","author":"riidefi","location":{"commit":"a2a7035575f22bc30ab835e1d964f5323c7910a6","path":"payload/sp/TrackPackManager.cc","range":{"startLine":293}},"description":"See this is why I'm not a huge fan of constructors in C++ turning every type into an optional type."}
 
 {"timestamp":"1680694532","author":"GnomedDev","location":{"commit":"a2a7035575f22bc30ab835e1d964f5323c7910a6","path":"payload/sp/ShaUtil.cc","range":{"startLine":6}},"description":"Doesn't FixedString have capacity and length? Because it will always be the same amount of chars, this is simpler imo."}
+
+{"timestamp":"1680745223","author":"riidefi","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.cc","range":{"startLine":128}},"description":"`std::string_view` need not be null-terminated, so we should be able to avoid a temporary buffer (like `buf`) entirely."}
