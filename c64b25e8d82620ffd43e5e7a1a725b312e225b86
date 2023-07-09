@@ -59,3 +59,5 @@
 {"timestamp":"1675369277","author":"stblr","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/src/main.rs","range":{"startLine":58}},"description":"Maybe, but not in this PR. Message passing should also be considered."}
 
 {"timestamp":"1675369307","author":"stblr","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/docker-compose.yml","range":{"startLine":9}},"description":"Are there instructions somewhere to launch the db?"}
+
+{"timestamp":"1675371216","author":"GnomedDev","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/docker-compose.yml","range":{"startLine":9}},"description":"```\r\ncargo install sqlx-cli\r\ndocker-compose up -d\r\nsqlx database reset -y\r\n```"}
