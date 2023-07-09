@@ -21,3 +21,5 @@
 {"timestamp":"1685597954","author":"vabold","location":{"commit":"71b42c7d00f43490ea1aedf414a5ad5000d64ede","path":"payload/sp/ItemCommand.cc","range":{"startLine":26}},"description":"The error message suggests that the expected behavior is for the screen player ID to be a valid, real player. We should verify the type of player is real local or clarify the expected behavior in the error message."}
 
 {"timestamp":"1685613840","author":"GnomedDev","location":{"commit":"71b42c7d00f43490ea1aedf414a5ad5000d64ede","path":"payload/sp/ItemCommand.cc","range":{"startLine":25}},"description":"This code really was busted before I rewrote it."}
+
+{"timestamp":"1685623070","author":"GnomedDev","location":{"commit":"71b42c7d00f43490ea1aedf414a5ad5000d64ede","path":"payload/sp/ItemCommand.cc","range":{"startLine":25}},"description":"I'll reimplement an actual check after #803 allows me to get the SceneManager."}
