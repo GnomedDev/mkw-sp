@@ -1,1 +1,3 @@
 {"timestamp":"1684080812","author":"stblr","location":{"commit":"4ffdace4822079ab1d52c86e6f7551ed887b47c6","path":"payload/game/ui/page/DriftSelectPage.cc","range":{"startLine":54}},"description":"The same logic needs to be added to `MultiDriftSelectPage`."}
+
+{"timestamp":"1684080850","author":"stblr","location":{"commit":"4ffdace4822079ab1d52c86e6f7551ed887b47c6","path":"payload/game/ui/page/DriftSelectPage.hh","range":{"startLine":6}},"description":"```suggestion\r\n#include \"game/system/RaceConfig.hh\"\r\n#include \"game/ui/page/MenuPage.hh\"\r\n```"}
