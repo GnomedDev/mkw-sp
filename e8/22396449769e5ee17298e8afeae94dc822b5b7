@@ -1,0 +1,1 @@
+{"timestamp":"1668115971","reviewRef":"refs/pull/473/head","targetRef":"refs/heads/main","requester":"riidefi","description":"Implement __cxa_guard_acquire, __cxa_guard_release\n\nC++11 guarantees function static variables are threadsafe; these helpers are the Itanium ABI's implementation detail. For now, just disable interrupts during initialization sequences."}
