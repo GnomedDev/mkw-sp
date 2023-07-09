@@ -7,3 +7,5 @@
 {"timestamp":"1673983999","author":"vabold","location":{"commit":"524515795159bf7a046ae682d30c0145f90b6af4","path":"payload/game/system/RaceConfig.cc","range":{"startLine":44}},"description":"I would add a `SP_LOG` call directly above the assert so it's a little clearer what the problem is."}
 
 {"timestamp":"1673984152","author":"vabold","location":{"commit":"524515795159bf7a046ae682d30c0145f90b6af4","path":"payload/game/ui/PageId.hh","range":{"startLine":22}},"description":"`AfterBtMenu`"}
+
+{"timestamp":"1673984320","author":"vabold","location":{"commit":"b0a0564c54364d05da9d477e63a218bd55574fc2","path":"assets/message/MenuSP_U.bmg.json5","range":{"startLine":1301}},"description":"If this is for battle mode, it should be \"Battles\", not \"Races\"."}
