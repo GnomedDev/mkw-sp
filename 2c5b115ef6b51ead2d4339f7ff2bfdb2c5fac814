@@ -7,3 +7,5 @@
 {"timestamp":"1681760354","author":"stblr","location":{"commit":"50b0e569aa5f082fc5262a6ad27bbb4e366d4db8","path":"payload/game/ui/page/TaRaceMenuPage.hh","range":{"startLine":4}},"description":"```suggestion\r\n#include \"game/ui/page/RaceMenuPage.hh\"\r\n```"}
 
 {"timestamp":"1681760369","author":"stblr","location":{"commit":"50b0e569aa5f082fc5262a6ad27bbb4e366d4db8","path":"payload/game/ui/page/ReplayGhostRaceMenuPage.hh","range":{"startLine":4}},"description":"```suggestion\r\n#include \"game/ui/page/RaceMenuPage.hh\"\r\n```"}
+
+{"timestamp":"1681760448","author":"stblr","location":{"commit":"50b0e569aa5f082fc5262a6ad27bbb4e366d4db8","path":"payload/game/ui/page/GhostWatchRaceMenuPage.hh","range":{"startLine":4}},"description":"```suggestion\r\n#include \"game/ui/page/RaceMenuPage.hh\"\r\n```"}
