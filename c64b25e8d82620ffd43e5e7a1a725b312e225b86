@@ -15,3 +15,5 @@
 {"timestamp":"1675123813","author":"vabold","location":{"commit":"400ac23ee830eb41e812ab01e42f4d2682c4d1bb","path":"payload/game/ui/Section.cc","range":{"startLine":469}},"description":"These are done based on page ID order, not alphabetical order."}
 
 {"timestamp":"1675123901","author":"vabold","location":{"commit":"400ac23ee830eb41e812ab01e42f4d2682c4d1bb","path":"payload/sp/cs/RoomClient.cc","range":{"startLine":124}},"description":"In C++ we use camelCase, not snake_case."}
+
+{"timestamp":"1675123943","author":"vabold","location":{"commit":"400ac23ee830eb41e812ab01e42f4d2682c4d1bb","path":"payload/sp/cs/RoomClient.cc","range":{"startLine":131}},"description":"Remove debug log."}
