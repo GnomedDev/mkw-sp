@@ -7,3 +7,5 @@
 {"timestamp":"1688515040","author":"GnomedDev","description":"Solved conflicts and header ordering issues."}
 
 {"timestamp":"1688513886","author":"vabold","location":{"commit":"2d7e4720bcad7c099a8bac7ef76ba466e3f2b042","path":"payload/sp/ShaUtil.hh","range":{"startLine":7}},"description":"```suggestion\r\n#include \u003cexpected\u003e\r\n#include \u003cstring_view\u003e\r\n\r\n#include \u003cCommon.hh\u003e\r\n```"}
+
+{"timestamp":"1688513962","author":"vabold","location":{"commit":"2d7e4720bcad7c099a8bac7ef76ba466e3f2b042","path":"payload/sp/ShaUtil.cc","range":{"startLine":3}},"description":"While you're fixing includes:\r\n```suggestion\r\n#include \"ShaUtil.hh\"\r\n\r\n#include \u003cvendor/libhydrogen/hydrogen.h\u003e\r\n```"}
