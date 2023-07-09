@@ -15,3 +15,5 @@
 {"timestamp":"1644747553","author":"stblr","location":{"commit":"6898ee300729851db4d6d53bcc4f40507b01f491","path":"configure.py","range":{"startLine":464}},"description":"Typo?"}
 
 {"timestamp":"1644747562","author":"stblr","location":{"commit":"6898ee300729851db4d6d53bcc4f40507b01f491","path":"configure.py","range":{"startLine":492}},"description":"Empty line"}
+
+{"timestamp":"1644748999","author":"riidefi","location":{"commit":"6898ee300729851db4d6d53bcc4f40507b01f491","path":"assets/button/ctrl/PauseMenuGhostWatch.brctr.json5","range":{"startLine":293}},"description":"Gotcha"}
