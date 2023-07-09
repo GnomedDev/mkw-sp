@@ -1,0 +1,1 @@
+{"timestamp":"1680117541","reviewRef":"refs/pull/648/head","targetRef":"refs/heads/main","requester":"GnomedDev","description":"Fix battle mode after DemoPage patch rewrite\n\nPlanned to add the bubbles for point display, never ended up doing it, never removed the child count calculation","baseCommit":"3814c92457fbd06838a1676f4b4cf454bc665332"}
