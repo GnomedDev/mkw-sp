@@ -1,0 +1,1 @@
+{"timestamp":"1687375360","reviewRef":"refs/pull/735/head","targetRef":"refs/heads/main","requester":"GnomedDev","description":"Rewrite unnecessary KartMove ASM patches\n\nI can't be bothered to decomp the rest as they are large so we still have to have some ASM patches.","baseCommit":"4cf15f03ff8a8ef142e71fb225daca3d5668fb3f"}
