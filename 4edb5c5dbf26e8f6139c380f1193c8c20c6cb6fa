@@ -9,3 +9,5 @@
 {"timestamp":"1677337733","author":"stblr","location":{"commit":"cfa423b2dc17b2cf741650ed34f22624a6ce478c","path":"payload/game/ui/page/RacePage.cc","range":{"startLine":63}},"description":"Does this really belong here?"}
 
 {"timestamp":"1677337779","author":"stblr","location":{"commit":"cfa423b2dc17b2cf741650ed34f22624a6ce478c","path":"payload/game/kart/KartSettings.hh","range":{"startLine":17}},"description":"No need for a newline."}
+
+{"timestamp":"1677337804","author":"stblr","location":{"commit":"cfa423b2dc17b2cf741650ed34f22624a6ce478c","path":"payload/game/kart/KartSus.hh","range":{"startLine":10}},"description":"Is this an actual thing?"}
