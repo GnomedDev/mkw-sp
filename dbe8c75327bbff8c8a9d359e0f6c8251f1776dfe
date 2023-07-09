@@ -19,3 +19,5 @@
 {"timestamp":"1677000336","author":"stblr","location":{"commit":"6600312188ce39138290746c16b5b32da677a37f","path":"payload/game/ui/FriendButton.hh","range":{"startLine":10}},"description":"The `FriendButton` vfuncs won't be called so this is just a regular `PushButton`."}
 
 {"timestamp":"1677000496","author":"GnomedDev","location":{"commit":"6600312188ce39138290746c16b5b32da677a37f","path":"payload/game/ui/FriendButton.hh","range":{"startLine":10}},"description":"Honestly probably for the best, a lot of the friend code is directly calling gamespy stuff (hence the `WifiFriendMenu` being deleted and the button being stubbed), the only reason this I even call to this load function is to avoid a broken animation."}
+
+{"timestamp":"1677001619","author":"stblr","location":{"commit":"6600312188ce39138290746c16b5b32da677a37f","path":"payload/game/ui/FriendButton.hh","range":{"startLine":10}},"description":"Since this is temporary and doesn't break anything, I guess this is fine to have this hybrid class for now."}
