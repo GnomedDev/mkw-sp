@@ -1,3 +1,5 @@
 {"timestamp":"1686600601","author":"stblr","location":{"commit":"f380e3ff5bfed009dead43593c0b4970b7a20674","path":"payload/game/ui/ModelPage.cc","range":{"startLine":8}},"description":"This should go after the other function to match the header."}
 
 {"timestamp":"1686647266","author":"GnomedDev","location":{"commit":"f380e3ff5bfed009dead43593c0b4970b7a20674","path":"payload/game/ui/ModelPage.cc","range":{"startLine":8}},"description":"Resolved"}
+
+{"timestamp":"1686860990","author":"riidefi","location":{"commit":"2a12d416c0b5958c252aa6643caea94a6d84ac5a","path":"payload/game/ui/ModelPage.cc","range":{"startLine":15}},"description":"```diff\r\nauto *modelPage = section-\u003epage\u003cPageId::Model\u003e();\r\n+ assert(modelPage);\r\n```"}
