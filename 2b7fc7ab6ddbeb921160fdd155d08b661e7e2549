@@ -3,3 +3,5 @@
 {"timestamp":"1685882199","author":"GnomedDev","description":"No, because of the reasons I said in the dev channel before you commented that.\r\n"}
 
 {"timestamp":"1687201161","author":"riidefi","description":"LGTM! I didn't realize we still had SectionManager.c around to complicate things"}
+
+{"timestamp":"1687203492","author":"GnomedDev","description":"Yeah, I was able to very much stub it, but we still need that old-style patch for the GlobalContext allocation."}
