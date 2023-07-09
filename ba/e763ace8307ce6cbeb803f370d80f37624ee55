@@ -1,0 +1,1 @@
+{"timestamp":"1675888029","reviewRef":"refs/pull/571/head","targetRef":"refs/heads/main","requester":"GnomedDev","description":"Implement FPS Mode setting\n\nReplaces the setFramerate setting to allow users to either stay to vanilla, force 60fps, or force 30fps.\r\n\r\nResolves #546","baseCommit":"c48d666beba2b1f8d3975f202946a8b6918e14d9"}
