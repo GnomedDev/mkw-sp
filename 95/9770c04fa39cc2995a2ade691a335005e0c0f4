@@ -1,0 +1,1 @@
+{"timestamp":"1649538468","reviewRef":"refs/pull/265/head","targetRef":"refs/heads/main","requester":"riidefi","description":"Add /section command\n\n`/section \u003csection_id\u003e`\r\n\r\n`/section 3`: Returns to the Wii menu\r\n`/section 74`: Select a course to TT (requires the game to already be in MenuSingle)."}
