@@ -29,3 +29,5 @@
 {"timestamp":"1680579613","author":"riidefi","location":{"commit":"4b87689ea31866bc052f7f5aa8b6d52bec3c2a2c","path":"payload/sp/TrackPackManager.cc","range":{"startLine":98}},"description":"Fair"}
 
 {"timestamp":"1680579826","author":"riidefi","location":{"commit":"4ea3715f3f6cb630d500dde9fc93761ac766ab04","path":"payload/sp/FixedString.hh","range":{"startLine":61}},"description":"m_len = ..."}
+
+{"timestamp":"1680656888","author":"riidefi","location":{"commit":"a2a7035575f22bc30ab835e1d964f5323c7910a6","path":"payload/game/ui/GhostManagerPage.cc","range":{"startLine":39}},"description":"Stray semicolons?"}
