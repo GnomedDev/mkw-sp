@@ -113,3 +113,5 @@
 {"timestamp":"1681149003","author":"GnomedDev","location":{"commit":"d187fe7d7fa1747ccc2a2cf90f64d27c2a611290","path":"payload/sp/FixedString.hh","range":{"startLine":12}},"description":"Okay?"}
 
 {"timestamp":"1681150459","author":"GnomedDev","location":{"commit":"d187fe7d7fa1747ccc2a2cf90f64d27c2a611290","path":"payload/game/ui/SingleTopPage.cc","range":{"startLine":119}},"description":"Just tested, and in fact, `7 == 4` does not return True!"}
+
+{"timestamp":"1681151448","author":"riidefi","location":{"commit":"d187fe7d7fa1747ccc2a2cf90f64d27c2a611290","path":"payload/sp/FixedString.hh","range":{"startLine":12}},"description":"Therefore there is merit to moving this to its own PR and reducing the adventurous scope of this one."}
