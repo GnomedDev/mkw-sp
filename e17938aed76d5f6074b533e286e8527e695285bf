@@ -31,3 +31,5 @@
 {"timestamp":"1687209751","author":"stblr","location":{"commit":"948340f829842546db9369d1b05a8397351b1790","path":"assets/message/MenuSP_U.bmg.json5","range":{"startLine":1130}},"description":"Ah, right."}
 
 {"timestamp":"1687285537","author":"stblr","location":{"commit":"0fc4d6df20f751bdf18de25bed62a25552fafa91","path":"assets/message/MenuSP_U.bmg.json5","range":{"startLine":1123}},"description":"Should be \"racers\"?"}
+
+{"timestamp":"1687291671","author":"GnomedDev","location":{"commit":"0fc4d6df20f751bdf18de25bed62a25552fafa91","path":"assets/message/MenuSP_U.bmg.json5","range":{"startLine":1123}},"description":"Fixed"}
