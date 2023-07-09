@@ -7,3 +7,5 @@
 {"timestamp":"1685749186","author":"vabold","location":{"commit":"a3af518578e73c740b40d8704482789c64c1b244","path":"payload/egg/core/eggScene.hh","range":{"startLine":8}},"description":"```suggestion\r\nenum class SceneId {\r\n```"}
 
 {"timestamp":"1685749223","author":"vabold","location":{"commit":"a3af518578e73c740b40d8704482789c64c1b244","path":"payload/egg/core/eggSceneManager.cc","range":{"startLine":94}},"description":"```suggestion\r\n        auto *parent = m_currScene-\u003egetParent();\r\n        auto sceneID = m_currScene-\u003eid();\r\n        destroyScene(*m_currScene);\r\n        createScene(sceneID, parent);\r\n```"}
+
+{"timestamp":"1685749253","author":"vabold","location":{"commit":"a3af518578e73c740b40d8704482789c64c1b244","path":"payload/egg/core/eggSceneManager.hh","range":{"startLine":17}},"description":"```suggestion\r\n    void REPLACED(createScene)(EGG::SceneId sceneId, Scene *parent);\r\n    void REPLACE createScene(EGG::SceneId sceneId, Scene *parent);\r\n```"}
