@@ -15,3 +15,5 @@
 {"timestamp":"1676999971","author":"GnomedDev","location":{"commit":"6600312188ce39138290746c16b5b32da677a37f","path":"payload/game/ui/OnlineConnectionManagerPage.cc","range":{"startLine":28}},"description":"The base class's implementation does not end up calling the `AsyncSocket` destructor and therefore caused \"Client already logged in\" issues as mentioned in the PR description. "}
 
 {"timestamp":"1677000151","author":"GnomedDev","location":{"commit":"6600312188ce39138290746c16b5b32da677a37f","path":"payload/game/ui/FriendButton.hh","range":{"startLine":10}},"description":"What do you mean? I implemented the bare minimum to get the button to load, as this is a MVP and other FriendButton stuff can be implemented later."}
+
+{"timestamp":"1677000336","author":"stblr","location":{"commit":"6600312188ce39138290746c16b5b32da677a37f","path":"payload/game/ui/FriendButton.hh","range":{"startLine":10}},"description":"The `FriendButton` vfuncs won't be called so this is just a regular `PushButton`."}
