@@ -57,3 +57,5 @@
 {"timestamp":"1683169232","author":"MikeIsAStar","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/nw4r/db/dbException.cc","range":{"startLine":152}},"description":"Resolved in commit [2bb0971](https://github.com/stblr/mkw-sp/pull/715/commits/2bb09716fb0cf4e31cbc800a54b17379cca6a45b)."}
 
 {"timestamp":"1683169242","author":"MikeIsAStar","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/sp/ExceptionSyms.cc","range":{"startLine":2}},"description":"Resolved in commit [8a74e62](https://github.com/stblr/mkw-sp/pull/715/commits/8a74e627f677106cea841c2666a128fa8844b940)."}
+
+{"timestamp":"1683169252","author":"MikeIsAStar","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/sp/MapFile.cc","range":{"startLine":23}},"description":"Resolved in commit [8a74e62](https://github.com/stblr/mkw-sp/pull/715/commits/8a74e627f677106cea841c2666a128fa8844b940)."}
