@@ -3,3 +3,5 @@
 {"timestamp":"1681760298","author":"stblr","location":{"commit":"50b0e569aa5f082fc5262a6ad27bbb4e366d4db8","path":"payload/game/util/Registry.hh","range":{"startLine":6}},"description":"I think this should only control the buttons in the `SingleTopPage` to keep the differences as minimal as possible."}
 
 {"timestamp":"1681760330","author":"stblr","location":{"commit":"50b0e569aa5f082fc5262a6ad27bbb4e366d4db8","path":"payload/game/ui/page/ToRaceMenuPage.hh","range":{"startLine":7}},"description":"```suggestion\r\n#include \"game/ui/page/RaceMenuPage.hh\"\r\n```"}
+
+{"timestamp":"1681760354","author":"stblr","location":{"commit":"50b0e569aa5f082fc5262a6ad27bbb4e366d4db8","path":"payload/game/ui/page/TaRaceMenuPage.hh","range":{"startLine":4}},"description":"```suggestion\r\n#include \"game/ui/page/RaceMenuPage.hh\"\r\n```"}
