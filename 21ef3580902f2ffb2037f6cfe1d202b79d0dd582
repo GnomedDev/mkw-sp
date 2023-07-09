@@ -11,3 +11,5 @@
 {"timestamp":"1681931413","author":"GnomedDev","location":{"commit":"bbfc728872a32c6f91b683de1385e6cc93b8ef7e","path":"payload/game/kart/KartObjectManager.cc","range":{"startLine":120}},"description":"Those other classes are just bugged due to #662, this is moving towards the right behavior (even if it is inconsistent in the mean time)"}
 
 {"timestamp":"1681931467","author":"stblr","location":{"commit":"bbfc728872a32c6f91b683de1385e6cc93b8ef7e","path":"payload/game/kart/KartObjectManager.cc","range":{"startLine":120}},"description":"No, they are working as intended."}
+
+{"timestamp":"1681931549","author":"GnomedDev","location":{"commit":"bbfc728872a32c6f91b683de1385e6cc93b8ef7e","path":"payload/game/kart/KartObjectManager.cc","range":{"startLine":120}},"description":"Intended behavior is that changing settings during a race does not change them until the single top page is passed through again? Do you want me to open issues for the settings that don't match this behavior? "}
