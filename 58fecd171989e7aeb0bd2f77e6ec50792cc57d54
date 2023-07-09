@@ -23,3 +23,5 @@
 {"timestamp":"1680534213","author":"GnomedDev","location":{"commit":"4b87689ea31866bc052f7f5aa8b6d52bec3c2a2c","path":"payload/sp/TrackPackManager.cc","range":{"startLine":134}},"description":"This doesn't seem to compile?"}
 
 {"timestamp":"1680579472","author":"riidefi","location":{"commit":"4b87689ea31866bc052f7f5aa8b6d52bec3c2a2c","path":"payload/sp/TrackPackManager.cc","range":{"startLine":134}},"description":"`*property`*"}
+
+{"timestamp":"1680579545","author":"riidefi","location":{"commit":"4b87689ea31866bc052f7f5aa8b6d52bec3c2a2c","path":"payload/sp/vanillaTracks.hh","range":{"startLine":2}},"description":"Probably better to make it either `constexpr` or `inline` so it's a valid header for now. If we want to avoid duplicate bodies being generated we can put it in its own .cc file later, but I think the linker will merge them anyway since it's const."}
