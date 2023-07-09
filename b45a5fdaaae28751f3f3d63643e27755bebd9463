@@ -1,3 +1,5 @@
 {"timestamp":"1682714037","author":"vabold","description":"I hear basketball is a more fulfilling hobby than opening another 40+ file correctness PR."}
 
 {"timestamp":"1682717724","author":"Zachruff","description":"Stop with the attitude."}
+
+{"timestamp":"1682717933","author":"Gaberboo","description":"I agree with the conversions in file format structures, meh about small iterators, and I don't like it in function prototypes, particularly libc functions."}
