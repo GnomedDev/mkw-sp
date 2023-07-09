@@ -37,3 +37,5 @@
 {"timestamp":"1680656941","author":"riidefi","location":{"commit":"a2a7035575f22bc30ab835e1d964f5323c7910a6","path":"payload/game/ui/Section.cc","range":{"startLine":229}},"description":"Ditto"}
 
 {"timestamp":"1680656999","author":"riidefi","location":{"commit":"a2a7035575f22bc30ab835e1d964f5323c7910a6","path":"payload/sp/FixedString.hh","range":{"startLine":64}},"description":"Optional: Add constructor from std::wstring_view and conversion to std::wstring_view (to match API of FixedString)"}
+
+{"timestamp":"1680657016","author":"riidefi","location":{"commit":"a2a7035575f22bc30ab835e1d964f5323c7910a6","path":"payload/sp/ShaUtil.cc","range":{"startLine":6}},"description":"Probably better to return a FixedString here?"}
