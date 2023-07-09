@@ -55,3 +55,5 @@
 {"timestamp":"1675294283","author":"GnomedDev","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/src/main.rs","range":{"startLine":156}},"description":"Yes, this should not be deployed as is, this is just an initial implementation to allow for others to build on (for example: UI, crypto, etc)."}
 
 {"timestamp":"1675368824","author":"stblr","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/src/main.rs","range":{"startLine":231}},"description":"For the other services, 21328 (0xSP) and following ports were used."}
+
+{"timestamp":"1675369277","author":"stblr","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/src/main.rs","range":{"startLine":58}},"description":"Maybe, but not in this PR. Message passing should also be considered."}
