@@ -1,3 +1,5 @@
 {"timestamp":"1645220179","author":"stblr","location":{"commit":"283208adca524a0f9b5918f7b61e185a65191a20","path":"payload/game/system/BugCheck.c","range":{"startLine":38}},"description":"GCC complains about this buffer being too small."}
 
 {"timestamp":"1645220580","author":"stblr","location":{"commit":"283208adca524a0f9b5918f7b61e185a65191a20","path":"payload/game/system/SceneCreatorDynamic.S","range":{"startLine":30}},"description":"Alignment"}
+
+{"timestamp":"1645221609","author":"stblr","location":{"commit":"283208adca524a0f9b5918f7b61e185a65191a20","path":"payload/game/system/FatalScene.c","range":{"startLine":54}},"description":"Yeah the dol will be harder to map, one of the ranges is probably incorrect already."}
