@@ -5,3 +5,5 @@
 {"timestamp":"1681160032","author":"riidefi","description":"The changes should be visible in the UI. Or did we get rid of the vanilla Rules UI?"}
 
 {"timestamp":"1681160099","author":"GnomedDev","description":"We got rid of the Single/Team Versus page."}
+
+{"timestamp":"1681761781","author":"stblr","location":{"commit":"5d164323178dc7fceedbb5037e30e73cfffb2c06","path":"payload/sp/settings/ClientSettings.hh","range":{"startLine":118}},"description":"Is the \"None\" option purposely dropped?"}
