@@ -43,3 +43,5 @@
 {"timestamp":"1685820835","author":"stblr","location":{"commit":"abe07dda494ff3f52c3407b51ef37d077311c0ac","path":"payload/game/ui/CourseSelectPage.cc","range":{"startLine":139}},"description":"This won't be called if course selection is randomized."}
 
 {"timestamp":"1685826704","author":"GnomedDev","location":{"commit":"abe07dda494ff3f52c3407b51ef37d077311c0ac","path":"payload/game/ui/CourseSelectPage.cc","range":{"startLine":139}},"description":"It will if it's ordered."}
+
+{"timestamp":"1687909332","author":"GnomedDev","location":{"commit":"abe07dda494ff3f52c3407b51ef37d077311c0ac","path":"payload/game/ui/CourseSelectPage.cc","range":{"startLine":139}},"description":"Fixed this, after remembering about the discussion on discord."}
