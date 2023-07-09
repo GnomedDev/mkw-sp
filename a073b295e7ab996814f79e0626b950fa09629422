@@ -7,3 +7,5 @@
 {"timestamp":"1677270699","author":"GnomedDev","description":"`configure.py` doesn't even take that long, and seeing that we are running lots of small scripts I can imagine pypy isn't helping that much (no time for JIT to warm up, might even be slower thinking about it)"}
 
 {"timestamp":"1678084602","author":"riidefi","description":"This breaks Windows builds"}
+
+{"timestamp":"1678085293","author":"vabold","description":"inb4 \"good\""}
