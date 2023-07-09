@@ -1,0 +1,1 @@
+{"timestamp":"1644490578","author":"stblr","location":{"commit":"2107df2d08ffad70785f0e6b86cc693d8a16556b","path":"include/Common.h","range":{"startLine":47}},"description":"Please use standard `alignas` from `stdalign.h`."}
