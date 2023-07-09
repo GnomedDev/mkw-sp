@@ -1,3 +1,5 @@
 {"timestamp":"1644983974","author":"riidefi","description":"Output\r\n```\r\n--------------------------------\r\nMKW-SP v0.1.1 (Release) REV e8d4f66\r\nRegion: PAL, System: Dolphin 5.0-15993\r\nBuilt Feb 15 2022 at 20:52:52, GCC 10.2.0\r\n--------------------------------\r\n******** EXCEPTION OCCURRED! ********\r\nFrameMemory:90087EE0H\r\n--------------------------------\r\nCONTEXT:80347498H  (DSI EXCEPTION)\r\nSRR0:   802245E8H   SRR1:0000B032H\r\nDSISR:  42000000H   DAR: 00000096H\r\n```"}
 
 {"timestamp":"1645003965","author":"stblr","location":{"commit":"b6ed7495332d6cb2fbc1857b1e6be8d95cdc3f48","path":"payload/nw4r/db/dbException.c","range":{"startLine":25}},"description":"We already have a `REGION` macro."}
+
+{"timestamp":"1645004214","author":"stblr","location":{"commit":"b6ed7495332d6cb2fbc1857b1e6be8d95cdc3f48","path":"configure.py","range":{"startLine":22}},"description":"I don't know if this is easily doable but could we detect if there are uncommitted changes in the working directory?"}
