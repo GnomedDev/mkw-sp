@@ -1,1 +1,3 @@
 {"timestamp":"1671364497","author":"stblr","location":{"commit":"6fffe2c0adb07feac3bec529bbc8b9cc218618ca","path":"payload/game/ui/ScrollBar.cc","range":{"startLine":150}},"description":"Maybe add a `playerFlags` argument to avoid hardcoding this."}
+
+{"timestamp":"1671393880","author":"vabold","location":{"commit":"6fffe2c0adb07feac3bec529bbc8b9cc218618ca","path":"payload/game/ui/ScrollBar.cc","range":{"startLine":150}},"description":"Resolved in https://github.com/stblr/mkw-sp/commit/57cb37588913cfa64fda6c583db7ec78b6f61f8a."}
