@@ -7,3 +7,5 @@
 {"timestamp":"1678919008","author":"stblr","location":{"commit":"d8cdd2589f1c40022c2dd34e43168c63d14441a8","path":"payload/sp/storage/Sdi.c","range":{"startLine":6}},"description":"Not sure what to do about these links."}
 
 {"timestamp":"1678919019","author":"stblr","location":{"commit":"d8cdd2589f1c40022c2dd34e43168c63d14441a8","path":"payload/sp/storage/UsbStorage.c","range":{"startLine":7}},"description":"Same here."}
+
+{"timestamp":"1678919305","author":"GnomedDev","location":{"commit":"d8cdd2589f1c40022c2dd34e43168c63d14441a8","path":"payload/sp/storage/Sdi.c","range":{"startLine":6}},"description":"Do you want me to chuck a `clang-format off`? Remove the dashes? "}
