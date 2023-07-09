@@ -1,1 +1,3 @@
 {"timestamp":"1680460466","reviewRef":"refs/pull/654/head","targetRef":"refs/heads/main","requester":"stblr","description":"Preload course thumbnails\n\nDepends on #620."}
+
+{"timestamp":"1680460469","reviewRef":"refs/pull/620/head","targetRef":"refs/heads/main","requester":"stblr","description":"Remove the course cache\n\nThis seems to work but needs more testing as this has the potential to break a lot of things."}
