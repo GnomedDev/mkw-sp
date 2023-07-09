@@ -1,3 +1,5 @@
 {"timestamp":"1684465841","author":"vabold","description":"The section loaded when attempting to start a time trial is 0x4F."}
 
 {"timestamp":"1685134149","author":"stblr","description":"Would feature gating make sense here?"}
+
+{"timestamp":"1685134492","author":"vabold","description":"\u003e Would feature gating make sense here?\r\n\r\nThere is (untested) present functionality here, so I do not believe so."}
