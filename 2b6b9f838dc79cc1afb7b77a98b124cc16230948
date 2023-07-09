@@ -13,3 +13,5 @@
 {"timestamp":"1685562981","author":"riidefi","location":{"commit":"1e32d79198432e76ecca855e6536305ea9ba3448","path":"payload/sp/ItemCommand.cc","range":{"startLine":18}},"description":"You're right; I misread it as an implicit narrowing type conversion."}
 
 {"timestamp":"1685563572","author":"GnomedDev","location":{"commit":"1e32d79198432e76ecca855e6536305ea9ba3448","path":"payload/sp/ItemCommand.cc","range":{"startLine":108}},"description":"I've seen it done both ways."}
+
+{"timestamp":"1685587199","author":"MikeIsAStar","location":{"commit":"71b42c7d00f43490ea1aedf414a5ad5000d64ede","path":"payload/sp/ItemCommand.cc","range":{"startLine":18}},"description":"```suggestion\r\nstatic s8 GetMyPlayerID() {\r\n```"}
