@@ -1,0 +1,1 @@
+{"timestamp":"1678992698","reviewRef":"refs/pull/639/head","targetRef":"refs/heads/main","requester":"Gaberboo","description":"Set section flags for the first section in Start.S\n\nAllows lld to link the loader, as it errors for pc relative relocs in non-allocatable sections. Other flags are included for completeness."}
