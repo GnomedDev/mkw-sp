@@ -1,3 +1,5 @@
 {"timestamp":"1674314167","author":"stblr","description":"There is a leftover `error.rs` file."}
 
 {"timestamp":"1674313574","author":"stblr","location":{"commit":"e74d1a6933029fea5be9cf369ddcb4ef54cac7a7","path":"tools/gameserver/src/client.rs","range":{"startLine":18}},"description":"The aliases are fine, but I would prefer if they were used everywhere and not just in this file."}
+
+{"timestamp":"1674313663","author":"stblr","location":{"commit":"e74d1a6933029fea5be9cf369ddcb4ef54cac7a7","path":"tools/gameserver/src/client.rs","range":{"startLine":114}},"description":"This allows the client to crash the server. We rather want the default case to disconnect the client (e.g.  if a Join request is received)."}
