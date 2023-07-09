@@ -11,3 +11,5 @@
 {"timestamp":"1685749253","author":"vabold","location":{"commit":"a3af518578e73c740b40d8704482789c64c1b244","path":"payload/egg/core/eggSceneManager.hh","range":{"startLine":17}},"description":"```suggestion\r\n    void REPLACED(createScene)(EGG::SceneId sceneId, Scene *parent);\r\n    void REPLACE createScene(EGG::SceneId sceneId, Scene *parent);\r\n```"}
 
 {"timestamp":"1686108051","author":"vabold","location":{"commit":"0fc2fb1e2c2bc8d00df9ef8e0c26493ea9905947","path":"payload/game/ui/Section.hh","range":{"startLine":8}},"description":"```suggestion\r\n#include \"game/host_system/Scene.hh\"\r\n\r\n#include \u003cnw4r/lyt/lyt_drawInfo.hh\u003e\r\n```"}
+
+{"timestamp":"1686609613","author":"GnomedDev","location":{"commit":"0fc2fb1e2c2bc8d00df9ef8e0c26493ea9905947","path":"payload/game/ui/Section.hh","range":{"startLine":8}},"description":"Done"}
