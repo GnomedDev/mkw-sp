@@ -7,3 +7,5 @@
 {"timestamp":"1644701325","author":"riidefi","location":{"commit":"d9b2e507bf78ea7ee523843305e7ec90170ad1d9","path":"payload/game/ui/Page.h","range":{"startLine":52}},"description":"I add some virtual functions to RaceMenuPage later on"}
 
 {"timestamp":"1644701507","author":"riidefi","location":{"commit":"d9b2e507bf78ea7ee523843305e7ec90170ad1d9","path":"payload/game/ui/Page.h","range":{"startLine":163}},"description":"You're right, can adjust.\r\n\r\n// Overrides: UI::Page : 0x805BED68\r\n// \r\n// Overridden by:\r\n//   - 0x80633504 : UI::TTPausePage\r\n//   - 0x806332F0 : UI::BattlePausePage\r\n//   - 0x8063322C : UI::TournamentPausePage\r\n//   - 0x80632F38 : UI::GhostTTPausePage\r\n//   - 0x80632E90 : UI::AbandonGhostRacePausePage\r\n//   - 0x80632DE8 : UI::QuitGhostRacePausePage\r\n\r\nI picked PausePage because it's alphabetically after PanOverlayPage. We should be consistent though."}
+
+{"timestamp":"1644702339","author":"riidefi","location":{"commit":"d9b2e507bf78ea7ee523843305e7ec90170ad1d9","path":"payload/game/ui/Page.h","range":{"startLine":80}},"description":"Done"}
