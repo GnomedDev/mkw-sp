@@ -3,3 +3,5 @@
 {"timestamp":"1645003965","author":"stblr","location":{"commit":"b6ed7495332d6cb2fbc1857b1e6be8d95cdc3f48","path":"payload/nw4r/db/dbException.c","range":{"startLine":25}},"description":"We already have a `REGION` macro."}
 
 {"timestamp":"1645004214","author":"stblr","location":{"commit":"b6ed7495332d6cb2fbc1857b1e6be8d95cdc3f48","path":"configure.py","range":{"startLine":22}},"description":"I don't know if this is easily doable but could we detect if there are uncommitted changes in the working directory?"}
+
+{"timestamp":"1645006866","author":"riidefi","location":{"commit":"b6ed7495332d6cb2fbc1857b1e6be8d95cdc3f48","path":"configure.py","range":{"startLine":22}},"description":"Done, example output:\r\n```--------------------------------\r\nMKW-SP v0.1.1 (Release) REV f88bcd6\r\nRegion: PAL, System: Dolphin 5.0-15993*\r\nBuilt Feb 16 2022 at 03:16:38, GCC 10.2.0\r\nChanged files: 'configure.py, RkSystem.S, dbException.c, Host.h, Version.h'\r\n--------------------------------\r\n******** EXCEPTION OCCURRED! ********\r\nFrameMemory:900008C0H\r\n```"}
