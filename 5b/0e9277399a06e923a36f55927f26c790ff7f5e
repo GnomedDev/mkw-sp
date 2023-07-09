@@ -3,3 +3,5 @@
 {"timestamp":"1644294300","author":"riidefi","description":"Added license setting"}
 
 {"timestamp":"1644347638","author":"riidefi","description":"I've moved the InputDisplay up to avoid intersecting the position tracker, although I don't think it looks the best.\r\n\r\nRemaining issues:\r\n1. The brake drifting button is weirdly positioned.\r\n2. Different circle stick for nunchuck and wheel.\r\n"}
+
+{"timestamp":"1644318115","author":"stblr","location":{"commit":"b1d8cf036c2efb62f0715c46927291ff5b97b47d","path":"payload/game/ui/Layout.h","range":{"startLine":12}},"description":"The RTTI check is missing and a `Layout` type should be defined."}
