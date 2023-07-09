@@ -1,0 +1,1 @@
+{"timestamp":"1688510928","reviewRef":"refs/pull/878/head","targetRef":"refs/heads/main","requester":"GnomedDev","description":"Add SaveManager::isCourseReplaced\n\nAllows for testing if a course is being My Stuff replaced for Track Packs.","baseCommit":"ef821e5a5e03f0e6bcf75d70f0b8d4d76edf5bc7"}
