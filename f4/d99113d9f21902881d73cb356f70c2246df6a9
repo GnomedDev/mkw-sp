@@ -13,3 +13,5 @@
 {"timestamp":"1663093392","author":"vabold","location":{"commit":"6bde5dc4d72489f9fea049c2e9b67cc84a7fda9e","path":"payload/game/ui/FriendRoomBackPage.hh","range":{"startLine":4}},"description":"Subfolder includes should go after direct ones."}
 
 {"timestamp":"1663093443","author":"vabold","location":{"commit":"6bde5dc4d72489f9fea049c2e9b67cc84a7fda9e","path":"payload/sp/cs/RoomServer.cc","range":{"startLine":215}},"description":"Missing whitespace on structure initialization."}
+
+{"timestamp":"1663093450","author":"vabold","location":{"commit":"6bde5dc4d72489f9fea049c2e9b67cc84a7fda9e","path":"payload/sp/cs/RoomServer.cc","range":{"startLine":256}},"description":"Missing whitespace on structure initialization."}
