@@ -1,3 +1,5 @@
 {"timestamp":"1644266418","author":"riidefi","description":"Fully functional now, with brakedrifting support.\r\n\r\nFootage: https://www.youtube.com/watch?v=t8t-7oNTlVU"}
 
 {"timestamp":"1644294300","author":"riidefi","description":"Added license setting"}
+
+{"timestamp":"1644347638","author":"riidefi","description":"I've moved the InputDisplay up to avoid intersecting the position tracker, although I don't think it looks the best.\r\n\r\nRemaining issues:\r\n1. The brake drifting button is weirdly positioned.\r\n2. Different circle stick for nunchuck and wheel.\r\n"}
