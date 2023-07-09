@@ -107,3 +107,5 @@
 {"timestamp":"1681146694","author":"riidefi","location":{"commit":"d187fe7d7fa1747ccc2a2cf90f64d27c2a611290","path":"payload/sp/FixedString.hh","range":{"startLine":48}},"description":"We should clearly communicate our maximum size for fields in the `.ini`. In this case, when you wrote `FixedString\u003c64\u003e`, perhaps you meant `FixedString\u003c65\u003e` given this behavior?"}
 
 {"timestamp":"1681146784","author":"riidefi","location":{"commit":"d187fe7d7fa1747ccc2a2cf90f64d27c2a611290","path":"payload/sp/FixedString.hh","range":{"startLine":12}},"description":"This utility is useful beyond this PR (which cannot get merged for a while)."}
+
+{"timestamp":"1681147928","author":"GnomedDev","location":{"commit":"d187fe7d7fa1747ccc2a2cf90f64d27c2a611290","path":"payload/sp/FixedString.hh","range":{"startLine":48}},"description":"I wrote 64 because it's a nice number, and hoped it's divisibility would allow for SIMD/loop unrolling stuff."}
