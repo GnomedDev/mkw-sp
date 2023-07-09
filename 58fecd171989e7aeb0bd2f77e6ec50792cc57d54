@@ -75,3 +75,5 @@
 {"timestamp":"1680791004","author":"GnomedDev","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.hh","range":{"startLine":121}},"description":"Wouldn't `unique_ptr` heap allocate the `WFixedString`? That wouldn't work as we need to keep all this data across the scene boundary (heap cleared)."}
 
 {"timestamp":"1680802272","author":"riidefi","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.hh","range":{"startLine":121}},"description":"I suppose you could allocate in the System heap. It is probably better to just extend the structure and place TrackPackManager at the end (allocate more memory)."}
+
+{"timestamp":"1680802573","author":"GnomedDev","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.hh","range":{"startLine":121}},"description":"The system heap stays allocated? Could I put `TrackPackManager` in there and get rid of `TrackPackInfo` entirely?"}
