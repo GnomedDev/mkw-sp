@@ -11,3 +11,5 @@
 {"timestamp":"1684865249","author":"GnomedDev","location":{"commit":"66545ebace13a24674f739d91edd9194f9a0c7fc","path":"payload/game/system/ResourceManager.cc","range":{"startLine":128}},"description":"There is MultiDvdArchive::Type."}
 
 {"timestamp":"1684866506","author":"riidefi","location":{"commit":"66545ebace13a24674f739d91edd9194f9a0c7fc","path":"payload/game/system/ResourceManager.cc","range":{"startLine":128}},"description":"That's perfect, nice work! We should probably have an equivalent to this, too?\r\n```cpp\r\nenum class JobContexts {\r\n  Models,\r\n  UI,\r\n  Race,\r\n  Mission,\r\n  Competition,\r\n  Kart, \r\n  System,\r\n};\r\n```"}
+
+{"timestamp":"1685045357","author":"stblr","location":{"commit":"a8b40db642de4ed7a3c304e5bc4246abe671d942","path":"payload/game/system/ResourceManager.cc","range":{"startLine":162}},"description":"Isn't that redundant given that `process` is called?"}
