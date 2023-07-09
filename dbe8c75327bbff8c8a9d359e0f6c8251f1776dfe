@@ -23,3 +23,5 @@
 {"timestamp":"1677001619","author":"stblr","location":{"commit":"6600312188ce39138290746c16b5b32da677a37f","path":"payload/game/ui/FriendButton.hh","range":{"startLine":10}},"description":"Since this is temporary and doesn't break anything, I guess this is fine to have this hybrid class for now."}
 
 {"timestamp":"1677002160","author":"GnomedDev","location":{"commit":"6600312188ce39138290746c16b5b32da677a37f","path":"payload/sp/cs/RoomClient.cc","range":{"startLine":638}},"description":"Wouldn't that remove the ability to report `30004` (`RoomClient` missing), as a RoomClient would have to be there to call the handler and calling a method with a null `this` pointer is UB."}
+
+{"timestamp":"1677267225","author":"stblr","location":{"commit":"d36ac66e7fa73cefe2522ce2e607a3558fb163c2","path":"payload/game/ui/OnlineModeSelectPage.cc","range":{"startLine":12}},"description":"Decimal"}
