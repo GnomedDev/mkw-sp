@@ -7,3 +7,5 @@
 {"timestamp":"1687291572","author":"GnomedDev","description":"Why?"}
 
 {"timestamp":"1687292043","author":"riidefi","description":"For instance in MK7, this is `System::EArchiveID`. I generally think its also consistent to have `UI::PageId` rather than `UI::Page::PageId` or `UI::Section::SectionId`, for instance."}
+
+{"timestamp":"1687292199","author":"riidefi","description":"I also wouldn't object to moving this enum to `Registry`, even."}
