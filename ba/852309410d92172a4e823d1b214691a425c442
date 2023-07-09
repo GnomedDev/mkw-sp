@@ -1,0 +1,1 @@
+{"timestamp":"1649881208","author":"riidefi","description":"Fixed. The initial license count was defaulting to 0 instead of 1."}
