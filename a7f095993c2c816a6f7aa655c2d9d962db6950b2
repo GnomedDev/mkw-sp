@@ -1,3 +1,5 @@
 {"timestamp":"1681257588","author":"riidefi","description":"You can add a check like this\r\n```arm\r\nlis r3, g_skipThisCheck@ha\r\nlbz r3, g_skipThisCheck@l(r3)\r\ncmpwi r3, 0\r\nbneqlr\r\n```\r\n```c\r\nbool g_skipThisCheck;\r\n```"}
 
 {"timestamp":"1681257713","author":"GnomedDev","description":"If you want to open a PR doing that, I'll close this, but I don't see the point in adding a \"randomly crash\" boolean, default set to false."}
+
+{"timestamp":"1681257817","author":"riidefi","description":"The semantics would be \"allow the game to load obviously malformed and corrupted data\" and the default would be `false`."}
