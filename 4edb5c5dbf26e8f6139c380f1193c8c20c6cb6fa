@@ -1,3 +1,5 @@
 {"timestamp":"1677337482","author":"stblr","location":{"commit":"cfa423b2dc17b2cf741650ed34f22624a6ce478c","path":"configure.py","range":{"startLine":1382}},"description":"Ordering"}
 
 {"timestamp":"1677337496","author":"stblr","location":{"commit":"cfa423b2dc17b2cf741650ed34f22624a6ce478c","path":"payload/egg/core/eggSystem.cc","range":{"startLine":11}},"description":"Ordering"}
+
+{"timestamp":"1677337533","author":"stblr","location":{"commit":"cfa423b2dc17b2cf741650ed34f22624a6ce478c","path":"payload/game/kart/KartSettings.hh","range":{"startLine":13}},"description":"Could just be renamed to `susCount` and `tireCount`."}
