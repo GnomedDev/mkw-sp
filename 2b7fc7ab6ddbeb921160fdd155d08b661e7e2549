@@ -5,3 +5,5 @@
 {"timestamp":"1687201161","author":"riidefi","description":"LGTM! I didn't realize we still had SectionManager.c around to complicate things"}
 
 {"timestamp":"1687203492","author":"GnomedDev","description":"Yeah, I was able to very much stub it, but we still need that old-style patch for the GlobalContext allocation."}
+
+{"timestamp":"1688587913","author":"GnomedDev","description":"Fixed merge conflicts."}
