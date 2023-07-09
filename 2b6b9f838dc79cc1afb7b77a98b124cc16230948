@@ -19,3 +19,5 @@
 {"timestamp":"1685597835","author":"vabold","location":{"commit":"71b42c7d00f43490ea1aedf414a5ad5000d64ede","path":"payload/sp/ItemCommand.cc","range":{"startLine":25}},"description":"```suggestion\r\n    auto \u0026raceScenario = System::RaceConfig::Instance()-\u003eraceScenario();\r\n```\r\nRaceConfig is preserved through all scenes and is created on game start. The expected behavior you likely want is to check the current scene ID."}
 
 {"timestamp":"1685597954","author":"vabold","location":{"commit":"71b42c7d00f43490ea1aedf414a5ad5000d64ede","path":"payload/sp/ItemCommand.cc","range":{"startLine":26}},"description":"The error message suggests that the expected behavior is for the screen player ID to be a valid, real player. We should verify the type of player is real local or clarify the expected behavior in the error message."}
+
+{"timestamp":"1685613840","author":"GnomedDev","location":{"commit":"71b42c7d00f43490ea1aedf414a5ad5000d64ede","path":"payload/sp/ItemCommand.cc","range":{"startLine":25}},"description":"This code really was busted before I rewrote it."}
