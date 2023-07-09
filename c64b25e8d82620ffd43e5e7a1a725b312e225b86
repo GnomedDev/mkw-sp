@@ -3,3 +3,5 @@
 {"timestamp":"1675123495","author":"vabold","location":{"commit":"400ac23ee830eb41e812ab01e42f4d2682c4d1bb","path":"payload/game/ui/FriendMatchingPage.cc","range":{"startLine":85}},"description":"Remove debug log."}
 
 {"timestamp":"1675123500","author":"vabold","location":{"commit":"400ac23ee830eb41e812ab01e42f4d2682c4d1bb","path":"payload/game/ui/FriendMatchingPage.cc","range":{"startLine":146}},"description":"Same as above."}
+
+{"timestamp":"1675123570","author":"vabold","location":{"commit":"400ac23ee830eb41e812ab01e42f4d2682c4d1bb","path":"payload/game/ui/MatchmakingPage.hh","range":{"startLine":8}},"description":"The class should be called `RandomMatchingPage` to pair with `FriendMatchingPage`."}
