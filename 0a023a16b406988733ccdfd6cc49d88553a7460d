@@ -1,1 +1,3 @@
 {"timestamp":"1675105851","author":"stblr","location":{"commit":"0a023a16b406988733ccdfd6cc49d88553a7460d","path":"payload/sp/storage/FATStorage.cc","range":{"startLine":409}},"description":"The braces are not necessary here."}
+
+{"timestamp":"1675107631","author":"MikeIsAStar","location":{"commit":"0a023a16b406988733ccdfd6cc49d88553a7460d","path":"payload/sp/storage/FATStorage.cc","range":{"startLine":409}},"description":"Resolved in commit [3faae2a](https://github.com/stblr/mkw-sp/pull/559/commits/3faae2a9095cf653911c83f4f6f06b41da655ab3)."}
