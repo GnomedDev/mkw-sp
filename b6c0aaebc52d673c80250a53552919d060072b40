@@ -7,3 +7,5 @@
 {"timestamp":"1674313773","author":"stblr","location":{"commit":"e74d1a6933029fea5be9cf369ddcb4ef54cac7a7","path":"tools/gameserver/src/server.rs","range":{"startLine":149}},"description":"I would suggest to add a getter instead, as the value should never be changed after construction."}
 
 {"timestamp":"1674313897","author":"stblr","location":{"commit":"e74d1a6933029fea5be9cf369ddcb4ef54cac7a7","path":"tools/gameserver/src/server.rs","range":{"startLine":123}},"description":"Please explicitly ignore the error here."}
+
+{"timestamp":"1674313938","author":"stblr","location":{"commit":"e74d1a6933029fea5be9cf369ddcb4ef54cac7a7","path":"tools/gameserver/src/client.rs","range":{"startLine":28}},"description":"receive"}
