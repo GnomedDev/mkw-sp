@@ -1,3 +1,5 @@
 {"timestamp":"1678917527","author":"stblr","description":"I'd rather fix our memory usage here, and if we want to speed up the CI we can run both in parallel."}
 
 {"timestamp":"1678917650","author":"GnomedDev","description":"I meant this for personal builds, as I switch branches often, swap between gdb and non-gdb compat for debug and builds for friends, and use multiple machines, it seems a waste to compile a target I never use and thought it would be a waste for others aswell."}
+
+{"timestamp":"1679428920","author":"stblr","description":"Then the CI should override the default targets to keep the debug build."}
