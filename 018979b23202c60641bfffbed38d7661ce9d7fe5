@@ -1,0 +1,1 @@
+{"timestamp":"1682371852","reviewRef":"refs/pull/686/head","targetRef":"refs/heads/main","requester":"GnomedDev","description":"Remove LogFile.h\n\nThis removes the unnecessary pass through `extern \"C\"`","baseCommit":"bd9a65a6ae07faa14662e0f341d039ebe47f8d64"}
