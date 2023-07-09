@@ -5,3 +5,5 @@
 {"timestamp":"1687291350","author":"GnomedDev","description":"Done"}
 
 {"timestamp":"1687291572","author":"GnomedDev","description":"Why?"}
+
+{"timestamp":"1687292043","author":"riidefi","description":"For instance in MK7, this is `System::EArchiveID`. I generally think its also consistent to have `UI::PageId` rather than `UI::Page::PageId` or `UI::Section::SectionId`, for instance."}
