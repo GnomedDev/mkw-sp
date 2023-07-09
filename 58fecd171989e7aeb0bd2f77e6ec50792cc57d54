@@ -1,3 +1,5 @@
 {"timestamp":"1686785464","author":"GnomedDev","description":"Closing this PR as it is no longer relevant and unmergable due to conflicts and large diff. These changes will be rewritten into smaller PRs (805, 807, 832)."}
 
 {"timestamp":"1680505014","author":"riidefi","location":{"commit":"4b87689ea31866bc052f7f5aa8b6d52bec3c2a2c","path":"payload/egg/core/eggTaskThread.hh","range":{"startLine":13}},"description":"This change doesn't make any sense. Taking an arbitrary `void*` as user data is standard practice in C code. `TaskThread` isn't valid for any arbitrary type of `arg`. If you want a safe interface, make a wrapper type or freestanding function."}
+
+{"timestamp":"1680505351","author":"riidefi","location":{"commit":"4b87689ea31866bc052f7f5aa8b6d52bec3c2a2c","path":"payload/sp/TrackPackManager.cc","range":{"startLine":98}},"description":"Ideally we wouldn't crash from an invalid .ini file. Not a blocker but perhaps we could adapt this function to return `std::expected\u003cu32, FixedString\u003c32\u003e\u003e` or such? "}
