@@ -1,3 +1,5 @@
 {"timestamp":"1687101809","author":"Zachruff","description":"should this be called \"total racers\" instead? since i feel like \"players\" implies human players not CPUs\r\n\r\nalso \"The minimum player count, padded by CPU players.\" why is it \"minimum\" isnt it total? and maybe im being weird but I feel like padded is a weird term. Maybe simpler to say \"Total number of combined CPU and human racers\""}
 
 {"timestamp":"1687102062","author":"vabold","description":"\"Minimum\" is likely a reference to the fact that it's the lower bound of local players and total players.\r\n\r\n\"Racer Count\" is a good name for the setting, and I think the description can be e.g. \"Guarantees at least __ racers in a race.\""}
+
+{"timestamp":"1687102117","author":"Zachruff","description":"\u003e \"Minimum\" is likely a reference to the fact that it's the lower bound of local players and total players.\r\n\u003e \r\n\u003e \"Racer Count\" is a good name for the setting, and I think the description can be e.g. \"Guarantees at least __ racers in a race.\"\r\n\r\nah yes, this is good way of phrasing it"}
