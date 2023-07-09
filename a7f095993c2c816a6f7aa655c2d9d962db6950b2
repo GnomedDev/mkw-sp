@@ -1,0 +1,1 @@
+{"timestamp":"1687115905","reviewRef":"refs/pull/668/head","targetRef":"refs/heads/main","requester":"GnomedDev","description":"Remove ResFile check causing false positive bugcheck\n\nThis check was causing https://ct.wiimm.de/i/5113 to fail to load on SP, even though it loads completely fine with the check removed.","baseCommit":"5559282814dd5b312882843c6ccfcaa270dd26ee"}
