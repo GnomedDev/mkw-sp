@@ -15,3 +15,5 @@
 {"timestamp":"1683224972","author":"stblr","description":"It would be weird to have different types between declarations and definitions. For standard library functions, we only control the definition."}
 
 {"timestamp":"1683408835","author":"GnomedDev","description":"Isn't that most of the project's headers? Anyway, what are you defining as library definitions?"}
+
+{"timestamp":"1683576111","author":"stblr","description":"An example would be `string.h`."}
