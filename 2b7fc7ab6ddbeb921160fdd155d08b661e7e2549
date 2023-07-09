@@ -41,3 +41,5 @@
 {"timestamp":"1685661510","author":"GnomedDev","location":{"commit":"e2935bd5e2de3f54c5fd51b8abe7f388efbd5949","path":"payload/game/system/RaceConfig.cc","range":{"startLine":248}},"description":"Looks like the base game doesn't handle this, for battle it generates 10 courses and for race it generates 32 courses."}
 
 {"timestamp":"1685820835","author":"stblr","location":{"commit":"abe07dda494ff3f52c3407b51ef37d077311c0ac","path":"payload/game/ui/CourseSelectPage.cc","range":{"startLine":139}},"description":"This won't be called if course selection is randomized."}
+
+{"timestamp":"1685826704","author":"GnomedDev","location":{"commit":"abe07dda494ff3f52c3407b51ef37d077311c0ac","path":"payload/game/ui/CourseSelectPage.cc","range":{"startLine":139}},"description":"It will if it's ordered."}
