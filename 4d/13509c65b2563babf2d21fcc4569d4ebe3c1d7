@@ -1,3 +1,5 @@
 {"timestamp":"1644750295","author":"riidefi","description":"Thanks! Everything should be resolved now."}
 
 {"timestamp":"1644746725","author":"stblr","location":{"commit":"6898ee300729851db4d6d53bcc4f40507b01f491","path":"assets/button/ctrl/PauseMenuGhostWatch.brctr.json5","range":{"startLine":124}},"description":"According to my notes, the gap between buttons should be 95 - 5x where x is the number of buttons."}
+
+{"timestamp":"1644746739","author":"stblr","location":{"commit":"6898ee300729851db4d6d53bcc4f40507b01f491","path":"assets/button/ctrl/PauseMenuGhostWatch.brctr.json5","range":{"startLine":242}},"description":"Should be 10."}
