@@ -13,3 +13,5 @@
 {"timestamp":"1683137504","author":"stblr","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/platform/isxdigit.c","range":{"startLine":9}},"description":"Same here?"}
 
 {"timestamp":"1683137624","author":"stblr","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/sp/ExceptionSyms.cc","range":{"startLine":13}},"description":"What's the function that can throw this?"}
+
+{"timestamp":"1683137658","author":"stblr","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/sp/ExceptionSyms.cc","range":{"startLine":2}},"description":"Is the function declared in this file?"}
