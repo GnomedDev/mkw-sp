@@ -1,0 +1,1 @@
+{"timestamp":"1653301113","reviewRef":"refs/pull/292/head","targetRef":"refs/heads/main","requester":"riidefi","description":"Rewrite non-default ctors/dtors, disable invalid copy/move ctors"}
