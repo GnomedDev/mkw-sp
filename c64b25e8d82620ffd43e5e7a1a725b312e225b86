@@ -51,3 +51,5 @@
 {"timestamp":"1675294105","author":"GnomedDev","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/docker-compose.yml","range":{"startLine":9}},"description":"I did, I chose against it because:\r\n- Performance, postgres is faster\r\n- Scalability, database can run on different hardware if it becomes a scaling concern\r\n- Type safety, sqlite stores everything as strings and will implicitly cast in bad ways\r\n- I have only ever used postgres for a serious project"}
 
 {"timestamp":"1675294175","author":"GnomedDev","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/src/main.rs","range":{"startLine":83}},"description":"I hadn't thought that far ahead, but alternating or voting on modes are indeed ideas for the future."}
+
+{"timestamp":"1675294283","author":"GnomedDev","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/src/main.rs","range":{"startLine":156}},"description":"Yes, this should not be deployed as is, this is just an initial implementation to allow for others to build on (for example: UI, crypto, etc)."}
