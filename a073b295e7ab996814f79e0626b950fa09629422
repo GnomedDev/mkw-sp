@@ -3,3 +3,5 @@
 {"timestamp":"1677164456","author":"GnomedDev","description":"This PR is just targeting `configure.py`, if you want me to make a followup PR to remove those classes I can, but it shouldn't bloat anything for those classes to be temporarily included in main."}
 
 {"timestamp":"1677267983","author":"stblr","description":"Should we wait for a PyPy release that supports 3.10? PyPy is still recommended in the README, but the gains are likely more limited now with the move to LZMA."}
+
+{"timestamp":"1677270699","author":"GnomedDev","description":"`configure.py` doesn't even take that long, and seeing that we are running lots of small scripts I can imagine pypy isn't helping that much (no time for JIT to warm up, might even be slower thinking about it)"}
