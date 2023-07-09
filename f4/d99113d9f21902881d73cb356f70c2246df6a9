@@ -5,3 +5,5 @@
 {"timestamp":"1663093328","author":"vabold","location":{"commit":"6bde5dc4d72489f9fea049c2e9b67cc84a7fda9e","path":"payload/game/ui/FriendRoomBackPage.cc","range":{"startLine":193}},"description":"Missing whitespace on structure initialization."}
 
 {"timestamp":"1663093353","author":"vabold","location":{"commit":"6bde5dc4d72489f9fea049c2e9b67cc84a7fda9e","path":"payload/game/ui/FriendRoomBackPage.cc","range":{"startLine":221}},"description":"Missing whitespace on structure initialization."}
+
+{"timestamp":"1663093366","author":"vabold","location":{"commit":"6bde5dc4d72489f9fea049c2e9b67cc84a7fda9e","path":"payload/game/ui/FriendRoomBackPage.cc","range":{"startLine":234}},"description":"Missing whitespace on structure initialization."}
