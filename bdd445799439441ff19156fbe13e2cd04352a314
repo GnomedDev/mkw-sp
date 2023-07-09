@@ -1,1 +1,3 @@
 {"timestamp":"1686839282","author":"vabold","description":"Relevant comment: https://github.com/stblr/mkw-sp/issues/829#issuecomment-1581391156"}
+
+{"timestamp":"1686839380","author":"GnomedDev","description":"Sure, but the C++ VScode extension seems to be bundling clang-format 16, and the option doesn't change how formatting on SP is done now. (see: I haven't had to touch CI and it's passing)."}
