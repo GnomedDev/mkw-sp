@@ -13,3 +13,5 @@
 {"timestamp":"1683065280","author":"Gaberboo","description":"It's unlikely we will compile for anything else, even less likely that the target doesn't have 32-bit int, rather, it is rarely beneficial to intentionally make typings inconsistent with what the library originally used."}
 
 {"timestamp":"1683224972","author":"stblr","description":"It would be weird to have different types between declarations and definitions. For standard library functions, we only control the definition."}
+
+{"timestamp":"1683408835","author":"GnomedDev","description":"Isn't that most of the project's headers? Anyway, what are you defining as library definitions?"}
