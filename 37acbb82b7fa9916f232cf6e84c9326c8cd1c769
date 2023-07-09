@@ -23,3 +23,5 @@
 {"timestamp":"1675714376","author":"stblr","location":{"commit":"187d72759e040be59cc3f7e6c4afa8fe9b44ea35","path":"tools/gameserver/Cargo.toml","range":{"startLine":9}},"description":"Looks like iteration is still used in `handle_race`."}
 
 {"timestamp":"1675715700","author":"stblr","location":{"commit":"187d72759e040be59cc3f7e6c4afa8fe9b44ea35","path":"tools/gameserver/Cargo.toml","range":{"startLine":9}},"description":"Went back with slab, will see if I can implement faster iteration and submit it upstream, or if I'm missing something."}
+
+{"timestamp":"1675715745","author":"stblr","location":{"commit":"187d72759e040be59cc3f7e6c4afa8fe9b44ea35","path":"tools/gameserver/src/unreliable_socket.rs","range":{"startLine":37}},"description":"Renamed it to `message` like in `AsyncStream`."}
