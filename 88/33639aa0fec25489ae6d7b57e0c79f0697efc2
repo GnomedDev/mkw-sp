@@ -3,3 +3,5 @@
 {"timestamp":"1643884652","author":"stblr","location":{"commit":"a9628a18217a6a59d20352f8d5354dabe4b34efa","path":"payload/sp/IOSKeyboard.h","range":{"startLine":38}},"description":"Do we need this?"}
 
 {"timestamp":"1643884700","author":"stblr","location":{"commit":"a9628a18217a6a59d20352f8d5354dabe4b34efa","path":"payload/sp/IOSKeyboard.c","range":{"startLine":35}},"description":"brew"}
+
+{"timestamp":"1643884757","author":"stblr","location":{"commit":"a9628a18217a6a59d20352f8d5354dabe4b34efa","path":"configure.py","range":{"startLine":229}},"description":"These should be sorted alphabetically."}
