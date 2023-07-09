@@ -1,0 +1,1 @@
+{"timestamp":"1677926227","author":"stblr","location":{"commit":"00d1a8e265ad02c25f1500a951c658608f7f1b69","path":"payload/game/kart/KartSaveState.hh","range":{"startLine":36}},"description":"```suggestion\r\n```\r\nThat's not necessary as the default constructor is only implicitly declared if there is no other constructor."}
