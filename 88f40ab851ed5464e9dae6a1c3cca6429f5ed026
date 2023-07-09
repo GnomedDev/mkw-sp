@@ -1,1 +1,3 @@
 {"timestamp":"1683491562","author":"stblr","description":"What's the reason for this change?"}
+
+{"timestamp":"1683493855","author":"MikeIsAStar","description":"\u003e What's the reason for this change?\r\n\r\nThis change allows for the names of symbols to be printed in full to the output port, even if they can not fit on the television screen."}
