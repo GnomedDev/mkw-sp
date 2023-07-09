@@ -51,3 +51,5 @@
 {"timestamp":"1680745223","author":"riidefi","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.cc","range":{"startLine":128}},"description":"`std::string_view` need not be null-terminated, so we should be able to avoid a temporary buffer (like `buf`) entirely."}
 
 {"timestamp":"1680745272","author":"riidefi","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.cc","range":{"startLine":182}},"description":"Usually more idiomatic to use `.empty()` instead of `.size() == 0`"}
+
+{"timestamp":"1680745499","author":"riidefi","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.cc","range":{"startLine":337}},"description":"ditto"}
