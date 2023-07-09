@@ -1,0 +1,1 @@
+{"timestamp":"1684871622","reviewRef":"refs/pull/739/head","targetRef":"refs/heads/main","requester":"GnomedDev","description":"Remove useless Kart5c\n\nThis header was part of the maximal savestate implementation, which has been removed since #729, and even then wasn't useful.","baseCommit":"7cb3db1291bbbb496ec8dc340387fbaf205aae13"}
