@@ -1,0 +1,1 @@
+{"timestamp":"1645220179","author":"stblr","location":{"commit":"283208adca524a0f9b5918f7b61e185a65191a20","path":"payload/game/system/BugCheck.c","range":{"startLine":38}},"description":"GCC complains about this buffer being too small."}
