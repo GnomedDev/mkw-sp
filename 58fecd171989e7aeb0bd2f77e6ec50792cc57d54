@@ -27,3 +27,5 @@
 {"timestamp":"1680579545","author":"riidefi","location":{"commit":"4b87689ea31866bc052f7f5aa8b6d52bec3c2a2c","path":"payload/sp/vanillaTracks.hh","range":{"startLine":2}},"description":"Probably better to make it either `constexpr` or `inline` so it's a valid header for now. If we want to avoid duplicate bodies being generated we can put it in its own .cc file later, but I think the linker will merge them anyway since it's const."}
 
 {"timestamp":"1680579613","author":"riidefi","location":{"commit":"4b87689ea31866bc052f7f5aa8b6d52bec3c2a2c","path":"payload/sp/TrackPackManager.cc","range":{"startLine":98}},"description":"Fair"}
+
+{"timestamp":"1680579826","author":"riidefi","location":{"commit":"4ea3715f3f6cb630d500dde9fc93761ac766ab04","path":"payload/sp/FixedString.hh","range":{"startLine":61}},"description":"m_len = ..."}
