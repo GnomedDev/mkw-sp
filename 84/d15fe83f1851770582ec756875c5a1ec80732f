@@ -13,3 +13,5 @@
 {"timestamp":"1644702438","author":"stblr","location":{"commit":"874c9980a6617ae54e94cdced169c39420206995","path":"payload/game/ui/Page.h","range":{"startLine":139}},"description":"`TypeInfo`"}
 
 {"timestamp":"1644702540","author":"riidefi","location":{"commit":"874c9980a6617ae54e94cdced169c39420206995","path":"payload/game/ui/Page.h","range":{"startLine":139}},"description":"Should we turn on warnings for implicit casts?"}
+
+{"timestamp":"1644702669","author":"stblr","location":{"commit":"874c9980a6617ae54e94cdced169c39420206995","path":"payload/game/ui/Page.h","range":{"startLine":139}},"description":"I think we should."}
