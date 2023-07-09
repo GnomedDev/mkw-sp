@@ -7,3 +7,5 @@
 {"timestamp":"1675123570","author":"vabold","location":{"commit":"400ac23ee830eb41e812ab01e42f4d2682c4d1bb","path":"payload/game/ui/MatchmakingPage.hh","range":{"startLine":8}},"description":"The class should be called `RandomMatchingPage` to pair with `FriendMatchingPage`."}
 
 {"timestamp":"1675123609","author":"vabold","location":{"commit":"400ac23ee830eb41e812ab01e42f4d2682c4d1bb","path":"payload/game/ui/MatchmakingPage.hh","range":{"startLine":4}},"description":"https://github.com/stblr/mkw-sp/issues/245"}
+
+{"timestamp":"1675123679","author":"vabold","location":{"commit":"400ac23ee830eb41e812ab01e42f4d2682c4d1bb","path":"payload/game/ui/PageId.hh","range":{"startLine":63}},"description":"Replace the unused page at 0x8F instead (originally `RandomMatchingPage`)."}
