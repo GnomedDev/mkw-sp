@@ -57,3 +57,5 @@
 {"timestamp":"1675368824","author":"stblr","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/src/main.rs","range":{"startLine":231}},"description":"For the other services, 21328 (0xSP) and following ports were used."}
 
 {"timestamp":"1675369277","author":"stblr","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/src/main.rs","range":{"startLine":58}},"description":"Maybe, but not in this PR. Message passing should also be considered."}
+
+{"timestamp":"1675369307","author":"stblr","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/docker-compose.yml","range":{"startLine":9}},"description":"Are there instructions somewhere to launch the db?"}
