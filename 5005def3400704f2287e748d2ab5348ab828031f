@@ -49,3 +49,5 @@
 {"timestamp":"1674250558","author":"stblr","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"payload/game/ui/Section.cc","range":{"startLine":310}},"description":"A blacklist would have the same problem as the current \"whitelist\", except that it would silently waste an obscene amount of memory or OOM at a random place."}
 
 {"timestamp":"1674256969","author":"GnomedDev","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"payload/game/system/RaceConfig.cc","range":{"startLine":79}},"description":"That assert fired on starting split screen matches, and removing it didn't break anything (tested all screen counts and vs single)"}
+
+{"timestamp":"1674257089","author":"GnomedDev","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"assets/message/Menu_E.bmg.json5","range":{"startLine":1089}},"description":"Would need a rewrite of BattleModeSelectPage::onInit, or onActivate, not sure. I don't see what's wrong with just replacing the old text as this would also change if that ID was reused."}
