@@ -5,3 +5,5 @@
 {"timestamp":"1667731728","author":"riidefi","location":{"commit":"2800c62aa29cd30ce9a375d8fdb915e7d282d4e6","path":"payload/game/ui/DirectConnectionPage.cc","range":{"startLine":175}},"description":"I suppose in most text editors CTRL+BACKSPACE would clear to the end of the word--in this case, until the hyphen? Regardless it is probably fine as-is. Updating the comment."}
 
 {"timestamp":"1667731861","author":"riidefi","location":{"commit":"2800c62aa29cd30ce9a375d8fdb915e7d282d4e6","path":"payload/game/ui/NumericEditBox.hh","range":{"startLine":23}},"description":"Resolved"}
+
+{"timestamp":"1667735793","author":"stblr","location":{"commit":"e67026ad90fa4461478875e83b70e806fb285ab2","path":"payload/game/ui/DirectConnectionPage.cc","range":{"startLine":170}},"description":"For this, I think that we could even call `PushButton::onFront` 805be358 to have the sound and animation."}
