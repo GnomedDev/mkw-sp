@@ -1,1 +1,3 @@
 {"timestamp":"1669004414","author":"Zachruff","location":{"commit":"3cd9067aaaac5f3ef486789bf9d25a0695df330d","path":"assets/message/MenuSP_U.bmg.json5","range":{"startLine":1173}},"description":"better wording might be: \r\n\r\nThe color of the line under your name will be\\nset automatically based on your region settings."}
+
+{"timestamp":"1669005901","author":"MikeIsAStar","location":{"commit":"3cd9067aaaac5f3ef486789bf9d25a0695df330d","path":"assets/message/MenuSP_U.bmg.json5","range":{"startLine":1173}},"description":"\u003e The color of the line under your name will be\\nset automatically based on your region settings.\r\n\r\nThis statement is not entirely accurate.\r\n"}
