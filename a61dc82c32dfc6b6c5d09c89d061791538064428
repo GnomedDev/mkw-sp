@@ -3,3 +3,5 @@
 {"timestamp":"1678224873","author":"GnomedDev","description":"I have a personal vendetta against the English language for that one, same with sentral."}
 
 {"timestamp":"1678281830","author":"GnomedDev","description":"Ah, knew there was a tracking issue for this, closes #45"}
+
+{"timestamp":"1678919008","author":"stblr","location":{"commit":"d8cdd2589f1c40022c2dd34e43168c63d14441a8","path":"payload/sp/storage/Sdi.c","range":{"startLine":6}},"description":"Not sure what to do about these links."}
