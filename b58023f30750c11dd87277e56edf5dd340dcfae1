@@ -3,3 +3,5 @@
 {"timestamp":"1676999147","author":"GnomedDev","description":"Hmm, I had an aversion to use global data to implement that (to avoid reloading the lap_number per frame) but I guess I could try now that mutable statics are okay."}
 
 {"timestamp":"1676999233","author":"stblr","description":"The way to do it would be to use an animation for CtrlRaceLap."}
+
+{"timestamp":"1676999849","author":"GnomedDev","description":"I haven't a clue how the animation system works, so that would have to be implemented in a follow up PR. As is, this PR is entirely usable and implements the request, someone else could implement an animation based approach in the future if they want."}
