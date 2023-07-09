@@ -5,3 +5,5 @@
 {"timestamp":"1644763587","author":"riidefi","location":{"commit":"0bdac25413576d9980a265fab8d26ab4850d1059","path":"symbols.txt","range":{"startLine":81}},"description":"As a comment? Or should we add a PATCH_BRANCH variant that supports offsets?"}
 
 {"timestamp":"1644763678","author":"stblr","location":{"commit":"0bdac25413576d9980a265fab8d26ab4850d1059","path":"symbols.txt","range":{"startLine":81}},"description":"`PATCH_B(EGG_ColorFader_fadeIn + 0x24, post_fadeIn);` already works."}
+
+{"timestamp":"1644763839","author":"riidefi","location":{"commit":"0bdac25413576d9980a265fab8d26ab4850d1059","path":"symbols.txt","range":{"startLine":81}},"description":"Gotcha. Didn't realize function pointer arithmetic like that was valid here."}
