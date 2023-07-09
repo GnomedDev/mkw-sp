@@ -1,0 +1,1 @@
+{"timestamp":"1654034759","author":"ghost","description":"\u003e What about making it a `u8 *` and removing the temporary?\r\n\r\nAddressed in commit [4ac4097](https://github.com/stblr/mkw-sp/pull/302/commits/4ac409714f8ea04e58db51b67c3c377d363b6b32)."}
