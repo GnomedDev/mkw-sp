@@ -9,3 +9,5 @@
 {"timestamp":"1675619289","author":"GnomedDev","location":{"commit":"187d72759e040be59cc3f7e6c4afa8fe9b44ea35","path":"tools/gameserver/src/room.rs","range":{"startLine":318}},"description":"This should be moved to it's own function, avoid having to spawn an empty task just to replace it."}
 
 {"timestamp":"1675619424","author":"GnomedDev","location":{"commit":"187d72759e040be59cc3f7e6c4afa8fe9b44ea35","path":"tools/gameserver/src/unreliable_socket.rs","range":{"startLine":37}},"description":"```suggestion\r\n        let mut buf = [0u8; 1024]; // TODO make that configurable\r\n```"}
+
+{"timestamp":"1675619653","author":"GnomedDev","location":{"commit":"187d72759e040be59cc3f7e6c4afa8fe9b44ea35","path":"tools/netprotocol/src/async_stream.rs","range":{"startLine":219}},"description":"This check could be made mandatory by using an `Option\u003cNonZeroUsize\u003e`"}
