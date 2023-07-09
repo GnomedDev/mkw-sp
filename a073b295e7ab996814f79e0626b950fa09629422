@@ -1,0 +1,1 @@
+{"timestamp":"1676864038","author":"riidefi","description":"This should simplify things. Though with the globs, we shouldn't include the files in the `Emulator` file in actual builds. Implementing a few APIs, they allow some SP classes to run sans-modification on PC targets. We might want to simply remove them altogether."}
