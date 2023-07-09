@@ -91,3 +91,5 @@
 {"timestamp":"1681092154","author":"riidefi","location":{"commit":"d187fe7d7fa1747ccc2a2cf90f64d27c2a611290","path":"payload/sp/vanillaTracks.hh","range":{"startLine":2}},"description":"`#pragma once`"}
 
 {"timestamp":"1681092240","author":"riidefi","location":{"commit":"d187fe7d7fa1747ccc2a2cf90f64d27c2a611290","path":"payload/game/system/MultiDvdArchive.hh","range":{"startLine":27}},"description":"Maybe also pull this into its own PR as a bugfix?"}
+
+{"timestamp":"1681092486","author":"riidefi","location":{"commit":"d187fe7d7fa1747ccc2a2cf90f64d27c2a611290","path":"payload/game/ui/SingleTopPage.cc","range":{"startLine":119}},"description":"`== SP::TrackGameMode::Coin` / similar for all of these is preferable as it handles flagsets too and it's not obvious `::None` is 0."}
