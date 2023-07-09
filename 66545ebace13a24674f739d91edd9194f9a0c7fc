@@ -15,3 +15,5 @@
 {"timestamp":"1685045357","author":"stblr","location":{"commit":"a8b40db642de4ed7a3c304e5bc4246abe671d942","path":"payload/game/system/ResourceManager.cc","range":{"startLine":162}},"description":"Isn't that redundant given that `process` is called?"}
 
 {"timestamp":"1685045409","author":"stblr","location":{"commit":"a8b40db642de4ed7a3c304e5bc4246abe671d942","path":"payload/game/system/ResourceManager.hh","range":{"startLine":13}},"description":"This should be a private static function. You can look at `SaveManager` for examples."}
+
+{"timestamp":"1685046117","author":"GnomedDev","location":{"commit":"a8b40db642de4ed7a3c304e5bc4246abe671d942","path":"payload/game/system/ResourceManager.cc","range":{"startLine":162}},"description":"I'm really not sure how this works, to be honest, but I know that process can return without loading the archive so added this to make sure it isn't just taking a while."}
