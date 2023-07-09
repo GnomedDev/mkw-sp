@@ -19,3 +19,5 @@
 {"timestamp":"1681931730","author":"GnomedDev","location":{"commit":"bbfc728872a32c6f91b683de1385e6cc93b8ef7e","path":"payload/game/kart/KartObjectManager.cc","range":{"startLine":120}},"description":"Okay, I'll \"fix\" this and look for somewhere to document it."}
 
 {"timestamp":"1681931763","author":"stblr","location":{"commit":"bbfc728872a32c6f91b683de1385e6cc93b8ef7e","path":"payload/game/kart/KartObjectManager.cc","range":{"startLine":120}},"description":"This is just how the base game works..."}
+
+{"timestamp":"1681931842","author":"GnomedDev","location":{"commit":"bbfc728872a32c6f91b683de1385e6cc93b8ef7e","path":"payload/game/kart/KartObjectManager.cc","range":{"startLine":120}},"description":"The base game did not have a UI to change the engine class mid race, we now have said UI, but according to you the UI should stay desynced until exiting out of the single race menu and going back in."}
