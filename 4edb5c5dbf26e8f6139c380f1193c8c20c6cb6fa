@@ -13,3 +13,5 @@
 {"timestamp":"1677337804","author":"stblr","location":{"commit":"cfa423b2dc17b2cf741650ed34f22624a6ce478c","path":"payload/game/kart/KartSus.hh","range":{"startLine":10}},"description":"Is this an actual thing?"}
 
 {"timestamp":"1677340219","author":"GnomedDev","location":{"commit":"cfa423b2dc17b2cf741650ed34f22624a6ce478c","path":"payload/game/kart/KartSus.hh","range":{"startLine":10}},"description":"Ah, this was KartPart in ghidra, I misread it."}
+
+{"timestamp":"1677343973","author":"GnomedDev","location":{"commit":"cfa423b2dc17b2cf741650ed34f22624a6ce478c","path":"payload/game/ui/page/RacePage.cc","range":{"startLine":63}},"description":"It was the first place I could think of that I could use the heap and is loaded only during the race, where else do you suggest?"}
