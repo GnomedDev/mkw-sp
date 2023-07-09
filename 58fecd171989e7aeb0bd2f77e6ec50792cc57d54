@@ -7,3 +7,5 @@
 {"timestamp":"1680505410","author":"riidefi","location":{"commit":"4b87689ea31866bc052f7f5aa8b6d52bec3c2a2c","path":"payload/sp/TrackPackManager.cc","range":{"startLine":134}},"description":"`auto [section, key, value] = property;` below maybe?"}
 
 {"timestamp":"1680505529","author":"riidefi","location":{"commit":"4b87689ea31866bc052f7f5aa8b6d52bec3c2a2c","path":"payload/sp/TrackPackManager.cc","range":{"startLine":377}},"description":"Do we not have an enum for this?"}
+
+{"timestamp":"1680505587","author":"riidefi","location":{"commit":"4b87689ea31866bc052f7f5aa8b6d52bec3c2a2c","path":"payload/sp/vanillaTracks.hh","range":{"startLine":2}},"description":"I believe this is invalid if included in multiple files. You can fix that by making it `constexpr`, which may also allow for some additional optimization."}
