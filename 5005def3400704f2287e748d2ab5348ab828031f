@@ -13,3 +13,5 @@
 {"timestamp":"1673984376","author":"vabold","location":{"commit":"b0a0564c54364d05da9d477e63a218bd55574fc2","path":"payload/game/ui/page/ResultTeamTotalPage.cc","range":{"startLine":21}},"description":"I would rewrite this to be one line, but you don't have to.\r\n`return raceScenario.isBattle() ? PageId::AfterBtMenu : PageId::AfterVsMenu;`"}
 
 {"timestamp":"1673984411","author":"vabold","location":{"commit":"b0a0564c54364d05da9d477e63a218bd55574fc2","path":"payload/game/util/Registry.cc","range":{"startLine":12}},"description":"This returns a boolean."}
+
+{"timestamp":"1674242407","author":"stblr","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"assets/message/Menu_E.bmg.json5","range":{"startLine":1089}},"description":"How hard would it be to use new ids?"}
