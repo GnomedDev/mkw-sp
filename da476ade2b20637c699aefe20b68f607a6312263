@@ -3,3 +3,5 @@
 {"timestamp":"1683409343","author":"stblr","location":{"commit":"da476ade2b20637c699aefe20b68f607a6312263","path":"payload/sp/storage/Storage.cc","range":{"startLine":26}},"description":"```suggestion\r\n    m_file = that.m_file;\r\n    that.m_file = nullptr;\r\n    return *this;\r\n```"}
 
 {"timestamp":"1683409388","author":"stblr","location":{"commit":"da476ade2b20637c699aefe20b68f607a6312263","path":"payload/sp/storage/Storage.cc","range":{"startLine":66}},"description":"```suggestion\r\n    m_dir = that.m_dir;\r\n    that.m_dir = nullptr;\r\n    return *this;\r\n```"}
+
+{"timestamp":"1683409491","author":"stblr","location":{"commit":"da476ade2b20637c699aefe20b68f607a6312263","path":"include/Common.hh","range":{"startLine":19}},"description":"```suggestion\r\ntemplate \u003ctypename T\u003e\r\n```"}
