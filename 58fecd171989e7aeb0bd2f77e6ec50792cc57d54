@@ -19,3 +19,5 @@
 {"timestamp":"1680514943","author":"riidefi","location":{"commit":"4b87689ea31866bc052f7f5aa8b6d52bec3c2a2c","path":"payload/sp/vanillaTracks.hh","range":{"startLine":2}},"description":"If you are not allowed to `#include` the file, then it is not a header."}
 
 {"timestamp":"1680515084","author":"GnomedDev","location":{"commit":"4b87689ea31866bc052f7f5aa8b6d52bec3c2a2c","path":"payload/sp/vanillaTracks.hh","range":{"startLine":2}},"description":"It shouldn't be a header anyway, this is just making up for the fact C++ doesn't have a form of include_str."}
+
+{"timestamp":"1680534213","author":"GnomedDev","location":{"commit":"4b87689ea31866bc052f7f5aa8b6d52bec3c2a2c","path":"payload/sp/TrackPackManager.cc","range":{"startLine":134}},"description":"This doesn't seem to compile?"}
