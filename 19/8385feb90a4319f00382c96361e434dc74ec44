@@ -1,0 +1,1 @@
+{"timestamp":"1668023828","reviewRef":"refs/pull/470/head","targetRef":"refs/heads/main","requester":"vabold","description":"Prevent non-hosts from seeing \"Close Room\" button\n\nThis also replaces the `DestroyInstance` calls with `RoomManager`'s virtual function."}
