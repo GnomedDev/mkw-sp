@@ -25,3 +25,5 @@
 {"timestamp":"1674242904","author":"stblr","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"symbols.txt","range":{"startLine":1223}},"description":"Please keep them ordered."}
 
 {"timestamp":"1674242910","author":"stblr","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"symbols.txt","range":{"startLine":1368}},"description":"Same"}
+
+{"timestamp":"1674242922","author":"stblr","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"assets/message/Menu_E.bmg.json5","range":{"startLine":1353}},"description":"Same"}
