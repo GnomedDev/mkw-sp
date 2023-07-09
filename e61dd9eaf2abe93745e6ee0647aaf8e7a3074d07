@@ -1,0 +1,1 @@
+{"timestamp":"1684666744","reviewRef":"refs/pull/750/head","targetRef":"refs/heads/main","requester":"GnomedDev","description":"Fix 200cc brake drifting\n\nCloses #747.\r\n\r\nI accidentally removed the speedModIsEnabled setting in #675, this PR fixes that and uses the Scenario is200cc flag over the global wherever possible."}
