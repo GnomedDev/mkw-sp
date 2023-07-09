@@ -1,3 +1,5 @@
 {"timestamp":"1688501044","author":"vabold","location":{"commit":"29e4e9e9e98161c3cf6261f5633cfd2e30d5f640","path":"payload/game/ui/OnlineTopPage.cc","range":{"startLine":106}},"description":"I would recommend commenting that this a temporary initialization."}
 
 {"timestamp":"1688501762","author":"vabold","location":{"commit":"29e4e9e9e98161c3cf6261f5633cfd2e30d5f640","path":"payload/game/ui/PackSelectPage.cc","range":{"startLine":193}},"description":"Same here."}
+
+{"timestamp":"1688502025","author":"vabold","location":{"commit":"29e4e9e9e98161c3cf6261f5633cfd2e30d5f640","path":"payload/game/ui/PackSelectPage.cc","range":{"startLine":120}},"description":"Based on existing implementation, it seems as though `setTrackpack` is meant to set the global pack ID, but the call here is only local. For example, what happens if we have track packs 2 and 4, but the button index suggests we should be setting track pack 3 (even though we don't have track pack 3)?"}
