@@ -1,0 +1,1 @@
+{"timestamp":"1685749538","author":"vabold","description":"It's likely that we do not want to move the game-specific scene IDs out of `host_system` and into `EGG` as the library is not game-dependent."}
