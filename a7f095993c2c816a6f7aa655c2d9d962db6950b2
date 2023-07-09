@@ -1,0 +1,1 @@
+{"timestamp":"1681257588","author":"riidefi","description":"You can add a check like this\r\n```arm\r\nlis r3, g_skipThisCheck@ha\r\nlbz r3, g_skipThisCheck@l(r3)\r\ncmpwi r3, 0\r\nbneqlr\r\n```\r\n```c\r\nbool g_skipThisCheck;\r\n```"}
