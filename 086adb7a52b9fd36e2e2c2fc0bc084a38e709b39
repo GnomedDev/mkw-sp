@@ -1,0 +1,1 @@
+{"timestamp":"1678992568","reviewRef":"refs/pull/638/head","targetRef":"refs/heads/main","requester":"GnomedDev","description":"Add ignore-revs file to fix blame after formatting commit\n\nThis fixes up the git blame output on the Github web UI and local git if `--ignore-revs-file` is passed.","baseCommit":"9b5d4f7787704fed1a7fcf8ffffb6ce4f1eb341d"}
