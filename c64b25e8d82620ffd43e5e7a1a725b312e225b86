@@ -31,3 +31,5 @@
 {"timestamp":"1675204402","author":"GnomedDev","location":{"commit":"5ce910639fd1c63c05178360f1b1678582ebc1f8","path":"configure.py","range":{"startLine":1111}},"description":"This allows for `import` statements to be used in `.proto` files, as otherwise nanopb looks for the imports in the wrong folder. I needed it for `Login.proto`."}
 
 {"timestamp":"1675289889","author":"stblr","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/docker-compose.yml","range":{"startLine":9}},"description":"Did you consider an in-app database like sqlite?"}
+
+{"timestamp":"1675290206","author":"stblr","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/src/main.rs","range":{"startLine":58}},"description":"Are you aware of the caveats of `DashMap` with `async`/`await`? https://draft.ryhl.io/blog/shared-mutable-state/"}
