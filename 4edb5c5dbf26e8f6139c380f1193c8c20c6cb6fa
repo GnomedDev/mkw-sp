@@ -5,3 +5,5 @@
 {"timestamp":"1677337533","author":"stblr","location":{"commit":"cfa423b2dc17b2cf741650ed34f22624a6ce478c","path":"payload/game/kart/KartSettings.hh","range":{"startLine":13}},"description":"Could just be renamed to `susCount` and `tireCount`."}
 
 {"timestamp":"1677337596","author":"stblr","location":{"commit":"cfa423b2dc17b2cf741650ed34f22624a6ce478c","path":"payload/game/kart/KartObjectProxy.hh","range":{"startLine":21}},"description":"Ordering"}
+
+{"timestamp":"1677337733","author":"stblr","location":{"commit":"cfa423b2dc17b2cf741650ed34f22624a6ce478c","path":"payload/game/ui/page/RacePage.cc","range":{"startLine":63}},"description":"Does this really belong here?"}
