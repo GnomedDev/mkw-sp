@@ -21,3 +21,5 @@
 {"timestamp":"1688529505","author":"Zachruff","description":"\u003e Do we want to use \"racer\" and \"player\" separately? I'd like to hear more opinions before merge.\r\n\r\nimo racer should be both human and CPUs, whereas player is just humans (since nintendo will refer to people as player 1, player 2, etc... and on the title screen you select \"3P\" mode for 3 player local for example). But then there is the issue of battles not technically being races but eh I still think using racer is fine. "}
 
 {"timestamp":"1687208914","author":"stblr","location":{"commit":"948340f829842546db9369d1b05a8397351b1790","path":"payload/game/system/RaceConfig.cc","range":{"startLine":48}},"description":"Is this cast needed?"}
+
+{"timestamp":"1687208968","author":"stblr","location":{"commit":"948340f829842546db9369d1b05a8397351b1790","path":"assets/message/MenuSP_U.bmg.json5","range":{"startLine":1130}},"description":"Please handle singular/plural like e.g. 10421."}
