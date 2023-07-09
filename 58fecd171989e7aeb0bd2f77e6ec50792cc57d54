@@ -125,3 +125,5 @@
 {"timestamp":"1681157096","author":"GnomedDev","location":{"commit":"d187fe7d7fa1747ccc2a2cf90f64d27c2a611290","path":"payload/game/ui/SingleTopPage.cc","range":{"startLine":119}},"description":"Isn't that literally it is doing though? \r\n\u003e `(supportedModes \u0026 SP::TrackGameMode::Race)`"}
 
 {"timestamp":"1681158202","author":"riidefi","location":{"commit":"d187fe7d7fa1747ccc2a2cf90f64d27c2a611290","path":"payload/game/ui/SingleTopPage.cc","range":{"startLine":119}},"description":"`(supportedModes \u0026 X) == X` is preferable here since for some `X = (1 \u003c\u003c N) | (1 \u003c\u003c M`), `N != M`, it only triggers when both bits intersect. `(supportedModes \u0026 X) != 0` triggers when either bit intersects. So generally in C++ when we are asking if a full condition is met in a bitfield, we almost always go with the former form."}
+
+{"timestamp":"1682547443","author":"riidefi","location":{"commit":"bb2db980a67611c888aebdf599e5da4e06471127","path":"payload/game/kart/KartTire.hh","range":{"startLine":2}},"description":"Would pull this into its own PR like \"Added missing #pragma once\". Or if possible, can we not enforce this in clang-format?"}
