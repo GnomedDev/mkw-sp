@@ -5,3 +5,5 @@
 {"timestamp":"1681929034","author":"stblr","location":{"commit":"bbfc728872a32c6f91b683de1385e6cc93b8ef7e","path":"payload/game/kart/KartObjectManager.cc","range":{"startLine":120}},"description":"That's a bug then."}
 
 {"timestamp":"1681930892","author":"GnomedDev","location":{"commit":"bbfc728872a32c6f91b683de1385e6cc93b8ef7e","path":"payload/game/kart/KartObjectManager.cc","range":{"startLine":120}},"description":"How come? Sounds like a feature?"}
+
+{"timestamp":"1681931283","author":"stblr","location":{"commit":"bbfc728872a32c6f91b683de1385e6cc93b8ef7e","path":"payload/game/kart/KartObjectManager.cc","range":{"startLine":120}},"description":"That's not consistent with the other engine classes."}
