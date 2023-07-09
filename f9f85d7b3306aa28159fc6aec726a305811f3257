@@ -1,3 +1,5 @@
 {"timestamp":"1674419135","author":"stblr","location":{"commit":"19d47603d0cbb53f705c847e3aa5c13aeedce1f5","path":"tools/gameserver/src/client.rs","range":{"startLine":157}},"description":"These values should be validated."}
 
 {"timestamp":"1674419259","author":"stblr","location":{"commit":"19d47603d0cbb53f705c847e3aa5c13aeedce1f5","path":"tools/gameserver/src/server.rs","range":{"startLine":212}},"description":"?"}
+
+{"timestamp":"1674500555","author":"stblr","location":{"commit":"d1555ec04d68f6e839ca44704920cf46af349ef2","path":"tools/gameserver/src/client.rs","range":{"startLine":174}},"description":"0x1f"}
