@@ -1,0 +1,1 @@
+{"timestamp":"1665247820","reviewRef":"refs/pull/421/head","targetRef":"refs/heads/main","requester":"MikeIsAStar","description":"Rewrite a code execution prevention function\n\nThis commit rewrites the function that is responsible for marking the `MEM2` memory region as non-executable."}
