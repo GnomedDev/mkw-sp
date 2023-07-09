@@ -3,3 +3,5 @@
 {"timestamp":"1648248987","author":"obluda3","description":"Alright, should be good now."}
 
 {"timestamp":"1648246728","author":"stblr","location":{"commit":"2e48499eb9ee2ed16702ed3aee0a369c19432362","path":"payload/game/system/Yaz.c","range":{"startLine":142}},"description":"Empty line"}
+
+{"timestamp":"1648246767","author":"stblr","location":{"commit":"2e48499eb9ee2ed16702ed3aee0a369c19432362","path":"vendor/wuj5/yaz.py","range":{"startLine":41}},"description":"Whitespace"}
