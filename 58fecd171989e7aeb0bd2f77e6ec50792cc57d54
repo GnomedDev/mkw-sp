@@ -79,3 +79,5 @@
 {"timestamp":"1680802573","author":"GnomedDev","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.hh","range":{"startLine":121}},"description":"The system heap stays allocated? Could I put `TrackPackManager` in there and get rid of `TrackPackInfo` entirely?"}
 
 {"timestamp":"1680803005","author":"riidefi","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.hh","range":{"startLine":121}},"description":"It's better to keep the data in MEM2 and extend the structure you insert TrackPackManager into"}
+
+{"timestamp":"1680915113","author":"GnomedDev","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.hh","range":{"startLine":36}},"description":"Hmm? That seems like a micro optimization and even then, how would that be better for cache reasons?"}
