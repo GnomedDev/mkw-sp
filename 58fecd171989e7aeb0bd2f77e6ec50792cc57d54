@@ -65,3 +65,5 @@
 {"timestamp":"1680746071","author":"riidefi","location":{"commit":"a2a7035575f22bc30ab835e1d964f5323c7910a6","path":"payload/sp/ShaUtil.cc","range":{"startLine":6}},"description":"That's true but it seems unintuitive to see `.data()` be valid for a cstr later. If this isn't performance critical, it'd probably be a lot more clear to suffer the 4 byte penalty and use a `FixedString`."}
 
 {"timestamp":"1680747000","author":"riidefi","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.cc","range":{"startLine":201}},"description":"If you `std::sort` this array earlier, you can use `std::lower_bound` to perform a binary search"}
+
+{"timestamp":"1680747020","author":"riidefi","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.cc","range":{"startLine":201}},"description":"(optional)"}
