@@ -1,0 +1,1 @@
+{"timestamp":"1684174663","reviewRef":"refs/pull/731/head","targetRef":"refs/heads/main","requester":"GnomedDev","description":"Implement vanilla vehicle restrictions\n\nPart of the fix for #667, undoes the regression made by adding the new settings menu, but does not implement further filtering due to added complexity.","baseCommit":"1ffe4da76271008adb5621252717745f5caa37e5"}
