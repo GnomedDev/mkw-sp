@@ -5,3 +5,5 @@
 {"timestamp":"1685749060","author":"vabold","location":{"commit":"a3af518578e73c740b40d8704482789c64c1b244","path":"payload/egg/core/eggSceneManager.cc","range":{"startLine":104}},"description":"```suggestion\r\nvoid SceneManager::createScene(EGG::SceneId sceneId, Scene *parent) {\r\n```\r\nThe function explicitly checks if `parent` is a nullptr."}
 
 {"timestamp":"1685749186","author":"vabold","location":{"commit":"a3af518578e73c740b40d8704482789c64c1b244","path":"payload/egg/core/eggScene.hh","range":{"startLine":8}},"description":"```suggestion\r\nenum class SceneId {\r\n```"}
+
+{"timestamp":"1685749223","author":"vabold","location":{"commit":"a3af518578e73c740b40d8704482789c64c1b244","path":"payload/egg/core/eggSceneManager.cc","range":{"startLine":94}},"description":"```suggestion\r\n        auto *parent = m_currScene-\u003egetParent();\r\n        auto sceneID = m_currScene-\u003eid();\r\n        destroyScene(*m_currScene);\r\n        createScene(sceneID, parent);\r\n```"}
