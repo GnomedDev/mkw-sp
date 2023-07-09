@@ -1,0 +1,1 @@
+{"timestamp":"1677425115","reviewRef":"refs/pull/534/head","targetRef":"refs/heads/main","requester":"GnomedDev","description":"Allow disabling of the speedometer\n\nAdds an option to disable the speedometer's rendering.\r\n\r\nCloses #527."}
