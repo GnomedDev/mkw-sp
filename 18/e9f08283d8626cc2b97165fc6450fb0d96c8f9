@@ -1,0 +1,1 @@
+{"timestamp":"1670872333","reviewRef":"refs/pull/505/head","targetRef":"refs/heads/main","requester":"stblr","description":"Update credits in HBC XML\n\nWe got substantial contributions from several new developers and we don't have enough space to put all the names. The online updater also doesn't touch this file."}
