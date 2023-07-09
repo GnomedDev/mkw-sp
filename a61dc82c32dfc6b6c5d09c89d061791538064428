@@ -5,3 +5,5 @@
 {"timestamp":"1678281830","author":"GnomedDev","description":"Ah, knew there was a tracking issue for this, closes #45"}
 
 {"timestamp":"1678919008","author":"stblr","location":{"commit":"d8cdd2589f1c40022c2dd34e43168c63d14441a8","path":"payload/sp/storage/Sdi.c","range":{"startLine":6}},"description":"Not sure what to do about these links."}
+
+{"timestamp":"1678919019","author":"stblr","location":{"commit":"d8cdd2589f1c40022c2dd34e43168c63d14441a8","path":"payload/sp/storage/UsbStorage.c","range":{"startLine":7}},"description":"Same here."}
