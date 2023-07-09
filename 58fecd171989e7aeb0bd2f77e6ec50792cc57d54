@@ -11,3 +11,5 @@
 {"timestamp":"1680505587","author":"riidefi","location":{"commit":"4b87689ea31866bc052f7f5aa8b6d52bec3c2a2c","path":"payload/sp/vanillaTracks.hh","range":{"startLine":2}},"description":"I believe this is invalid if included in multiple files. You can fix that by making it `constexpr`, which may also allow for some additional optimization."}
 
 {"timestamp":"1680514685","author":"GnomedDev","location":{"commit":"4b87689ea31866bc052f7f5aa8b6d52bec3c2a2c","path":"payload/sp/TrackPackManager.cc","range":{"startLine":98}},"description":"What would the user facing behavior you would like to see? If one of the pack files is invalid for now, and we didn't panic, it would need some UI code to implement a dialog or something, which should probably be done in a follow up PR."}
+
+{"timestamp":"1680514734","author":"GnomedDev","location":{"commit":"4b87689ea31866bc052f7f5aa8b6d52bec3c2a2c","path":"payload/egg/core/eggTaskThread.hh","range":{"startLine":13}},"description":"Ah yes, I did this while debugging issues and never reverted it, I'll revert now."}
