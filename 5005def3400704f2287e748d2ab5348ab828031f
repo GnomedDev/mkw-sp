@@ -33,3 +33,5 @@
 {"timestamp":"1674242979","author":"stblr","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"payload/sp/settings/ClientSettings.hh","range":{"startLine":90}},"description":"Why plural? Because of the \"mixed\" option?"}
 
 {"timestamp":"1674243066","author":"stblr","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"payload/game/ui/page/BattleModeSelectPage.hh","range":{"startLine":13}},"description":"No blank line here."}
+
+{"timestamp":"1674243091","author":"stblr","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"payload/game/ui/page/BattleModeSelectPage.cc","range":{"startLine":10}},"description":"https://github.com/stblr/mkw-sp/issues/245#issuecomment-1213490665"}
