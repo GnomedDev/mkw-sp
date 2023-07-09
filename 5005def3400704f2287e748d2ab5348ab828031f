@@ -21,3 +21,5 @@
 {"timestamp":"1674242596","author":"stblr","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"payload/game/system/RaceConfig.cc","range":{"startLine":79}},"description":"What does this accomplish?"}
 
 {"timestamp":"1674242754","author":"stblr","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"payload/game/ui/Section.cc","range":{"startLine":310}},"description":"How much memory is allocated by this call?"}
+
+{"timestamp":"1674242904","author":"stblr","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"symbols.txt","range":{"startLine":1223}},"description":"Please keep them ordered."}
