@@ -9,3 +9,5 @@
 {"timestamp":"1678084602","author":"riidefi","description":"This breaks Windows builds"}
 
 {"timestamp":"1678085293","author":"vabold","description":"inb4 \"good\""}
+
+{"timestamp":"1677925245","author":"stblr","location":{"commit":"ff29ec7a7848335116c357d5ef4c3c4e47f49481","path":"README.md","range":{"startLine":34}},"description":"Or removed."}
