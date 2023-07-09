@@ -17,3 +17,5 @@
 {"timestamp":"1687106525","author":"vabold","description":"\u003e Before anyone criticizes \"Gamer Count\", I would like to redirect blame to Vabold who came up with the idea and repeatedly told me in DMs to commit it.\r\n\r\nStrange, I don't remember any of these DMs.\r\n\r\nWe can use \"Player\" due to the consistency with teams."}
 
 {"timestamp":"1687253820","author":"GnomedDev","description":"Fixed conflicts and comments."}
+
+{"timestamp":"1688529505","author":"Zachruff","description":"\u003e Do we want to use \"racer\" and \"player\" separately? I'd like to hear more opinions before merge.\r\n\r\nimo racer should be both human and CPUs, whereas player is just humans (since nintendo will refer to people as player 1, player 2, etc... and on the title screen you select \"3P\" mode for 3 player local for example). But then there is the issue of battles not technically being races but eh I still think using racer is fine. "}
