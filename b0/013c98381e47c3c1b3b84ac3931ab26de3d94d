@@ -1,3 +1,5 @@
 {"timestamp":"1643747217","author":"stblr","location":{"commit":"b0013c98381e47c3c1b3b84ac3931ab26de3d94d","path":"payload/game/ui/Map2DRenderer.c","range":{"startLine":11}},"description":"How much memory does that represent concretely?"}
 
 {"timestamp":"1643747677","author":"riidefi","location":{"commit":"b0013c98381e47c3c1b3b84ac3931ab26de3d94d","path":"payload/game/ui/Map2DRenderer.c","range":{"startLine":11}},"description":"The resolution is 220x220 (224x224 blocked)\r\n\r\nCustom (RGBA8 @ 32bpp): ~200kb MEM2\r\nBattle (RGB5A3 @ 16bpp): ~100kb MEM2\r\nRace (IA4 @ 8bpp): ~50kb MEM2\r\n\r\nQuite trivial, but still worth noting."}
+
+{"timestamp":"1643747842","author":"stblr","location":{"commit":"b0013c98381e47c3c1b3b84ac3931ab26de3d94d","path":"payload/game/ui/Map2DRenderer.c","range":{"startLine":11}},"description":"Let's just go with that for now."}
