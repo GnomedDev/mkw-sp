@@ -17,3 +17,5 @@
 {"timestamp":"1681931684","author":"stblr","location":{"commit":"bbfc728872a32c6f91b683de1385e6cc93b8ef7e","path":"payload/game/kart/KartObjectManager.cc","range":{"startLine":120}},"description":"All VS and battle settings already match that behavior AFAIK."}
 
 {"timestamp":"1681931730","author":"GnomedDev","location":{"commit":"bbfc728872a32c6f91b683de1385e6cc93b8ef7e","path":"payload/game/kart/KartObjectManager.cc","range":{"startLine":120}},"description":"Okay, I'll \"fix\" this and look for somewhere to document it."}
+
+{"timestamp":"1681931763","author":"stblr","location":{"commit":"bbfc728872a32c6f91b683de1385e6cc93b8ef7e","path":"payload/game/kart/KartObjectManager.cc","range":{"startLine":120}},"description":"This is just how the base game works..."}
