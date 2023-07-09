@@ -41,3 +41,5 @@
 {"timestamp":"1675290865","author":"stblr","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/src/main.rs","range":{"startLine":231}},"description":"How were the port numbers chosen?"}
 
 {"timestamp":"1675290881","author":"stblr","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/src/main.rs","range":{"startLine":213}},"description":"Same"}
+
+{"timestamp":"1675292238","author":"Zachruff","location":{"commit":"e67125e17fd238974bad879dd32fcf335f57b00c","path":"tools/matchmaking/src/main.rs","range":{"startLine":83}},"description":"In vanilla since there are only two modes battle worldwides just alternate back and forth between the two. MK8DX which has 5 modes yes it cycles through all of them."}
