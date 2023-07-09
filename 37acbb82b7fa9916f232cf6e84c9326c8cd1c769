@@ -17,3 +17,5 @@
 {"timestamp":"1675632697","author":"stblr","location":{"commit":"187d72759e040be59cc3f7e6c4afa8fe9b44ea35","path":"tools/netprotocol/src/async_stream.rs","range":{"startLine":219}},"description":"I will see if there is a way to implement the checks at compile time (have `start_write` return a struct with a mutable reference)."}
 
 {"timestamp":"1675632759","author":"stblr","location":{"commit":"187d72759e040be59cc3f7e6c4afa8fe9b44ea35","path":"tools/gameserver/src/room.rs","range":{"startLine":139}},"description":"That syntax doesn't look to be legal."}
+
+{"timestamp":"1675633105","author":"GnomedDev","location":{"commit":"187d72759e040be59cc3f7e6c4afa8fe9b44ea35","path":"tools/gameserver/src/room.rs","range":{"startLine":139}},"description":"Oh, huh, didn't actually know `tokio::select!` had that `else` syntax."}
