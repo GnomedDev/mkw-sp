@@ -3,3 +3,5 @@
 {"timestamp":"1685309629","author":"vabold","location":{"commit":"9d8fa1521434162fa52999f3a6f2edf495dcfab0","path":"payload/game/system/RaceConfig.hh","range":{"startLine":132}},"description":"The destructor must be replaced before it is safe to use 0x04 - 0x1c. `DestroyInstance` must be replaced before it is safe to use 0x1c - 0x20."}
 
 {"timestamp":"1685392630","author":"stblr","location":{"commit":"9d8fa1521434162fa52999f3a6f2edf495dcfab0","path":"payload/game/system/RaceConfig.hh","range":{"startLine":132}},"description":"There is also a vtable access in `RaceConfig::init`."}
+
+{"timestamp":"1685393578","author":"vabold","location":{"commit":"9d8fa1521434162fa52999f3a6f2edf495dcfab0","path":"payload/game/system/RaceConfig.hh","range":{"startLine":132}},"description":"The vtable access in `init` is fine because the dereference at 0x0 is valid. We simply stub the function."}
