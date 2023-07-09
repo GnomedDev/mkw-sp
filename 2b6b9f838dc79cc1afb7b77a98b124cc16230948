@@ -11,3 +11,5 @@
 {"timestamp":"1685562482","author":"GnomedDev","location":{"commit":"1e32d79198432e76ecca855e6536305ea9ba3448","path":"payload/sp/ItemCommand.cc","range":{"startLine":18}},"description":"Why? It isn't ever going to be above 127."}
 
 {"timestamp":"1685562981","author":"riidefi","location":{"commit":"1e32d79198432e76ecca855e6536305ea9ba3448","path":"payload/sp/ItemCommand.cc","range":{"startLine":18}},"description":"You're right; I misread it as an implicit narrowing type conversion."}
+
+{"timestamp":"1685563572","author":"GnomedDev","location":{"commit":"1e32d79198432e76ecca855e6536305ea9ba3448","path":"payload/sp/ItemCommand.cc","range":{"startLine":108}},"description":"I've seen it done both ways."}
