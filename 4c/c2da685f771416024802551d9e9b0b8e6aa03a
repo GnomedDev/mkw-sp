@@ -1,1 +1,3 @@
 {"timestamp":"1648248554","author":"riidefi","description":"Tested the changes to Yaz.c\r\n```sh\r\n# Apple M1 (Apple LLVM 13.0.0)\r\n\r\n# Nintendo's SZS compression (based on Boyer-Moore iirc)\r\n[tests.cpp:77] Encoded size: 2877740\r\n# Decompressed SZS size\r\n[tests.cpp:77] Decoded size: 5272352\r\n\r\n# Old algorithm\r\n[tests.cpp:103] Compressed to 2893607 bytes\r\n[tests.cpp:110] (Took 6839 ms)\r\n[tests.cpp:110] (Took 6817 ms)\r\n[tests.cpp:110] (Took 6814 ms)\r\n\r\n# With changes\r\n[tests.cpp:103] Compressed to 4741186 bytes\r\n[tests.cpp:110] (Took 33 ms)\r\n[tests.cpp:110] (Took 32 ms)\r\n[tests.cpp:110] (Took 29 ms)\r\n```"}
+
+{"timestamp":"1648248987","author":"obluda3","description":"Alright, should be good now."}
