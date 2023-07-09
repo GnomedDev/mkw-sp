@@ -3,3 +3,5 @@
 {"timestamp":"1683137229","author":"stblr","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/game/host_system/RkSystem.cc","range":{"startLine":11}},"description":"Why here?"}
 
 {"timestamp":"1683137266","author":"stblr","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/nw4r/db/dbException.cc","range":{"startLine":15}},"description":"```suggestion\r\nstruct ExceptionInfo {\r\n```"}
+
+{"timestamp":"1683137282","author":"stblr","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/nw4r/db/dbException.cc","range":{"startLine":28}},"description":"```suggestion\r\n};\r\n```"}
