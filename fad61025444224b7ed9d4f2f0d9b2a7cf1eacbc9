@@ -1,0 +1,1 @@
+{"timestamp":"1680472679","reviewRef":"refs/pull/644/head","targetRef":"refs/heads/main","requester":"GnomedDev","description":"Savestates: Include Item state in KartSaveState\n\nThis saves item state in KartSaveState, allowing for (as an example) practicing shortcuts that need shrooms without needing to use `/i`.","baseCommit":"2dc319003e268f15adeba6971c56846e308fccec"}
