@@ -13,3 +13,5 @@
 {"timestamp":"1687292923","author":"GnomedDev","description":"Done"}
 
 {"timestamp":"1686834592","author":"vabold","location":{"commit":"5422227bd47bf428aa6d3cac6aa264669f54f8c0","path":"payload/game/system/MultiDvdArchive.hh","range":{"startLine":14}},"description":"We do not want to unscope the type of the MultiDvdArchive. I think `using ResChannelId = MultiDvdArchive::Type;` in `ResourceManager.hh` is an acceptable solution, however."}
+
+{"timestamp":"1686835897","author":"GnomedDev","location":{"commit":"5422227bd47bf428aa6d3cac6aa264669f54f8c0","path":"payload/game/system/MultiDvdArchive.hh","range":{"startLine":14}},"description":"Resolved in ee0528969b6e3344899b46f81ec439fbaba62b42"}
