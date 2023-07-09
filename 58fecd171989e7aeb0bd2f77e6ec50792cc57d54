@@ -67,3 +67,5 @@
 {"timestamp":"1680747000","author":"riidefi","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.cc","range":{"startLine":201}},"description":"If you `std::sort` this array earlier, you can use `std::lower_bound` to perform a binary search"}
 
 {"timestamp":"1680747020","author":"riidefi","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.cc","range":{"startLine":201}},"description":"(optional)"}
+
+{"timestamp":"1680747505","author":"riidefi","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.cc","range":{"startLine":201}},"description":"Probably just slower here since you reload the ini files every race (?)"}
