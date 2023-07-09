@@ -15,3 +15,5 @@
 {"timestamp":"1685394127","author":"stblr","description":"The ifdef is flipped."}
 
 {"timestamp":"1685396552","author":"MikeIsAStar","description":"\u003e The ifdef is flipped.\r\n\r\nResolved in commit [22533f6](https://github.com/stblr/mkw-sp/pull/745/commits/22533f613de30e1a0272d69055e6197fa0e90635)."}
+
+{"timestamp":"1685134259","author":"stblr","location":{"commit":"2f22e80d914ff8e7a8e55f9a31edf80bdc450cd9","path":"payload/game/util/Registry.hh","range":{"startLine":160}},"description":"Is that function that specific or could it be used in another context?"}
