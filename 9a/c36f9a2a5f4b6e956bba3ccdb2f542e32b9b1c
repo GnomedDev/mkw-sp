@@ -5,3 +5,5 @@
 {"timestamp":"1645221609","author":"stblr","location":{"commit":"283208adca524a0f9b5918f7b61e185a65191a20","path":"payload/game/system/FatalScene.c","range":{"startLine":54}},"description":"Yeah the dol will be harder to map, one of the ranges is probably incorrect already."}
 
 {"timestamp":"1645222403","author":"riidefi","location":{"commit":"283208adca524a0f9b5918f7b61e185a65191a20","path":"payload/game/system/BugCheck.c","range":{"startLine":38}},"description":"The length is `MIN(strnlen(src, dst_len), dst_len)`, which is fine. I assume GCC wants `MIN(strnlen(src, MIN(src_max, dst_len)), dst_len)` with an extra parameter."}
+
+{"timestamp":"1645222763","author":"stblr","location":{"commit":"283208adca524a0f9b5918f7b61e185a65191a20","path":"payload/game/system/BugCheck.c","range":{"startLine":38}},"description":"The 3rd argument (`sizeof(sFormattedBugCheck)`) is 1024."}
