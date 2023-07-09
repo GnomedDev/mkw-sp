@@ -5,3 +5,5 @@
 {"timestamp":"1687023040","author":"stblr","location":{"commit":"ead9f3dc98a278d0667e0ba2ab471f2dbda768d5","path":"payload/game/kart/KartMove.hh","range":{"startLine":27}},"description":"These names are confusing."}
 
 {"timestamp":"1687023078","author":"stblr","location":{"commit":"ead9f3dc98a278d0667e0ba2ab471f2dbda768d5","path":"payload/game/kart/KartMove.cc","range":{"startLine":55}},"description":"Looking at 8059b7b8, we can maybe drop this."}
+
+{"timestamp":"1687023289","author":"GnomedDev","location":{"commit":"ead9f3dc98a278d0667e0ba2ab471f2dbda768d5","path":"payload/game/kart/KartMove.hh","range":{"startLine":27}},"description":"Would `restoreNormalSpeedLimit` be cleaner? Or what do you suggest otherwise?"}
