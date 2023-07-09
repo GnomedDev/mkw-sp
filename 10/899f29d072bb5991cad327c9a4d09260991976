@@ -1,1 +1,3 @@
 {"timestamp":"1644764037","author":"riidefi","description":"Resolved"}
+
+{"timestamp":"1644763451","author":"stblr","location":{"commit":"0bdac25413576d9980a265fab8d26ab4850d1059","path":"symbols.txt","range":{"startLine":81}},"description":"For these maybe keep the original symbol name and an offset, that might be preferred if we end up using them e.g. in the exception handler."}
