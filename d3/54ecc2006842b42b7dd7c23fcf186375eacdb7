@@ -1,0 +1,1 @@
+{"timestamp":"1643980211","reviewRef":"refs/pull/109/head","targetRef":"refs/heads/main","requester":"SeekyCt","description":"Support other python names\n\nNot everyone has python installed as `python` (mine is `py` for example), this pull request changes ninja to use the python executable used to run configure.py instead of just `python`"}
