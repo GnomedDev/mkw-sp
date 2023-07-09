@@ -3,3 +3,5 @@
 {"timestamp":"1685473500","author":"riidefi","location":{"commit":"1e32d79198432e76ecca855e6536305ea9ba3448","path":"payload/sp/ItemCommand.cc","range":{"startLine":92}},"description":"In C++ we can use std::max"}
 
 {"timestamp":"1685473572","author":"riidefi","location":{"commit":"1e32d79198432e76ecca855e6536305ea9ba3448","path":"payload/sp/ItemCommand.cc","range":{"startLine":108}},"description":"Usually we put static data first, I think?"}
+
+{"timestamp":"1685473609","author":"riidefi","location":{"commit":"1e32d79198432e76ecca855e6536305ea9ba3448","path":"payload/sp/ItemCommand.cc","range":{"startLine":18}},"description":"`int` not `s8`"}
