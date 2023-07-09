@@ -5,3 +5,5 @@
 {"timestamp":"1681257817","author":"riidefi","description":"The semantics would be \"allow the game to load obviously malformed and corrupted data\" and the default would be `false`."}
 
 {"timestamp":"1681257870","author":"riidefi","description":"Keep in mind CTGP goes further than us, rejecting any track with say the `MDL0` magic missing."}
+
+{"timestamp":"1681257896","author":"GnomedDev","description":"Maybe spending time developing a patch to stop the game doing that but allowing the track to still load would be beneficial. "}
