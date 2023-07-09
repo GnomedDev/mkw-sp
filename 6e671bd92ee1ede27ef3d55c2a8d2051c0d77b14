@@ -3,3 +3,5 @@
 {"timestamp":"1667729807","author":"stblr","location":{"commit":"2800c62aa29cd30ce9a375d8fdb915e7d282d4e6","path":"payload/game/ui/NumericEditBox.hh","range":{"startLine":23}},"description":"Indeed. There is one more argument in r5 (`s32`) but I don't know what it does, as it seems to be unused most of the time."}
 
 {"timestamp":"1667731728","author":"riidefi","location":{"commit":"2800c62aa29cd30ce9a375d8fdb915e7d282d4e6","path":"payload/game/ui/DirectConnectionPage.cc","range":{"startLine":175}},"description":"I suppose in most text editors CTRL+BACKSPACE would clear to the end of the word--in this case, until the hyphen? Regardless it is probably fine as-is. Updating the comment."}
+
+{"timestamp":"1667731861","author":"riidefi","location":{"commit":"2800c62aa29cd30ce9a375d8fdb915e7d282d4e6","path":"payload/game/ui/NumericEditBox.hh","range":{"startLine":23}},"description":"Resolved"}
