@@ -21,3 +21,5 @@
 {"timestamp":"1677412541","author":"stblr","location":{"commit":"c4af38934ae6322e84a93e42e9fc2c287df65cfc","path":"payload/sp/SaveStateManager.cc","range":{"startLine":18}},"description":"This leaks memory."}
 
 {"timestamp":"1677417072","author":"stblr","location":{"commit":"c4af38934ae6322e84a93e42e9fc2c287df65cfc","path":"payload/sp/SaveStateManager.cc","range":{"startLine":18}},"description":"By the way, do we even need a separate allocation?"}
+
+{"timestamp":"1677424196","author":"GnomedDev","location":{"commit":"c4af38934ae6322e84a93e42e9fc2c287df65cfc","path":"payload/sp/SaveStateManager.cc","range":{"startLine":18}},"description":"Thinking about it, probably not, I implemented this way to lazy allocate the save state but that doesn't seem possible or useful (see dev chat last night)."}
