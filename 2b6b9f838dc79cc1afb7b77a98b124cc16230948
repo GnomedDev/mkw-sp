@@ -9,3 +9,5 @@
 {"timestamp":"1685473665","author":"riidefi","location":{"commit":"1e32d79198432e76ecca855e6536305ea9ba3448","path":"payload/sp/ItemCommand.cc","range":{"startLine":90}},"description":"s_sticky.emplace() = {\r\n.item = ...,\r\n.quantity = ...\r\n};"}
 
 {"timestamp":"1685562482","author":"GnomedDev","location":{"commit":"1e32d79198432e76ecca855e6536305ea9ba3448","path":"payload/sp/ItemCommand.cc","range":{"startLine":18}},"description":"Why? It isn't ever going to be above 127."}
+
+{"timestamp":"1685562981","author":"riidefi","location":{"commit":"1e32d79198432e76ecca855e6536305ea9ba3448","path":"payload/sp/ItemCommand.cc","range":{"startLine":18}},"description":"You're right; I misread it as an implicit narrowing type conversion."}
