@@ -41,3 +41,5 @@
 {"timestamp":"1682324393","author":"riidefi","location":{"commit":"92dd378a4976e179bb0782c3677caad4bc9b72eb","path":"payload/game/system/RaceConfig.hh","range":{"startLine":129}},"description":"Probably more readable to have the flags in one place? Jury may still be out on the proper place for them, but that seems beyond the scope of this PR."}
 
 {"timestamp":"1682363031","author":"GnomedDev","location":{"commit":"92dd378a4976e179bb0782c3677caad4bc9b72eb","path":"payload/game/system/RaceConfig.hh","range":{"startLine":129}},"description":"What do you mean \"the flags\"?"}
+
+{"timestamp":"1682373620","author":"riidefi","location":{"commit":"92dd378a4976e179bb0782c3677caad4bc9b72eb","path":"payload/game/system/RaceConfig.hh","range":{"startLine":129}},"description":"collection of boolean values in `MenuScenario`"}
