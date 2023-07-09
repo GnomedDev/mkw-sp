@@ -29,3 +29,5 @@
 {"timestamp":"1685134840","author":"stblr","location":{"commit":"2f22e80d914ff8e7a8e55f9a31edf80bdc450cd9","path":"payload/game/ui/CourseSelectPage.cc","range":{"startLine":11}},"description":"```suggestion\r\n#include \"game/util/Registry.hh\"\r\n\r\n```"}
 
 {"timestamp":"1685134865","author":"stblr","location":{"commit":"2f22e80d914ff8e7a8e55f9a31edf80bdc450cd9","path":"payload/game/ui/CourseSelectPage.cc","range":{"startLine":3}},"description":"Revert."}
+
+{"timestamp":"1685135425","author":"vabold","location":{"commit":"2f22e80d914ff8e7a8e55f9a31edf80bdc450cd9","path":"payload/game/util/Registry.hh","range":{"startLine":160}},"description":"It is not a base game function, so the function is that specific.\r\n\r\nThere is a base game function which does the reverse - getting the course from the button index. It is called by `RankingPage::onInit` and only there.\r\n\r\nIt may not be part of the same TU, but there is a similar function named `WifiErrorExplain` which is in the same TU as the aforementioned base game function."}
