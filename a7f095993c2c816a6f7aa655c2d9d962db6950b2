@@ -7,3 +7,5 @@
 {"timestamp":"1681257870","author":"riidefi","description":"Keep in mind CTGP goes further than us, rejecting any track with say the `MDL0` magic missing."}
 
 {"timestamp":"1681257896","author":"GnomedDev","description":"Maybe spending time developing a patch to stop the game doing that but allowing the track to still load would be beneficial. "}
+
+{"timestamp":"1681258027","author":"riidefi","description":"What, with like a neural network trained to attempt to recover useful semantic information from nondeterministically malformed source data? "}
