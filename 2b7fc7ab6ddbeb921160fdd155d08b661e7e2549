@@ -35,3 +35,5 @@
 {"timestamp":"1685656914","author":"riidefi","location":{"commit":"e2935bd5e2de3f54c5fd51b8abe7f388efbd5949","path":"payload/game/system/GhostFile.cc","range":{"startLine":263}},"description":"I would add this to Registry.cc\r\n```cpp\r\nbool IsControllerValid(Controller controller) {\r\n    switch (controller) {\r\n    case Controller::WiiWheel... Controller::GameCube:\r\n        return true;\r\n    default:\r\n        return false;\r\n    }\r\n}\r\n```\r\nI would expect something like this in any PR that has retyping courseId as a goal"}
 
 {"timestamp":"1685657296","author":"GnomedDev","location":{"commit":"e2935bd5e2de3f54c5fd51b8abe7f388efbd5949","path":"payload/game/system/RaceConfig.cc","range":{"startLine":154}},"description":"Good catch, seems like in testing it always does Luigi's circuit, I'll see how to fix."}
+
+{"timestamp":"1685658550","author":"GnomedDev","location":{"commit":"e2935bd5e2de3f54c5fd51b8abe7f388efbd5949","path":"payload/game/system/RaceConfig.cc","range":{"startLine":248}},"description":"Currently it would infinite loop here, how does the base game handle it?"}
