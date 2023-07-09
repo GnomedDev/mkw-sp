@@ -3,3 +3,5 @@
 {"timestamp":"1678917650","author":"GnomedDev","description":"I meant this for personal builds, as I switch branches often, swap between gdb and non-gdb compat for debug and builds for friends, and use multiple machines, it seems a waste to compile a target I never use and thought it would be a waste for others aswell."}
 
 {"timestamp":"1679428920","author":"stblr","description":"Then the CI should override the default targets to keep the debug build."}
+
+{"timestamp":"1679430070","author":"GnomedDev","description":"Done"}
