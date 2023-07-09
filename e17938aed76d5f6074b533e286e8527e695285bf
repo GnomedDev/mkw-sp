@@ -27,3 +27,5 @@
 {"timestamp":"1687209631","author":"GnomedDev","location":{"commit":"948340f829842546db9369d1b05a8397351b1790","path":"assets/message/MenuSP_U.bmg.json5","range":{"startLine":1130}},"description":"Ah, I need to make 10435 `players`, but we don't need to care about singular since the setting is minimum `2` racers/players."}
 
 {"timestamp":"1687209645","author":"GnomedDev","location":{"commit":"948340f829842546db9369d1b05a8397351b1790","path":"payload/game/system/RaceConfig.cc","range":{"startLine":48}},"description":"Ah, not anymore."}
+
+{"timestamp":"1687209751","author":"stblr","location":{"commit":"948340f829842546db9369d1b05a8397351b1790","path":"assets/message/MenuSP_U.bmg.json5","range":{"startLine":1130}},"description":"Ah, right."}
