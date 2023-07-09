@@ -1,0 +1,1 @@
+{"timestamp":"1688515498","reviewRef":"refs/pull/832/head","targetRef":"refs/heads/main","requester":"GnomedDev","description":"Implement utils for working with Sha\n\nSplit off from #655 ","baseCommit":"78cd8527dd6d75be6913016a877a0bc744ad5cd3"}
