@@ -3,3 +3,5 @@
 {"timestamp":"1644763451","author":"stblr","location":{"commit":"0bdac25413576d9980a265fab8d26ab4850d1059","path":"symbols.txt","range":{"startLine":81}},"description":"For these maybe keep the original symbol name and an offset, that might be preferred if we end up using them e.g. in the exception handler."}
 
 {"timestamp":"1644763587","author":"riidefi","location":{"commit":"0bdac25413576d9980a265fab8d26ab4850d1059","path":"symbols.txt","range":{"startLine":81}},"description":"As a comment? Or should we add a PATCH_BRANCH variant that supports offsets?"}
+
+{"timestamp":"1644763678","author":"stblr","location":{"commit":"0bdac25413576d9980a265fab8d26ab4850d1059","path":"symbols.txt","range":{"startLine":81}},"description":"`PATCH_B(EGG_ColorFader_fadeIn + 0x24, post_fadeIn);` already works."}
