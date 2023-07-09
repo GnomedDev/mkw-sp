@@ -129,3 +129,5 @@
 {"timestamp":"1682547443","author":"riidefi","location":{"commit":"bb2db980a67611c888aebdf599e5da4e06471127","path":"payload/game/kart/KartTire.hh","range":{"startLine":2}},"description":"Would pull this into its own PR like \"Added missing #pragma once\". Or if possible, can we not enforce this in clang-format?"}
 
 {"timestamp":"1682547461","author":"riidefi","location":{"commit":"bb2db980a67611c888aebdf599e5da4e06471127","path":"payload/game/kart/KartTire.hh","range":{"startLine":2}},"description":"(Since it touches a bunch of unrelated files)"}
+
+{"timestamp":"1682633810","author":"GnomedDev","location":{"commit":"bb2db980a67611c888aebdf599e5da4e06471127","path":"payload/game/kart/KartTire.hh","range":{"startLine":2}},"description":"I did this because you were being overly pedantic about it in the glorified ini file, pull into your own PR if you want but the script I made to find them is long gone."}
