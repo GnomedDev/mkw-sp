@@ -1,0 +1,1 @@
+{"timestamp":"1674419135","author":"stblr","location":{"commit":"19d47603d0cbb53f705c847e3aa5c13aeedce1f5","path":"tools/gameserver/src/client.rs","range":{"startLine":157}},"description":"These values should be validated."}
