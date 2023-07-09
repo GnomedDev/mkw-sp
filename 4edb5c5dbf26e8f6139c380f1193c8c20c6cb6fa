@@ -19,3 +19,5 @@
 {"timestamp":"1677412416","author":"stblr","location":{"commit":"cfa423b2dc17b2cf741650ed34f22624a6ce478c","path":"payload/game/ui/page/RacePage.cc","range":{"startLine":63}},"description":"`KartObjectManager::CreateInstance`, the only issue is that we are already replacing this function from C code."}
 
 {"timestamp":"1677412541","author":"stblr","location":{"commit":"c4af38934ae6322e84a93e42e9fc2c287df65cfc","path":"payload/sp/SaveStateManager.cc","range":{"startLine":18}},"description":"This leaks memory."}
+
+{"timestamp":"1677417072","author":"stblr","location":{"commit":"c4af38934ae6322e84a93e42e9fc2c287df65cfc","path":"payload/sp/SaveStateManager.cc","range":{"startLine":18}},"description":"By the way, do we even need a separate allocation?"}
