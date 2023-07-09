@@ -1,1 +1,3 @@
 {"timestamp":"1686600515","author":"stblr","description":"As said on Discord, `SyncSocket` has more differences. Notably there is a single current message id rather than one per end."}
+
+{"timestamp":"1686614308","author":"GnomedDev","description":"Where is this documented?"}
