@@ -3,3 +3,5 @@
 {"timestamp":"1681257713","author":"GnomedDev","description":"If you want to open a PR doing that, I'll close this, but I don't see the point in adding a \"randomly crash\" boolean, default set to false."}
 
 {"timestamp":"1681257817","author":"riidefi","description":"The semantics would be \"allow the game to load obviously malformed and corrupted data\" and the default would be `false`."}
+
+{"timestamp":"1681257870","author":"riidefi","description":"Keep in mind CTGP goes further than us, rejecting any track with say the `MDL0` magic missing."}
