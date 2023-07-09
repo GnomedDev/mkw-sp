@@ -1,3 +1,5 @@
 {"timestamp":"1684081110","author":"stblr","location":{"commit":"08cf0d2899476dbe7a3ec67f4cf4862b70cd4da6","path":"payload/sp/settings/ClientSettings.hh","range":{"startLine":130}},"description":"Please comment them out like the rest."}
 
 {"timestamp":"1684081140","author":"stblr","location":{"commit":"08cf0d2899476dbe7a3ec67f4cf4862b70cd4da6","path":"payload/game/ui/SingleTopPage.cc","range":{"startLine":121}},"description":"What happens in time trials?"}
+
+{"timestamp":"1684081230","author":"stblr","location":{"commit":"08cf0d2899476dbe7a3ec67f4cf4862b70cd4da6","path":"payload/game/ui/MultiTopPage.cc","range":{"startLine":68}},"description":"Can you also implement the restrictions in multiplayer?"}
