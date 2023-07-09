@@ -43,3 +43,5 @@
 {"timestamp":"1680657065","author":"riidefi","location":{"commit":"a2a7035575f22bc30ab835e1d964f5323c7910a6","path":"payload/sp/TrackPackManager.cc","range":{"startLine":95}},"description":"Move to ShaUtil?"}
 
 {"timestamp":"1680657099","author":"riidefi","location":{"commit":"a2a7035575f22bc30ab835e1d964f5323c7910a6","path":"payload/sp/TrackPackManager.cc","range":{"startLine":151}},"description":"TRY should clean this up a bit"}
+
+{"timestamp":"1680657171","author":"riidefi","location":{"commit":"a2a7035575f22bc30ab835e1d964f5323c7910a6","path":"payload/sp/TrackPackManager.cc","range":{"startLine":293}},"description":"See this is why I'm not a huge fan of constructors in C++ turning every type into an optional type."}
