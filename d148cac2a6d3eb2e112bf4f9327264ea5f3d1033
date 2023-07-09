@@ -11,3 +11,5 @@
 {"timestamp":"1687292199","author":"riidefi","description":"I also wouldn't object to moving this enum to `Registry`, even."}
 
 {"timestamp":"1687292923","author":"GnomedDev","description":"Done"}
+
+{"timestamp":"1686834592","author":"vabold","location":{"commit":"5422227bd47bf428aa6d3cac6aa264669f54f8c0","path":"payload/game/system/MultiDvdArchive.hh","range":{"startLine":14}},"description":"We do not want to unscope the type of the MultiDvdArchive. I think `using ResChannelId = MultiDvdArchive::Type;` in `ResourceManager.hh` is an acceptable solution, however."}
