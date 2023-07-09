@@ -1,1 +1,3 @@
 {"timestamp":"1685628482","author":"vabold","description":"I'm confused - if it's not defined in symbols.txt, how does the game know which function to call for `getXfbManager`? Am I missing something?"}
+
+{"timestamp":"1685628556","author":"GnomedDev","description":"Because the function pointer is contained in the vtable created by the stock constructor, so it finds the function at runtime."}
