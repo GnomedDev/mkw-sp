@@ -7,3 +7,5 @@
 {"timestamp":"1685222721","author":"stblr","description":"2 issues I found while testing:\r\n\r\n- [x] Online mode is no longer feature gated.\r\n- [x] When selecting a track with the `UpDownControl`, the selection in the `CourseSelectPage` is not updated."}
 
 {"timestamp":"1685224839","author":"vabold","description":"\u003e \u003e Would feature gating make sense here?\n\u003e \n\u003e There is (untested) present functionality here, so I do not believe so.\n\nAfter testing, there is no present functionality. I agree that this should be feature gated (temporary though it may be)."}
+
+{"timestamp":"1685319127","author":"stblr","description":"The online buttons are no longer visible."}
