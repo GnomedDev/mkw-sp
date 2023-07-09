@@ -1,3 +1,5 @@
 {"timestamp":"1673889827","author":"GnomedDev","description":"~~Fixing kart select is going to be harder than I thought. It is currently broken due to the page merging effort (the UI flow has been changed to mimic VS, then branch back to battle mode when loading demo) as the normal `VehicleSelectPage` doesn't contain the code `onActivate` for calling `0x80860bf0` and setting the `LayoutUiControl`s up correctly, which even if that is fixed will probably only solve the missing thumbnails and not the missing model and spinning animation.~~"}
 
 {"timestamp":"1673983834","author":"vabold","location":{"commit":"524515795159bf7a046ae682d30c0145f90b6af4","path":"payload/game/enemy/EnemyManager.cc","range":{"startLine":14}},"description":"Static methods should be PascalCase and not camelCase."}
+
+{"timestamp":"1673983850","author":"vabold","location":{"commit":"524515795159bf7a046ae682d30c0145f90b6af4","path":"payload/game/enemy/EnemyManager.hh","range":{"startLine":15}},"description":"Static methods should be defined below non-static members."}
