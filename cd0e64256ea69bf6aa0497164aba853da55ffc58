@@ -5,3 +5,5 @@
 {"timestamp":"1686872695","author":"riidefi","description":"Okay--while I personally think this is quite brittle and odd for a function on a read-only span of 20 bytes to require the programmer to memcpy into a specific structure (when reading from a file is a use-case), I can agree that the security footguns of the current approach (with a raw pointer) are worse. I've approved this change."}
 
 {"timestamp":"1688515040","author":"GnomedDev","description":"Solved conflicts and header ordering issues."}
+
+{"timestamp":"1688513886","author":"vabold","location":{"commit":"2d7e4720bcad7c099a8bac7ef76ba466e3f2b042","path":"payload/sp/ShaUtil.hh","range":{"startLine":7}},"description":"```suggestion\r\n#include \u003cexpected\u003e\r\n#include \u003cstring_view\u003e\r\n\r\n#include \u003cCommon.hh\u003e\r\n```"}
