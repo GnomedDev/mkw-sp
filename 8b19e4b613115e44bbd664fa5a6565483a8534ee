@@ -1,0 +1,1 @@
+{"timestamp":"1685628482","author":"vabold","description":"I'm confused - if it's not defined in symbols.txt, how does the game know which function to call for `getXfbManager`? Am I missing something?"}
