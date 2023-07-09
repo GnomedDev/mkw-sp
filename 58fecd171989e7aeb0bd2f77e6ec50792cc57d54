@@ -53,3 +53,5 @@
 {"timestamp":"1680745272","author":"riidefi","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.cc","range":{"startLine":182}},"description":"Usually more idiomatic to use `.empty()` instead of `.size() == 0`"}
 
 {"timestamp":"1680745499","author":"riidefi","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.cc","range":{"startLine":337}},"description":"ditto"}
+
+{"timestamp":"1680745515","author":"riidefi","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.cc","range":{"startLine":367}},"description":"`auto *raceConfig`"}
