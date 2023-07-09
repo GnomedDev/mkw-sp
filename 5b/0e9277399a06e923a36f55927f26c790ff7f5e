@@ -7,3 +7,5 @@
 {"timestamp":"1644318115","author":"stblr","location":{"commit":"b1d8cf036c2efb62f0715c46927291ff5b97b47d","path":"payload/game/ui/Layout.h","range":{"startLine":12}},"description":"The RTTI check is missing and a `Layout` type should be defined."}
 
 {"timestamp":"1644318255","author":"stblr","location":{"commit":"b1d8cf036c2efb62f0715c46927291ff5b97b47d","path":"payload/game/ui/page/RacePage.S","range":{"startLine":20}},"description":"Split-screen should be handled in some way (not necessarily here)."}
+
+{"timestamp":"1644318746","author":"stblr","location":{"commit":"b1d8cf036c2efb62f0715c46927291ff5b97b47d","path":"payload/game/system/SaveManager.h","range":{"startLine":145}},"description":"Reserving space for more presets is a good idea, but since not all options are valid yet a check should be added in the `SpSaveLicense_sanitize` function (and the initialization in `SaveManager_createSpLicense` is missing too)."}
