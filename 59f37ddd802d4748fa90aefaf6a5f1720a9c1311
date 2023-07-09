@@ -11,3 +11,5 @@
 {"timestamp":"1681762241","author":"GnomedDev","location":{"commit":"5d164323178dc7fceedbb5037e30e73cfffb2c06","path":"payload/sp/settings/ClientSettings.hh","range":{"startLine":118}},"description":"Yes, I didn't see the point of VS without CPUs tbh, could re-add though."}
 
 {"timestamp":"1681762806","author":"Zachruff","location":{"commit":"5d164323178dc7fceedbb5037e30e73cfffb2c06","path":"payload/sp/settings/ClientSettings.hh","range":{"startLine":118}},"description":"In the vanilla game the None option is only selectable with multiple local people (which then it makes sense). It should be re-added. Removing options from vanilla game is dummy."}
+
+{"timestamp":"1681811951","author":"GnomedDev","location":{"commit":"5d164323178dc7fceedbb5037e30e73cfffb2c06","path":"payload/sp/settings/ClientSettings.hh","range":{"startLine":118}},"description":"It should be re-added when a better settings UI is developed, so it doesn't clutter the single options"}
