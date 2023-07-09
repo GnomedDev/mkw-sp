@@ -25,3 +25,5 @@
 {"timestamp":"1685623070","author":"GnomedDev","location":{"commit":"71b42c7d00f43490ea1aedf414a5ad5000d64ede","path":"payload/sp/ItemCommand.cc","range":{"startLine":25}},"description":"I'll reimplement an actual check after #803 allows me to get the SceneManager."}
 
 {"timestamp":"1685623451","author":"vabold","location":{"commit":"71b42c7d00f43490ea1aedf414a5ad5000d64ede","path":"payload/sp/ItemCommand.cc","range":{"startLine":25}},"description":"Actually, we can use the section ID to do this."}
+
+{"timestamp":"1685623560","author":"GnomedDev","location":{"commit":"71b42c7d00f43490ea1aedf414a5ad5000d64ede","path":"payload/sp/ItemCommand.cc","range":{"startLine":25}},"description":"Meh, I'll use that in the interim."}
