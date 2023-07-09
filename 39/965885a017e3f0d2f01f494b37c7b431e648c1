@@ -1,0 +1,1 @@
+{"timestamp":"1643621112","reviewRef":"refs/pull/55/head","targetRef":"refs/heads/main","requester":"LamiLemmy","description":"Add github actions for building\n\nSolves #53 \r\nAdds an action for compiling."}
