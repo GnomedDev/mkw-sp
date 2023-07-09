@@ -45,3 +45,5 @@
 {"timestamp":"1683158522","author":"MikeIsAStar","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/sp/MapFile.cc","range":{"startLine":115}},"description":"The file `symbols.txt` does not use a `carriage return` character to denote a new line."}
 
 {"timestamp":"1683158642","author":"MikeIsAStar","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/platform/isdigit.c","range":{"startLine":6}},"description":"It would appear so."}
+
+{"timestamp":"1683158701","author":"MikeIsAStar","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/platform/isxdigit.c","range":{"startLine":9}},"description":"It would appear so."}
