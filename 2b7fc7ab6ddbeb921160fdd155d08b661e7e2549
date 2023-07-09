@@ -17,3 +17,5 @@
 {"timestamp":"1685650435","author":"riidefi","location":{"commit":"e2935bd5e2de3f54c5fd51b8abe7f388efbd5949","path":"payload/game/system/GhostFile.cc","range":{"startLine":263}},"description":"Move to `CourseIdIsValid`"}
 
 {"timestamp":"1685650462","author":"stblr","location":{"commit":"e2935bd5e2de3f54c5fd51b8abe7f388efbd5949","path":"payload/game/ui/SingleTopPage.cc","range":{"startLine":90}},"description":"What about `MultiTopPage`?"}
+
+{"timestamp":"1685650496","author":"riidefi","location":{"commit":"e2935bd5e2de3f54c5fd51b8abe7f388efbd5949","path":"payload/game/system/RaceConfig.cc","range":{"startLine":236}},"description":"{.battle = ..., .race = ... };"}
