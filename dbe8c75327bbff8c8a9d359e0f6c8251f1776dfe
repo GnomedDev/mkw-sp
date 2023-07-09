@@ -1,3 +1,5 @@
 {"timestamp":"1676999141","author":"stblr","location":{"commit":"6600312188ce39138290746c16b5b32da677a37f","path":"payload/game/ui/FriendButton.hh","range":{"startLine":10}},"description":"What about the other member functions?"}
 
 {"timestamp":"1676999149","author":"stblr","location":{"commit":"6600312188ce39138290746c16b5b32da677a37f","path":"configure.py","range":{"startLine":1498}},"description":"Ordering"}
+
+{"timestamp":"1676999419","author":"stblr","location":{"commit":"6600312188ce39138290746c16b5b32da677a37f","path":"tools/gameserver/src/room.rs","range":{"startLine":140}},"description":"The TODO comment can be kept."}
