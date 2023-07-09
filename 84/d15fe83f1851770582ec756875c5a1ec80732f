@@ -1,1 +1,3 @@
 {"timestamp":"1644700941","author":"stblr","location":{"commit":"d9b2e507bf78ea7ee523843305e7ec90170ad1d9","path":"payload/game/ui/Page.h","range":{"startLine":52}},"description":"Any reason for this split?"}
+
+{"timestamp":"1644701029","author":"stblr","location":{"commit":"d9b2e507bf78ea7ee523843305e7ec90170ad1d9","path":"payload/game/ui/Page.h","range":{"startLine":80}},"description":"Maybe name it `getTypeInfo` or something. Also would an actual `TypeInfo` type be useful?"}
