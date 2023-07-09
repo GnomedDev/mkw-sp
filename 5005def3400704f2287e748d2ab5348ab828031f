@@ -9,3 +9,5 @@
 {"timestamp":"1673984152","author":"vabold","location":{"commit":"524515795159bf7a046ae682d30c0145f90b6af4","path":"payload/game/ui/PageId.hh","range":{"startLine":22}},"description":"`AfterBtMenu`"}
 
 {"timestamp":"1673984320","author":"vabold","location":{"commit":"b0a0564c54364d05da9d477e63a218bd55574fc2","path":"assets/message/MenuSP_U.bmg.json5","range":{"startLine":1301}},"description":"If this is for battle mode, it should be \"Battles\", not \"Races\"."}
+
+{"timestamp":"1673984376","author":"vabold","location":{"commit":"b0a0564c54364d05da9d477e63a218bd55574fc2","path":"payload/game/ui/page/ResultTeamTotalPage.cc","range":{"startLine":21}},"description":"I would rewrite this to be one line, but you don't have to.\r\n`return raceScenario.isBattle() ? PageId::AfterBtMenu : PageId::AfterVsMenu;`"}
