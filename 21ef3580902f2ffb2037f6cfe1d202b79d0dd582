@@ -1,0 +1,1 @@
+{"timestamp":"1682461622","reviewRef":"refs/pull/675/head","targetRef":"refs/heads/main","requester":"GnomedDev","description":"Rewrite KartObjectManager in C++\n\nAllows us to get rid of a lot of C bindings for this stuff","baseCommit":"d9b4ef5791e48e7ba34df708fbe7e1716673e92a"}
