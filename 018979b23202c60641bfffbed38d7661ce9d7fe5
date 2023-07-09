@@ -1,3 +1,5 @@
 {"timestamp":"1681935928","author":"stblr","description":"It's fine if C++ code is added to `payload/revolution`."}
 
 {"timestamp":"1682359632","author":"stblr","location":{"commit":"22630f441beac3a87badfbdbae34edb68cb2fd53","path":"payload/revolution/os/OSError.cc","range":{"startLine":12}},"description":"```suggestion\r\n#include \u003ccstdio\u003e\r\n#include \u003ccstring\u003e\r\n```"}
+
+{"timestamp":"1682359733","author":"stblr","location":{"commit":"22630f441beac3a87badfbdbae34edb68cb2fd53","path":"payload/revolution/os/OSError.cc","range":{"startLine":48}},"description":"```suggestion\r\n```\r\nOr add a newline at the end."}
