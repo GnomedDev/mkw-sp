@@ -13,3 +13,5 @@
 {"timestamp":"1681258055","author":"riidefi","description":"Does GPT4 perform well on hexdumps?"}
 
 {"timestamp":"1681258144","author":"GnomedDev","description":"Knock it off with the attitude. I mean to avoid the invalid data causing any issues (substitute default values, act like a valid input was given, etc)."}
+
+{"timestamp":"1681258468","author":"riidefi","description":"The issue is at this stage we're probably too late. We could do some heuristics on the SZS file and attempt to detect bad files and then omit them from the game's view, though. It would be a lot of effort for a single track, and not guaranteed to work on any other track given each track can uniquely corrupt their data. Therefore simply disabling the check for this particular track seems like a reasonable middle ground."}
