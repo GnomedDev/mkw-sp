@@ -1,3 +1,5 @@
 {"timestamp":"1675122968","author":"vabold","location":{"commit":"400ac23ee830eb41e812ab01e42f4d2682c4d1bb","path":"payload/game/ui/MatchmakingPage.cc","range":{"startLine":102}},"description":"Unnecessary whitespace."}
 
 {"timestamp":"1675123495","author":"vabold","location":{"commit":"400ac23ee830eb41e812ab01e42f4d2682c4d1bb","path":"payload/game/ui/FriendMatchingPage.cc","range":{"startLine":85}},"description":"Remove debug log."}
+
+{"timestamp":"1675123500","author":"vabold","location":{"commit":"400ac23ee830eb41e812ab01e42f4d2682c4d1bb","path":"payload/game/ui/FriendMatchingPage.cc","range":{"startLine":146}},"description":"Same as above."}
