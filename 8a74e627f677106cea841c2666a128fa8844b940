@@ -17,3 +17,5 @@
 {"timestamp":"1683137658","author":"stblr","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/sp/ExceptionSyms.cc","range":{"startLine":2}},"description":"Is the function declared in this file?"}
 
 {"timestamp":"1683137680","author":"stblr","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/sp/MapFile.cc","range":{"startLine":23}},"description":"This cannot be defined."}
+
+{"timestamp":"1683137786","author":"stblr","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/sp/MapFile.cc","range":{"startLine":53}},"description":"It might be simpler to add the `ro:` prefix to the paths and to use `Storage::ReadFile`."}
