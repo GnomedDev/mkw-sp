@@ -7,3 +7,5 @@
 {"timestamp":"1681160099","author":"GnomedDev","description":"We got rid of the Single/Team Versus page."}
 
 {"timestamp":"1681761781","author":"stblr","location":{"commit":"5d164323178dc7fceedbb5037e30e73cfffb2c06","path":"payload/sp/settings/ClientSettings.hh","range":{"startLine":118}},"description":"Is the \"None\" option purposely dropped?"}
+
+{"timestamp":"1681762241","author":"GnomedDev","location":{"commit":"5d164323178dc7fceedbb5037e30e73cfffb2c06","path":"payload/sp/settings/ClientSettings.hh","range":{"startLine":118}},"description":"Yes, I didn't see the point of VS without CPUs tbh, could re-add though."}
