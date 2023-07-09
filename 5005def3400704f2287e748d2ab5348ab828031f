@@ -35,3 +35,5 @@
 {"timestamp":"1674243066","author":"stblr","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"payload/game/ui/page/BattleModeSelectPage.hh","range":{"startLine":13}},"description":"No blank line here."}
 
 {"timestamp":"1674243091","author":"stblr","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"payload/game/ui/page/BattleModeSelectPage.cc","range":{"startLine":10}},"description":"https://github.com/stblr/mkw-sp/issues/245#issuecomment-1213490665"}
+
+{"timestamp":"1674243652","author":"GnomedDev","location":{"commit":"f5a8481c82b0adf7e26340b22f908981e0961409","path":"payload/game/ui/Section.cc","range":{"startLine":310}},"description":"256 bytes of heap, if it isn't already initialized"}
