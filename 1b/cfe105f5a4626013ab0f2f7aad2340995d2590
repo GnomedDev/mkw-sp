@@ -1,0 +1,1 @@
+{"timestamp":"1668958825","reviewRef":"refs/pull/488/head","targetRef":"refs/heads/main","requester":"MikeIsAStar","description":"Prevent an out-of-bounds write from occurring\n\nThis check prevents an out-of-bounds write from occurring if an invalid KCL bit field is detected."}
