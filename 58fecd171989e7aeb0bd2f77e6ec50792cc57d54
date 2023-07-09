@@ -57,3 +57,5 @@
 {"timestamp":"1680745515","author":"riidefi","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.cc","range":{"startLine":367}},"description":"`auto *raceConfig`"}
 
 {"timestamp":"1680745679","author":"riidefi","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.hh","range":{"startLine":36}},"description":"Probably makes sense to put `name` last for cache reasons?"}
+
+{"timestamp":"1680745767","author":"riidefi","location":{"commit":"539f83402be1611d9c32d6cf9b48bdd7bb4e592e","path":"payload/sp/TrackPackManager.hh","range":{"startLine":121}},"description":"std::unique_ptr\u003cWFixedString\u003c64\u003e\u003e maybe?"}
