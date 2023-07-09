@@ -7,3 +7,5 @@
 {"timestamp":"1675619161","author":"GnomedDev","location":{"commit":"187d72759e040be59cc3f7e6c4afa8fe9b44ea35","path":"tools/gameserver/src/room.rs","range":{"startLine":208}},"description":"Same with above."}
 
 {"timestamp":"1675619289","author":"GnomedDev","location":{"commit":"187d72759e040be59cc3f7e6c4afa8fe9b44ea35","path":"tools/gameserver/src/room.rs","range":{"startLine":318}},"description":"This should be moved to it's own function, avoid having to spawn an empty task just to replace it."}
+
+{"timestamp":"1675619424","author":"GnomedDev","location":{"commit":"187d72759e040be59cc3f7e6c4afa8fe9b44ea35","path":"tools/gameserver/src/unreliable_socket.rs","range":{"startLine":37}},"description":"```suggestion\r\n        let mut buf = [0u8; 1024]; // TODO make that configurable\r\n```"}
