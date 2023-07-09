@@ -5,3 +5,5 @@
 {"timestamp":"1682717933","author":"Gaberboo","description":"I agree with the conversions in file format structures, meh about small iterators, and I don't like it in function prototypes, particularly libc functions."}
 
 {"timestamp":"1682954907","author":"GnomedDev","description":"What do you mean by this? This isn't changing any types (just renaming them) and I'm not sure what your definition of library is here."}
+
+{"timestamp":"1682959776","author":"Gaberboo","description":"int and s32(int32_t) are different types that are equivelent in 32-bit PowerPC."}
