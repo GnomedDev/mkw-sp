@@ -1,1 +1,3 @@
 {"timestamp":"1676998493","author":"stblr","description":"For this it should be possible to toggle the setting without a restart."}
+
+{"timestamp":"1676999147","author":"GnomedDev","description":"Hmm, I had an aversion to use global data to implement that (to avoid reloading the lap_number per frame) but I guess I could try now that mutable statics are okay."}
