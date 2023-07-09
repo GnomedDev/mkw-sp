@@ -1,1 +1,3 @@
 {"timestamp":"1687210741","author":"stblr","location":{"commit":"9e164495c9533635960f4b3b6d15b35b31a79052","path":"assets/message/MenuSP_U.bmg.json5","range":{"startLine":13}},"description":"```suggestion\r\n        string: \"All settings for this license\\n will be removed!\\nAre you sure this is okay?\"\r\n```"}
+
+{"timestamp":"1687254670","author":"GnomedDev","location":{"commit":"9e164495c9533635960f4b3b6d15b35b31a79052","path":"assets/message/MenuSP_U.bmg.json5","range":{"startLine":13}},"description":"Fixed"}
