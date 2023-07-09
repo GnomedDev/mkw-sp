@@ -9,3 +9,5 @@
 {"timestamp":"1682959776","author":"Gaberboo","description":"int and s32(int32_t) are different types that are equivelent in 32-bit PowerPC."}
 
 {"timestamp":"1682977246","author":"GnomedDev","description":"Okay? And I don't see any possible way we are compiling to something other than 32bit PPC for a very long time, if ever. Do you want me to add an assert of some kind to make sure the sizes are the same?"}
+
+{"timestamp":"1683065280","author":"Gaberboo","description":"It's unlikely we will compile for anything else, even less likely that the target doesn't have 32-bit int, rather, it is rarely beneficial to intentionally make typings inconsistent with what the library originally used."}
