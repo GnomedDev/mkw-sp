@@ -37,3 +37,5 @@
 {"timestamp":"1683143155","author":"vabold","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/egg/core/eggSystem.cc","range":{"startLine":40}},"description":"This function already exists in-game and as such should use a replacement."}
 
 {"timestamp":"1683143430","author":"vabold","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/game/host_system/RkSystem.cc","range":{"startLine":11}},"description":"In addition to this, the replacement I suggested (`SystemManager::loadSymbols`) is not called on startup anymore because we skip the strap scene."}
+
+{"timestamp":"1683150567","author":"riidefi","location":{"commit":"f696bbebc337af68a10b3129acd1bd10c4de23d8","path":"payload/sp/MapFile.cc","range":{"startLine":134}},"description":"`line.starts_with(' ')`"}
