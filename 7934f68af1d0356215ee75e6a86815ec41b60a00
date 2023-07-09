@@ -1,1 +1,3 @@
 {"timestamp":"1678727120","author":"nicl83","description":"Was asked by @GnomedDev to try a build from this branch after hitting an OoM when trying to change ghost data in a Time Trial. Seems to fix #530 and haven't noticed any major issues, but haven't tried local or online multiplayer yet"}
+
+{"timestamp":"1678917284","author":"stblr","description":"\u003e Was asked by @GnomedDev to try a build from this branch after hitting an OoM when trying to change ghost data in a Time Trial. Seems to fix #530 and haven't noticed any major issues, but haven't tried local or online multiplayer yet\r\n\r\nThanks for the feedback!"}
