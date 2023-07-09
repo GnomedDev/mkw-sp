@@ -1,0 +1,1 @@
+{"timestamp":"1683835269","author":"stblr","location":{"commit":"400aa8a88f33656e25b0fae4847d12175f6bf4ec","path":"payload/game/kart/KartBoost.hh","range":{"startLine":14}},"description":"So this relies on compiler optimizations (devirtualization) for the destructor to be called?\r\n\r\nI would suggest just copying the fields."}
