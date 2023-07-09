@@ -1,3 +1,5 @@
 {"timestamp":"1675718877","author":"stblr","location":{"commit":"3f49923fd531bceb56174d0578e260df9a80a3ed","path":"payload/game/ui/RandomMatchingPage.cc","range":{"startLine":14}},"description":"```suggestion\r\n#include \"game/system/SaveManager.hh\"\r\n#include \"game/ui/SectionManager.hh\"\r\n\r\n#include \u003cprotobuf/Matchmaking.pb.h\u003e\r\nextern \"C\" {\r\n#include \u003crevolution/es.h\u003e\r\n}\r\n#include \u003csp/cs/RoomClient.hh\u003e\r\n#include \u003cvendor/nanopb/pb_decode.h\u003e\r\n#include \u003cvendor/nanopb/pb_encode.h\u003e\r\n```"}
 
 {"timestamp":"1675719119","author":"stblr","location":{"commit":"3f49923fd531bceb56174d0578e260df9a80a3ed","path":"payload/game/ui/RandomMatchingPage.cc","range":{"startLine":87}},"description":"How will multiple devices using the same certificate be handled?"}
+
+{"timestamp":"1675719391","author":"GnomedDev","location":{"commit":"3f49923fd531bceb56174d0578e260df9a80a3ed","path":"payload/game/ui/RandomMatchingPage.cc","range":{"startLine":87}},"description":"How would multiple devices have the same certificate?"}
