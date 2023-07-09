@@ -1,0 +1,1 @@
+{"timestamp":"1684850735","author":"riidefi","location":{"commit":"66545ebace13a24674f739d91edd9194f9a0c7fc","path":"payload/game/system/ResourceManager.cc","range":{"startLine":128}},"description":"If we don't have an enum for these IDs, we can pull from the decomp here \u003chttps://github.com/riidefi/mkw/blob/master/source/game/system/MultiDvdArchive.hpp#L12\u003e."}
