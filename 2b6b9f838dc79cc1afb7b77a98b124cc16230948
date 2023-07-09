@@ -5,3 +5,5 @@
 {"timestamp":"1685473572","author":"riidefi","location":{"commit":"1e32d79198432e76ecca855e6536305ea9ba3448","path":"payload/sp/ItemCommand.cc","range":{"startLine":108}},"description":"Usually we put static data first, I think?"}
 
 {"timestamp":"1685473609","author":"riidefi","location":{"commit":"1e32d79198432e76ecca855e6536305ea9ba3448","path":"payload/sp/ItemCommand.cc","range":{"startLine":18}},"description":"`int` not `s8`"}
+
+{"timestamp":"1685473665","author":"riidefi","location":{"commit":"1e32d79198432e76ecca855e6536305ea9ba3448","path":"payload/sp/ItemCommand.cc","range":{"startLine":90}},"description":"s_sticky.emplace() = {\r\n.item = ...,\r\n.quantity = ...\r\n};"}
