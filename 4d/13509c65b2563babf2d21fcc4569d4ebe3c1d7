@@ -7,3 +7,5 @@
 {"timestamp":"1644747049","author":"stblr","location":{"commit":"6898ee300729851db4d6d53bcc4f40507b01f491","path":"assets/button/ctrl/PauseMenuGhostWatch.brctr.json5","range":{"startLine":293}},"description":"For bmg ids, to make it simpler for us, anything custom must be in the 10000 range and go in one of the SP bmgs (even replacements). Here we already have \"Settings\" with id 10076 in MenuSP.bmg so it can simply be moved to CommonSP.bmg. The base bmgs no longer need to be edited (the build system merges them for us)."}
 
 {"timestamp":"1644747187","author":"stblr","location":{"commit":"6898ee300729851db4d6d53bcc4f40507b01f491","path":"payload/game/ui/LicenseSettingsPage.c","range":{"startLine":159}},"description":"Suggestion: have a variable for the control index that is post-incremented on every `Page::insertChild` call."}
+
+{"timestamp":"1644747217","author":"stblr","location":{"commit":"6898ee300729851db4d6d53bcc4f40507b01f491","path":"payload/game/ui/LicenseSettingsPage.c","range":{"startLine":236}},"description":"10007"}
