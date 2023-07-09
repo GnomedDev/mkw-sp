@@ -9,3 +9,5 @@
 {"timestamp":"1676999715","author":"stblr","location":{"commit":"6600312188ce39138290746c16b5b32da677a37f","path":"payload/game/ui/OnlineConnectionManagerPage.cc","range":{"startLine":28}},"description":"The base class already does this AFAIK."}
 
 {"timestamp":"1676999772","author":"stblr","location":{"commit":"6600312188ce39138290746c16b5b32da677a37f","path":"payload/game/ui/OnlineTopPage.cc","range":{"startLine":77}},"description":"Decimal"}
+
+{"timestamp":"1676999777","author":"stblr","location":{"commit":"6600312188ce39138290746c16b5b32da677a37f","path":"payload/game/ui/OnlineTopPage.cc","range":{"startLine":79}},"description":"Same"}
