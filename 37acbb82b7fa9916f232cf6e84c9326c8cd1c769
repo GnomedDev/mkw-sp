@@ -1,0 +1,1 @@
+{"timestamp":"1675618744","author":"GnomedDev","location":{"commit":"187d72759e040be59cc3f7e6c4afa8fe9b44ea35","path":"tools/gameserver/Cargo.toml","range":{"startLine":9}},"description":"What's the reason for swapping slab out for this?"}
