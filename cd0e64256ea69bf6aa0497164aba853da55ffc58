@@ -3,3 +3,5 @@
 {"timestamp":"1686871593","author":"GnomedDev","description":"Being locked into the `Sha1` struct is mostly the point, for type safety."}
 
 {"timestamp":"1686872695","author":"riidefi","description":"Okay--while I personally think this is quite brittle and odd for a function on a read-only span of 20 bytes to require the programmer to memcpy into a specific structure (when reading from a file is a use-case), I can agree that the security footguns of the current approach (with a raw pointer) are worse. I've approved this change."}
+
+{"timestamp":"1688515040","author":"GnomedDev","description":"Solved conflicts and header ordering issues."}
