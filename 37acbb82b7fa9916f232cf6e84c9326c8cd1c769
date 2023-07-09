@@ -1,3 +1,5 @@
 {"timestamp":"1675618744","author":"GnomedDev","location":{"commit":"187d72759e040be59cc3f7e6c4afa8fe9b44ea35","path":"tools/gameserver/Cargo.toml","range":{"startLine":9}},"description":"What's the reason for swapping slab out for this?"}
 
 {"timestamp":"1675618974","author":"GnomedDev","location":{"commit":"187d72759e040be59cc3f7e6c4afa8fe9b44ea35","path":"tools/gameserver/src/room.rs","range":{"startLine":139}},"description":"```suggestion\r\n                _ =\u003e return Ok(None),\r\n```"}
+
+{"timestamp":"1675619080","author":"GnomedDev","location":{"commit":"187d72759e040be59cc3f7e6c4afa8fe9b44ea35","path":"tools/gameserver/src/room.rs","range":{"startLine":171}},"description":"Info is for useful but not important logs, this should be `debug`"}
