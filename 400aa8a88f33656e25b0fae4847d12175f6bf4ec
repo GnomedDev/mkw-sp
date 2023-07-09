@@ -7,3 +7,5 @@
 {"timestamp":"1683835791","author":"stblr","location":{"commit":"400aa8a88f33656e25b0fae4847d12175f6bf4ec","path":"payload/game/kart/KartBoost.hh","range":{"startLine":14}},"description":"GCC expects 2 destructors at 0x0 and 0x4, but the CW vtable only has one at 0x8."}
 
 {"timestamp":"1683835924","author":"GnomedDev","location":{"commit":"400aa8a88f33656e25b0fae4847d12175f6bf4ec","path":"payload/game/kart/KartBoost.hh","range":{"startLine":14}},"description":"Ah yes, is there a way to implement this cleaner other than just PODing the struct? The CW destructor doesn't seem to be doing anything anyway so does it matter if we let C++ generate it's own destructor for this one."}
+
+{"timestamp":"1683836253","author":"stblr","location":{"commit":"400aa8a88f33656e25b0fae4847d12175f6bf4ec","path":"payload/game/kart/KartBoost.hh","range":{"startLine":14}},"description":"It's possible to build a class that's compatible with both compilers. https://github.com/stblr/mkw-sp/blob/1ffe4da76271008adb5621252717745f5caa37e5/payload/game/ui/ctrl/CtrlRaceNameBalloon.cc#L164..L174"}
