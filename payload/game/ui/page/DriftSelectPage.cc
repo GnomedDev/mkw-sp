@@ -10,7 +10,7 @@ extern "C" {
 
 namespace UI {
 
-static bool s_trackMenu = false;
+bool DriftSelectPage::s_trackMenu = false;
 
 void DriftSelectPage::onActivate() {
     REPLACED(onActivate)();
@@ -76,7 +76,3 @@ void DriftSelectPage::onButtonFront(PushButton *button, u32 /* localPlayerId */)
 }
 
 } // namespace UI
-
-sp_define_command("/trackmenu", "Course debug list", const char *) {
-    UI::s_trackMenu ^= 1;
-}

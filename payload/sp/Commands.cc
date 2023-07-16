@@ -2,6 +2,7 @@
 
 #include <game/system/SaveManager.hh>
 #include <game/ui/SectionManager.hh>
+#include <game/ui/page/DriftSelectPage.hh>
 extern "C" {
 #include <sp/Commands.h>
 }
@@ -10,6 +11,10 @@ extern "C" {
 
 sp_define_command("/example_command", "Example command", const char *tmp) {
     (void)tmp;
+}
+
+sp_define_command("/trackmenu", "Course debug list", const char *) {
+    UI::DriftSelectPage::s_trackMenu ^= 1;
 }
 
 sp_define_command("/ui_info", "Dump information about the UI state to the console",

@@ -18,6 +18,8 @@ public:
 
     REPLACE void onButtonFront(PushButton *button, u32 localPlayerId);
 
+    static bool s_trackMenu;
+
 private:
     u8 _430[0x6c8 - 0x430];
     SectionId m_replacementSection;
