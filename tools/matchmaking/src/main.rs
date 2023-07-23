@@ -227,7 +227,7 @@ async fn main() -> Fallible {
     let server = Server::new();
 
     let client_forwarder =
-        tcp_forward::ClientForwarder::new("127.0.0.1:21331", server.clone(), db_pool).await?;
+        tcp_forward::ClientForwarder::new("0.0.0.0:21331", server.clone(), db_pool).await?;
     let gameserver_forwarder =
         ws_forward::WebsocketListener::new("127.0.0.1:21332", server.clone()).await?;
 

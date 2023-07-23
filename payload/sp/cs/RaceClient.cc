@@ -146,6 +146,8 @@ void RaceClient::applyFrame() {
         auto *kartObject = kartObjectManager->object(i);
         state.reload(kartObject->m_accessor, kartObject->getVehiclePhysics(), nullptr);
     }
+
+    m_frame.reset();
 }
 
 RaceClient *RaceClient::CreateInstance() {

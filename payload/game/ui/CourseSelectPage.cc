@@ -196,7 +196,6 @@ u32 CourseSelectPage::lastSelected() const {
 // This function must be called before the 'calc' function is called
 void CourseSelectPage::filter() {
     auto &menuScenario = System::RaceConfig::Instance()->menuScenario();
-    SP_LOG("MenuScenario(gameMode %d)", menuScenario.gameMode);
 
     SP::CourseDatabase::Filter defaultFilter = {menuScenario.isVs(), menuScenario.isBattle()};
     filter(defaultFilter);
