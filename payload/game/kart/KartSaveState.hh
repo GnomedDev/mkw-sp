@@ -16,6 +16,10 @@ extern "C" {
 #include "game/item/ItemDirector.h"
 }
 
+namespace SP {
+class RaceClient;
+}
+
 namespace Kart {
 
 // KartBoost's constructor cannot be patched to replace
@@ -37,6 +41,8 @@ struct MinifiedWheelPhysics {
 };
 
 class KartSaveState {
+    friend class SP::RaceClient;
+
 public:
     KartSaveState(KartAccessor accessor, VehiclePhysics *physics, KartItem *item);
 
@@ -44,6 +50,8 @@ public:
     void reload(KartAccessor accessor, VehiclePhysics *physics, KartItem *item);
 
 private:
+    KartSaveState() = default;
+
     // VehiclePhysics
     Vec3 m_externalVel;
     Vec3 m_internalVel;
@@ -57,7 +65,7 @@ private:
 
     MinifiedWheelPhysics m_wheelPhysics[4];
 
-    KartItem m_item;
+    std::optional<KartItem> m_item;
 };
 
 } // namespace Kart

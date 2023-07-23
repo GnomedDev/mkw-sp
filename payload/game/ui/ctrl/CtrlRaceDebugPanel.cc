@@ -1,7 +1,6 @@
 #include "CtrlRaceDebugPanel.hh"
 
 #include "game/kart/KartObjectManager.hh"
-#include "game/kart/KartRollback.hh"
 #include "game/kart/VehiclePhysics.hh"
 #include "game/system/RaceManager.hh"
 #include "game/system/SaveManager.hh"
@@ -59,14 +58,8 @@ void WStringWriter::writeOnline(u32 playerId) {
     write(L"T %u\n", time);
 
     auto *object = Kart::KartObjectManager::Instance()->object(playerId);
-    if (auto *rollback = object->getKartRollback()) {
-        write("P/RP", *object->getPos(), rollback->posDelta());
-        write("MR/RMR", *object->getMainRot(), rollback->mainRotDelta());
-        write(L"IS/RIS %f %f\n", object->getInternalSpeed(), rollback->internalSpeedDelta());
-    } else {
-        write("P", *object->getPos());
-        write("MR", *object->getMainRot());
-    }
+    write("P", *object->getPos());
+    write("MR", *object->getMainRot());
     write("EV", *object->getVehiclePhysics()->externalVel());
     write("IV", *object->getVehiclePhysics()->internalVel());
     write(L"MTB/MBPB/TZB");

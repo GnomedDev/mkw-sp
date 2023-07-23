@@ -115,90 +115,6 @@ void GhostPadProxy::init() {
     m_isLocked = true;
 }
 
-PadRollback::PadRollback() = default;
-
-void PadRollback::calc(u32 playerId) {
-    auto *raceClient = SP::RaceClient::Instance();
-    if (!raceClient->roomManager().isPlayerRemote(playerId)) {
-        return;
-    }
-
-    u32 time = RaceManager::Instance()->time();
-    if (auto frame = serverFrame(playerId)) {
-        s32 delay = static_cast<s32>(time) - static_cast<s32>(frame->time);
-        if (delay <= 0) {
-            handleFutureFrame(*frame);
-        } else {
-            handlePastFrame(*frame);
-        }
-        for (u32 i = 0; i < m_frames.count(); i++) {
-            if (m_frames[i]->time == time - 1) {
-                applyFrame(playerId, *m_frames[i]);
-                break;
-            }
-        }
-    }
-
-    if (!m_frames.back() || m_frames.back()->time < time) {
-        if (m_frames.full()) {
-            m_frames.pop_front();
-        }
-        auto *proxy = System::InputManager::Instance()->userProxy(playerId);
-        m_frames.push_back({time, proxy->currentRaceInputState()});
-    }
-}
-
-std::optional<PadRollback::Frame> PadRollback::serverFrame(u32 playerId) const {
-    auto serverFrame = SP::RaceClient::Instance()->frame();
-    if (!serverFrame) {
-        return {};
-    }
-
-    u32 time = serverFrame->time;
-    const auto &player = serverFrame->players[playerId];
-    RaceInputState inputState;
-    inputState.accelerate = player.inputState.accelerate;
-    inputState.brake = player.inputState.brake;
-    inputState.item = false;
-    inputState.drift = player.inputState.drift;
-    inputState.brakeDrift = player.inputState.brakeDrift; // TODO check for 200cc
-    System::RaceInputState::SetStickX(inputState, player.inputState.stickX);
-    System::RaceInputState::SetStickY(inputState, player.inputState.stickY);
-    System::RaceInputState::SetTrick(inputState, player.inputState.trick);
-    return {{time, inputState}};
-}
-
-void PadRollback::handleFutureFrame(const Frame &frame) {
-    u32 time = System::RaceManager::Instance()->time();
-    while (m_frames.front() && m_frames.front()->time < time) {
-        m_frames.pop_front();
-    }
-    if (!m_frames.full()) {
-        m_frames.push_back(std::move(frame));
-    }
-}
-
-void PadRollback::handlePastFrame(const Frame &frame) {
-    while (m_frames.front() && m_frames.front()->time < frame.time) {
-        m_frames.pop_front();
-    }
-    auto *rollbackFrame = m_frames.front();
-    if (rollbackFrame && rollbackFrame->time == frame.time) {
-        for (u32 i = 0; i < m_frames.count(); i++) {
-            m_frames[i]->inputState = frame.inputState;
-        }
-    }
-}
-
-void PadRollback::applyFrame(u32 playerId, const Frame &frame) {
-    auto *proxy = System::InputManager::Instance()->userProxy(playerId);
-    proxy->setRaceInputState(frame.inputState);
-}
-
-void PadRollback::reset() {
-    m_frames.reset();
-}
-
 bool InputManager::isMirror() const {
     return m_isMirror;
 }
@@ -226,10 +142,6 @@ void InputManager::setGhostPad(u32 i, const void *ghostInputs, bool driftIsAuto)
 void InputManager::reset() {
     for (u32 i = 0; i < 12; i++) {
         m_extraGhostProxies[i].reset();
-    }
-
-    for (u32 i = 0; i < 12; i++) {
-        m_rollbacks[i].reset();
     }
 
     REPLACED(reset)();
@@ -281,12 +193,6 @@ void InputManager::endGhostProxies() {
     }
 }
 
-void InputManager::calcRollbacks() {
-    for (u32 i = 0; i < 12; i++) {
-        m_rollbacks->calc(i);
-    }
-}
-
 InputManager *InputManager::CreateInstance() {
     s_instance = new InputManager;
     assert(s_instance);
@@ -296,7 +202,6 @@ InputManager *InputManager::CreateInstance() {
     for (u32 i = 0; i < 12; i++) {
         s_instance->m_extraGhostProxies[i].PadProxy::setPad(&s_instance->m_dummyPad, nullptr);
     }
-    s_instance->m_rollbacks = new PadRollback[12];
 
     return s_instance;
 }

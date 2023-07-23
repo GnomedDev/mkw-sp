@@ -30,28 +30,11 @@ extern bool unk_809c2f3c;
 }
 
 void RaceScene::calcSubsystems() {
-    s32 drift = 0;
-
     if (auto *raceClient = SP::RaceClient::Instance()) {
         raceClient->calcRead();
-        /*drift = raceClient->drift();
-        raceClient->adjustDrift();*/
+        raceClient->applyFrame();
     }
 
-    calcSubsystems(drift);
-    /*if (drift < 0) {
-        calcSubsystems(0);
-    }*/
-
-    if (auto *cameraManager = Graphics::CameraManager::Instance();
-            cameraManager && cameraManager->isReady()) {
-        if (auto *raceClient = SP::RaceClient::Instance()) {
-            raceClient->calcWrite();
-        }
-    }
-}
-
-void RaceScene::calcSubsystems(s32 drift) {
     if (m_isPaused) {
         unk_809c19a0 = true;
         unk_809c1874 |= 1;
@@ -69,45 +52,44 @@ void RaceScene::calcSubsystems(s32 drift) {
 
         auto *raceManager = System::RaceManager::Instance();
 
-        if (drift <= 0) {
-            raceManager->calc();
+        raceManager->calc();
 
-            if (SP::RaceClient::Instance()) {
-                System::InputManager::Instance()->calcRollbacks();
-            }
-
-            if (!SP::RoomManager::Instance() ||
-                    raceManager->hasReachedStage(System::RaceManager::Stage::Countdown)) {
-                Race::BoxColManager::Instance()->calc();
-                Geo::ObjDirector::Instance()->calc();
-            }
-
-            Enemy::EnemyManager::Instance()->calc();
-            Race::DriverManager::Instance()->calc();
-            Kart::KartObjectManager::Instance()->calc();
-            Race::JugemManager::Instance()->calc();
-
-            if (raceManager->hasReachedStage(System::RaceManager::Stage::Countdown)) {
-                Item::ItemManager::Instance()->calc();
-            }
-
-            if (!SP::RoomManager::Instance() ||
-                    raceManager->hasReachedStage(System::RaceManager::Stage::Countdown)) {
-                Geo::ObjDirector::Instance()->calcBT();
-            }
-
-            Effect::EffectManager::Instance()->calc();
+        if (!SP::RoomManager::Instance() ||
+                raceManager->hasReachedStage(System::RaceManager::Stage::Countdown)) {
+            Race::BoxColManager::Instance()->calc();
+            Geo::ObjDirector::Instance()->calc();
         }
+
+        Enemy::EnemyManager::Instance()->calc();
+        Race::DriverManager::Instance()->calc();
+        Kart::KartObjectManager::Instance()->calc();
+        Race::JugemManager::Instance()->calc();
+
+        if (raceManager->hasReachedStage(System::RaceManager::Stage::Countdown)) {
+            Item::ItemManager::Instance()->calc();
+        }
+
+        if (!SP::RoomManager::Instance() ||
+                raceManager->hasReachedStage(System::RaceManager::Stage::Countdown)) {
+            Geo::ObjDirector::Instance()->calcBT();
+        }
+
+        Effect::EffectManager::Instance()->calc();
 
         raceManager->dynamicRandom()->nextU32();
     }
 
     if (!System::HBMManager::Instance()->isActive()) {
-        if (drift >= 0) {
-            UI::SectionManager::Instance()->calc();
-            if (auto *coinManager = Battle::CoinManager::Instance()) {
-                coinManager->calcScreens();
-            }
+        UI::SectionManager::Instance()->calc();
+        if (auto *coinManager = Battle::CoinManager::Instance()) {
+            coinManager->calcScreens();
+        }
+    }
+
+    if (auto *cameraManager = Graphics::CameraManager::Instance();
+            cameraManager && cameraManager->isReady()) {
+        if (auto *raceClient = SP::RaceClient::Instance()) {
+            raceClient->calcWrite();
         }
     }
 }

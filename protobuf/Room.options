@@ -1,4 +1,5 @@
-PlayerFrame.timesBeforeBoostEnd max_count:3
+PlayerFrame.KartBoost.timesBeforeEnd max_count:6
+PlayerFrame.wheelPhysics max_count:4
 
 RoomRequest.Join.miis     max_count:2
 RoomRequest.Join.miis     max_size:76

@@ -2,17 +2,6 @@ syntax = "proto2";
 
 import public "Login.proto";
 
-message InputState {
-    required bool   accelerate = 1;
-    required bool   brake      = 2;
-    required bool   item       = 3;
-    required bool   drift      = 4;
-    required bool   brakeDrift = 5;
-    required uint32 stickX     = 6;
-    required uint32 stickY     = 7;
-    required uint32 trick      = 8;
-}
-
 message PlayerFrame {
     message Vec3 {
         required float x = 1;
@@ -27,13 +16,30 @@ message PlayerFrame {
         required float w = 4;
     }
 
-    required InputState inputState          = 1;
-    required uint32     timeBeforeRespawn   = 2;
-    required uint32     timeInRespawn       = 3;
-    repeated uint32     timesBeforeBoostEnd = 4;
-    required Vec3       pos                 = 5;
-    required Quat       mainRot             = 6;
-    required float      internalSpeed       = 7;
+    message KartBoost {
+        repeated int32 timesBeforeEnd  = 1;
+        required int32 types           = 2;
+        required float boostMultiplyer = 3;
+        required float boostAcceleration = 4;
+        required float unk_1c = 5;
+        required float boostSpeedLimit = 6;
+    }
+
+    message WheelPhysics {
+        required Vec3 realPos = 1;
+        required Vec3 lastPos = 2;
+        required Vec3 lastPosDiff = 3;
+    }
+
+    required Vec3  pos = 1;
+    required Vec3  externalVel = 2;
+    required Vec3  internalVel = 3;
+    required bool  inBullet = 4;
+    required Quat  mainRot = 5;
+    required float internalSpeed = 6;
+
+    required KartBoost boostState = 7;
+    repeated WheelPhysics wheelPhysics = 8;
 }
 
 message RoomRequest {

@@ -3,6 +3,7 @@
 #include "sp/cs/RoomClient.hh"
 
 #include <game/kart/KartObjectManager.hh>
+#include <game/kart/KartSaveState.hh>
 #include <game/system/RaceConfig.hh>
 #include <game/system/RaceManager.hh>
 #include <vendor/nanopb/pb_decode.h>
@@ -16,30 +17,6 @@ void RaceClient::destroyInstance() {
     DestroyInstance();
 }
 
-u32 RaceClient::frameCount() const {
-    return m_frameCount;
-}
-
-const std::optional<RaceServerFrame> &RaceClient::frame() const {
-    return m_frame;
-}
-
-/*s32 RaceClient::drift() const {
-    return m_drift;
-}
-
-void RaceClient::adjustDrift() {
-    if (m_drift == 0) {
-        return;
-    }
-
-    s32 signum = (m_drift > 0) - (m_drift < 0);
-    for (size_t i = 0; i < m_drifts.count(); i++) {
-        *m_drifts[i] -= signum;
-    }
-    m_drift -= signum;
-}*/
-
 void RaceClient::calcWrite() {
     if (!m_frame) {
         u8 buffer[RaceClientPing_size];
@@ -50,6 +27,7 @@ void RaceClient::calcWrite() {
         m_socket.write(buffer, stream.bytes_written, m_connection);
     }
 
+    auto *kartObjectManager = Kart::KartObjectManager::Instance();
     auto &raceScenario = System::RaceConfig::Instance()->raceScenario();
     RoomRequest request;
     request.which_request = RoomRequest_race_tag;
@@ -58,27 +36,38 @@ void RaceClient::calcWrite() {
     request.request.race.players_count = raceScenario.localPlayerCount;
     for (u8 i = 0; i < raceScenario.localPlayerCount; i++) {
         u8 playerId = raceScenario.screenPlayerIds[i];
-        auto *player = System::RaceManager::Instance()->player(playerId);
-        auto &inputState = player->padProxy()->currentRaceInputState();
-        request.request.race.players[i].inputState.accelerate = inputState.accelerate;
-        request.request.race.players[i].inputState.brake = inputState.brake;
-        request.request.race.players[i].inputState.item = inputState.item;
-        request.request.race.players[i].inputState.drift = inputState.drift;
-        request.request.race.players[i].inputState.brakeDrift = inputState.brakeDrift;
-        request.request.race.players[i].inputState.stickX = inputState.rawStick.x;
-        request.request.race.players[i].inputState.stickY = inputState.rawStick.y;
-        request.request.race.players[i].inputState.trick = inputState.rawTrick;
-        auto *object = Kart::KartObjectManager::Instance()->object(playerId);
-        request.request.race.players[i].timeBeforeRespawn = object->getTimeBeforeRespawn();
-        request.request.race.players[i].timeInRespawn = object->getTimeInRespawn();
-        request.request.race.players[i].timesBeforeBoostEnd_count = 3;
-        for (u32 j = 0; j < 3; j++) {
-            request.request.race.players[i].timesBeforeBoostEnd[j] =
-                    object->getTimeBeforeBoostEnd(j * 2);
+        auto &player = request.request.race.players[i];
+
+        auto kartObject = kartObjectManager->object(playerId);
+        auto physics = kartObject->getVehiclePhysics();
+
+        Kart::KartSaveState saveState(kartObject->m_accessor, physics, nullptr);
+
+        player.pos = saveState.m_pos;
+        player.externalVel = saveState.m_externalVel;
+        player.internalVel = saveState.m_internalVel;
+        player.inBullet = saveState.m_inBullet;
+        player.mainRot = saveState.m_mainRot;
+        player.internalSpeed = saveState.m_internalSpeed;
+
+        player.boostState.timesBeforeEnd_count = 6;
+        for (u8 time = 0; time < 6; time += 1) {
+            player.boostState.timesBeforeEnd[time] = saveState.m_boostState.m_timesBeforeEnd[time];
         }
-        request.request.race.players[i].pos = *object->getPos();
-        request.request.race.players[i].mainRot = *object->getMainRot();
-        request.request.race.players[i].internalSpeed = object->getInternalSpeed();
+
+        player.boostState.types = saveState.m_boostState.m_types;
+        player.boostState.boostMultiplyer = saveState.m_boostState.m_boostMultipler;
+        player.boostState.boostAcceleration = saveState.m_boostState.m_boostAcceleration;
+        player.boostState.unk_1c = saveState.m_boostState.m_1c;
+        player.boostState.boostSpeedLimit = saveState.m_boostState.m_boostSpeedLimit;
+
+        player.wheelPhysics_count = 4;
+        for (u8 physics = 0; physics < 4; physics += 1) {
+            player.wheelPhysics[physics].realPos = saveState.m_wheelPhysics[physics].m_realPos;
+            player.wheelPhysics[physics].lastPos = saveState.m_wheelPhysics[physics].m_lastPos;
+            player.wheelPhysics[physics].lastPosDiff =
+                    saveState.m_wheelPhysics[physics].m_lastPosDiff;
+        }
     }
 
     u8 buffer[RoomRequest_size];
@@ -111,28 +100,52 @@ void RaceClient::calcRead() {
         }
 
         if (isFrameValid(frame)) {
-            m_frameCount++;
             m_frame = frame;
         }
     }
 
+    if (m_frame) {
+        System::RaceManager::Instance()->m_canStartCountdown = true;
+    }
+}
+
+void RaceClient::applyFrame() {
     if (!m_frame) {
         return;
     }
 
-    System::RaceManager::Instance()->m_canStartCountdown = true;
+    auto *kartObjectManager = Kart::KartObjectManager::Instance();
+    for (u8 i = 0; i < m_frame->players_count; i += 1) {
+        Kart::KartSaveState state{};
 
-    /*if (m_drifts.full()) {
-        m_drifts.pop_front();
-    }
-    s32 drift = static_cast<s32>(m_frame->clientTime) - static_cast<s32>(m_frame->time);
-    m_drifts.push_back(std::move(drift));
+        auto &playerState = m_frame->players[i];
+        state.m_pos = playerState.pos;
+        state.m_externalVel = playerState.externalVel;
+        state.m_internalVel = playerState.internalVel;
+        state.m_inBullet = playerState.inBullet;
+        state.m_mainRot = playerState.mainRot;
+        state.m_internalSpeed = playerState.internalSpeed;
 
-    m_drift = 0;
-    for (size_t i = 0; i < m_drifts.count(); i++) {
-        m_drift += *m_drifts[i];
+        for (u8 time = 0; time < playerState.boostState.timesBeforeEnd_count; time += 1) {
+            state.m_boostState.m_timesBeforeEnd[time] = playerState.boostState.timesBeforeEnd[time];
+        }
+
+        state.m_boostState.m_types = playerState.boostState.types;
+        state.m_boostState.m_boostMultipler = playerState.boostState.boostMultiplyer;
+        state.m_boostState.m_boostAcceleration = playerState.boostState.boostAcceleration;
+        state.m_boostState.m_1c = playerState.boostState.unk_1c;
+        state.m_boostState.m_boostSpeedLimit = playerState.boostState.boostSpeedLimit;
+
+        for (u8 physics = 0; physics < playerState.wheelPhysics_count; physics += 1) {
+            state.m_wheelPhysics[physics].m_realPos = playerState.wheelPhysics[physics].realPos;
+            state.m_wheelPhysics[physics].m_lastPos = playerState.wheelPhysics[physics].lastPos;
+            state.m_wheelPhysics[physics].m_lastPosDiff =
+                    playerState.wheelPhysics[physics].lastPosDiff;
+        }
+
+        auto *kartObject = kartObjectManager->object(i);
+        state.reload(kartObject->m_accessor, kartObject->getVehiclePhysics(), nullptr);
     }
-    m_drift /= static_cast<s32>(m_drifts.count());*/
 }
 
 RaceClient *RaceClient::CreateInstance() {
@@ -156,9 +169,8 @@ RaceClient *RaceClient::Instance() {
 }
 
 RaceClient::RaceClient(RoomClient &roomClient)
-    : m_roomClient(roomClient),
-      m_socket("race    ", {}), m_connection{roomClient.ip(), roomClient.port(),
-                                        roomClient.keypair()} {}
+    : m_roomClient(roomClient), m_socket("race    ", {}),
+      m_connection{roomClient.ip(), roomClient.port(), roomClient.keypair()} {}
 
 RaceClient::~RaceClient() {
     hydro_memzero(&m_connection, sizeof(m_connection));
@@ -185,31 +197,6 @@ bool RaceClient::isFrameValid(const RaceServerFrame &frame) {
         return false;
     }
     for (u32 i = 0; i < frame.players_count; i++) {
-        if (!IsInputStateValid(frame.players[i].inputState)) {
-            return false;
-        }
-
-        if (frame.players[i].timeBeforeRespawn > 190) {
-            return false;
-        }
-
-        if (frame.players[i].timeInRespawn > 140) {
-            return false;
-        }
-
-        if (frame.players[i].timeBeforeRespawn && frame.players[i].timeInRespawn) {
-            return false;
-        }
-
-        if (frame.players[i].timesBeforeBoostEnd_count != 3) {
-            return false;
-        }
-        for (u32 j = 0; j < 3; j++) {
-            if (frame.players[i].timesBeforeBoostEnd[j] > 180) {
-                return false;
-            }
-        }
-
         if (!IsVec3Valid(frame.players[i].pos)) {
             return false;
         }

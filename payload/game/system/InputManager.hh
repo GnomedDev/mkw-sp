@@ -229,28 +229,6 @@ private:
 };
 static_assert(sizeof(UserPadProxy) == 0x180);
 
-class PadRollback {
-public:
-    PadRollback();
-
-    void calc(u32 playerId);
-    void reset();
-
-private:
-    struct Frame {
-        u32 time;
-        RaceInputState inputState;
-    };
-
-    std::optional<Frame> serverFrame(u32 playerId) const;
-    void handleFutureFrame(const Frame &frame);
-    void handlePastFrame(const Frame &frame);
-    void applyFrame(u32 playerId, const Frame &frame);
-
-    u32 m_playerId;
-    SP::CircularBuffer<Frame, 60> m_frames;
-};
-
 class InputManager {
 public:
     bool isMirror() const;
@@ -276,7 +254,6 @@ public:
     void endExtraGhostProxy(u32 playerId);
     void REPLACED(endGhostProxies)();
     REPLACE void endGhostProxies();
-    void calcRollbacks();
 
     static REPLACE InputManager *CreateInstance();
     static InputManager *Instance();
@@ -297,10 +274,10 @@ private:
     u8 _4156[0x415c - 0x4156];
     GhostPad *m_extraGhostPads;         // Added
     GhostPadProxy *m_extraGhostProxies; // Added
-    PadRollback *m_rollbacks;           // Added
 
     static InputManager *s_instance;
 };
-static_assert(sizeof(InputManager) == 0x415c + sizeof(void *) * 3);
+
+static_assert(sizeof(InputManager) == 0x415c + sizeof(void *) * 2);
 
 } // namespace System

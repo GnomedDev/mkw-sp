@@ -28,8 +28,6 @@ protected:
     RaceManager(RaceManager &&) = delete;
     ~RaceManager();
 
-    static bool IsInputStateValid(const InputState &inputState);
-
     RoomManager &m_roomManager;
     u32 m_playerCount;
     std::array<Player, 12> m_players{};

@@ -10,13 +10,10 @@ class RaceClient final : public RaceManager {
 public:
     void destroyInstance() override;
 
-    u32 frameCount() const;
-    const std::optional<RaceServerFrame> &frame() const;
-    /*s32 drift() const;
-    void adjustDrift();*/
-
     void calcWrite();
     void calcRead();
+
+    void applyFrame();
 
     static RaceClient *CreateInstance();
     static void DestroyInstance();
@@ -46,10 +43,7 @@ private:
     RoomClient &m_roomClient;
     Net::UnreliableSocket m_socket;
     Net::UnreliableSocket::Connection m_connection;
-    u32 m_frameCount = 0;
     std::optional<RaceServerFrame> m_frame{};
-    /*CircularBuffer<s32, 60> m_drifts;
-    s32 m_drift = 0;*/
 
     static RaceClient *s_instance;
 };
