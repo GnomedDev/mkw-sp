@@ -1,5 +1,8 @@
-# Mario Kart Wii - Service Pack
+## Fork Disclaimer: This is not the original repo.
+This is a continuation of the MKW-SP project after I have disagreed on many aspects of their moderation style.
+This repo has no endorsement from any previous SP developer who has not explicitly said so.
 
+# Mario Kart Wii - Service Pack Continued
 Mario Kart Wii - Service Pack is an experimental, open-source, cross-platform mod for MKW aiming to provide a variety of features and improvements over the base game. More details on the [website](https://mkw-sp.com).
 
 ## Building
