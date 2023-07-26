@@ -84,7 +84,7 @@ fn main() -> Result<()> {
             }
         });
 
-        let listener = TcpListener::bind("0.0.0.0:21328").await?;
+        let listener = TcpListener::bind("127.0.0.1:21328").await?;
         loop {
             if let Ok((stream, address)) = listener.accept().await {
                 let server_keypair = server_keypair.clone();

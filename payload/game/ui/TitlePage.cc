@@ -13,6 +13,7 @@ namespace UI {
 void TitlePage::onInit() {
     REPLACED(onInit)();
 
+    SP_LOG("******* titlepage on init *******");
     auto globalContext = SectionManager::Instance()->globalContext();
 
     m_useAlternativeBackgrounds = true;
