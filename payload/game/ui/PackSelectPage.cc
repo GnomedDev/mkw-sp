@@ -1,5 +1,3 @@
-/// In progress page for the upcoming "Track Packs" support.
-///
 /// Notes:
 /// - The first pack displayed is the "Nintendo Tracks" pack, which contains vanilla courses.
 /// This is hidden when online, due to the OnlineTopPage already allowing the user to pick
@@ -13,8 +11,7 @@
 #include "game/ui/OnlineConnectionManagerPage.hh"
 #include "game/ui/SectionManager.hh"
 
-#include "game/system/RaceConfig.hh"
-#include <sp/CourseDatabase.hh>
+#include <sp/trackPacks/TrackPackManager.hh>
 
 #include <cstdio>
 
@@ -29,8 +26,11 @@ PageId PackSelectPage::getReplacement() {
 }
 
 void PackSelectPage::onInit() {
+    SP::TrackPackManager::CreateInstance();
+    auto &trackPackManager = SP::TrackPackManager::Instance();
+
     auto sectionId = SectionManager::Instance()->currentSection()->id();
-    auto packCount = 1 - Section::HasOnlineManager(sectionId);
+    auto packCount = trackPackManager.getPackCount() - Section::HasOnlineManager(sectionId);
 
     m_sheetCount = (packCount + m_buttons.size() - 1) / m_buttons.size();
     m_sheetIndex = 0;
@@ -84,6 +84,10 @@ void PackSelectPage::onInit() {
     refresh();
 }
 
+void PackSelectPage::onDeinit() {
+    SP::TrackPackManager::DestroyInstance();
+}
+
 void PackSelectPage::onActivate() {
     m_replacement = PageId::None;
     m_scrollBar.reconfigure(m_sheetCount, m_sheetIndex, m_sheetCount >= 2 ? 0x1 : 0x0);
@@ -111,21 +115,24 @@ void PackSelectPage::onBack(u32 /* localPlayerId */) {
 }
 
 void PackSelectPage::onButtonFront(PushButton *button, u32 /* localPlayerId */) {
-    auto *section = SectionManager::Instance()->currentSection();
-    auto *connManager = section->page<PageId::OnlineConnectionManager>();
+    auto *sectionManager = SectionManager::Instance();
+    auto *globalContext = sectionManager->globalContext();
+    auto sectionId = sectionManager->currentSection()->id();
 
-    auto buttonIndex = m_sheetIndex * m_buttons.size() + button->m_index;
-    if (connManager != nullptr) {
-        // TODO(GnomedDev): Track Pack support, needs consistent IDs
-        connManager->setTrackpack(buttonIndex + 1);
+    bool isOnline = Section::HasOnlineManager(sectionId);
+
+    auto buttonIndex = m_sheetIndex * m_buttons.size() + button->m_index + isOnline;
+    globalContext->m_currentPack = buttonIndex;
+
+    if (isOnline) {
         m_replacement = PageId::OnlineModeSelect;
     } else {
         if (!s_lastPackFront.has_value() || *s_lastPackFront != buttonIndex) {
-            SP::CourseDatabase::Instance().resetSelection();
+            UI::CourseSelectPage::s_lastSelected.reset();
         }
 
         s_lastPackFront = buttonIndex;
-        if (section->id() == SectionId::Multi) {
+        if (sectionId == SectionId::Multi) {
             m_replacement = PageId::MultiTop;
         } else {
             m_replacement = PageId::SingleTop;
@@ -190,7 +197,8 @@ void PackSelectPage::refresh() {
     auto sectionId = SectionManager::Instance()->currentSection()->id();
     bool isOnline = Section::HasOnlineManager(sectionId);
 
-    u32 packCount = 1;
+    auto &trackPackManager = SP::TrackPackManager::Instance();
+    u32 packCount = trackPackManager.getPackCount();
     for (size_t i = 0; i < m_buttons.size(); i++) {
         u32 packIndex = m_sheetIndex * m_buttons.size() + i + isOnline;
         if (packIndex < packCount) {
@@ -198,7 +206,7 @@ void PackSelectPage::refresh() {
             m_buttons[i].setPlayerFlags(1 << 0);
 
             MessageInfo info{};
-            info.strings[0] = L"Nintendo Tracks";
+            info.strings[0] = trackPackManager.getNthPack(packIndex).getPrettyName();
             m_buttons[i].setMessageAll(6602, &info);
         } else {
             m_buttons[i].setVisible(false);
