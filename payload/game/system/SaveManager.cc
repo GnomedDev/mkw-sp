@@ -78,7 +78,7 @@ void SaveManager::initSPSave() {
 
     for (m_spLicenseCount = 0; m_spLicenseCount < std::size(m_spLicenses);) {
         wchar_t path[64];
-        swprintf(path, std::size(path), L"/mkw-sp/settings%u.ini", m_spLicenseCount);
+        swprintf(path, std::size(path), L"/mkw-spc/settings%u.ini", m_spLicenseCount);
 
         auto size = SP::Storage::ReadFile(path, iniBuffer, sizeof(iniBuffer));
         if (!size) {
@@ -128,10 +128,11 @@ void *SaveManager::InitGhostsTask(void * /* arg */) {
 void SaveManager::initGhosts() {
     SP_LOG("Initializing ghosts...");
 
+    initGhosts(L"/mkw-spc/ghosts");
     initGhosts(L"/mkw-sp/ghosts");
     initGhosts(L"/ctgpr/ghosts");
 
-    SP::Storage::CreateDir(L"/mkw-sp/ghosts", true);
+    SP::Storage::CreateDir(L"/mkw-spc/ghosts", true);
 
     SP_LOG("Ghosts: %u / %u", m_ghostCount, MAX_GHOST_COUNT);
 }
@@ -237,7 +238,7 @@ void SaveManager::saveSPSave() {
         m_spLicenses[i].writeIni(iniBuffer, sizeof(iniBuffer));
 
         wchar_t path[64];
-        swprintf(path, std::size(path), L"/mkw-sp/settings%u.ini", (unsigned)i);
+        swprintf(path, std::size(path), L"/mkw-spc/settings%u.ini", (unsigned)i);
 
         if (!SP::Storage::WriteFile(path, iniBuffer, strlen(iniBuffer), true)) {
             SP_LOG("Failed to save %ls", path);
@@ -250,7 +251,7 @@ void SaveManager::saveSPSave() {
 
     for (size_t i = m_spLicenseCount; i < 6; ++i) {
         wchar_t path[64];
-        swprintf(path, std::size(path), L"/mkw-sp/settings%u.ini", (unsigned)i);
+        swprintf(path, std::size(path), L"/mkw-spc/settings%u.ini", (unsigned)i);
 
         if (!SP::Storage::Remove(path, true)) {
             SP_LOG("Failed to delete %ls", path);
@@ -509,7 +510,7 @@ void SaveManager::saveGhost(GhostFile *file) {
     }
 
     wchar_t path[255 + 1];
-    u32 offset = swprintf(path, 255 + 1, L"/mkw-sp/ghosts/");
+    u32 offset = swprintf(path, 255 + 1, L"/mkw-spc/ghosts/");
 
     char courseName[0x14 * 2 + 1];
     GetCourseName(courseSha1, courseName);

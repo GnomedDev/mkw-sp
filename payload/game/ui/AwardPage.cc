@@ -101,7 +101,7 @@ void AwardPage::initType() {
             srcPane = "icon_10_coin";
         }
     } else {
-        panic("Unknown section 0x%X, please report to MKW-SP devs!",
+        panic("Unknown section 0x%X, please report to MKW-SPC devs!",
                 static_cast<s32>(currentSectionId));
     }
 

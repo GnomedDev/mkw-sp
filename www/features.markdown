@@ -12,7 +12,7 @@ permalink: /features/
 It is possible to race against or watch up to [11 ghosts at once](/assets/11-ghosts.png). One can switch between ghosts during a replay (similar to live view). The ghost selection UI has been [accordingly remade from scratch](/assets/ghost-selection.png).
 
 **Vanilla Mode** [stebler]<br />
-With competitive time trials in mind, most MKW-SP enhancements can be disabled.
+With competitive time trials in mind, most MKW-SPC enhancements can be disabled.
 
 **Rear View In Replay** [stebler]<br />
 In ghost replay mode, cinematic view is [replaced by rear view](/assets/rear-view.png).
@@ -82,16 +82,16 @@ Individual sounds from `revo_kart.brsar` can be replaced by BRSTMs.
 ## Misc
 
 **In-Game Updater** [stebler, Star, Palapeli, Zach]<br />
-MKW-SP can be updated in-game.
+MKW-SPC can be updated in-game.
 
 **Wii Menu Channel** [stebler, Palapeli, Zach]<br />
-An MKW-SP channel can now be installed to the Wii Menu. It functions as a shortcut.
+An MKW-SPC channel can now be installed to the Wii Menu. It functions as a shortcut.
 
 **Custom Save System** [stebler, riidefi]<br />
 The rksys.dat format is replaced with per-license ini files. More than 4 licenses (for now the UI can [handle up to 6](/assets/6-licenses.png)) and [additional settings](/assets/license-settings.png) are supported. Ghosts are moved to separate files and everything is always unlocked. All the files are stored on the SD or USB device.
 
 **Translations** [MK Translation Project, stebler]<br />
-All languages (plus Dutch) are supported in all versions of the game. Some of the MKW-SP-specific strings are also translated.
+All languages (plus Dutch) are supported in all versions of the game. Some of the MKW-SPC-specific strings are also translated.
 
 **Storage Benchmark** [stebler]<br />
 The speed of SD/USB devices can be tested in various workloads.
@@ -112,14 +112,4 @@ The CPU, GPU and RAM usage can be displayed as bars on the screen.
 A log is stored to a file on the SD/USB and crash reports contain more details. Some bugs in custom tracks have specific checks with associated explanation messages.
 
 **Custom Discord Status** [riidefi, IPG]<br />
-On Dolphin 5.0-17155 and later, MKW-SP can now configure a custom Discord status.
-
-## Limitations and known bugs
-
-Ghost solidity is off by one frame when switching. See [issue 44](https://github.com/mkw-sp/mkw-sp/issues/44).
-
-VS and battle settings aren't saved. See [issue 50](https://github.com/mkw-sp/mkw-sp/issues/50).
-
-On courses with the `pylon01` object, time trials with more than 4 players will desync. See [issue 94](https://github.com/mkw-sp/mkw-sp/issues/94).
-
-Most gecko codes won't work because of the different memory map, and because of the memory protection. This won't be fixed.
+On Dolphin 5.0-17155 and later, MKW-SPC can now configure a custom Discord status.

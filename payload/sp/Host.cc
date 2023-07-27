@@ -185,7 +185,7 @@ void Host_PrintMkwSpInfo(PrintfFunction *func) {
     const char *region = Host_GetRegionString();
 
     (*func)("--------------------------------\n");
-    (*func)("MKW-SP v%s\n", versionInfo.name);
+    (*func)("MKW-SPC v%s\n", versionInfo.name);
 
     char system[HOST_PLATFORM_BUFFER_SIZE];
     NWC24iStrLCpy(system, Host_GetPlatformString(), sizeof(system));

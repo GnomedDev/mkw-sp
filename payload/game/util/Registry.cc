@@ -75,7 +75,7 @@ u32 WifiErrorExplain(u32 error) {
         roomClient->destroyInstance();
     }
 
-    // MKW-SP Online error codes are simply message IDs
+    // MKW-SPC Online error codes are simply message IDs
     if (error >= 30000) {
         return error;
     }

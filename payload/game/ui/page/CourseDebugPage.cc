@@ -203,8 +203,8 @@ enum class CourseBgm {
 
 /// Read .szs files from the "My Stuff" directory.
 static auto ScanMyStuff() {
-    auto dir = SP::Storage::OpenDir(L"/mkw-sp/My Stuff");
-    assert(dir && "Failed to open the \"/mkw-sp/My Stuff\" directory");
+    auto dir = SP::Storage::OpenDir(L"/mkw-spc/My Stuff");
+    assert(dir && "Failed to open the \"/mkw-spc/My Stuff\" directory");
     auto is_file = [&](auto &x) { return x.type == SP::Storage::NodeType::File; };
     return DirEntryRange{std::move(*dir)} | std::ranges::views::filter(is_file);
 }
@@ -215,7 +215,7 @@ static void SelectTrackForLoad(const SP::Storage::NodeInfo &info) {
     assert(rc);
     std::wstring_view name = info.name;
     char buf[128];
-    snprintf(buf, sizeof(buf), "/mkw-sp/My Stuff/%.*ls", name.size(), name.data());
+    snprintf(buf, sizeof(buf), "/mkw-spc/My Stuff/%.*ls", name.size(), name.data());
     rc->m_spMenu.pathReplacement.set(buf);
 }
 
