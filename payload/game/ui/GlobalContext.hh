@@ -1,5 +1,6 @@
 #pragma once
 
+#include "game/ui/Font.hh"
 #include "game/ui/MiiGroup.hh"
 #include "game/util/Registry.hh"
 
@@ -9,6 +10,7 @@
 namespace UI {
 
 enum class OnlineErrorCategory {
+    None = 0x0,
     ErrorCode = 0x1,
     MiiInvalid = 0x2,
     GeneralDisconnect = 0x4,
@@ -87,10 +89,11 @@ public:
     u8 _4cc[0x500 - 0x4cc];
     OnlineDisconnectInfo m_onlineDisconnectInfo;
     u8 _508[0x510 - 0x508];
-    u32 m_timeAttackGhostCount;                      // Added
-    u32 m_timeAttackGhostIndices[11];                // Added
-    SP::CircularBuffer<SP::Track, 32> m_courseOrder; // Added
-    u32 m_currentPack;                               // Added
+    u32 m_timeAttackGhostCount;                            // Added
+    u32 m_timeAttackGhostIndices[11];                      // Added
+    SP::CircularBuffer<SP::Track, 32> m_courseOrder;       // Added
+    u32 m_currentPack;                                     // Added
+    std::optional<MessageInfo> m_onlineDisconnectInfoInfo; // Added
 };
 // static_assert(offsetof(GlobalContext::m_timeAttackGhostCount) == 0x510);
 
