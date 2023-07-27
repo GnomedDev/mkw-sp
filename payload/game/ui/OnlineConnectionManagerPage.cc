@@ -1,22 +1,18 @@
 #include "OnlineConnectionManagerPage.hh"
 
-#include "game/system/RaceConfig.hh"
 #include "game/system/SaveManager.hh"
-#include "game/ui/GlobalContext.hh"
 #include "game/ui/OnlineModeSelectPage.hh"
 #include "game/ui/SectionManager.hh"
 
 #include <protobuf/Matchmaking.pb.h>
-#include <sp/cs/RoomClient.hh>
-#include <vendor/nanopb/pb_decode.h>
-#include <vendor/nanopb/pb_encode.h>
 
 namespace UI {
 
 constexpr u32 DOLPHIN_DEFAULT_DEVICE_ID = 0x0403AC68;
 
 OnlineConnectionManagerPage::OnlineConnectionManagerPage()
-    : m_socket{0x7F000001, 21331, "match   "} {
+    : m_innerSocket{0x7F000001, 21331, "match   "}, m_socket{&m_innerSocket, STCMessage_fields,
+                                                            CTSMessage_fields} {
     m_state = State::Initial;
 };
 
@@ -28,48 +24,62 @@ void OnlineConnectionManagerPage::onInit() {
 }
 
 void OnlineConnectionManagerPage::afterCalc() {
-    std::optional<STCMessage> event;
-    if (!m_socket.poll()) {
-        SectionManager::Instance()->transitionToError(30000);
+    auto *sectionManager = SectionManager::Instance();
+    if (!m_socket.inner().poll()) {
+        sectionManager->transitionToError(30000);
     }
 
-    if (!m_socket.ready()) {
+    if (!m_socket.inner().ready()) {
         return;
     }
+
+    auto res = transition();
+    if (!res.has_value()) {
+        MessageInfo info;
+        info.strings[0] = res.error();
+        sectionManager->transitionToError(30002, info);
+    }
+}
+
+std::expected<void, const wchar_t *> OnlineConnectionManagerPage::transition() {
+    std::expected<std::optional<STCMessage>, const wchar_t *> event;
 
     switch (m_state) {
     case State::Initial:
         return startLogin();
-    case State::WaitForLoginChallenge:
-        if (!read(event) || !event) {
-            return;
+    case State::WaitForLoginChallenge:;
+        if ((event = TRY(m_socket.readProto()))) {
+            SP_LOG("Got login challenge");
+            return respondToChallenge(**event);
+        } else {
+            return {};
         }
-
-        SP_LOG("OnlineConnectionManagerPage: Got login challenge");
-        return respondToChallenge(*event);
     case State::WaitForLoginResponse:
-        if (!read(event) || !event) {
-            return;
+        if ((event = TRY(m_socket.readProto()))) {
+            SP_LOG("Got login response");
+            setupRatings(**event);
         }
 
-        return setupRatings(*event);
+        return {};
     case State::WaitForSearchStart:
-        if (!m_searchStarted) {
-            return;
+        if (m_searchStarted) {
+            SP_LOG("Sending search message");
+            return sendSearchMessage();
+        } else {
+            return {};
         }
-
-        SP_LOG("OnlineConnectionManagerPage: Sending search message");
-        return sendSearchMessage();
     case State::WaitForSearchResponse:
-        if (!read(event) || !event) {
-            return;
+        if ((event = TRY(m_socket.readProto()))) {
+            SP_LOG("Got search response");
+            setupMatch(**event);
         }
 
-        SP_LOG("OnlineConnectionManagerPage: Got search response");
-        return setupMatch(*event);
+        return {};
     case State::FoundMatch:
-        return;
-    }
+        return {};
+    };
+
+    panic("unreachable");
 }
 
 std::optional<STCMessage_FoundMatch> OnlineConnectionManagerPage::takeMatchResponse() {
@@ -83,7 +93,7 @@ std::optional<STCMessage_FoundMatch> OnlineConnectionManagerPage::takeMatchRespo
     return response;
 }
 
-void OnlineConnectionManagerPage::startLogin() {
+std::expected<void, const wchar_t *> OnlineConnectionManagerPage::startLogin() {
     CTSMessage response;
 
     u32 deviceId;
@@ -106,10 +116,11 @@ void OnlineConnectionManagerPage::startLogin() {
         m_state = State::WaitForLoginChallenge;
     }
 
-    write(response);
+    return m_socket.writeProto(response);
 }
 
-void OnlineConnectionManagerPage::respondToChallenge(const STCMessage & /* event */) {
+std::expected<void, const wchar_t *> OnlineConnectionManagerPage::respondToChallenge(
+        const STCMessage & /* event */) {
     CTSMessage response;
     u16 longitude;
     u16 latitude;
@@ -135,12 +146,10 @@ void OnlineConnectionManagerPage::respondToChallenge(const STCMessage & /* event
     memcpy(response.message.login_challenge_answer.mii.bytes, &rawMii, sizeof(System::RawMii));
 
     m_state = State::WaitForLoginResponse;
-    write(response);
+    return m_socket.writeProto(response);
 }
 
 void OnlineConnectionManagerPage::setupRatings(const STCMessage &event) {
-    SP_LOG("OnlineConnectionManagerPage: Got login response");
-
     if (event.which_message == STCMessage_response_tag) {
         auto section = SectionManager::Instance()->currentSection();
         auto modeSelectPage = section->page<PageId::OnlineModeSelect>();
@@ -153,7 +162,7 @@ void OnlineConnectionManagerPage::setupRatings(const STCMessage &event) {
     m_state = State::WaitForSearchStart;
 }
 
-void OnlineConnectionManagerPage::sendSearchMessage() {
+std::expected<void, const wchar_t *> OnlineConnectionManagerPage::sendSearchMessage() {
     auto *globalContext = SectionManager::Instance()->globalContext();
 
     CTSMessage response;
@@ -161,9 +170,9 @@ void OnlineConnectionManagerPage::sendSearchMessage() {
     response.message.start_matchmaking.gamemode = m_gamemode;
     response.message.start_matchmaking.trackpack = globalContext->m_currentPack;
 
-    write(response);
     m_searchStarted = false;
     m_state = State::WaitForSearchResponse;
+    return m_socket.writeProto(response);
 }
 
 void OnlineConnectionManagerPage::setupMatch(const STCMessage &event) {
@@ -173,39 +182,6 @@ void OnlineConnectionManagerPage::setupMatch(const STCMessage &event) {
 
     m_matchResponse = event.message.found_match;
     m_state = State::FoundMatch;
-}
-
-bool OnlineConnectionManagerPage::read(std::optional<STCMessage> &event) {
-    u8 buffer[1024];
-    STCMessage tmp;
-
-    std::optional<u16> size = m_socket.read(buffer, sizeof(buffer));
-    if (!size) {
-        return false;
-    }
-
-    if (*size == 0) {
-        return true;
-    }
-
-    pb_istream_t stream = pb_istream_from_buffer(buffer, *size);
-    if (!pb_decode(&stream, STCMessage_fields, &tmp)) {
-        return false;
-    }
-
-    event = tmp;
-    return true;
-}
-
-void OnlineConnectionManagerPage::write(CTSMessage message) {
-    u8 buffer[1024];
-
-    pb_ostream_t stream = pb_ostream_from_buffer(buffer, sizeof(buffer));
-    assert(pb_encode(&stream, CTSMessage_fields, &message));
-
-    if (!m_socket.write(buffer, stream.bytes_written)) {
-        SectionManager::Instance()->transitionToError(30002);
-    }
 }
 
 } // namespace UI

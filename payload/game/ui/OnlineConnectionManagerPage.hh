@@ -5,6 +5,7 @@
 #include "game/ui/Page.hh"
 
 #include <sp/net/AsyncSocket.hh>
+#include <sp/net/ProtoSocket.hh>
 
 #include <protobuf/Matchmaking.pb.h>
 
@@ -40,17 +41,15 @@ public:
         return m_state;
     }
 
+    std::expected<void, const wchar_t *> transition();
     std::optional<STCMessage_FoundMatch> takeMatchResponse();
 
     u32 m_gamemode;
 
 private:
-    bool read(std::optional<STCMessage> &event);
-    void write(CTSMessage message);
-
-    void startLogin();
-    void sendSearchMessage();
-    void respondToChallenge(const STCMessage &event);
+    [[nodiscard]] std::expected<void, const wchar_t *> startLogin();
+    [[nodiscard]] std::expected<void, const wchar_t *> sendSearchMessage();
+    [[nodiscard]] std::expected<void, const wchar_t *> respondToChallenge(const STCMessage &event);
     void setupRatings(const STCMessage &event);
     void setupMatch(const STCMessage &event);
 
@@ -62,8 +61,9 @@ private:
     std::optional<STCMessage> m_loginResponse;
     std::optional<STCMessage_FoundMatch> m_matchResponse;
 
+    SP::Net::AsyncSocket m_innerSocket;
+    SP::Net::ProtoSocket<STCMessage, CTSMessage, SP::Net::AsyncSocket> m_socket;
     PageInputManager m_inputManager;
-    SP::Net::AsyncSocket m_socket;
     State m_state;
 };
 
