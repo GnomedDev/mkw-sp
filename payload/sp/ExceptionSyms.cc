@@ -24,6 +24,10 @@ __attribute__((noreturn)) void __throw_bad_alloc(void) {
     panic("std::__throw_bad_alloc");
 }
 
+__attribute__((noreturn)) void __throw_bad_function_call(void) {
+    panic("std::__throw_bad_function_call");
+}
+
 __attribute__((__format__(__gnu_printf__, 1, 2))) __attribute__((noreturn)) void
 __throw_out_of_range_fmt(const char *, ...) {
     panic("std::__throw_out_of_range_fmt");

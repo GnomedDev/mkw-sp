@@ -76,6 +76,15 @@ std::optional<Sha1> TrackPack::getNthTrack(u32 n, Track::Mode mode) const {
     }
 }
 
+void TrackPack::forEachTrack(std::function<void(const Sha1 &)> callback) const {
+    for (auto mode : s_trackModes) {
+        std::optional<Sha1> trackSha;
+        for (u16 i = 0; (trackSha = getNthTrack(i, mode)); i += 1) {
+            callback(*trackSha);
+        }
+    }
+}
+
 const wchar_t *TrackPack::getPrettyName() const {
     return m_prettyName.c_str();
 }

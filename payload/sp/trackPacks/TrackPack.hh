@@ -3,6 +3,7 @@
 #include "Track.hh"
 
 #include <expected>
+#include <functional>
 #include <optional>
 #include <span>
 #include <vector>
@@ -20,6 +21,7 @@ public:
     Track::Mode getSupportedModes() const;
     u16 getTrackCount(Track::Mode mode) const;
     std::optional<Sha1> getNthTrack(u32 n, Track::Mode mode) const;
+    void forEachTrack(std::function<void(const Sha1 &)> callback) const;
 
     const wchar_t *getPrettyName() const;
 

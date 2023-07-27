@@ -109,26 +109,22 @@ void TrackPackManager::loadTrackMetadata() {
     std::vector<u8> manifestBuf;
     for (auto &pack : m_packs) {
         SP_LOG("Loading track metadata for pack: %ls", pack.getPrettyName());
-        for (auto mode : s_trackModes) {
-            size_t trackCount = pack.getTrackCount(mode);
-            m_trackDb.reserve(m_trackDb.size() + trackCount);
-
-            std::optional<Sha1> trackSha;
-            for (u16 i = 0; (trackSha = pack.getNthTrack(i, mode)); i += 1) {
-                auto trackShaHex = sha1ToHex(trackSha.value());
-                if (foundVanilla) {
-                    manifestView = readSDTrack(manifestBuf, trackShaHex);
-                } else {
-                    manifestView = readVanillaTrack(trackShaHex);
-                }
-
-                auto track = Track::FromFile(manifestView, *trackSha);
-                m_trackDb.push_back(std::move(track));
+        pack.forEachTrack([&](const Sha1 &trackSha) {
+            auto trackShaHex = sha1ToHex(trackSha);
+            if (foundVanilla) {
+                manifestView = readSDTrack(manifestBuf, trackShaHex);
+            } else {
+                manifestView = readVanillaTrack(trackShaHex);
             }
-        }
+
+            auto track = Track::FromFile(manifestView, trackSha);
+            m_trackDb.push_back(std::move(track));
+        });
 
         foundVanilla = true;
-    }
+    };
+
+    m_trackDb.shrink_to_fit();
 }
 
 size_t TrackPackManager::getPackCount() const {
