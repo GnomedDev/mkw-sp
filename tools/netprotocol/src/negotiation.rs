@@ -1,9 +1,12 @@
+use std::io::{Read, Write};
+
 use anyhow::Result;
 use libhydrogen::kx;
 use tokio::{
     io::{AsyncReadExt, AsyncWriteExt},
     net::TcpStream,
 };
+use zeroize::Zeroizing;
 
 #[async_trait::async_trait]
 pub trait KeyNegotiator: Default {
@@ -64,6 +67,40 @@ impl KeyNegotiator for XXNegotiator {
 #[derive(Clone, Copy, Debug, Default)]
 pub struct NNegotiator {
     message_id: u64,
+}
+
+impl NNegotiator {
+    /// Takes a password from stdin, then salts using `salt.bin`, and produces a stable keypair.
+    pub fn generate_keypair() -> Result<kx::KeyPair> {
+        eprint!("Password: ");
+        std::io::stderr().flush()?;
+        let password = Zeroizing::new(passterm::read_password()?);
+        eprintln!("[hidden]");
+
+        let salt = match std::fs::File::open("salt.bin") {
+            Ok(mut file) => {
+                let mut salt = Zeroizing::new([0u8; 32]);
+                file.read_exact(&mut *salt)?;
+                salt
+            }
+            Err(e) if e.kind() == std::io::ErrorKind::NotFound => {
+                eprintln!("No salt found, generating a new one.");
+                let mut salt = Zeroizing::new([0u8; 32]);
+                libhydrogen::random::buf_into(&mut *salt);
+                let mut file = std::fs::File::create("salt.bin")?;
+                file.write_all(&*salt)?;
+                salt
+            }
+            Err(e) => Err(e)?,
+        };
+
+        let mut seed = Zeroizing::new([0u8; 32]);
+        let params = argon2::Params::new(131072, 16, 8, None)?;
+        let argon2 = argon2::Argon2::new(Default::default(), Default::default(), params);
+        argon2.hash_password_into(password.as_bytes(), &*salt, &mut *seed)?;
+
+        Ok(kx::KeyPair::gen_deterministic(&(*seed).into()))
+    }
 }
 
 #[async_trait::async_trait]

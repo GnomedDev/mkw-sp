@@ -1,54 +1,23 @@
 use std::collections::VecDeque;
 use std::fmt;
-use std::fs::{self, File};
-use std::io::{self, ErrorKind, Read, Write};
+use std::fs;
 use std::net::SocketAddr;
 use std::time::{Duration, Instant};
 
 use anyhow::{Context, Result};
-use argon2::{Argon2, Params};
 use chrono::Utc;
-use libhydrogen::{kx, random, sign};
+use libhydrogen::{kx, sign};
 use netprotocol::update_server::*;
 use tokio::fs::OpenOptions;
 use tokio::io::AsyncWriteExt;
 use tokio::net::{TcpListener, TcpStream};
 use tokio::runtime::Runtime;
 use tokio::sync::mpsc::{self, Sender};
-use zeroize::Zeroizing;
 
 fn main() -> Result<()> {
-    eprint!("Password: ");
-    io::stderr().flush()?;
-    let password = Zeroizing::new(passterm::read_password()?);
-    eprintln!("[hidden]");
-
     libhydrogen::init()?;
 
-    let salt = match File::open("salt.bin") {
-        Ok(mut file) => {
-            let mut salt = Zeroizing::new([0u8; 32]);
-            file.read_exact(&mut *salt)?;
-            salt
-        }
-        Err(e) if e.kind() == ErrorKind::NotFound => {
-            eprintln!("No salt found, generating a new one.");
-            let mut salt = Zeroizing::new([0u8; 32]);
-            random::buf_into(&mut *salt);
-            let mut file = File::create("salt.bin")?;
-            file.write_all(&*salt)?;
-            salt
-        }
-        Err(e) => Err(e)?,
-    };
-    let mut seed = Zeroizing::new([0u8; 32]);
-    let params = Params::new(131072, 16, 8, None)?;
-    let argon2 = Argon2::new(Default::default(), Default::default(), params);
-    argon2.hash_password_into(password.as_bytes(), &*salt, &mut *seed)?;
-    drop(password);
-    drop(salt);
-    let server_keypair = kx::KeyPair::gen_deterministic(&(*seed).into());
-    drop(seed);
+    let server_keypair = netprotocol::NNegotiator::generate_keypair()?;
     println!("Public key: {:02x?}", server_keypair.public_key.as_ref());
 
     let runtime = Runtime::new()?;
