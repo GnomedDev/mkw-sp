@@ -51,7 +51,7 @@ void Init() {
     Settings &instance = Instance();
     instance.reset();
 
-    const wchar_t *path = L"/mkw-sp/settings.ini";
+    const wchar_t *path = L"/mkw-spc/settings.ini";
 
     // TODO: Hopefully this is enough. Can always stream the file if not.
     char iniBuffer[2048];

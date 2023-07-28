@@ -2,7 +2,7 @@
 
 #include <Common.h>
 
-// Keep this value in sync with the value in the file 'mkw-sp/protobuf/UpdateRequestMessage.options'
+// Keep this value in sync with the value in the file 'protobuf/UpdateRequestMessage.options'
 #define HOST_PLATFORM_BUFFER_SIZE (31 + 1)
 
 #if defined(_WIN32) || defined(__APPLE__) || defined(__linux__)
@@ -92,7 +92,7 @@ typedef void PrintfFunction(const char *, ...);
 
 // Example output:
 //     --------------------------------
-//     MKW-SP v0.1.4 (Release) REV 15610c0
+//     MKW-SPC v0.1.4 (Release) REV 15610c0
 //     Region: PAL, System: Dolphin 5.0-15993
 //     Built Mar  2 2022 at 23:22:40, GCC 10.2.0
 //     --------------------------------

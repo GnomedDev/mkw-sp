@@ -26,7 +26,7 @@ u32 GenerateMaxTeamSize(SP::ClientSettings::TeamSize teamsizesetting) {
     return maxTeamSize;
 }
 
-const char name[] = "MKW-SP Settings";
+const char name[] = "MKW-SPC Settings";
 
 const u32 categoryMessageIds[] = {10118, 10431, 10126, 10119, 10262, 10360, 10258, 10120, 10315};
 

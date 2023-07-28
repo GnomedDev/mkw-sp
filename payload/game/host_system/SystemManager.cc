@@ -136,7 +136,7 @@ void RichPresenceManager::terminateConnection() {
 
 void RichPresenceManager::onSectionChange(UI::SectionId sectionId) {
     std::string_view state;
-    std::string_view details = "MKW-SP";
+    std::string_view details = "MKW-SPC";
     s64 startTimestamp = 0;
     auto sceneId = UI::Section::GetSceneId(sectionId);
 

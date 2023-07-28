@@ -58,13 +58,13 @@ public:
     static constexpr std::string_view s_applicationId = "1006667953393111040";
     static constexpr PresenceData s_defaultPresence = {
             .state = "Main Menu",
-            .details = "MKW-SP",
+            .details = "MKW-SPC",
             .startTimestamp = 0,
             .endTimestamp = 0,
             .largeImageKey = "logo",
-            .largeImageText = "MKW-SP",
+            .largeImageText = "MKW-SPC",
             .smallImageKey = "logo",
-            .smallImageText = "MKW-SP",
+            .smallImageText = "MKW-SPC",
             .partySize = 0,
             .partyMax = 0,
     };

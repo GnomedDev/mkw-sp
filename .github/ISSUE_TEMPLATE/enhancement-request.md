@@ -1,6 +1,6 @@
 ---
 name: Enhancement request
-about: An enhancement request for MKW-SP.
+about: An enhancement request for MKW-SPC.
 title: ''
 labels: enhancement
 assignees: ''

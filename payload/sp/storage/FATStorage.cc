@@ -50,20 +50,20 @@ FATStorage::FATStorage() {
             continue;
         }
 
-        FRESULT result = f_mkdir(L"/mkw-sp");
+        FRESULT result = f_mkdir(L"/mkw-spc");
         if (result != FR_OK && result != FR_EXIST) {
-            SP_LOG("Failed to create or open the /mkw-sp directory");
+            SP_LOG("Failed to create or open the /mkw-spc directory");
             continue;
         }
 
         if (f_chdir(L"/mkw-sp") != FR_OK) {
-            SP_LOG("Failed to change the current directory to /mkw-sp");
+            SP_LOG("Failed to change the current directory to /mkw-spc");
             continue;
         }
 
-        auto dir = openDir(L"/mkw-sp");
+        auto dir = openDir(L"/mkw-spc");
         if (!dir) {
-            SP_LOG("Failed to open the /mkw-sp directory");
+            SP_LOG("Failed to open the /mkw-spc directory");
             continue;
         }
         while (auto info = dir->read()) {
@@ -80,7 +80,7 @@ FATStorage::FATStorage() {
             SP_LOG("Added file replacement prefix %ls", info->name);
         }
         if (m_prefixCount == 0) {
-            createDir(L"/mkw-sp/My Stuff", true);
+            createDir(L"/mkw-spc/My Stuff", true);
         }
 
         SP_LOG("Successfully completed initialization");
@@ -377,8 +377,8 @@ std::optional<NodeInfo> FATStorage::Dir::read() {
 std::optional<FATStorage::Path> FATStorage::convertPath(const wchar_t *path) {
     Path nodePath;
 
-    if (!wcsncmp(path, L"/mkw-sp/", wcslen(L"/mkw-sp/"))) {
-        swprintf(nodePath.path, std::size(nodePath.path), L"%ls", path + wcslen(L"/mkw-sp/"));
+    if (!wcsncmp(path, L"/mkw-spc/", wcslen(L"/mkw-spc/"))) {
+        swprintf(nodePath.path, std::size(nodePath.path), L"%ls", path + wcslen(L"/mkw-spc/"));
         return nodePath;
     }
 

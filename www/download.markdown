@@ -6,15 +6,14 @@ permalink: /download/
 
 # Download
 
-Latest version: [v0.1.12](https://github.com/mkw-sp/mkw-sp/releases/download/v0.1.12/mkw-sp-v0.1.12.zip)
-
-Previous versions can be found [here](https://github.com/mkw-sp/mkw-sp/releases).
+Currently MKW-SPC is getting ready for it's first release,
+but the original SP is available at https://github.com/mkw-sp/mkw-sp
 
 ## Install
 
 ### On console
 
-You need a homebrewed Wii (any variant) or vWii with the Homebrew Channel. Simply extract the MKW-SP zip to the root of your SD card.
+You need a homebrewed Wii (any variant) or vWii with the Homebrew Channel. Simply extract the MKW-SPC zip to the root of your SD card.
 
 If you don't have the Homebrew Channel yet, we recommend:
 
@@ -24,11 +23,11 @@ If you don't have the Homebrew Channel yet, we recommend:
 
 ### On Dolphin
 
-You need a recent version of Dolphin. Simply add the `mkw-sp` folder to one of your game list paths and tick "Search subfolders".
+You need a recent version of Dolphin. Simply add the `mkw-spc` folder to one of your game list paths and tick "Search subfolders".
 
 ## Software licenses
 
-MKW-SP: [Expat License](https://github.com/mkw-sp/mkw-sp/blob/main/LICENSE)
+MKW-SP: [Expat License](https://github.com/GnomedDev/mkw-spc/blob/main/LICENSE)
 
 arith64: [The Unlicense](https://github.com/glitchub/arith64/blob/master/LICENSE)
 

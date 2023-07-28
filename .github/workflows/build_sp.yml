@@ -67,7 +67,7 @@ jobs:
       - name: Upload result
         uses: actions/upload-artifact@v3
         with:
-          name: mkw-sp-${{ matrix.profile }}
+          name: MKW-SPC-${{ matrix.profile }}
           path: out/${{ matrix.profile }}
 
   format:

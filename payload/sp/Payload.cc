@@ -67,7 +67,7 @@ static void Init() {
     VI::Init();
 
     Console::Init();
-    Console::Print("MKW-SP v");
+    Console::Print("MKW-SPC v");
     Console::Print(versionInfo.name);
     Console::Print("\n");
     Console::Print("\n");
@@ -141,7 +141,7 @@ static void Init() {
 
     // Example output:
     //     --------------------------------
-    //     MKW-SP v0.1.4 (Release) REV 15610c0
+    //     MKW-SPC v0.1.4 (Release) REV 15610c0
     //     Region: PAL, System: Dolphin 5.0-15993
     //     Built Mar  2 2022 at 23:22:40, GCC 10.2.0
     //     --------------------------------

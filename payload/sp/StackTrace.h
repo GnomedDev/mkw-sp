@@ -28,7 +28,7 @@ typedef enum {
 //! Determine which executable a pointer belongs to
 BinaryType ClassifyPointer(void *p);
 
-//! Try to convert a MKW-SP address-space REL pointer to vanilla address-space.
+//! Try to convert a MKW-SPC address-space REL pointer to vanilla address-space.
 void *PortPointer(void *p);
 
 //! For OSFatal asserts, which has a small text buffer, and we have the source line number

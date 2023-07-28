@@ -8,7 +8,7 @@
 #include <cwctype>
 #include <string_view>
 
-#define LOG_FILE_DIRECTORY L"/mkw-sp/logs"
+#define LOG_FILE_DIRECTORY L"/mkw-spc/logs"
 #define LOG_FILE_EXTENSION L".log"
 #define LOG_FILE_EXTENSION_LENGTH (sizeof(LOG_FILE_EXTENSION) / sizeof(wchar_t) - 1)
 #define LOG_FILE_NAME_FORMAT L"DDDD-DD-DD-DD-DD-DD"

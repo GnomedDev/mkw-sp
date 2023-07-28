@@ -12,7 +12,7 @@ extern "C" {
 void panic(const char *format, ...) {
     char messageFormat[288];
     snprintf(messageFormat, sizeof(messageFormat),
-            "MKW-SP v%s\n\n"
+            "MKW-SPC v%s\n\n"
             "%s\n\n",
             versionInfo.name, format);
 

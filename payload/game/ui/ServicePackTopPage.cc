@@ -78,7 +78,7 @@ void ServicePackTopPage::onAboutButtonFront(PushButton *button, u32 /* localPlay
     confirmPage->reset();
     confirmPage->setTitleMessage(10089);
     wchar_t version[0x20];
-    swprintf(version, std::size(version), L"MKW-SP v%s", versionInfo.name);
+    swprintf(version, std::size(version), L"MKW-SPC v%s", versionInfo.name);
     MessageInfo info{};
     info.strings[0] = version;
     confirmPage->setWindowMessage(6602, &info);

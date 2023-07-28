@@ -17,7 +17,7 @@
 
 namespace SP {
 
-#define SCREENSHOT_FILE_DIRECTORY L"/mkw-sp/screenshots"
+#define SCREENSHOT_FILE_DIRECTORY L"/mkw-spc/screenshots"
 #define SCREENSHOT_FILE_EXTENSION L".xfb"
 #define SCREENSHOT_FILE_EXTENSION_LENGTH (sizeof(SCREENSHOT_FILE_EXTENSION) / sizeof(wchar_t) - 1)
 
