@@ -45,7 +45,9 @@ std::optional<Info> GetInfo() {
 }
 
 static std::expected<void, const wchar_t *> Sync(bool update) {
-    assert(versionInfo.type == BUILD_TYPE_RELEASE);
+    if (versionInfo.type != BUILD_TYPE_RELEASE) {
+        return std::unexpected(L"Only Release builds can update.");
+    }
 
     status = Status::Connect;
     SP::Net::SyncSocket rawSocket("update.mkw-sp.com", 21328, serverPK, "update  ");
