@@ -1,6 +1,6 @@
 title: MKW-SPC
-baseurl: "/mkw-spc" # the subpath of your site, e.g. /blog
-url: "https://gnomeddev.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://mkw-spc.com" # the base hostname & protocol for your site, e.g. http://example.com
 
 header_pages:
   - blog.markdown
