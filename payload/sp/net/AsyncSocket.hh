@@ -14,11 +14,8 @@ namespace SP::Net {
 
 class AsyncSocket : public Socket {
 public:
-    // XX variant, client-side
+    // XX variant
     AsyncSocket(u32 ip, u16 port, const char context[hydro_secretbox_CONTEXTBYTES]);
-    // XX variant, server-side
-    AsyncSocket(s32 handle, const hydro_kx_keypair &serverKeypair,
-            const char context[hydro_secretbox_CONTEXTBYTES]);
     AsyncSocket(const AsyncSocket &) = delete;
     AsyncSocket(AsyncSocket &&) = delete;
     ~AsyncSocket();
@@ -38,7 +35,6 @@ private:
     };
 
     struct InitTask {
-        bool isServer;
         hydro_kx_keypair keypair;
         hydro_kx_state state;
         u8 xx1[hydro_kx_XX_PACKET1BYTES];
