@@ -65,6 +65,11 @@ static void ReturnToLoader() {
 }
 
 static void Init() {
+    if (IOS::GetNumber() != 36) {
+        // FIXME: VI init from a USB loader seems to cause graphical corruption!
+        VI::Init();
+    }
+
     Console::Init();
     Console::Print("MKW-SPC v");
     Console::Print(versionInfo.name);
