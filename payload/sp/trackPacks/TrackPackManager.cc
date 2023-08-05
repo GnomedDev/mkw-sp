@@ -65,9 +65,10 @@ void TrackPackManager::loadTrackPacks() {
     m_packs.push_back(std::move(TrackPack::New(vanillaManifest).value()));
 
     auto dir = Storage::OpenDir(TRACK_PACK_DIRECTORY);
-    if (!dir) {
+    if (!dir || !Storage::OpenDir(TRACK_DIRECTORY)) {
         SP_LOG("Creating track pack directory");
         Storage::CreateDir(TRACK_PACK_DIRECTORY, true);
+        Storage::CreateDir(TRACK_DIRECTORY, true);
         return;
     }
 
@@ -100,9 +101,6 @@ void TrackPackManager::loadTrackPacks() {
 
 void TrackPackManager::loadTrackMetadata() {
     SP_LOG("Loading track metadata");
-
-    auto dir = Storage::OpenDir(TRACK_DIRECTORY);
-    assert(dir.has_value()); // Was created in loadTrackPacks
 
     bool foundVanilla = false;
     std::span<u8> manifestView;
