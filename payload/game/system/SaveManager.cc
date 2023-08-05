@@ -76,6 +76,7 @@ void SaveManager::initSPSave() {
     // TODO: Hopefully this is enough. Can always stream the file if not.
     char iniBuffer[2048];
 
+    SP::Storage::CreateDir(L"/mkw-spc/licenses", true);
     for (m_spLicenseCount = 0; m_spLicenseCount < std::size(m_spLicenses);) {
         wchar_t path[64], pathOld[64];
         swprintf(pathOld, std::size(pathOld), L"/mkw-spc/settings%u.ini", m_spLicenseCount);
@@ -83,9 +84,9 @@ void SaveManager::initSPSave() {
 
         bool oldLicenseExists = static_cast<bool>(SP::Storage::Open(pathOld, "r"));
         if (oldLicenseExists) {
-            SP::Storage::CreateDir(L"/mkw-spc/licenses", true);
             SP::Storage::Rename(pathOld, path);
         }
+
         auto size = SP::Storage::ReadFile(path, iniBuffer, sizeof(iniBuffer));
         if (!size) {
             break;
