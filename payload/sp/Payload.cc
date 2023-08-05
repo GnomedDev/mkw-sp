@@ -33,6 +33,7 @@ extern "C" {
 }
 
 #include <common/Console.hh>
+#include <common/IOS.hh>
 #include <common/VI.hh>
 #include <game/host_system/SystemManager.hh>
 extern "C" {
@@ -64,8 +65,6 @@ static void ReturnToLoader() {
 }
 
 static void Init() {
-    VI::Init();
-
     Console::Init();
     Console::Print("MKW-SPC v");
     Console::Print(versionInfo.name);
@@ -100,10 +99,12 @@ static void Init() {
     Host_Init();
     Console::Print(" done.\n");
 
-    Console::Print("Initializing USB...");
-    bool usbWasInit = Usb_init();
-    assert(usbWasInit);
-    Console::Print(" done.\n");
+    if (IOS::GetNumber() != 36) {
+        Console::Print("Initializing USB...");
+        bool usbWasInit = Usb_init();
+        assert(usbWasInit);
+        Console::Print(" done.\n");
+    }
 
     Console::Print("Initializing network...");
     Net::Init();

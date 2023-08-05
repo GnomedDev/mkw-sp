@@ -1,5 +1,6 @@
 #include "FATStorage.hh"
 
+#include "sp/CircularBuffer.hh"
 #include "sp/settings/FileReplacement.hh"
 #include "sp/settings/GlobalSettings.hh"
 
@@ -7,6 +8,8 @@ extern "C" {
 #include "sp/storage/Sdi.h"
 #include "sp/storage/UsbStorage.h"
 }
+
+#include <common/IOS.hh>
 
 #include <array>
 #include <cstring>
@@ -37,9 +40,14 @@ FATStorage::FATStorage() {
         m_dirs[i].m_storage = this;
     }
 
-    std::array initFuncs{UsbStorage_init, SdiStorage_init};
+    SP::CircularBuffer<InitFunc, 2> initFuncs = {};
+    initFuncs.push_back(SdiStorage_init);
+    if (IOS::GetNumber() == 36) {
+        initFuncs.push_back(UsbStorage_init);
+    }
 
-    for (auto initFunc : initFuncs) {
+    for (u8 i = 0; i < initFuncs.count(); i += 1) {
+        auto initFunc = *initFuncs[i];
         if (!initFunc(&s_storage)) {
             SP_LOG("Failed to initialize the device");
             continue;

@@ -9,6 +9,11 @@
 
 namespace IOS {
 
+u16 GetNumber() {
+    return *reinterpret_cast<volatile u16 *>(0x80003140);
+}
+
+#ifndef SP_PAYLOAD
 extern "C" volatile u32 ppcmsg;
 extern "C" volatile u32 ppcctrl;
 extern "C" volatile u32 armmsg;
@@ -43,10 +48,6 @@ void Init() {
     ppcctrl = Y2;
     ppcctrl = Y1;
 #endif
-}
-
-u16 GetNumber() {
-    return *reinterpret_cast<volatile u16 *>(0x80003140);
 }
 
 enum class SC {
@@ -591,5 +592,7 @@ s32 File::write(const void *input, u32 inputSize) {
 
     return request.result;
 }
+
+#endif // ifndef SP_PAYLOAD
 
 } // namespace IOS

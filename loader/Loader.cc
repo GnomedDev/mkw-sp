@@ -48,7 +48,13 @@ static bool CopyNANDLoader(IOS::FS &fs) {
 }
 
 std::optional<Apploader::GameEntryFunc> Run() {
-    VI::Init();
+    // IOS36 is the original game's IOS, which does not contain USB functionality.
+    // This IOS should only be being loaded due to a USB loader being in use.
+    u16 iosNumber = IOS::GetNumber();
+    if (iosNumber != 36) {
+        // FIXME: VI init from a USB loader seems to cause graphical corruption!
+        VI::Init();
+    }
 
     Console::Init();
     Console::Print("MKW-SPC v");
@@ -56,8 +62,7 @@ std::optional<Apploader::GameEntryFunc> Run() {
     Console::Print("\n");
     Console::Print("\n");
 
-    u16 iosNumber = IOS::GetNumber();
-    if (iosNumber != 58 && iosNumber != 59) {
+    if (iosNumber != 58 && iosNumber != 59 && iosNumber != 36) {
         Console::Print(
                 "In order for MKW-SPC to work, IOS58 (or IOS59) must be installed.\n"
                 "Please perform a Wii System Update or use the IOS58 Installer\n"

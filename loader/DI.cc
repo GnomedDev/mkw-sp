@@ -20,12 +20,6 @@ enum {
 };
 } // namespace Ioctlv
 
-namespace Result {
-enum {
-    Success = 1,
-};
-} // namespace Result
-
 DI::DI() : Resource(ALIGNED_STRING("/dev/di"), Mode::None) {}
 
 bool DI::readDiskID() {
@@ -34,7 +28,7 @@ bool DI::readDiskID() {
 
     s32 result = ioctl(Ioctl::ReadDiskID, in, sizeof(in), &diskID, sizeof(diskID));
 
-    return result == Result::Success;
+    return result == DIResult::Success;
 }
 
 bool DI::readUnencrypted(void *dst, u32 size, u32 offset) {
@@ -45,10 +39,10 @@ bool DI::readUnencrypted(void *dst, u32 size, u32 offset) {
 
     s32 result = ioctl(Ioctl::ReadUnencrypted, in, sizeof(in), dst, size);
 
-    return result == Result::Success;
+    return result == DIResult::Success;
 }
 
-bool DI::openPartition(u32 offset) {
+s32 DI::openPartition(u32 offset) {
     alignas(0x20) u32 in[8];
     in[0] = Ioctlv::OpenPartition << 24;
     in[1] = offset >> 2;
@@ -69,9 +63,7 @@ bool DI::openPartition(u32 offset) {
     pairs[4].data = out;
     pairs[4].size = sizeof(out);
 
-    s32 result = ioctlv(Ioctlv::OpenPartition, 3, 2, pairs);
-
-    return result == Result::Success;
+    return ioctlv(Ioctlv::OpenPartition, 3, 2, pairs);
 }
 
 bool DI::read(void *dst, u32 size, u32 offset) {
@@ -82,7 +74,7 @@ bool DI::read(void *dst, u32 size, u32 offset) {
 
     s32 result = ioctl(Ioctl::Read, in, sizeof(in), dst, size);
 
-    return result == Result::Success;
+    return result == DIResult::Success;
 }
 
 bool DI::isInserted() {
@@ -93,7 +85,7 @@ bool DI::isInserted() {
 
     s32 result = ioctl(Ioctl::GetCoverStatus, in, sizeof(in), out, sizeof(out));
 
-    if (result != Result::Success) {
+    if (result != DIResult::Success) {
         return false;
     }
 
@@ -107,7 +99,7 @@ bool DI::reset() {
 
     s32 result = ioctl(Ioctl::Reset, in, sizeof(in), NULL, 0);
 
-    return result == Result::Success;
+    return result == DIResult::Success;
 }
 
 } // namespace IOS

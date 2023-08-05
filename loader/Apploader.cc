@@ -133,11 +133,15 @@ std::optional<GameEntryFunc> LoadAndRun(IOS::DI &di) {
     }
     Console::Print("Found game partition.\n");
 
-    if (!di.openPartition(gamePartition->shiftedOffset << 2)) {
+    s32 openPartitionResult = di.openPartition(gamePartition->shiftedOffset << 2);
+    if (openPartitionResult == IOS::DIResult::Success) {
+        Console::Print("Successfully opened game partition.\n");
+    } else if (openPartitionResult == IOS::DIResult::InvalidArgument && IOS::GetNumber() == 36) {
+        Console::Print("Skipped opening the partition, due to being launched with a USB loader");
+    } else {
         Console::Print("Failed to open game partition.\n");
         return {};
     }
-    Console::Print("Successfully opened game partition.\n");
 
     alignas(0x20) ApploaderHeader header;
     if (!di.read(&header, sizeof(header), 0x2440)) {

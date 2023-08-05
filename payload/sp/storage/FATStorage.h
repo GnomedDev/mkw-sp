@@ -20,3 +20,5 @@ bool FATStorage_diskWrite(u32 firstSector, u32 sectorCount, const void *buffer);
 bool FATStorage_diskErase(u32 firstSector, u32 sectorCount);
 
 bool FATStorage_diskSync(void);
+
+typedef bool (*InitFunc)(const FATStorage **);

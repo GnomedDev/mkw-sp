@@ -63,7 +63,9 @@ static std::optional<LoaderEntryFunc> Run() {
     aicr = 0;
 #endif
 
-    VI::Init();
+    if (IOS::GetNumber() != 36) {
+        VI::Init();
+    }
 
     Console::Init();
     Console::Print("MKW-SPC Stub\n");
