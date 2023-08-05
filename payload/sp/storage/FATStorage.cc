@@ -56,7 +56,7 @@ FATStorage::FATStorage() {
             continue;
         }
 
-        if (f_chdir(L"/mkw-sp") != FR_OK) {
+        if (f_chdir(L"/mkw-spc") != FR_OK) {
             SP_LOG("Failed to change the current directory to /mkw-spc");
             continue;
         }
