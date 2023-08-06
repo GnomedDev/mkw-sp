@@ -137,7 +137,7 @@ std::optional<GameEntryFunc> LoadAndRun(IOS::DI &di) {
     if (openPartitionResult == IOS::DIResult::Success) {
         Console::Print("Successfully opened game partition.\n");
     } else if (openPartitionResult == IOS::DIResult::InvalidArgument && IOS::GetNumber() == 36) {
-        Console::Print("Skipped opening the partition, due to being launched with a USB loader");
+        Console::Print("Skipped opening the partition, due to being launched with a USB loader\n");
     } else {
         Console::Print("Failed to open game partition.\n");
         return {};
