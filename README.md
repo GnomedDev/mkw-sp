@@ -3,7 +3,7 @@ This is a continuation of the MKW-SP project after I have disagreed on many aspe
 This repo has no endorsement from any previous SP developer who has not explicitly said so.
 
 # Mario Kart Wii - Service Pack Continued
-Mario Kart Wii - Service Pack is an experimental, open-source, cross-platform mod for MKW aiming to provide a variety of features and improvements over the base game. More details on the [website](https://mkw-sp.com).
+Mario Kart Wii - Service Pack is an experimental, open-source, cross-platform mod for MKW aiming to provide a variety of features and improvements over the base game. More details on the [website](https://mkw-spc.com).
 
 ## Building
 
@@ -37,7 +37,7 @@ If you need a unoptimised build with debugging information, use `python3 build.p
 
 ## Resources
 
-- [Ghidra project](https://drive.google.com/drive/folders/1I1VRfeut3NtPeddePutfAaZhduVdKhhc?usp=sharing) (by far the most complete resource)
+- [Ghidra project](https://panel.mkw.re) (Contact developers on the [Discord](https://discord.gg/Muzr5BUKqq) for access)
 
 - [MKW decompilation](https://github.com/riidefi/mkw) (the most readable if it has what you need)
 
