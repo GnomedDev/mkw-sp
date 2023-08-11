@@ -64,6 +64,8 @@ System::SceneId Section::GetSceneId(SectionId id) {
         return HandleSceneIdPatches(id);
     case SectionId::WU8Library:
         return System::SceneId::Menu;
+    case SectionId::ServicePackChannel:
+        return System::SceneId::Globe;
     default:
         panic("Unhandled extended section ID! 0x%x", static_cast<s32>(id));
     }
@@ -83,6 +85,7 @@ const char *Section::GetResourceName(SectionId id) {
     case SectionId::None... SectionId::Max:
         return HandleResourceNamePatches(id);
     case SectionId::WU8Library:
+    case SectionId::ServicePackChannel:
         return "/Scene/UI/Channel";
     default:
         panic("Unhandled extended section ID! 0x%x", static_cast<s32>(id));
@@ -105,6 +108,7 @@ bool Section::HasBackModel(const SectionId id) {
     case SectionId::None... SectionId::Max:
         return REPLACED(HasBackModel)(id);
     case SectionId::WU8Library:
+    case SectionId::ServicePackChannel:
         return false;
     default:
         panic("Unhandled extended section ID! 0x%x", static_cast<s32>(id));
@@ -118,6 +122,7 @@ System::ContextId Section::GetContextId(const SectionId id) {
     case SectionId::None... SectionId::Max:
         return REPLACED(GetContextId)(id);
     case SectionId::WU8Library:
+    case SectionId::ServicePackChannel:
         return System::ContextId::SP;
     default:
         return System::ContextId::None;
@@ -130,6 +135,8 @@ Sound::SoundId Section::GetSoundId(const SectionId id) {
         return REPLACED(GetSoundId)(id);
     case SectionId::WU8Library:
         return Sound::SoundId::SEQ_O_EARTH;
+    case SectionId::ServicePackChannel:
+        return Sound::SoundId::SEQ_O_SELECT_CH;
     default:
         panic("Unhandled extended section ID! 0x%x", static_cast<s32>(id));
     }
@@ -141,6 +148,8 @@ Sound::GroupId Section::GetGroupId(const SectionId id) {
         return REPLACED(GetGroupId)(id);
     case SectionId::WU8Library:
         return Sound::GroupId::Online;
+    case SectionId::ServicePackChannel:
+        return Sound::GroupId::Channel;
     default:
         panic("Unhandled extended section ID! 0x%x", static_cast<s32>(id));
     }
@@ -153,6 +162,8 @@ s32 Section::GetPriority(const SectionId id) {
         return REPLACED(GetPriority)(id);
     case SectionId::WU8Library:
         return 0;
+    case SectionId::ServicePackChannel:
+        return 1;
     default:
         panic("Unhandled extended section ID! 0x%x", static_cast<s32>(id));
     }
@@ -297,13 +308,6 @@ void Section::addPage(PageId pageId) {
             // that aren't needed anymore.
             {SectionId::ServicePack, PageId::TimeAttackTop},
 
-            {SectionId::ServicePackChannel, PageId::MessagePopup},
-            {SectionId::ServicePackChannel, PageId::MenuMessage},
-            {SectionId::ServicePackChannel, PageId::Confirm},
-            {SectionId::ServicePackChannel, PageId::ServicePackTop},
-            {SectionId::ServicePackChannel, PageId::StorageBenchmark},
-            {SectionId::ServicePackChannel, PageId::ServicePackTools},
-
             {SectionId::Rankings, PageId::RaceCourseSelect},
             {SectionId::Rankings, PageId::DirectConnection},
             {SectionId::Rankings, PageId::OnlineConnectionManager},
@@ -341,8 +345,6 @@ void Section::addActivePage(PageId pageId) {
 
             {SectionId::OnlineFriend1PVS, PageId::OnlineConnectionManager},
             {SectionId::OnlineFriend1PVS, PageId::OnlineTeamSelect},
-
-            {SectionId::ServicePackChannel, PageId::StorageBenchmark},
 
             {SectionId::Rankings, PageId::OnlineConnectionManager},
     };
@@ -492,13 +494,13 @@ void Section::addPages(SectionId id) {
             {SectionId::ServicePack, PageId::Update},
             {SectionId::ServicePack, PageId::Channel},
 
-            {SectionId::ServicePackChannel, PageId::ServicePackChannel},
-
             // Extended sections add their used pages here!
             {SectionId::WU8Library, PageId::SpinnerAwaitPage},
             {SectionId::WU8Library, PageId::LineBackgroundWhite},
             {SectionId::WU8Library, PageId::WU8Library},
 
+            {SectionId::ServicePackChannel, PageId::Obi},
+            {SectionId::ServicePackChannel, PageId::ServicePackChannel},
             // clang-format on
     };
     for (const auto &addition : additions) {
@@ -529,12 +531,12 @@ void Section::addActivePages(SectionId id) {
             {SectionId::Voting1PVS, PageId::CourseSelect},
             {SectionId::Voting1PVS, PageId::OnlineConnectionManager},
 
-            {SectionId::ServicePackChannel, PageId::ServicePackChannel},
-
             // Extended sections define their active pages here!
             {SectionId::WU8Library, PageId::LineBackgroundWhite},
             {SectionId::WU8Library, PageId::WU8Library},
 
+            {SectionId::ServicePackChannel, PageId::Obi},
+            {SectionId::ServicePackChannel, PageId::ServicePackChannel},
     };
     for (const auto &addition : additions) {
         if (addition.first == id) {
