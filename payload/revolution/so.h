@@ -34,8 +34,11 @@ int SOWrite(int s, const void *buf, int len);
 #define SO_EADDRINUSE -3
 #define SO_EAGAIN -6
 #define SO_EALREADY -7
+#define SO_ECONNREFUSED -14
 #define SO_EINPROGRESS -26
+#define SO_EINVAL -28
 #define SO_EISCONN -30
+#define SO_EALLOC -31
 
 typedef struct SOInAddr {
     u32 addr;

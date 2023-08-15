@@ -1,26 +1,16 @@
 #include "TrackPack.hh"
 
+#include "sp/trackPacks/Parse.hh"
+
 #include <protobuf/TrackPacks.pb.h>
 #include <vendor/magic_enum/magic_enum.hpp>
-#include <vendor/nanopb/pb_decode.h>
+extern "C" {
+#include <revolution/net.h>
+}
 
 using namespace magic_enum::bitwise_operators;
 
 namespace SP {
-
-bool decodeSha1Callback(pb_istream_t *stream, const pb_field_t * /* field */, void **arg) {
-    auto &out = *reinterpret_cast<std::vector<Sha1> *>(*arg);
-
-    ProtoSha1 sha1;
-    if (!pb_decode(stream, ProtoSha1_fields, &sha1)) {
-        panic("Failed to decode Sha1: %s", PB_GET_ERROR(stream));
-    }
-
-    assert(sha1.data.size == 0x14);
-
-    out.push_back(std::to_array(sha1.data.bytes));
-    return true;
-}
 
 std::expected<TrackPack, const char *> TrackPack::New(std::span<const u8> manifestRaw) {
     TrackPack self;
@@ -29,6 +19,11 @@ std::expected<TrackPack, const char *> TrackPack::New(std::span<const u8> manife
 }
 
 std::expected<void, const char *> TrackPack::parseNew(std::span<const u8> manifestRaw) {
+    NETSHA1Context context;
+    NETSHA1Init(&context);
+    NETSHA1Update(&context, manifestRaw.data(), manifestRaw.size());
+    NETSHA1GetDigest(&context, &m_manifestSha);
+
     pb_istream_t stream = pb_istream_from_buffer(manifestRaw.data(), manifestRaw.size());
 
     Pack manifest = Pack_init_zero;
@@ -50,6 +45,10 @@ std::expected<void, const char *> TrackPack::parseNew(std::span<const u8> manife
     m_description = FixedString<128>(manifest.description);
 
     return {};
+}
+
+const Sha1 &TrackPack::getManifestSha() const {
+    return m_manifestSha;
 }
 
 u16 TrackPack::getTrackCount(Track::Mode mode) const {

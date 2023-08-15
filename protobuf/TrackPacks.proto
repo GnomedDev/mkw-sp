@@ -12,6 +12,7 @@ message ProtoTrack {
     // Only included for other tools, should
     // not be sent to the game or used in SP.
     optional uint32 wiimmId = 4;
+    optional string version = 5;
 }
 
 message Pack {

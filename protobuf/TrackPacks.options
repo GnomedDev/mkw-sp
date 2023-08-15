@@ -1,4 +1,5 @@
 ProtoTrack.name max_size:48
+ProtoTrack.version max_size:32
 
 ProtoSha1.data max_size:20;
 

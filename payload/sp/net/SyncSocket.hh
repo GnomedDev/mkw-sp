@@ -18,7 +18,7 @@ public:
     SyncSocket &operator=(SyncSocket &&);
     ~SyncSocket();
 
-    bool ok() const;
+    bool ok() const override;
     std::expected<std::optional<u16>, const wchar_t *> read(u8 *message, u16 maxSize) override;
     std::expected<void, const wchar_t *> write(const u8 *message, u16 size) override;
 

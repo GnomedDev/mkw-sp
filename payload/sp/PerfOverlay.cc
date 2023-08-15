@@ -19,8 +19,7 @@ void PerfOverlay::MeasureBeginFrame(OSTime frameDuration) {
     if (saveManager) {
         ScopeLock<NoInterrupts> lock;
 
-        auto setting = saveManager->getSetting<SP::ClientSettings::Setting::PerfOverlay>();
-        bool enabled = setting == SP::ClientSettings::PerfOverlay::Enable;
+        auto enabled = true;
         if (enabled && !s_instance) {
             s_instance = PerfOverlay();
         } else if (!enabled && s_instance) {

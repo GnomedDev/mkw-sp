@@ -47,6 +47,7 @@ static void Free(u32 /* id */, void *ptr, s32 size) {
 static void *Handle(void * /* arg */) {
     res = SOStartup();
     while (true) {
+        SP_LOG("SOStartup %d\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", res);
         if (res != 0) {
             SOCleanup();
             res = SOStartup();

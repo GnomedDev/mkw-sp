@@ -100,13 +100,9 @@ impl<R: Message + Default, W: Message, N: KeyNegotiator> AsyncStream<R, W, N> {
     }
 
     pub async fn write_raw(&mut self, data: &[u8]) -> Result<()> {
+        std::fs::write("expected.dmp", data)?;
         let write_id = self.negotiator.write_message_id();
-        let message = secretbox::encrypt(
-            data,
-            *write_id,
-            &self.context,
-            &self.write_key,
-        );
+        let message = secretbox::encrypt(data, *write_id, &self.context, &self.write_key);
         *write_id += 1;
         let size = message.len();
         assert!(size <= u16::MAX as usize);

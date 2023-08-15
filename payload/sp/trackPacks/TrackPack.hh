@@ -2,6 +2,8 @@
 
 #include "Track.hh"
 
+#include <vendor/nanopb/pb.h>
+
 #include <expected>
 #include <functional>
 #include <optional>
@@ -18,6 +20,7 @@ private:
     std::expected<void, const char *> parseNew(std::span<const u8> manifest);
 
 public:
+    const Sha1 &getManifestSha() const;
     Track::Mode getSupportedModes() const;
     u16 getTrackCount(Track::Mode mode) const;
     std::optional<Sha1> getNthTrack(u32 n, Track::Mode mode) const;
@@ -29,6 +32,8 @@ private:
     TrackPack() = default;
 
     const std::vector<Sha1> &getTrackList(Track::Mode mode) const;
+
+    Sha1 m_manifestSha;
 
     std::vector<Sha1> m_raceTracks;
     std::vector<Sha1> m_coinTracks;

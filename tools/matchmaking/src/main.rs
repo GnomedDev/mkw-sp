@@ -12,6 +12,7 @@ use dashmap::DashMap;
 use futures_util::{SinkExt, StreamExt};
 use ids::*;
 use netprotocol::{
+    ClientId,
     async_stream::AsyncStream,
     matchmaking::{
         cts_message, gts_message, stc_message, stg_message, CTSMessage, CTSMessageOpt, ClientIdOpt,

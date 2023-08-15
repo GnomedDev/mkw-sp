@@ -53,7 +53,7 @@ void ServicePackToolsPage::onBack(u32 /* localPlayerId */) {
 
 void ServicePackToolsPage::onStorageBenchmarkButtonFront(PushButton *button,
         u32 /* localPlayerId */) {
-    m_replacement = PageId::StorageBenchmark;
+    m_replacement = PageId::PackDownload;
     f32 delay = button->getDelay();
     startReplace(Anim::Next, delay);
 }

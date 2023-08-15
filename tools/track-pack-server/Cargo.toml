@@ -1,0 +1,42 @@
+[package]
+name = "track_pack_server"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio = { version = "1.30.0", features = ["rt-multi-thread", "macros", "fs", "sync", "process"] }
+tracing = "0.1.37"
+tracing-subscriber = "0.3.17"
+libhydrogen = "0.4.1"
+prost = "0.11.9"
+hex = "0.4.3"
+regex = "1.9.3"
+arrayvec = "0.7.4"
+reqwest = { version = "0.11.18", features = ["rustls-tls", "json"], default-features = false }
+anyhow = "1"
+sha1 = "0.10.5"
+axum = { version = "0.6.20", features = ["multipart", "http2"] }
+serde = { version = "1.0.183", features = ["derive"] }
+serde_json = "1.0.104"
+edit-distance = "2.1.0"
+sqlx = { version = "0.7.1", features = ["runtime-tokio-rustls", "postgres", "time"] }
+tower-http = { version = "0.4.3", features = ["cors"] }
+dotenvy = "0.15.7"
+serde_with = "3.3.0"
+dashmap = "5.5.0"
+parking_lot = "0.12.1"
+tokio-stream = "0.1.14"
+time = "0.3.27"
+thiserror = "1.0.47"
+
+[dependencies.netprotocol]
+path = "../netprotocol"
+features = ["pack_downloading"]
+
+[dependencies.wbz_converter]
+git = "https://github.com/GnomedDev/wbz-to-szs-rs"
+
+[profile.dev.package.argon2]
+opt-level = 3

@@ -69,6 +69,7 @@ pub struct NNegotiator {
     message_id: u64,
 }
 
+#[cfg(any(feature = "pack_downloading", feature = "update"))]
 impl NNegotiator {
     /// Takes a password from stdin, then salts using `salt.bin`, and produces a stable keypair.
     pub fn generate_keypair() -> Result<kx::KeyPair> {

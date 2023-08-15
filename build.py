@@ -958,7 +958,7 @@ n.rule(
 
 n.rule(
     'nanopb',
-    command = f'{sys.executable} $nanopb $in -I protobuf -L "#include <vendor/nanopb/%s>" -D build/protobuf -q',
+    command = f'{sys.executable} $nanopb $in -s submsg_callback:true -I protobuf -L "#include <vendor/nanopb/%s>" -D build/protobuf -q',
     description = 'NANOPB $out',
 )
 n.newline()
@@ -1180,6 +1180,7 @@ protobuf_proto_files = [
     os.path.join('protobuf', 'Login.proto'),
     os.path.join('protobuf', 'Matchmaking.proto'),
     os.path.join('protobuf', 'TrackPacks.proto'),
+    os.path.join('protobuf', 'TrackServer.proto'),
     os.path.join('protobuf', 'NetStorage.proto'),
     os.path.join('protobuf', 'Room.proto'),
     os.path.join('protobuf', 'Update.proto'),

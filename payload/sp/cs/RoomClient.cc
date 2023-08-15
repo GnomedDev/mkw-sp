@@ -220,7 +220,7 @@ void RoomClient::transition(Handler &handler, State state) {
 }
 
 std::expected<RoomClient::State, const wchar_t *> RoomClient::calcConnect() {
-    if (!m_socket.inner().ready()) {
+    if (!m_socket.inner().ok()) {
         return State::Connect;
     }
 

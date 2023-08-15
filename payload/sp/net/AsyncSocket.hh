@@ -21,7 +21,7 @@ public:
     ~AsyncSocket();
 
     hydro_kx_session_keypair keypair() const;
-    bool ready() const;
+    bool ok() const override;
     bool poll();
 
     // The integer returned is always not zero, as that is expressed in the nullopt case.

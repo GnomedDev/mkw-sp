@@ -29,7 +29,7 @@ void OnlineConnectionManagerPage::afterCalc() {
         sectionManager->transitionToError(30000);
     }
 
-    if (!m_socket.inner().ready()) {
+    if (!m_socket.inner().ok()) {
         return;
     }
 

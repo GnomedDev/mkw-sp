@@ -442,4 +442,5 @@
     "30001": "Your connection to the game server has been lost.",
     "30002": "Your connection to the central server has failed.\n\nReason: {arg string|0}",
     "30003": "Your connection to the game server has failed.\n\nReason: {arg string|0}",
+    "30004": "Your connection to the pack server has been lost.",
 }

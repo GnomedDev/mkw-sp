@@ -54,6 +54,7 @@ static std::expected<void, const wchar_t *> Sync(bool update) {
     SP::Net::ProtoSocket<UpdateResponse, UpdateRequest, SP::Net::SyncSocket> socket(&rawSocket,
             UpdateResponse_fields, UpdateRequest_fields);
     if (!rawSocket.ok()) {
+        SP::Net::Restart();
         return std::unexpected(L"Unable to connect to update.mkw-sp.com!");
     }
 
@@ -156,7 +157,6 @@ bool Check() {
         return true;
     }
     if (!Sync(false)) {
-        SP::Net::Restart();
         return false;
     }
     return true;
@@ -166,7 +166,6 @@ bool Update() {
     assert(info);
     if (!Sync(true)) {
         info.reset();
-        SP::Net::Restart();
         return false;
     }
     return true;

@@ -7,7 +7,7 @@ edition = "2021"
 libhydrogen = "0.4.1"
 chrono = "0.4.19"
 tokio = { version = "1.19.2", features = ["rt-multi-thread", "io-util", "net", "sync", "fs"] }
-netprotocol = { path = "../netprotocol" }
+netprotocol = { path = "../netprotocol", features = ["update"] }
 anyhow = "1.0.71"
 
 # Startup password hashing will take insane amounts of time otherwise.

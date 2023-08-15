@@ -34,6 +34,7 @@ class OnlineModeSelectPage;
 class OnlineTeamSelectPage;
 class OptionExplanationPage;
 class OptionSelectPage;
+class PackDownloadPage;
 class RaceConfirmPage;
 class RankingPage;
 class RoulettePage;
@@ -312,6 +313,11 @@ struct Section::PageIdHelper<PageId::OnlineModeSelect> {
 template <>
 struct Section::PageIdHelper<PageId::Ranking> {
     using type = RankingPage;
+};
+
+template <>
+struct Section::PageIdHelper<PageId::PackDownload> {
+    using type = PackDownloadPage;
 };
 
 } // namespace UI

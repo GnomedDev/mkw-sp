@@ -17,3 +17,8 @@ zeroize = "1.5.5"
 
 [build-dependencies]
 prost-build = "0.11"
+
+[features]
+online_gameplay = []
+pack_downloading = []
+update = []

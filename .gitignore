@@ -15,3 +15,4 @@ Cargo.lock
 .DS_Store
 nanopb_pb2.py
 salt.bin
+.env

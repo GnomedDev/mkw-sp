@@ -1,0 +1,55 @@
+syntax = "proto2";
+
+import public "TrackPacks.proto";
+import public "Login.proto";
+
+message UpdatePath {
+    required ProtoSha1 outdatedPack = 1;
+    // Optional to allow for pack deletion
+    optional ProtoSha1 newPack = 2;
+}
+
+message CTTSMessage {
+    message Login {
+        repeated ProtoSha1 downloadedPacks = 1;
+        required ClientId id = 2;
+    }
+
+    message DownloadPack {
+        required ProtoSha1 packId = 1;
+    }
+
+    message DownloadTrack {
+        required ProtoSha1 trackId = 1;
+    }
+
+    oneof message {
+        Login         login = 1;
+        DownloadPack  download_pack = 2;
+        DownloadTrack download_track = 3;
+    }
+}
+
+message TSTCMessage {
+    message LoginResponse {
+        repeated UpdatePath packUpdates = 1;
+        repeated ProtoSha1 topPacks = 2;
+    }
+
+    message PackResponse {
+        required uint32 packSize = 1;
+        // The pack file is then sent without proto encoding.
+    }
+
+    message TrackResponse {
+        required ProtoTrack manifest = 1;
+        required uint32 trackSize = 2;
+        // The track file is then sent without proto encoding.
+    }
+
+    oneof message {
+        LoginResponse login_response = 1;
+        PackResponse  pack_response  = 2;
+        TrackResponse track_response = 3;
+    }
+}

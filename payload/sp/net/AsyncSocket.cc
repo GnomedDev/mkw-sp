@@ -62,7 +62,7 @@ hydro_kx_session_keypair AsyncSocket::keypair() const {
     return m_keypair;
 }
 
-bool AsyncSocket::ready() const {
+bool AsyncSocket::ok() const {
     if (m_handle < 0) {
         return false;
     }
@@ -201,7 +201,7 @@ std::expected<std::optional<u16>, const wchar_t *> AsyncSocket::read(u8 *message
 
 std::expected<void, const wchar_t *> AsyncSocket::write(const u8 *message, u16 size) {
     assert(m_handle >= 0);
-    if (!ready()) {
+    if (!ok()) {
         return std::unexpected(L"Cannot write messages until socket is ready!");
     }
 

@@ -17,6 +17,7 @@
 #include "game/ui/OnlineModeSelectPage.hh"
 #include "game/ui/OnlineTeamSelectPage.hh"
 #include "game/ui/OnlineTopPage.hh"
+#include "game/ui/PackDownloadPage.hh"
 #include "game/ui/PackSelectPage.hh"
 #include "game/ui/RandomMatchingPage.hh"
 #include "game/ui/RankingPage.hh"
@@ -493,6 +494,7 @@ void Section::addPages(SectionId id) {
             {SectionId::ServicePack, PageId::OptionConfirm},
             {SectionId::ServicePack, PageId::Update},
             {SectionId::ServicePack, PageId::Channel},
+            {SectionId::ServicePack, PageId::PackDownload},
 
             // Extended sections add their used pages here!
             {SectionId::WU8Library, PageId::SpinnerAwaitPage},
@@ -619,6 +621,8 @@ Page *Section::CreatePage(PageId pageId) {
         return new CourseDebugPage;
     case PageId::WU8Library:
         return new WU8LibraryPage;
+    case PageId::PackDownload:
+        return new PackDownloadPage;
     default:
         return REPLACED(CreatePage)(pageId);
     }
